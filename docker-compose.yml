@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: root
+    ports:
+        - "4306:3306"
+    volumes:
+        - db-data:/var/lib/mysql
+  web:
+    # ゾンビプロセスをkill
+    init: true
+    # デバッグを可能にする
+    tty: true
+    stdin_open: true
+    # 構築時に適用するオプション
+    build: .
+    # デフォルトのコマンドを上書き
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    #
+    volumes:
+      - .:/webapp
+    # 公開ポートの設定(ホスト(Mac側):コンテナ側)
+    ports:
+      - "3000:3000"
+    #
+    links:
+      - db
+
+volumes:
+  db-data:
