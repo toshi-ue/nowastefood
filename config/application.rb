@@ -26,6 +26,10 @@ module Webapp
     # default locale
     config.i18n.default_locale = :ja
 
+    config.time_zone = 'Tokyo'
+    # change db time_zone
+    config.active_record.default_timezone = :local
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
