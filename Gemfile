@@ -50,5 +50,17 @@ group :development do
   gem 'bullet'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'webdrivers'
+  gem 'shoulda-matchers',
+    git: 'https://github.com/thoughtbot/shoulda-matchers.git',
+    branch: 'rails-5'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'simplecov'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
