@@ -1,6 +1,4 @@
 require_relative 'boot'
-
-# require "rails"
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -27,13 +25,14 @@ module Webapp
     # RSpec generator setting
     config.generators do |g|
       g.test_framework :rspec,
-                       fixtures: true,
-                       view_specs: false,
-                       helper_specs: false,
-                       routing_specs: false,
-                       controller_specs: false,
-                       request_specs: true,
-                       system_specs: true
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: false,
+        request_specs: true
+        # 20-05-17-ジェネレータはない
+        # system_specs: true
     end
   end
 end
