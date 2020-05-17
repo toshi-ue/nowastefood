@@ -1,8 +1,8 @@
 ---
 name: new_feature_template
 about: Suggest an idea for this project
-title: 機能追加：
-labels: 1.機能追加
+title: ''
+labels: ''
 assignees: toshi-ue
 
 ---
@@ -10,28 +10,13 @@ assignees: toshi-ue
 ## 概要
 ここにIssueの概要を書く
 
-**What**
 **Why**
 もここに書くと良いと思う
 
-## 変更点
-- [ ]
-  - [ ]
-  - [ ]
-- [ ]
-
-## 追加タスク
+## 追加タスク、変更点
 - [ ]
 - [ ]
 - [ ]
-
-### 関連課題
----
-関連する課題があればここにリンク形式で載せる（Backlog）
-
-### 親課題
----
-親の課題があればここにリンク形式で載せる（Backlog）
 
 #### 備考(注意点)
 ---
