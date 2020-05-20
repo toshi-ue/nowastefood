@@ -18,6 +18,8 @@ gem 'devise'
 gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
