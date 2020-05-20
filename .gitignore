@@ -5,7 +5,7 @@
 ### Rails ###
 *.rbc
 capybara-*.html
-.rspec
+# .rspec
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -134,5 +134,5 @@ build-iPhoneSimulator/
 .history
 
 # End of https://www.gitignore.io/api/ruby,rails,visualstudiocode
-.rubocop.yml
-.rubocop_todo.yml
+# .rubocop.yml
+# .rubocop_todo.yml
