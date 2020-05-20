@@ -6,17 +6,7 @@ a.btn.btn-success[href="/"]
   | テスト
 br
 br
-/= link_to new_manager_session_path, class: 'page-link text-dark d-inline-block' do
+= link_to new_manager_session_path, class: 'page-link text-dark d-inline-block' do
   | 管理者ログイン
 
 = Time.now
-
-/ #=> invoke  active_record
-/ #=> create    db/migrate/20200520111136_devise_create_users.rb
-/ #=> create    app/models/user.rb
-/ #=> invoke    rspec
-/ #=> create      spec/models/user_spec.rb
-/ #=> invoke      factory_bot
-/ #=> create        spec/factories/users.rb
-/ #=> insert    app/models/user.rb
-/ #=>  route  devise_for :users
