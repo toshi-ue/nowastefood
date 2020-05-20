@@ -31,6 +31,6 @@ ADD ./Gemfile.lock $APP_DIR/Gemfile.lock
 RUN gem install bundler -v "1.17.3"
 # RUN gem update --system &&\
 # gem install bundler:$BUNDLER_VERSION
-RUN bundle install --jobs=10
+RUN bundle install --jobs=20
 
 ADD . $APP_DIR
