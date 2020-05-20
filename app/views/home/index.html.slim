@@ -4,3 +4,19 @@ p
   | Find me in app/views/home/index.html.erb
 a.btn.btn-success[href="/"]
   | テスト
+br
+br
+= link_to new_manager_session_path, class: 'page-link text-dark d-inline-block' do
+  | 管理者ログイン
+
+= Time.now
+br
+br
+- if manager_signed_in?
+  p = current_manager.email
+  p
+    = link_to 'プロフィール変更', edit_user_registration_path
+  p
+    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+  br
+  br

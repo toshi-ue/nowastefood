@@ -24,3 +24,20 @@
 <% end %>
 
 <%= render "managers/shared/links" %>
+
+<% if manager_signed_in? %>
+  <strong><%= link_to current_manager.email, pages_show_path %></strong>
+  <%= link_to 'プロフィール変更', edit_manager_registration_path %>
+  <%= link_to 'ログアウト', destroy_manager_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'サインアップ', new_manager_registration_path %>
+  <%= link_to 'ログイン', new_manager_session_path %>
+<% end %>
+
+<p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= f.hidden_field :email, value: "heascook@ahk.jp"%>
+  <%= f.hidden_field :password, value: "mVjM7F0g2bCV"%>
+  <%= f.submit "テスト管理者でログイン"%>
+  <% end %>
+</p>

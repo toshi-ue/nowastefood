@@ -5,31 +5,21 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7'
-# Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
-# Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-# gem 'sass-rails', '~> 5.0'
 gem 'sassc-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
-# Use Capistrano for deployment
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
@@ -45,10 +35,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
   gem 'bullet'
-  gem 'html2slim'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'solargraph'
+  gem 'letter_opener_web', group:  :development
 end
 
 group :test do

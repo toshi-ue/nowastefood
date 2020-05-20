@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # letter_opener_web
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 
   devise_for :users, controllers: {
     sessions:      'users/sessions',
@@ -11,6 +15,12 @@ Rails.application.routes.draw do
     passwords:     'managers/passwords',
     registrations: 'managers/registrations'
   }
+
+  # namspace :managers do
+  #   resources :aaa
+  # end
+
+
   get 'home/index'
 
   root to: 'home#index'
