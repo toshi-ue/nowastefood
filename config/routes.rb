@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # letter_opener_web
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
+
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
