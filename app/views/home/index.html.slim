@@ -10,3 +10,13 @@ br
   | 管理者ログイン
 
 = Time.now
+br
+br
+- if manager_signed_in?
+  p = current_manager.email
+  p
+    = link_to 'プロフィール変更', edit_user_registration_path
+  p
+    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+  br
+  br
