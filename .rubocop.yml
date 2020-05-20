@@ -1,0 +1,63 @@
+inherit_from: .rubocop_todo.yml
+
+# 追加した規約ファイル読込
+require:
+  - rubocop-rails
+  # - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  # Rubyバージョン指定
+  TargetRubyVersion: 2.5.7
+  # 除外(RuboCopで解析させないフォルダ、ファイル群)
+  Exclude:
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'vendor/**/*'
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+
+# クラスにコメントを残さない
+Documentation:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+ClassAndModuleChildren:
+  Enabled: false
+
+# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Metrics/BlockLength: Block has too many lines.　を無視
+Metrics/BlockLength:
+  Enabled: false
+
+# ネストを許可する深さ
+BlockNesting:
+  Max: 5
+
+# 開発者が感じていたプログラムの 匂い を定量的に判断する
+# Offense count: 2
+# default 15
+Metrics/AbcSize:
+  Max: 29
+
+# 1行が長すぎる
+Layout/LineLength:
+  Max: 112
+
+# メソッドの行数が長すぎる
+MethodLength:
+  Enabled: false
+
+# 引数の数が多すぎる
+ParameterLists:
+  Max: 12
