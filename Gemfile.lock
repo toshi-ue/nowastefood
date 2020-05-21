@@ -205,6 +205,8 @@ GEM
       rexml
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
+    rubocop-performance (1.5.2)
+      rubocop (>= 0.71.0)
     rubocop-rails (2.5.2)
       activesupport
       rack (>= 1.1)
@@ -228,13 +230,6 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
-    slim (4.1.0)
-      temple (>= 0.7.6, < 0.9)
-      tilt (>= 2.0.6, < 2.1)
-    slim-rails (3.2.0)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
-      slim (>= 3.0, < 5.0)
     solargraph (0.39.7)
       backport (~> 1.1)
       benchmark
@@ -262,7 +257,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -317,11 +311,11 @@ DEPENDENCIES
   rails (~> 5.1.7)
   rspec-rails
   rubocop
+  rubocop-performance
   rubocop-rails
   sassc-rails
   shoulda-matchers!
   simplecov
-  slim-rails
   solargraph
   spring
   spring-commands-rspec
