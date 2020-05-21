@@ -1,0 +1,2 @@
+class Cookedstate < ApplicationRecord
+end
