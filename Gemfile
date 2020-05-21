@@ -30,7 +30,6 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
   gem 'solargraph'
   gem 'spring'
   gem 'spring-commands-rspec'
@@ -48,6 +47,7 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
+    gem 'rubocop-rspec', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
