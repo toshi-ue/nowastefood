@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200521095406) do
+ActiveRecord::Schema.define(version: 20200521110140) do
+
+  create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", comment: "加工された状態の名前"
+    t.bigint "applicant_id", comment: "承認した人のid(管理者id)"
+    t.bigint "approver_id", comment: "承認した人のid(管理者id)"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_cookedstates_on_applicant_id"
+    t.index ["approver_id"], name: "index_cookedstates_on_approver_id"
+  end
 
   create_table "foodcategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false, comment: "食材区分名(肉、野菜、魚、炭水化物など)"
@@ -104,6 +114,8 @@ ActiveRecord::Schema.define(version: 20200521095406) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "cookedstates", "managers", column: "applicant_id"
+  add_foreign_key "cookedstates", "managers", column: "approver_id"
   add_foreign_key "foodcategories", "managers"
   add_foreign_key "foodcategories", "managers", column: "approver_id"
 end
