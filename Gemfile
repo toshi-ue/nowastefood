@@ -47,6 +47,7 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
+    gem 'rubocop-rspec', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
