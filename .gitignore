@@ -123,7 +123,7 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 ### VisualStudioCode ###
-.vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
