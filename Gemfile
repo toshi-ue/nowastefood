@@ -40,6 +40,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem 'rubocop-rspec', require: false
   gem 'shoulda-matchers',
       git: 'https://github.com/thoughtbot/shoulda-matchers.git',
       branch: 'rails-5'
@@ -47,7 +48,6 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
-    gem 'rubocop-rspec', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
