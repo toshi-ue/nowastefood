@@ -3,7 +3,7 @@ inherit_from: .rubocop_todo.yml
 # 追加した規約ファイル読込
 require:
   - rubocop-rails
-  # - rubocop-rspec
+  - rubocop-rspec
   - rubocop-performance
 
 AllCops:
@@ -19,6 +19,9 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'vendor/**/*'
+  # rubocop ver0.72 以降は使わない(代わりにrequire rubocop-rails)
+  # Rails:
+  #   enabled: true
 
 # 日本語でのコメントを許可
 AsciiComments:
