@@ -30,6 +30,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'solargraph'
   gem 'spring'
   gem 'spring-commands-rspec'
@@ -40,7 +41,6 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem 'rubocop-rspec', require: false
   gem 'shoulda-matchers',
       git: 'https://github.com/thoughtbot/shoulda-matchers.git',
       branch: 'rails-5'
