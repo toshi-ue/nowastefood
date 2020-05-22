@@ -1,0 +1,2 @@
+class Procudure < ApplicationRecord
+end
