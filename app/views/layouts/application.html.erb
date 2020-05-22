@@ -10,6 +10,13 @@
       </head>
       <body>
         <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p> <%= yield %>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+        <p>
+          <%= controller.controller_path %>/<%= controller.action_name %>.html.erb
+        </p>
+        <p>
+          <%= Rails.root %>
+        </p>
       </body>
     </html>
