@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200522201535) do
+ActiveRecord::Schema.define(version: 20200522203549) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 20200522201535) do
     t.datetime "updated_at", null: false
     t.index ["approver_id"], name: "index_foodcategories_on_approver_id"
     t.index ["manager_id"], name: "index_foodcategories_on_manager_id"
+  end
+
+  create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "cooking_time", null: false, comment: "数量"
+    t.integer "measure_unit", null: false, comment: "単位"
+    t.bigint "cuisine_id", comment: "料理id"
+    t.bigint "rawmaterial_id", comment: "原材料id"
+    t.bigint "ingredient_id", comment: "部位id"
+    t.bigint "cookedstate_id", comment: "加工された状態の名前id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cookedstate_id"], name: "index_foodstuffs_on_cookedstate_id"
+    t.index ["cuisine_id"], name: "index_foodstuffs_on_cuisine_id"
+    t.index ["ingredient_id"], name: "index_foodstuffs_on_ingredient_id"
+    t.index ["rawmaterial_id"], name: "index_foodstuffs_on_rawmaterial_id"
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
