@@ -11,10 +11,6 @@
 # Configuration parameters: TreatCommentsAsGroupSeparators, Include.
 # Include: **/*.gemfile, **/Gemfile, **/gems.rb
 
-# Bundler/OrderedGems:
-#   Exclude:
-#     - 'Gemfile'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Layout/EmptyLines:
@@ -81,6 +77,8 @@ Style/StringLiterals:
     - 'config/application.rb'
     - 'config/environments/production.rb'
     - 'config/puma.rb'
+    - 'db/schema.rb'
+    - 'db/*/*.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -90,33 +88,32 @@ Style/SymbolArray:
   EnforcedStyle: brackets
 
 
-# # # For rubocop < 1.0.0
-# Style/HashEachMethods:
-#   Enabled: true
+# # For rubocop < 1.0.0
+Style/HashEachMethods:
+  Enabled: false
 
 # # # For rubocop < 1.0.0
-# Style/HashTransformKeys:
-#   Enabled: true
+Style/HashTransformKeys:
+  Enabled: false
 
-# # # For rubocop < 1.0.0
-# Style/HashTransformValues:
-#   Enabled: true
 
-# Layout/SpaceAroundMethodCallOperator:
-#   Enabled: true
+Style/HashTransformValues:
+  Enabled: false
 
-# Lint/RaiseException:
-#   Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: false
 
-# Lint/StructNewOverride:
-#   Enabled: true
+Lint/RaiseException:
+  Enabled: true
 
-# Style/ExponentialNotation:
-#   Enabled: true
+Lint/StructNewOverride:
+  Enabled: false
 
-# Bundler/OrderedGems:
-#   Enabled: true
+Style/ExponentialNotation:
+  Enabled: false
 
-# ?　必要か?
-# Rails/InverseOf:
-#   Enabled: false
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 20
