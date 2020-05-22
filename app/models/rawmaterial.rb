@@ -1,0 +1,2 @@
+class Rawmaterial < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200521110140) do
+ActiveRecord::Schema.define(version: 20200522095516) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20200521110140) do
     t.datetime "updated_at", null: false
     t.index ["approver_id"], name: "index_foodcategories_on_approver_id"
     t.index ["manager_id"], name: "index_foodcategories_on_manager_id"
+  end
+
+  create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false, comment: "部位の名称"
+    t.bigint "applicant_id", comment: "承認した人のid(管理者id)"
+    t.bigint "approver_id", comment: "承認した人のid(管理者id)"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_ingredients_on_applicant_id"
+    t.index ["approver_id"], name: "index_ingredients_on_approver_id"
   end
 
   create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -87,6 +97,21 @@ ActiveRecord::Schema.define(version: 20200521110140) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rawmaterials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false, comment: "原材料名"
+    t.integer "min_quantity", null: false, comment: "原材料最小数量"
+    t.bigint "applicant_id", comment: "承認した人のid(管理者id)"
+    t.bigint "approver_id", comment: "承認した人のid(管理者id)"
+    t.bigint "foodcategory_id"
+    t.bigint "nutrient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_rawmaterials_on_applicant_id"
+    t.index ["approver_id"], name: "index_rawmaterials_on_approver_id"
+    t.index ["foodcategory_id"], name: "index_rawmaterials_on_foodcategory_id"
+    t.index ["nutrient_id"], name: "index_rawmaterials_on_nutrient_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "nickname"
     t.string "email", default: "", null: false
@@ -118,4 +143,8 @@ ActiveRecord::Schema.define(version: 20200521110140) do
   add_foreign_key "cookedstates", "managers", column: "approver_id"
   add_foreign_key "foodcategories", "managers"
   add_foreign_key "foodcategories", "managers", column: "approver_id"
+  add_foreign_key "ingredients", "managers", column: "applicant_id"
+  add_foreign_key "ingredients", "managers", column: "approver_id"
+  add_foreign_key "rawmaterials", "managers", column: "applicant_id"
+  add_foreign_key "rawmaterials", "managers", column: "approver_id"
 end
