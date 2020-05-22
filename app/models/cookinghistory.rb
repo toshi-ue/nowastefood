@@ -1,0 +1,2 @@
+class Cookinghistory < ApplicationRecord
+end
