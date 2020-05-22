@@ -24,3 +24,12 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+
+
+<p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= f.hidden_field :email, value: "1@gmail.com"%>
+  <%= f.hidden_field :password, value: "dfdf2323"%>
+  <%= f.submit "テストユーザーでログイン"%>
+  <% end %>
+</p>

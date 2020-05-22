@@ -15,6 +15,7 @@ AllCops:
     - 'bin/**'
     - 'lib/**'
     - 'db/**/*'
+    - 'db/schema.rb'
     - 'config/**/*'
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
@@ -64,3 +65,6 @@ MethodLength:
 # 引数の数が多すぎる
 ParameterLists:
   Max: 12
+
+# Style/StringLiterals:
+#   EnforcedStyle: double_quotes
