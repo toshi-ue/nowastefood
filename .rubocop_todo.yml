@@ -79,6 +79,8 @@ Style/StringLiterals:
     - 'config/puma.rb'
     - 'db/schema.rb'
     - 'db/*/*.rb'
+    - 'spec/*/*.rb'
+    - 'spec/*/*/*.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
