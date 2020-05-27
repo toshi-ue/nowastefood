@@ -1,0 +1,6 @@
+ja:
+  views:
+    managers:
+      sessions:
+        new:
+          # submit: ログイン
