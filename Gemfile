@@ -37,6 +37,8 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
 end
 
 group :test do
@@ -49,6 +51,7 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -56,6 +59,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'therubyracer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
 # gem 'bcrypt', '~> 3.1.7'
-# gem "rails_best_practices", require: false  , group: :development
-# [flyerhzm/rails_best_practices: a code metric tool for rails projects](https://github.com/flyerhzm/rails_best_practices)
-# [Ruby on Railsのコードをよりモダンにするために、Rails Best Practices入門・おすすめ設定 - Sider Blog](https://blog-ja.sideci.com/entry/2015/04/16/175508)

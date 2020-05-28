@@ -71,6 +71,7 @@ Style/PercentLiteralDelimiters:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
+
 Style/StringLiterals:
   Exclude:
     - 'Gemfile'
@@ -79,6 +80,7 @@ Style/StringLiterals:
     - 'config/puma.rb'
     - 'db/schema.rb'
     - 'db/*/*.rb'
+    - 'Gemfile.lock'
 
 # Offense count: 2
 # Cop supports --auto-correct.

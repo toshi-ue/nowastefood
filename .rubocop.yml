@@ -20,6 +20,7 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'vendor/**/*'
+    - 'Gemfile.lock'
   # rubocop ver0.72 以降は使わない(代わりにrequire rubocop-rails)
   # Rails:
   #   enabled: true
@@ -66,5 +67,10 @@ MethodLength:
 ParameterLists:
   Max: 12
 
-# Style/StringLiterals:
-#   EnforcedStyle: double_quotes
+Style/StringLiterals:
+  Enabled: false
+
+# RSpecの設定
+#  capybara固有のメソッドを有効にする
+Capybara/FeatureMethods:
+  Enabled: false

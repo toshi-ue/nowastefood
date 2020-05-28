@@ -11,10 +11,8 @@
       <body>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
+        <%= render 'shared/disp_file_path' if Rails.env.development? %>
         <%= yield %>
-        <p>
-          <%= controller.controller_path %>/<%= controller.action_name %>.html.erb
-        </p>
         <p>
           <%= Rails.root %>
         </p>
