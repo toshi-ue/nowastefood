@@ -1,9 +1,15 @@
 @import "bootstrap";
-
+@import "font-awesome-sprockets";
+@import "font-awesome";
 h1{
   color: green;
 }
 
+
+// footer固定用の設定
+.container-fluid{
+  min-height: 100vh;
+}
 
 $bgDefault      : #e3c754;
 $bgHighlight    : #ebbd00;
@@ -102,3 +108,7 @@ $dropDown       : false;
   .dropdown-item.active {
     color: $colHighlight;
     background-color: $bgHighlight; }}
+
+.container-fluid{
+  padding: 0
+}

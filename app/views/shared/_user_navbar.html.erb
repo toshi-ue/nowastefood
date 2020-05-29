@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand text-sm-center" href="#">
+    <%= image_tag 'sample_brand_name_image', height: '50'  %>
+  </a>
+      <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="search" placeholder="検索..." aria-label="検索...">
+      </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar">
+    <%# <ul class="navbar-nav mr-auto">
+      <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="search" placeholder="検索..." aria-label="検索...">
+      </form>
+    </ul> %>
+    <ul class="navbar-nav mr-auto">
+      <%# <li class="nav-item active">
+        <a class="nav-link" href="#">ホーム <span class="sr-only">(現位置)</span></a>
+      </li> %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">リンク</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">無効</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ドロップダウン</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown">
+          <a class="dropdown-item" href="#">リンク1</a>
+          <a class="dropdown-item" href="#">リンク2</a>
+          <a class="dropdown-item" href="#">リンク3</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">新規登録</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -10,19 +10,15 @@
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
-    <div class="container-fluid">
-      <%# navbar %>
-      <%= render 'shared/user_navbar' %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%# for filepath%>
-      <%= render 'shared/disp_file_path' if Rails.env.development? %>
-      <%# メインコンテンツ %>
-      <div class="main-contents d-flex flex-column mb-auto">
-        <%= yield %>
-      </div>
+  <div class="container-fluid">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render 'shared/disp_file_path' if Rails.env.development? %>
+    <div class="main-contents d-flex flex-column mb-auto">
+      <%= yield %>
     </div>
+  </div>
     <%# footer %>
-    <%= render 'shared/user_footer' %>
+    <%= render 'managers/shared/manager_footer' %>
   </body>
 </html>
