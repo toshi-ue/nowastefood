@@ -2,10 +2,8 @@
 <p>Find me in app/views/home/index.html.erb</p>
 <p><%= link_to '管理者としてログイン',new_manager_session_path, class: 'page-link text-dark d-inline-block' %></p>
 <p><%= link_to 'ユーザーとしてログイン',new_user_session_path, class: 'page-link text-dark d-inline-block' %></p>
-<p>
-  現在時刻<br/>
-  <%= Time.now %><br/>
-</p>
+
+<%= render 'shared/disp_time' if Rails.env.development? %>
 
 <% if manager_signed_in? %>
 <%= render 'managers/common/logout' %>
