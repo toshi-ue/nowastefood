@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :managers do
+    # get 'foodcategories/index'
+    resources :foodcategories, except: [:show] do
+      member do
+        get 'restore'
+      end
+    end
+  end
+
   # letter_opener_web
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
@@ -15,11 +24,6 @@ Rails.application.routes.draw do
     passwords:     'managers/passwords',
     registrations: 'managers/registrations'
   }
-
-  # namspace :managers do
-  #   resources :aaa
-  # end
-
 
   get 'home/index'
 

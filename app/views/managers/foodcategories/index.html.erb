@@ -1,0 +1,21 @@
+<h1>食材区分一覧</h1>
+<p><%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" %></p>
+
+
+<% if @foodcategories.present? %>
+<div class="my-2 border border-secondary">
+  <h3>登録済み</h3>
+  <%= render 'registered_list' %>
+</div>
+
+<div class="my-2 border border-secondary">
+  <h3>削除済み</h3>
+  <%= render 'discarded_list' %>
+</div>
+<% else %>
+  <p>現在登録がありません</p>
+  <%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-primary", role: "button" %>
+<% end %>
+
+<%= render 'managers/common/back_to_home' %>
+<%= render 'managers/common/logout' %>

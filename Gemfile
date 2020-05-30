@@ -18,16 +18,22 @@ gem 'rails', '~> 5.1.7'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'font-awesome-sass'
+gem 'rails-i18n'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rails-flog', require: 'flog'
+
 end
 
 group :development do
   gem 'bullet'
-  gem 'letter_opener_web', group: :development
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'letter_opener_web'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
@@ -53,6 +59,7 @@ group :test do
   gem 'webdrivers'
   gem 'webmock'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

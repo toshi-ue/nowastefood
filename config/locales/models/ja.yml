@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      managers:
+        foodcategory:
+    attributes:
+      manager:
+        email: メールアドレス
+        password: パスワード
+      foodcategory:
+        name: 食品区分名

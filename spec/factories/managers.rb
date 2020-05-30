@@ -3,6 +3,7 @@ FactoryBot.define do
     sequence(:email) { |n| "manager#{n}@gmail.com" }
     password { 'password1234' }
     password_confirmation { 'password1234' }
-    confirmed_at { Date.today }
+    confirmation_sent_at { Time.zone.today - 2.days }
+    confirmed_at { Time.zone.today - 1.day }
   end
 end
