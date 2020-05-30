@@ -29,15 +29,15 @@ services:
     #
     links:
       - db
-      - chrome
-  chrome:
-    # image: selenium/standalone-chrome:latest
-    # 視認で確認する
-    image: selenium/standalone-chrome-debug:latest
-    ports:
-      - 4444:4444
-      # 視認で確認する
-      - 5901:5900
+  #     - chrome
+  # chrome:
+  #   # image: selenium/standalone-chrome:latest
+  #   # 視認で確認する
+  #   image: selenium/standalone-chrome-debug:latest
+  #   ports:
+  #     - 4444:4444
+  #     # 視認で確認する
+  #     - 5901:5900
 
 volumes:
   db-data:
