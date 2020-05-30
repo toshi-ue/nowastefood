@@ -1,9 +1,13 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div class="text-center my-2">
+    <%= link_to "ログイン画面へ", new_manager_session_path %>
+  </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <div class="text-center my-2">
+    <%= link_to '新しいアカウントを作成', new_manager_registration_path %>
+  </div>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
@@ -11,11 +15,15 @@
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <div class="text-center my-2">
+      <%= link_to "確認メールが届きませんでしたか?", new_manager_confirmation_path(resource_name) %>
+  </div>
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <div class="text-center my-2">
+    <%= link_to "ロック解除の手順を受け取っていませんか？", new_unlock_path(resource_name) %>
+  </div>
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>

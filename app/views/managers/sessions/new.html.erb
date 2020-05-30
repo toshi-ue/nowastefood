@@ -1,43 +1,38 @@
-<h2>Log in</h2>
+<div class="col-10 offset-1  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+  <%= render "shared/flash_messages" %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group text-center">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class='actions text-center my-2'>
+      <%= f.submit "ログイン", class: 'btn btn-outline-secondary btn-block'%>
     </div>
   <% end %>
 
-  <div class='actions'>
-    <%= f.submit "ログイン" %>
+  <%# render "managers/shared/links" %>
+
+  <%# render 'managers/shared/log_in_out' %>
+
+  <div class="text-center my-3">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.hidden_field :email, value: "heascook@ahk.jp"%>
+    <%= f.hidden_field :password, value: "mVjM7F0g2bCV"%>
+    <%= f.submit "テスト管理者でログイン", class: "btn btn-outline-secondary btn-block"%>
+    <% end %>
   </div>
-<% end %>
-
-<%= render "managers/shared/links" %>
-
-<% if manager_signed_in? %>
-  <strong><%= link_to current_manager.email, pages_show_path %></strong>
-  <%= link_to 'プロフィール変更', edit_manager_registration_path %>
-  <%= link_to 'ログアウト', destroy_manager_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'サインアップ', new_manager_registration_path %>
-  <%= link_to 'ログイン', new_manager_session_path %>
-<% end %>
-
-<p>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= f.hidden_field :email, value: "heascook@ahk.jp"%>
-  <%= f.hidden_field :password, value: "mVjM7F0g2bCV"%>
-  <%= f.submit "テスト管理者でログイン"%>
-  <% end %>
-</p>
+  <%= render 'managers/shared/manager_new_registration' %>
+</div>

@@ -13,10 +13,10 @@
     <div class="container-fluid">
       <%# navbar %>
       <%= render 'shared/user_navbar' %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%# for filepath%>
+      <%# flash message %>
+      <%# for filepath, time %>
       <%= render 'shared/disp_file_path' if Rails.env.development? %>
+      <%= render 'shared/disp_time' if Rails.env.development? %>
       <%# メインコンテンツ %>
       <div class="main-contents d-flex flex-column mb-auto">
         <%= yield %>
