@@ -1,7 +1,7 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-h1{
+h2{
   color: green;
 }
 
@@ -10,6 +10,15 @@ h1{
 .container-fluid{
   min-height: 100vh;
 }
+
+.my-button{
+  height: 100px;
+  width: 100px;
+}
+
+// .main-contents{
+//   // min-height: 100vh;
+// }
 
 $bgDefault      : #e3c754;
 $bgHighlight    : #ebbd00;

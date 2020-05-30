@@ -74,3 +74,7 @@ Style/StringLiterals:
 #  capybara固有のメソッドを有効にする
 Capybara/FeatureMethods:
   Enabled: false
+
+# 未使用の引数チェック
+Lint/UnusedMethodArgument:
+  Enabled: false

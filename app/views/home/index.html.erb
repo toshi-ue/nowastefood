@@ -1,28 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<p><%= link_to '管理者としてログイン',new_manager_session_path, class: 'page-link text-dark d-inline-block' %></p>
-<p><%= link_to 'ユーザーとしてログイン',new_user_session_path, class: 'page-link text-dark d-inline-block' %></p>
+<%= render "shared/flash_messages" %>
 
-<%= render 'shared/disp_time' if Rails.env.development? %>
+<% unless user_signed_in? || manager_signed_in? %>
+<p><%= link_to '管理者としてログイン',new_manager_session_path, class: 'btn btn-outline-secondary' %></p>
+<p><%= link_to 'ユーザーとしてログイン',new_user_session_path, class: 'btn btn-success' %></p>
+<% end %>
 
 <% if manager_signed_in? %>
-<%= render 'managers/common/logout' %>
+<%= render 'managers/shared/manager_log_out' %>
 <div>
 
   <div id="go-to-foodcategory">
-    <%= link_to '料理食材一覧画面(foodcategory#index)へ', managers_foodcategories_path, class: "btn btn-primary", role: "button" %>
+    <%# link_to '料理食材一覧画面(foodcategory#index)へ', managers_foodcategories_path, class: "btn btn-primary", role: "button" %>
   </div>
 </div>
 <% end %>
 
-<p>
-<% if user_signed_in? %>
-<p>
-  <div>
-    <p><%= current_user.email %></p>
-    <p><%= link_to 'プロフィール変更(ユーザー)', edit_user_registration_path %></p>
-    <p><%= link_to 'ログアウト(ユーザー)', destroy_user_session_path, method: :delete %></p>
-  </div>
-</p>
-<% end %>
-</p>
+<%= render 'users/shared/user_log_out' %>

@@ -11,8 +11,8 @@
   </head>
   <body>
   <div class="container-fluid">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%# navbar %>
+    <%= render 'managers/shared/manager_navbar' %>
     <%= render 'shared/disp_file_path' if Rails.env.development? %>
     <div class="main-contents d-flex flex-column mb-auto">
       <%= yield %>

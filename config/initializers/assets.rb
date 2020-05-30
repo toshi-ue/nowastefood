@@ -8,6 +8,12 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w[
   home.css
+  devise/confirmations.css
+  devise/unlocks.css
   managers/*.js
+  managers/confirmations.css
+  managers/registrations.css
   managers/sessions.css
+  users/sessions.css
+  users/registrations.css
 ]
