@@ -13,11 +13,15 @@ module Webapp
     # locale
     config.i18n.available_locales = [ :en, :ja ]
     # default locale
-    config.i18n.default_locale = :ja
+    config.i18n.default_locale = :ja if Rails.env.development?
+    # config.i18n.default_locale = :en if Rails.env.test?
+    config.i18n.default_locale = :ja if Rails.env.test?
 
     config.time_zone = 'Tokyo'
     # change db time_zone
     config.active_record.default_timezone = :local
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     # Don't generate system test files.
     config.generators.system_tests = nil

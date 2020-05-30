@@ -81,6 +81,8 @@ Style/StringLiterals:
     - 'db/schema.rb'
     - 'db/*/*.rb'
     - 'Gemfile.lock'
+    - 'spec/*/*.rb'
+    - 'spec/*/*/*.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
