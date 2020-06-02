@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200602033349) do
+ActiveRecord::Schema.define(version: 20200602093613) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20200602033349) do
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_foodcategories_on_discarded_at"
     t.index ["manager_id"], name: "index_foodcategories_on_manager_id"
+    t.index ["name"], name: "index_foodcategories_on_name", unique: true
   end
 
   create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -67,12 +68,11 @@ ActiveRecord::Schema.define(version: 20200602033349) do
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false, comment: "部位の名称"
-    t.bigint "applicant_id", comment: "承認した人のid(管理者id)"
-    t.bigint "approver_id", comment: "承認した人のid(管理者id)"
+    t.bigint "managers_id", comment: "管理者id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["applicant_id"], name: "index_ingredients_on_applicant_id"
-    t.index ["approver_id"], name: "index_ingredients_on_approver_id"
+    t.index ["managers_id"], name: "index_ingredients_on_managers_id"
+    t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
   create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -195,8 +195,7 @@ ActiveRecord::Schema.define(version: 20200602033349) do
   add_foreign_key "cookedstates", "managers", column: "applicant_id"
   add_foreign_key "cookedstates", "managers", column: "approver_id"
   add_foreign_key "foodcategories", "managers"
-  add_foreign_key "ingredients", "managers", column: "applicant_id"
-  add_foreign_key "ingredients", "managers", column: "approver_id"
+  add_foreign_key "ingredients", "managers", column: "managers_id"
   add_foreign_key "procedureimages", "cuisines"
   add_foreign_key "rawmaterials", "managers", column: "applicant_id"
   add_foreign_key "rawmaterials", "managers", column: "approver_id"
