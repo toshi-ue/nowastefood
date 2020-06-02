@@ -4,10 +4,6 @@
     <strong><%= current_user.email %></strong>
   </div>
 
-  <div class="text-center">
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-  </div>
-<% end %>
   <% unless current_user.id == 1 %>
   <div class="text-center my-2">
     <p><%= link_to 'プロフィール変更(ユーザー)', edit_manager_registration_path, class: "btn btn-secondary" %></p>
@@ -16,3 +12,5 @@
     <%= link_to 'ログアウト(ユーザー)', destroy_user_session_path, method: :delete %>
   </div>
   <% end %>
+
+<% end %>
