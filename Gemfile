@@ -19,6 +19,7 @@ gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'font-awesome-sass'
 gem 'rails-i18n'
+gem 'seed-fu'
 
 group :development, :test do
   gem 'awesome_print'
@@ -26,7 +27,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rails-flog', require: 'flog'
-
+  gem 'faker'
+  gem 'gimei'
 end
 
 group :development do
