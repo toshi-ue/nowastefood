@@ -6,13 +6,15 @@
 <% end %>
 
 <% if manager_signed_in? %>
-<%= render 'managers/shared/manager_log_out' %>
-<div>
 
+<div>
   <div id="go-to-foodcategory">
-    <%# link_to '料理食材一覧画面(foodcategory#index)へ', managers_foodcategories_path, class: "btn btn-primary", role: "button" %>
+    <%= link_to '料理食材一覧画面(foodcategory#index)へ', managers_foodcategories_path, class: "btn btn-primary", role: "button" %>
   </div>
 </div>
+
+<%= render 'managers/shared/manager_log_out' %>
+
 <% end %>
 
 <%= render 'users/shared/user_log_out' %>
