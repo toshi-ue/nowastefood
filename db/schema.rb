@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200602093613) do
+ActiveRecord::Schema.define(version: 20200603023959) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -67,11 +67,13 @@ ActiveRecord::Schema.define(version: 20200602093613) do
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "manager_id"
     t.string "name", null: false, comment: "部位の名称"
-    t.bigint "managers_id", comment: "管理者id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["managers_id"], name: "index_ingredients_on_managers_id"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_ingredients_on_discarded_at"
+    t.index ["manager_id"], name: "index_ingredients_on_manager_id"
     t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
@@ -195,7 +197,7 @@ ActiveRecord::Schema.define(version: 20200602093613) do
   add_foreign_key "cookedstates", "managers", column: "applicant_id"
   add_foreign_key "cookedstates", "managers", column: "approver_id"
   add_foreign_key "foodcategories", "managers"
-  add_foreign_key "ingredients", "managers", column: "managers_id"
+  add_foreign_key "ingredients", "managers"
   add_foreign_key "procedureimages", "cuisines"
   add_foreign_key "rawmaterials", "managers", column: "applicant_id"
   add_foreign_key "rawmaterials", "managers", column: "approver_id"
