@@ -1,6 +1,7 @@
 <h1>食材区分一覧</h1>
 <p><%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" %></p>
 
+<%= render 'shared/flash_messages' %>
 
 <% if @foodcategories.present? %>
 <div class="my-2 border border-secondary">
@@ -17,5 +18,7 @@
   <%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-primary", role: "button" %>
 <% end %>
 
+
+<%= render 'managers/shared/all_crud_links' %>
 <%= render 'managers/shared/back_to_home' %>
 <%= render 'managers/shared/manager_log_out' %>
