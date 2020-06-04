@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  # 管理者側
   namespace :managers do
-    # get 'foodcategories/index'
+    resources :ingredients, except: [:show] do
+      member do
+        get 'restore'
+      end
+    end
     resources :foodcategories, except: [:show] do
       member do
         get 'restore'
@@ -9,19 +14,17 @@ Rails.application.routes.draw do
   end
 
   # letter_opener_web
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
 
   devise_for :managers, controllers: {
-    sessions:      'managers/sessions',
-    passwords:     'managers/passwords',
+    sessions: 'managers/sessions',
+    passwords: 'managers/passwords',
     registrations: 'managers/registrations'
   }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200524100503) do
+ActiveRecord::Schema.define(version: 20200603023959) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20200524100503) do
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_foodcategories_on_discarded_at"
     t.index ["manager_id"], name: "index_foodcategories_on_manager_id"
+    t.index ["name"], name: "index_foodcategories_on_name", unique: true
   end
 
   create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -66,16 +67,18 @@ ActiveRecord::Schema.define(version: 20200524100503) do
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "manager_id"
     t.string "name", null: false, comment: "部位の名称"
-    t.bigint "applicant_id", comment: "承認した人のid(管理者id)"
-    t.bigint "approver_id", comment: "承認した人のid(管理者id)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["applicant_id"], name: "index_ingredients_on_applicant_id"
-    t.index ["approver_id"], name: "index_ingredients_on_approver_id"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_ingredients_on_discarded_at"
+    t.index ["manager_id"], name: "index_ingredients_on_manager_id"
+    t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
   create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -95,6 +98,7 @@ ActiveRecord::Schema.define(version: 20200524100503) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_managers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
@@ -183,6 +187,7 @@ ActiveRecord::Schema.define(version: 20200524100503) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -192,8 +197,7 @@ ActiveRecord::Schema.define(version: 20200524100503) do
   add_foreign_key "cookedstates", "managers", column: "applicant_id"
   add_foreign_key "cookedstates", "managers", column: "approver_id"
   add_foreign_key "foodcategories", "managers"
-  add_foreign_key "ingredients", "managers", column: "applicant_id"
-  add_foreign_key "ingredients", "managers", column: "approver_id"
+  add_foreign_key "ingredients", "managers"
   add_foreign_key "procedureimages", "cuisines"
   add_foreign_key "rawmaterials", "managers", column: "applicant_id"
   add_foreign_key "rawmaterials", "managers", column: "approver_id"

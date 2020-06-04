@@ -2,6 +2,7 @@ class Managers::FoodcategoriesController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_foodcategory, only: [:update, :edit, :destroy, :restore]
 
+  layout 'manager'
   def index
     @foodcategories = Foodcategory.all
   end

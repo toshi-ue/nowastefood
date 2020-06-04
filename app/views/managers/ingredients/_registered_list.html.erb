@@ -1,0 +1,24 @@
+<table class="table table-hover table-sm table-responsive">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>食材区分名</th>
+      <th>登録日</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ingredients.each do |fc| %>
+      <% if fc.undiscarded? %>
+      <tr>
+        <td><%= fc.id %></td>
+        <td><%= fc.name %></td>
+        <td><%= fc.created_at %></td>
+        <td><%= link_to '修正', edit_managers_ingredient_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+        <td><%= link_to '削除', managers_ingredient_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

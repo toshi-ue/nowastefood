@@ -5,14 +5,8 @@
 <p><%= link_to 'ユーザーとしてログイン',new_user_session_path, class: 'btn btn-success' %></p>
 <% end %>
 
-<% if manager_signed_in? %>
+<%= render 'managers/shared/all_crud_links' %>
 <%= render 'managers/shared/manager_log_out' %>
-<div>
 
-  <div id="go-to-foodcategory">
-    <%# link_to '料理食材一覧画面(foodcategory#index)へ', managers_foodcategories_path, class: "btn btn-primary", role: "button" %>
-  </div>
-</div>
-<% end %>
 
 <%= render 'users/shared/user_log_out' %>

@@ -1,9 +1,9 @@
-<h1>食材区分一覧</h1>
-<p><%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" %></p>
+<h1>食材部位名一覧</h1>
+<p><%= link_to '追加する', new_managers_ingredient_path, class: "btn btn-secondary", role: "button" %></p>
 
 <%= render 'shared/flash_messages' %>
 
-<% if @foodcategories.present? %>
+<% if @ingredients.present? %>
 <div class="my-2 border border-secondary">
   <h3>登録済み</h3>
   <%= render 'registered_list' %>
@@ -14,11 +14,11 @@
   <%= render 'discarded_list' %>
 </div>
 <% else %>
-  <p>現在登録がありません</p>
-  <%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-primary", role: "button" %>
+  <p>まだ登録がありません</p>
+  <%= link_to '追加する', new_managers_ingredient_path, class: "btn btn-secondary", role: "button" %>
 <% end %>
 
-
 <%= render 'managers/shared/all_crud_links' %>
+
 <%= render 'managers/shared/back_to_home' %>
 <%= render 'managers/shared/manager_log_out' %>

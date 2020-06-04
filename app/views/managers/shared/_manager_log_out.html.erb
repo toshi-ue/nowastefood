@@ -1,9 +1,17 @@
 <% if manager_signed_in? %>
+
   <div class="text-center my-2">
+    管理者(email):<br>
     <strong><%= current_manager.email %></strong>
   </div>
-  <%# link_to 'プロフィール変更', edit_manager_registration_path %>
+
+  <% unless current_manager.id == 1 %>
   <div class="text-center my-2">
-    <%= link_to 'ログアウト', destroy_manager_session_path, method: :delete %>
+    <p><%= link_to 'プロフィール変更(管理者)', edit_manager_registration_path, class: "btn btn-secondary" %></p>
+  </div>
+  <% end %>
+
+  <div class="text-center my-2">
+    <%= link_to 'ログアウト(管理者)', destroy_manager_session_path, method: :delete, class: "btn btn-secondary" %>
   </div>
 <% end %>

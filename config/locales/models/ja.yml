@@ -9,3 +9,5 @@ ja:
         password: パスワード
       foodcategory:
         name: 食品区分名
+      ingredient:
+        name: 部位名

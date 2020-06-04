@@ -78,3 +78,9 @@ Capybara/FeatureMethods:
 # 未使用の引数チェック
 Lint/UnusedMethodArgument:
   Enabled: false
+
+
+# migration高速化のための設定
+# テーブル作成、テーブルカラム編集
+Rails/BulkChangeTable:
+  Enabled: false

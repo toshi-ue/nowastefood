@@ -72,17 +72,16 @@ Style/PercentLiteralDelimiters:
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
 
-Style/StringLiterals:
-  Exclude:
-    - 'Gemfile'
-    - 'config/application.rb'
-    - 'config/environments/production.rb'
-    - 'config/puma.rb'
-    - 'db/schema.rb'
-    - 'db/*/*.rb'
-    - 'Gemfile.lock'
-    - 'spec/*/*.rb'
-    - 'spec/*/*/*.rb'
+# Style/StringLiterals:
+#   Exclude:
+#     - 'Gemfile'
+#     - 'config/application.rb'
+#     - 'config/environments/production.rb'
+#     - 'config/puma.rb'
+#     - 'db/schema.rb'
+#     - 'db/*/*.rb'
+#     - 'spec/*/*.rb'
+#     - 'spec/*/*/*.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.

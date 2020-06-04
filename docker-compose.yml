@@ -10,6 +10,8 @@ services:
         - "4306:3306"
     volumes:
         - db-data:/var/lib/mysql
+        - bundle:/usr/local/bundle
+        - yarn-cache:/usr/local/share/.cache/yarn/v6
   web:
     # ゾンビプロセスをkill
     init: true
@@ -41,3 +43,5 @@ services:
 
 volumes:
   db-data:
+  bundle:
+  yarn-cache:

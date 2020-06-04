@@ -5,13 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap', '~> 4.4.1'
+# gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'discard'
 gem 'jbuilder', '~> 2.5'
-gem 'jquery-rails'
+# gem 'jquery-rails'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.7'
@@ -19,6 +19,7 @@ gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'font-awesome-sass'
 gem 'rails-i18n'
+gem 'seed-fu'
 
 group :development, :test do
   gem 'awesome_print'
@@ -26,7 +27,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rails-flog', require: 'flog'
-
+  gem 'faker'
+  gem 'gimei'
 end
 
 group :development do
@@ -60,6 +62,8 @@ group :test do
   gem 'webmock'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  # gem 'chromedriver-helper'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
