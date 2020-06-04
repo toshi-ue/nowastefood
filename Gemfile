@@ -5,13 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap', '~> 4.4.1'
+# gem 'bootstrap', '~> 4.4.1'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'discard'
 gem 'jbuilder', '~> 2.5'
-gem 'jquery-rails'
+# gem 'jquery-rails'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.7'

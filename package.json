@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  },
+  "name": "webapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/toshi-ue/app_for_job_change.git",
+  "license": "MIT"
+}
