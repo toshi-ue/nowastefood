@@ -15,7 +15,7 @@ class Managers::IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ingredient_params)
 
     if @ingredient.save
-      redirect_to managers_ingredients_path, flash: { notice: "部位名 {@ingredient.name} が作成されました" }
+      redirect_to managers_ingredients_path, flash: { notice: "部位名 #{@ingredient.name} が作成されました" }
     else
       render 'new'
     end
@@ -49,6 +49,6 @@ class Managers::IngredientsController < ApplicationController
   end
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :discarded_at).merge(manager_id: current_manager.id)
+    params.require(:ingredient).permit(:name, :discarded_at)
   end
 end
