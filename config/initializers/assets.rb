@@ -13,6 +13,7 @@ Rails.application.config.assets.precompile += %w[
   devise/unlocks.css
   managers/*.js
   managers/confirmations.css
+  managers/cookedstates.css
   managers/foodcategories.css
   managers/ingredients.css
   managers/registrations.css
