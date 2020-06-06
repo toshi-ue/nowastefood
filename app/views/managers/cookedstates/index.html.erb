@@ -1,9 +1,9 @@
-<h1>食材区分一覧</h1>
-<p><%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" %></p>
+<h1>加工された状態の名前一覧</h1>
+<p><%= link_to '追加する', new_managers_cookedstate_path, class: "btn btn-secondary", role: "button" %></p>
 
 <%= render 'shared/flash_messages' %>
 
-<% if @foodcategories.present? %>
+<% if @cookedstates.present? %>
 <div class="my-2 border border-secondary">
   <h3>登録済み</h3>
   <%= render 'registered_list' %>
@@ -15,7 +15,7 @@
 </div>
 <% else %>
   <p>現在登録がありません</p>
-  <%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" %>
+  <%= link_to '追加する', new_managers_cookedstate_path, class: "btn btn-secondary", role: "button" %>
 <% end %>
 
 

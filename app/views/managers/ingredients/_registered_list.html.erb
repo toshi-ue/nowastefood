@@ -16,7 +16,7 @@
         <td><%= fc.name %></td>
         <td><%= fc.created_at %></td>
         <td><%= link_to '修正', edit_managers_ingredient_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
-        <td><%= link_to '削除', managers_ingredient_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+        <td><%= button_to '削除', managers_ingredient_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
       </tr>
       <% end %>
     <% end %>

@@ -13,7 +13,6 @@ class Managers::FoodcategoriesController < ApplicationController
 
   def create
     @foodcategory = Foodcategory.new(foodcategory_params)
-    # @foodcategory.discarded_at = INITIAL_TIME
     if @foodcategory.save
       redirect_to managers_foodcategories_path, flash: { notice: "食材区分 #{@foodcategory.name} が作成されました" }
     else
@@ -49,6 +48,6 @@ class Managers::FoodcategoriesController < ApplicationController
   end
 
   def foodcategory_params
-    params.require(:foodcategory).permit(:name, :discarded_at).merge(manager_id: current_manager.id)
+    params.require(:foodcategory).permit(:name, :discarded_at)
   end
 end

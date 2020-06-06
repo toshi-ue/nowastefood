@@ -1,0 +1,16 @@
+<% if cookedstate.errors.any? %>
+  <div id="error_explanation">
+<!--      <h2><%= pluralize(cookedstate.errors.count, "error") %> prohibited this aaa from being saved:</h2>
+-->
+    <ul>
+    <% cookedstate.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :cookedstate_name, autofocus: true %>
+  </div>

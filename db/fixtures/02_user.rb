@@ -3,7 +3,7 @@
 User.seed_once do |s|
   s.id = 1
   s.nickname = Faker::Creature::Horse.name
-  s.avatar = Faker::Avatar.image(size: "150x150")
+  s.avatar = Faker::Avatar.image(slug: "my-own-slug", size: "150x150")
   s.email = "heascook_user@ahk.jp"
   s.password = "password"
   s.password_confirmation = "password"
