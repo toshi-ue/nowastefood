@@ -1,6 +1,3 @@
-<h1>Managers::Ingredients#new</h1>
-<p>Find me in app/views/managers/ingredients/new.html.erb</p>
-
 <%= form_with(model: @ingredient, url: managers_ingredients_path, local: true) do |form| %>
   <%= render 'ingredient_form', {form: form , ingredient: @ingredient} %>
   <div>
