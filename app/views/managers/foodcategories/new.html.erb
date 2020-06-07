@@ -1,7 +1,7 @@
 <%= form_with(model: @foodcategory, url: managers_foodcategories_path, local: true) do |form| %>
   <%= render 'foodcategory_form', {form: form ,foodcategory: @foodcategory} %>
   <div>
-    <%= form.submit, class: 'btn btn-secondary' %>
+    <%= form.submit class: 'btn btn-secondary' %>
   </div>
 <% end %>
 

@@ -16,6 +16,7 @@ Rails.application.config.assets.precompile += %w[
   managers/cookedstates.css
   managers/foodcategories.css
   managers/ingredients.css
+  managers/rawmaterials.css
   managers/registrations.css
   managers/sessions.css
   users/sessions.css
