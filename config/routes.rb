@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   # 管理者側
   namespace :managers do
     resources :cookedstates, except: [:show] do
@@ -15,6 +14,12 @@ Rails.application.routes.draw do
     end
 
     resources :ingredients, except: [:show] do
+      member do
+        get 'restore'
+      end
+    end
+
+    resources :rawmaterials do
       member do
         get 'restore'
       end
