@@ -7,7 +7,14 @@ ja:
       manager:
         email: メールアドレス
         password: パスワード
+      cookedstate:
+        name: 加工された状態の名前
       foodcategory:
         name: 食品区分名
       ingredient:
         name: 部位名
+      rawmaterial:
+        name: 原材料名
+        min_quantity: 最小数量
+      rawmaterial/nutrient:
+        lipid: 脂質
