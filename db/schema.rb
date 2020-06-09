@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200607013758) do
+ActiveRecord::Schema.define(version: 20200609045738) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
+    t.bigint "foodcategory_id"
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["discarded_at"], name: "index_cookedstates_on_discarded_at"
+    t.index ["foodcategory_id"], name: "index_cookedstates_on_foodcategory_id"
     t.index ["name"], name: "index_cookedstates_on_name", unique: true
   end
 
@@ -43,10 +45,8 @@ ActiveRecord::Schema.define(version: 20200607013758) do
     t.string "name", null: false, comment: "食材区分名(肉、野菜、魚、炭水化物など)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "manager_id"
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_foodcategories_on_discarded_at"
-    t.index ["manager_id"], name: "index_foodcategories_on_manager_id"
     t.index ["name"], name: "index_foodcategories_on_name", unique: true
   end
 
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20200607013758) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "foodcategories", "managers"
+  add_foreign_key "cookedstates", "foodcategories"
   add_foreign_key "ingredients", "managers"
   add_foreign_key "nutrients", "rawmaterials"
   add_foreign_key "procedureimages", "cuisines"
