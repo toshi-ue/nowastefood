@@ -9,6 +9,7 @@ ja:
         password: パスワード
       cookedstate:
         name: 加工された状態の名前
+        foodcategory_id: 食材区分
       foodcategory:
         name: 食品区分名
       ingredient:
