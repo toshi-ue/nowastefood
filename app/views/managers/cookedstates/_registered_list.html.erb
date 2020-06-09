@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>加工された状態の名前</th>
       <th>食材区分名</th>
       <th>登録日</th>
       <th></th>
@@ -12,8 +13,10 @@
     <% @cookedstates.each do |fc| %>
       <% if fc.undiscarded? %>
       <tr>
+        <%# binding.pry%>
         <td><%= fc.id %></td>
         <td><%= fc.name %></td>
+        <td><%= fc.foodcategory.name %></td>
         <td><%= fc.created_at %></td>
         <td><%= link_to '修正', edit_managers_cookedstate_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
         <td><%= button_to '削除', managers_cookedstate_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>

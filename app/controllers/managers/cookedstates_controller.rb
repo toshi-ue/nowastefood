@@ -4,7 +4,7 @@ class Managers::CookedstatesController < ApplicationController
 
   layout 'manager'
   def index
-    @cookedstates = Cookedstate.all
+    @cookedstates = Cookedstate.includes(:foodcategory)
   end
 
   def new
@@ -47,6 +47,6 @@ class Managers::CookedstatesController < ApplicationController
   end
 
   def cookedstate_params
-    params.require(:cookedstate).permit(:name, :discarded_at)
+    params.require(:cookedstate).permit(:name, :foodcategory_id, :discarded_at)
   end
 end
