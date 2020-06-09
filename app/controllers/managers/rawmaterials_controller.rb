@@ -4,7 +4,7 @@ class Managers::RawmaterialsController < ApplicationController
 
   layout 'manager'
   def index
-    @rawmaterials = Rawmaterial.all
+    @rawmaterials = Rawmaterial.includes(:foodcategory)
     # binding.pry
   end
 
