@@ -1,8 +1,16 @@
+  <%# 原材料名 %>
   <div class="form-group">
     <%= form.label :name, class:'control-label' %>
     <%= form.text_field :name, id: :rawmaterial_name, autofocus: true, class: 'form_control' %>
   </div>
 
+  <%# 原材料名 %>
+  <div class="form-group">
+    <%= form.label :foodcategory_id, class:'control-label' %>
+    <%= form.collection_select(:foodcategory_id, Foodcategory.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+  </div>
+
+  <%# 最小数量 %>
   <div class="form-group">
     <%= form.label :min_quantity, class:'control-label' %>
     <%= form.text_field :min_quantity, id: :rawmaterial_min_quantity, autofocus: true, class: 'form_control' %>

@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>加工された状態の名前</th>
       <th>食材区分名</th>
       <th>登録日</th>
       <th>削除日</th>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= fc.id %></td>
         <td><%= fc.name %></td>
+        <td><%= fc.foodcategory.name %></td>
         <td><%= fc.discarded_at %></td>
         <td><%= link_to '復元', restore_managers_cookedstate_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
       </tr>
