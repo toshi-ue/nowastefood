@@ -23,7 +23,7 @@ RSpec.describe "Foodcategories", type: :system, js: true do
     # save_and_open_page
     # フラッシュメッセージが表示される
     # expect(page).to have_content 'ログインしました。'
-    expect(page).to have_selector 'p.notice', text: 'ログインしました。'
+    expect(page).to have_selector 'div.alert-success', text: 'ログインしました。'
   end
 
   it "ログアウト後に'ログアウトしました'を表示する"
