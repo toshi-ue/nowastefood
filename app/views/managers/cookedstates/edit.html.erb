@@ -1,6 +1,6 @@
 <%= form_with(model: @cookedstate, url: managers_cookedstate_path, local: true, method: :patch) do |form| %>
   <%= render 'cookedstate_form', {form: form , cookedstate: @cookedstate} %>
-  <div>
+  <div class="text-center my-2">
     <%= form.submit class: 'btn btn-secondary' %>
   </div>
 <% end %>

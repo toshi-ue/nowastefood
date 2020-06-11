@@ -1,4 +1,10 @@
 <% if manager_signed_in? %>
+<%# 料理レシピ一覧(cuisines) %>
+<div class="text-center">
+  <div id="go-to-cuisine" class="my-2">
+    <%= link_to '料理レシピ一覧画面(cuisines#index)へ', managers_cuisines_path, class: "btn btn-secondary", role: "button" %>
+  </div>
+</div>
 <%# 料理食材一覧((foodcategories) %>
 <div class="text-center">
   <div id="go-to-foodcategory" class="my-2">

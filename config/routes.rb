@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+
   # 管理者側
   namespace :managers do
     resources :cookedstates, except: [:show] do
+      member do
+        get 'restore'
+      end
+    end
+
+    resources :cuisines, except: [:show] do
       member do
         get 'restore'
       end

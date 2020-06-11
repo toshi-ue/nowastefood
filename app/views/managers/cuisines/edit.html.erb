@@ -1,5 +1,5 @@
-<%= form_with(model: @rawmaterial, url: managers_rawmaterials_path, local: true) do |form| %>
-  <%= render 'rawmaterial_form', {form: form , rawmaterial: @rawmaterial} %>
+<%= form_with(model: @cuisine, url: managers_cuisine_path, local: true, method: :patch) do |form| %>
+  <%= render 'cuisine_form', {form: form , cuisine: @cuisine} %>
   <div class="text-center my-2">
     <%= form.submit class: 'btn btn-secondary' %>
   </div>

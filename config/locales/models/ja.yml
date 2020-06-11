@@ -10,6 +10,12 @@ ja:
       cookedstate:
         name: 加工された状態の名前
         foodcategory_id: 食材区分
+      cuisine:
+        name: レシピ名
+        calories: 摂取カロリー(kcal)
+        difficulty: お手軽度(簡単・それなり・プロ並)
+        cooking_time: 調理時間(分)
+        main_image: メイン画像
       foodcategory:
         name: 食品区分名
       ingredient:
@@ -19,3 +25,9 @@ ja:
         min_quantity: 最小数量
       rawmaterial/nutrient:
         lipid: 脂質
+  enums:
+    cuisine:
+      difficulty:
+        easy: 簡単
+        normal: 普通
+        hard: 難しい

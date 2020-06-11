@@ -2,7 +2,7 @@
 <p>Find me in app/views/managers/foodcategories/edit.html.erb</p>
 <%= form_with(model: @foodcategory, url: managers_foodcategory_path, local: true, method: :patch) do |form| %>
   <%= render 'foodcategory_form', {form: form , foodcategory: @foodcategory} %>
-  <div>
+  <div class="text-center my-2">
     <%= form.submit class: 'btn btn-secondary' %>
   </div>
 <% end %>

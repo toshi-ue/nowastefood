@@ -1,0 +1,43 @@
+<% if cuisine.errors.any? %>
+  <div id="error_explanation">
+<h2><%# pluralize(cuisine.errors.count, "error") %> prohibited this aaa from being saved:</h2>
+
+    <ul>
+    <% cuisine.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <%# レシピ名 %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :cuisine_name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <%# お手軽度 %>
+  <div class="form-group">
+    <%= form.label :difficulty %>
+    <%= form.select(:difficulty, Cuisine.difficulties.keys.map{|k| [I18n.t("enums.cuisine.difficulty.#{k}"), k]}, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+  </div>
+
+  <%# 調理時間 %>
+  <div class="form-group">
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time, id: :cuisine_cooking_time, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <%# カロリー %>
+  <div class="form-group">
+    <%= form.label :calories %>
+    <%= form.text_field :calories, id: :cuisine_calories, autofocus: true, class: 'form-control' %>
+  </div>
+
+
+
+  <%# メイン画像 %>
+  <div class="form-group">
+    <%= form.label :main_image %>
+    <%# form.text_field :name, id: :cuisine_cooking_time, autofocus: true, class: 'form-control' %>
+  </div>

@@ -12,31 +12,34 @@ gem 'devise-i18n-views'
 gem 'discard'
 gem 'jbuilder', '~> 2.5'
 # gem 'jquery-rails'
+gem 'enum_help'
+gem 'font-awesome-sass'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.7'
-gem 'sassc-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'font-awesome-sass'
 gem 'rails-i18n'
+gem 'sassc-rails'
 gem 'seed-fu'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
-  gem 'rails-flog', require: 'flog'
   gem 'faker'
   gem 'gimei'
+  gem 'rails-flog', require: 'flog'
+  gem 'rspec-rails'
 end
 
 group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'bullet'
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'letter_opener_web'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
@@ -46,13 +49,13 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'launchy'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers',
       git: 'https://github.com/thoughtbot/shoulda-matchers.git',
       branch: 'rails-5'
@@ -60,9 +63,6 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
-  gem 'selenium-webdriver'
-  gem 'database_cleaner'
-  gem 'selenium-webdriver'
   # gem 'chromedriver-helper'
 end
 
