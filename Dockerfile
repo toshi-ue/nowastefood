@@ -27,6 +27,9 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn
 
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome*.deb || apt update && apt-get install -f -y
+
 RUN mkdir $APP_DIR
 # ENV APP_DIR /webapp
 WORKDIR $APP_DIR

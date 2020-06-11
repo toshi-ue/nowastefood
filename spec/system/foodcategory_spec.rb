@@ -5,7 +5,8 @@ RSpec.describe "Foodcategories", type: :system, js: true do
   scenario "サインアップ後に'ログインしました'が表示する" do
   end
 
-  scenario "サインイン後に'ログインしました'が表示する" do
+  # "サインイン後に'ログインしました'が表示する"
+  scenario "Show logged in after signing in" do
     # 管理者作成
     manager = FactoryBot.create(:manager)
     # manager.confirm
@@ -24,6 +25,7 @@ RSpec.describe "Foodcategories", type: :system, js: true do
     # フラッシュメッセージが表示される
     # expect(page).to have_content 'ログインしました。'
     expect(page).to have_selector 'div.alert-success', text: 'ログインしました。'
+    # expect(page).to have_selector 'p.notice', text: 'ログインしました。'
   end
 
   it "ログアウト後に'ログアウトしました'を表示する"
