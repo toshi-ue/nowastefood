@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
-  namespace :managers do
-    get 'cuisines/index'
-  end
-
-  namespace :managers do
-    get 'cuisines/new'
-  end
-
-  namespace :managers do
-    get 'cuisines/edit'
-  end
 
   # 管理者側
   namespace :managers do
     resources :cookedstates, except: [:show] do
+      member do
+        get 'restore'
+      end
+    end
+
+    resources :cuisines, except: [:show] do
       member do
         get 'restore'
       end
