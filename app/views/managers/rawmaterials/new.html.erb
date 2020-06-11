@@ -1,6 +1,6 @@
 <%= form_with(model: @rawmaterial, url: managers_rawmaterials_path, local: true) do |form| %>
   <%= render 'rawmaterial_form', {form: form , rawmaterial: @rawmaterial} %>
-  <div>
+  <div class="text-center my-2">
     <%= form.submit class: 'btn btn-secondary' %>
   </div>
 <% end %>
