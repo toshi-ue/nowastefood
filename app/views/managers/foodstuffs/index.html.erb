@@ -1,0 +1,19 @@
+<h1>料理レシピの食材一覧</h1>
+<p><%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %></p>
+
+<%= render 'shared/flash_messages' %>
+
+<% if @foodstuffs.present? %>
+<div class="my-2 border border-secondary">
+  <h3>登録済み</h3>
+  <%= render 'registered_list' %>
+</div>
+<% else %>
+  <p>現在登録がありません</p>
+  <%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %>
+<% end %>
+
+
+<%= render 'managers/shared/all_crud_links' %>
+<%= render 'managers/shared/back_to_home' %>
+<%= render 'managers/shared/manager_log_out' %>

@@ -14,7 +14,7 @@ class Managers::FoodcategoriesController < ApplicationController
   def create
     @foodcategory = Foodcategory.new(foodcategory_params)
     if @foodcategory.save
-      redirect_to managers_foodcategories_path, flash: { notice: "食材区分 #{@foodcategory.name} が作成されました" }
+      redirect_to managers_foodcategories_path, flash: { notice: "#{@foodcategory.name} が作成されました" }
     else
       render 'new'
     end
@@ -33,12 +33,12 @@ class Managers::FoodcategoriesController < ApplicationController
 
   def destroy
     @foodcategory.discard
-    redirect_to managers_foodcategories_path, flash: { notice: "食材区分 #{@foodcategory.name} が削除されました" }
+    redirect_to managers_foodcategories_path, flash: { notice: "#{@foodcategory.name} が削除されました" }
   end
 
   def restore
     @foodcategory.undiscard
-    redirect_to managers_foodcategories_path, flash: { notice: "食材区分 #{@foodcategory.name} が復元されました" }
+    redirect_to managers_foodcategories_path, flash: { notice: "#{@foodcategory.name} が復元されました" }
   end
 
   private

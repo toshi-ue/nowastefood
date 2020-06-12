@@ -4,4 +4,5 @@ class Cuisine < ApplicationRecord
   enum difficulty: { easy: 0, normal: 1, hard: 2 }
   # has_many :rawmaterials
   # has_many :cookedstates
+  has_many :foodstuffs
 end
