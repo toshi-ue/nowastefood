@@ -20,6 +20,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :foodstuffs, except: [:show] do
+      member do
+        get 'restore'
+      end
+    end
+
     resources :ingredients, except: [:show] do
       member do
         get 'restore'

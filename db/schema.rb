@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200611070536) do
+ActiveRecord::Schema.define(version: 20200612011533) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20200611070536) do
     t.datetime "updated_at", null: false
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_cuisines_on_discarded_at"
+    t.index ["name"], name: "index_cuisines_on_name", unique: true
   end
 
   create_table "foodcategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(version: 20200611070536) do
   end
 
   create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "cooking_time", null: false, comment: "数量"
+    t.integer "quantity", comment: "数量"
     t.integer "measure_unit", null: false, comment: "単位"
     t.bigint "cuisine_id", comment: "料理id"
     t.bigint "rawmaterial_id", comment: "原材料id"
@@ -69,13 +70,11 @@ ActiveRecord::Schema.define(version: 20200611070536) do
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "manager_id"
     t.string "name", null: false, comment: "部位の名称"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_ingredients_on_discarded_at"
-    t.index ["manager_id"], name: "index_ingredients_on_manager_id"
     t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
@@ -196,7 +195,6 @@ ActiveRecord::Schema.define(version: 20200611070536) do
   end
 
   add_foreign_key "cookedstates", "foodcategories"
-  add_foreign_key "ingredients", "managers"
   add_foreign_key "nutrients", "rawmaterials"
   add_foreign_key "procedureimages", "cuisines"
 end

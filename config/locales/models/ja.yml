@@ -18,6 +18,13 @@ ja:
         main_image: メイン画像
       foodcategory:
         name: 食品区分名
+      foodstuff:
+          quantity: 数量
+          measure_unit: 単位
+          cuisine_id: 料理レシピid
+          rawmaterial_id: 原材料id
+          ingredient_id: 部位id
+          cookedstate_id: 加工された状態の名前id
       ingredient:
         name: 部位名
       rawmaterial:
