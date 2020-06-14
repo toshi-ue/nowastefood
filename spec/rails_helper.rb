@@ -28,8 +28,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.use_transactional_fixtures = true
   # config.filter_gems_from_backtrace("gem name")
-
   config.before(:suite) do
     # DBを綺麗にする手段を指定、トランザクションを張ってrollbackするように指定
     DatabaseCleaner.strategy = :transaction
@@ -37,11 +37,19 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  # Deviseのヘルパーメソッドテスト内で使えるようにする
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::IntegrationHelpers, type: :request
-  # feature_specを使用する場合
-  # config.include Devise::Test::IntegrationHelpers, type: :feature
+  # exampleが始まるごとに実行
+  config.before do
+    # strategyがtransactionなので、トランザクションを張る
+    DatabaseCleaner.start
+  end
+
+  # exampleが終わるごとに実行
+  config.after do
+    # strategyがtransactionなので、rollbackする
+    DatabaseCleaner.clean
+  end
+  # request_specを使用する場合
+  config.include RequestSpecHelper, type: :request
   # system_specを使用する場合
   config.include Devise::Test::IntegrationHelpers, type: :system
 

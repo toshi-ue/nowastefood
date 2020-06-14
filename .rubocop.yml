@@ -84,3 +84,10 @@ Lint/UnusedMethodArgument:
 # テーブル作成、テーブルカラム編集
 Rails/BulkChangeTable:
   Enabled: false
+
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false

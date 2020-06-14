@@ -64,7 +64,6 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
-  # gem 'chromedriver-helper'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
