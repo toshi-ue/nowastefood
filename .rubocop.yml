@@ -57,7 +57,7 @@ Metrics/AbcSize:
 
 # 1行が長すぎる
 Layout/LineLength:
-  Max: 112
+  Max: 120
 
 # メソッドの行数が長すぎる
 MethodLength:
@@ -83,4 +83,19 @@ Lint/UnusedMethodArgument:
 # migration高速化のための設定
 # テーブル作成、テーブルカラム編集
 Rails/BulkChangeTable:
+  Enabled: false
+
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/requests/*.rb
+    - spec/requests/*/*.rb
+
+RSpec/ContextWording:
   Enabled: false

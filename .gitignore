@@ -137,3 +137,4 @@ build-iPhoneSimulator/
 # .rubocop.yml
 # .rubocop_todo.yml
 RSpecメモ.md
+.circleci/config.yml

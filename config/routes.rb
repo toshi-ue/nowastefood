@@ -56,5 +56,9 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
+  # for sign_in by Devise
+  authenticated do
+    root to: "secret#index", as: :authenticated_root
+  end
   root to: 'home#index'
 end
