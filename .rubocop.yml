@@ -57,7 +57,7 @@ Metrics/AbcSize:
 
 # 1行が長すぎる
 Layout/LineLength:
-  Max: 112
+  Max: 120
 
 # メソッドの行数が長すぎる
 MethodLength:
@@ -90,4 +90,12 @@ RSpec/ExampleLength:
   Enabled: false
 
 Rails/FilePath:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/requests/*.rb
+    - spec/requests/*/*.rb
+
+RSpec/ContextWording:
   Enabled: false

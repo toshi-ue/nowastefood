@@ -1,8 +1,44 @@
 require 'rails_helper'
 
-RSpec.describe "Foodcategories", type: :feature, skip: true do
-  # pending "add some scenarios (or delete) #{__FILE__}"
-  # scenario "サインイン後に'ログインしました'が表示する" do
+RSpec.describe "Foodcategories", type: :system do
+  # # 管理者アカウントを作成、ログインする
+  # before do
+  #   manager = FactoryBot.create(:manager)
+  #   visit root_path
+  #   click_link "管理者としてログイン"
+  #   fill_in "メールアドレス", with: manager.email
+  #   fill_in "パスワード", with: manager.password
+  #   click_button "ログイン"
+  #   # expect(response).to redirect_to root_path
+  #   expect(page).to have_selector 'div.alert-success', text: 'ログインしました。'
+  #   expect(page).to have_current_path root_path, ignore_query: true
+  # end
+
+  # context "when 管理者としてログインしている時" do
+  #   it "料理区分のインスタンスを作成できること" do
+  # expect{
+  #   visit managers_foodcategories_path
+  #   expect(page).to have_current_path managers_foodcategories_path, ignore_query: true
+  #   visit new_managers_foodcategory_path
+  #   foodcategory = FactoryBot.create(:foodcategory)
+  # }
+
+  #  do
+  #   click_button "登録する"
+  # end.to change(Foodcategory, :count).by(1)
+  # end
+
+  # it "" do
+  # end
+  # end
+  # "サインイン後に'ログインしました'が表示する"
+  # it "Show logged in after signing in" do
+  # save_and_open_page
+
+  # save_and_open_page
+  # expect(page).to have_content 'ログインしました。'
+  # expect(page).to have_selector 'div.alert-success', text: 'ログインしました。'
+  # expect(page).to have_selector 'p.notice', text: 'ログインしました。'
   # end
 
   # it "ログアウト後に'ログアウトしました'を表示する"
