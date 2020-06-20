@@ -35,6 +35,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     # truncate table文を実行し、レコードを消す
     DatabaseCleaner.clean_with(:truncation)
+    SeedFu.seed
   end
 
   # exampleが始まるごとに実行
