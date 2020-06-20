@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :manager do
-    sequence(:email) { |n| "heascook_manager#{n}@ahk.jp" }
+    name { Gimei.unique.name.kanji }
+    sequence(:email) { |n| "heascook_manager#{n + 2}@ahk.jp" }
     password { 'password' }
     password_confirmation { 'password' }
     confirmation_sent_at { Time.zone.today - 2.days }
