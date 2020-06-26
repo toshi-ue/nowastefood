@@ -39,5 +39,10 @@
   <%# メイン画像 %>
   <div class="form-group">
     <%= form.label :main_image %>
-    <%# form.text_field :name, id: :cuisine_cooking_time, autofocus: true, class: 'form-control' %>
+    <% if cuisine.present? %>
+      <%= image_tag cuisine.main_image.url unless cuisine.main_image.blank? %>
+    <% else %>
+    <% end %>
+    <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
+
   </div>

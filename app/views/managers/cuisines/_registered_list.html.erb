@@ -13,18 +13,30 @@
     </tr>
   </thead>
   <tbody>
-    <% @cuisines.each do |fc| %>
-      <% if fc.undiscarded? %>
+    <% @cuisines.each do |cn| %>
+      <% if cn.undiscarded? %>
       <tr>
-        <td><%= fc.id %></td>
-        <td><%= fc.main_image %></td>
-        <td><%= fc.name %></td>
-        <td><%= fc.difficulty %></td>
-        <td><%= fc.cooking_time %></td>
-        <td><%= fc.calories %></td>
-        <td><%= fc.created_at %></td>
-        <td><%= link_to '修正', edit_managers_cuisine_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
-        <td><%= button_to '削除', managers_cuisine_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+        <td><%= cn.id %></td>
+        <% if cn.main_image.present? %>
+        <td>
+          <%# cn.main_image %>
+          <%= image_tag cn.main_image.url, size: '70x70' %>
+        </td>
+        <% else %>
+        <td> 未登録 </td>
+        <% end %>
+        <td><%= cn.name %></td>
+        <td><%= cn.difficulty %></td>
+        <td><%= cn.cooking_time %></td>
+        <% if cn.calories.present? %>
+        <td><%= cn.calories %></td>
+        <% else %>
+        <td> - </td>
+        <% end %>
+        <td><%= cn.created_at %></td>
+        <td><%= link_to '詳細', managers_cuisine_path(cn.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+        <td><%= link_to '修正', edit_managers_cuisine_path(cn.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+        <td><%= button_to '削除', managers_cuisine_path(cn.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
       </tr>
       <% end %>
     <% end %>

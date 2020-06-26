@@ -1,0 +1,40 @@
+<h1>料理レシピ詳細</h1>
+
+<%= render 'shared/flash_messages' %>
+
+<h2>料理レシピ概要</h2>
+<div class="cuisine-border">
+  <div>
+    料理名:<%= @cuisine.name %>
+  </div>
+  <div>
+    難易度:<%= @cuisine.difficulty_i18n %>
+  </div>
+  <div>
+    摂取カロリー:<%= @cuisine.calories %>kcal
+  </div>
+  <div>
+    調理時間:<%= @cuisine.cooking_time %>分
+  </div>
+  <div>
+    画像:<%= image_tag @cuisine.main_image.url, size: '70x70' %>
+  </div>
+  <div>
+    <%= link_to '変更', edit_managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button" %>
+  </div>
+</div>
+
+<h2>料理レシピの食材</h2>
+
+<%= render 'managers/cuisines/cuisine_foodstuffs', foodstuffs: @cuisine.foodstuffs %>
+
+<h2>料理の手順</h2>
+
+<%= render 'managers/cuisines/cuisine_procedures', procedures: @cuisine.procedures %>
+
+
+
+
+<%= render 'managers/shared/all_crud_links' %>
+<%= render 'managers/shared/back_to_home' %>
+<%= render 'managers/shared/manager_log_out' %>

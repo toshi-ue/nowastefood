@@ -8,11 +8,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :cuisines, except: [:show] do
-      member do
-        get 'restore'
-      end
-    end
+    resources :cuisines
 
     resources :foodcategories, except: [:show] do
       member do
@@ -31,6 +27,8 @@ Rails.application.routes.draw do
         get 'restore'
       end
     end
+
+    resources :procedures
 
     resources :rawmaterials do
       member do

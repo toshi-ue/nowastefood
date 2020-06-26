@@ -1,10 +1,15 @@
 class Managers::CuisinesController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_cuisine, only: [:update, :edit, :destroy, :restore]
+  before_action :set_cuisine_show_action, only: [:show]
+  before_action :set_cuisine, only: [:show, :update, :edit, :destroy]
 
   layout 'manager'
   def index
     @cuisines = Cuisine.all
+  end
+
+  def show
+    # UNKOWN: cuisineのアソシエーション経由で全情報を取得した方が良いのか?
   end
 
   def new
@@ -37,14 +42,19 @@ class Managers::CuisinesController < ApplicationController
     redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
   end
 
-  def restore
-    @cuisine.undiscard
-    redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が復元されました" }
-  end
-
   private
 
   def set_cuisine
+    @cuisine = Cuisine.find(params[:id])
+  end
+
+  # UNKNOWN: bulletで警告が発生する
+# See 'Uniform Notifier' in JS Console for Stacktrace×
+# user: root USE eager loading detected Foodstuff => [:rawmaterial] Add to your query: .includes([:rawmaterial])
+# user: root USE eager loading detected Foodstuff => [:unit] Add to your query: .includes([:unit])
+# user: root USE eager loading detected Foodstuff => [:ingredient] Add to your query: .includes([:ingredient])
+
+  def set_cuisine_show_action
     @cuisine = Cuisine.find(params[:id])
   end
 

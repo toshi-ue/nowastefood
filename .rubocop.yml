@@ -57,7 +57,7 @@ Metrics/AbcSize:
 
 # 1行が長すぎる
 Layout/LineLength:
-  Max: 120
+  Max: 150
 
 # メソッドの行数が長すぎる
 MethodLength:

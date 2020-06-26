@@ -1,0 +1,38 @@
+<h1>レシピの手順</h1>
+<p><%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %></p>
+
+<% if procedures.present? %>
+<div class="my-2 border border-secondary">
+  <table class="table table-hover table-sm table-responsive">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>料理レシピ名<br />(cuisine_id)</th>
+        <th>料理手順の詳細</th>
+        <th>順番</th>
+        <th>作成日</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% procedures.each do |pd| %>
+      <tr>
+        <%# binding.pry %>
+        <td><%= pd.id %></td>
+        <td><%= pd.cuisine.name %></td>
+        <td><%= pd.cooking_detail %></td>
+        <td><%= pd.row_order %></td>
+        <td><%= pd.created_at %></td>
+        <td><%= link_to '修正', edit_managers_procedure_path(pd.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+        <td><%= button_to '削除', managers_procedure_path(pd.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<p><%= link_to '追加する', new_managers_procedure_path, class: "btn btn-secondary", role: "button" %></p>
+<% else %>
+  <p>登録はまだありません</p>
+  <%= link_to '追加する', new_managers_procedure_path, class: "btn btn-secondary", role: "button" %>
+<% end %>
