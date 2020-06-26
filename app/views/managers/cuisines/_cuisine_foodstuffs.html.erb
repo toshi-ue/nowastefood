@@ -1,0 +1,43 @@
+<h1>レシピで使う食材</h1>
+<p><%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %></p>
+
+<% if foodstuffs.present? %>
+<div class="my-2 border border-secondary">
+  <table class="table table-hover table-sm table-responsive">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>料理レシピ名<br />(cuisine_id)</th>
+        <th>数量</th>
+        <th>原材料</th>
+        <th>部位名</th>
+        <th>加工された<br />状態の名前</th>
+        <th>作成日</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% foodstuffs.each do |fs| %>
+      <tr>
+        <%# binding.pry %>
+        <td><%= fs.id %></td>
+        <td><%= fs.cuisine.name %></td>
+        <td><%= fs.quantity %><%= fs.unit.name %></td>
+        <td><%= fs.rawmaterial.name %></td>
+        <td><%= disp_ingredient_name(fs) %></td>
+
+        <td><%= disp_cookedstate_name(fs) %></td>
+        <td><%= fs.created_at %></td>
+        <td><%= link_to '修正', edit_managers_foodstuff_path(fs.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+        <td><%= button_to '削除', managers_foodstuff_path(fs.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<p><%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %></p>
+<% else %>
+  <p>登録はまだありません</p>
+  <%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %>
+<% end %>

@@ -9,9 +9,6 @@ class Managers::FoodstuffsController < ApplicationController
 
   def new
     @foodstuff = Foodstuff.new
-    # @foodstuff.cuisine_id = params[:cuisine_id]
-
-    # binding.pry
   end
 
   def create
@@ -36,7 +33,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   def destroy
     @foodstuff.destroy
-    redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff} が削除されました" }
+    redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff.name} が削除されました" }
   end
 
   def restore
