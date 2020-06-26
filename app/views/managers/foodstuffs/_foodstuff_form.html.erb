@@ -18,10 +18,7 @@
     <%= form.text_field :measure_unit, id: :foodstuff_measure_unit, class: 'form-control' %>
   </div>
   <%# cuisine_id-料理レシピid %>
-  <div class="form-group">
-    <%= form.label :cuisine_id %>
-    <%= form.text_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control' %>
-  </div>
+  <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control' %>
   <%# rawmaterial_id-原材料id %>
   <div class="form-group">
     <%= form.label :rawmaterial_id %>
