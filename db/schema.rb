@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200624015324) do
+ActiveRecord::Schema.define(version: 20200627043624) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20200624015324) do
     t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
     t.string "calories", comment: "摂取カロリー"
     t.integer "cooking_time", null: false, comment: "調理時間"
+    t.string "description"
     t.string "main_image", comment: "メイン画像"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

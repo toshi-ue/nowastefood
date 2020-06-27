@@ -1,12 +1,16 @@
+require 'fileutils'
+Dir.chdir 'public/uploads/cuisine/main_image/'
+FileUtils.rm(Dir.glob('*.*'))
+
 Cuisine.seed_once(
   :id,
   {
     id: 1,
     name: "親子丼 with めんつゆ",
-    difficulty: 1,
+    difficulty: 0,
     calories: nil,
     cooking_time: 20,
-    main_image: nil
+    main_image: Rails.root.join("db/fixtures/images/oyakodon_width_400.jpg").open
   }
 )
 
