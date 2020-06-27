@@ -123,3 +123,15 @@ $dropDown       : false;
 .container-fluid{
   padding: 0
 }
+
+// less than tablet
+@media (min-width: 576px) {}
+
+// more than desktop
+@media (min-width: 992px) {
+  .content_wrapper{
+    width: 980px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+}

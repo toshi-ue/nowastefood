@@ -1,4 +1,6 @@
+<% unless "#{controller.controller_path}/#{controller.action_name}" == "users/cuisines/show" %>
 <div>
   現在時刻<br/>
   <%= Time.now %><br/>
 </div>
+<% end %>

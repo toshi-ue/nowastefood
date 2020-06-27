@@ -21,6 +21,7 @@ Rails.application.config.assets.precompile += %w[
   managers/rawmaterials.css
   managers/registrations.css
   managers/sessions.css
+  users/cuisines.css
   users/sessions.css
   users/registrations.css
 ]

@@ -1,0 +1,62 @@
+@media (min-width: 576px) {}
+
+// more than desktop
+@media (min-width: 992px) {
+  .content_wrapper{
+    // display: flex;
+    h1{
+      display: inline;
+      line-height: 2.0;
+      padding-left: 30px;
+      margin-right: 50px;
+      // margin-bottom: 20px;
+    }
+    .difficulty{
+      margin-right: 30px;
+    }
+
+
+    article{
+      display: flex;
+      flex-flow: row wrap;
+      width: 980px;
+
+      .main-image{
+        width: 400px;
+      }
+
+      .foodstuff-list{
+        // margin: 0 20px;
+        font-size: 17px;
+        line-height: 2.0;
+        border-top:1px solid #cccccc;
+
+        // .food-name{
+        // }
+        // .food-quantity{
+
+        // }
+      }
+
+      .foodstuff-list:last-child{
+        border-bottom: 1px solid #cccccc;
+      }
+
+      .procedure-list{
+        // margin: 0 20px;
+        font-size: 17px;
+        line-height: 2.0;
+        border-top:1px solid #cccccc;
+      }
+
+      .procedure-list:last-child{
+        border-bottom: 1px solid #cccccc;
+      }
+
+      .description-and-etc{
+        margin-top: 30px;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,42 @@
+<div class="content_wrapper container">
+  <div>
+    <h1 class="title"><%= @cuisine.name %></h1>
+    <span class="difficulty"> 難易度:<%= @cuisine.difficulty_i18n %></span>
+    <span class="cooking_time">所要時間: 約<%= @cuisine.cooking_time %>分</span>
+  </div>
+
+  <article class="container">
+<!--
+  <div class="container">
+  </div>
+-->
+    <div class="main-image col-lg-6">
+      <%= image_tag @cuisine.main_image.url %>
+      <div class="share-button">
+        <ol>
+          <li>シェアボタン</li>
+          <li>お気に入りボタン</li>
+          <li>URLをコピーする</li>
+        </ol>
+      </div>
+    </div>
+    <div class="foodstuffs  col-lg-6">
+      <h3>食材</h3>
+      <% @foodstuffs.each_with_index do |fs| %>
+        <%# binding.pry%>
+        <div class="foodstuff-list">
+          <span class="food-name text-left"><%= disp_foodstuff(fs) %></span>
+          <span class="food-quantity float-right"><%= disp_quantity(fs) %></span>
+        </div>
+      <% end %>
+    </div>
+    <div class="procedure col-lg">
+      <h3>手順</h3>
+      <% @procedures.each_with_index do |pd, idx| %>
+        <div class="procedure-list"><%= idx + 1 %>. <%= pd.cooking_detail %></div>
+      <% end %>
+    </div>
+  </article>
+
+
+</div>
