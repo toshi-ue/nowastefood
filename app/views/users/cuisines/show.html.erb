@@ -14,9 +14,13 @@
       <%= image_tag @cuisine.main_image.url %>
       <div class="share-button">
         <ol>
-          <li>シェアボタン</li>
-          <li>お気に入りボタン</li>
-          <li>URLをコピーする</li>
+          <%= link_to "https://twitter.com/share?&text=#{@cuisine.name}&url=#{request.url}", title: 'Twitter', target: '_blank' do %>
+            <%= icon('fab', 'twitter fa-2x', class: 'twitter-icon') %>
+          <% end %>
+          <%= icon('far', 'star fa-2x', class: 'copy-url-icon') %>
+          <a class="btn-clipboard" data-clipboard-text="<%= "#{request.url}" %>">
+            <%= icon('fas', 'link fa-2x', class: 'copy-url-icon') %>
+          </a>
         </ol>
       </div>
     </div>

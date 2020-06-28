@@ -3,3 +3,11 @@
 //= require popper.js/dist/popper.js
 //= require bootstrap/dist/js/bootstrap.js
 //= require jquery-ui/ui/widgets/sortable.js
+//= require clipboard/dist/clipboard.min.js
+
+// TODO: jQueryの動作確認がとれない1
+$(function () { // if document is ready
+  alert('jQuery is ready.')
+});
+
+console.log("aaa")
