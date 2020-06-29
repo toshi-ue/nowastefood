@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :users do
-    get 'cuisines/show'
-  end
-
   # 管理者側
   namespace :managers do
     resources :cookedstates, except: [:show] do

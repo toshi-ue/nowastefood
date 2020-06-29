@@ -1,14 +1,6 @@
-  <% if ingredient.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% ingredient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render 'shared/error_messages', {resource: ingredient} if ingredient.errors.any? %>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :ingredient_name, class: 'form-control' %>
-  </div>
+<div class="form-group">
+  <%= form.label :name %>
+  <%= form.text_field :name, id: :ingredient_name, class: 'form-control' %>
+</div>
