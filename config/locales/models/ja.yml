@@ -15,6 +15,7 @@ ja:
         calories: 摂取カロリー(kcal)
         difficulty: お手軽度(簡単・それなり・プロ並)
         cooking_time: 調理時間(分)
+        description: レシピの説明
         main_image: 画像
       foodcategory:
         name: 食品区分名

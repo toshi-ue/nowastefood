@@ -1,4 +1,76 @@
-@media (min-width: 576px) {}
+// less than tablet
+@media (min-width: 0px) {
+  h1{
+    font-size: 17px;
+    line-height: 2.0;
+    margin-top: 10px;
+  }
+
+  h3{
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  article{
+    display: flex;
+    flex-flow: row wrap;
+    width: 980px;
+
+    .main-image{
+      width: 400px;
+      padding: 0 0 20px 0;
+    }
+
+    .foodstuff-list{
+      font-size: 17px;
+      line-height: 2.0;
+      border-top:1px solid #cccccc;
+    }
+
+    .time-and-difficulty{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: 0 0 10px 0;
+    }
+
+    .foodstuff-list:last-child{
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .procedure-list{
+      font-size: 17px;
+      line-height: 2.0;
+      border-top:1px solid #cccccc;
+    }
+
+    .procedure-list:last-child{
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .description-and-etc{
+      margin-top: 30px;
+    }
+
+    .share-button{
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0 0 0;
+
+      .share-button-item{
+        .twitter-icon{
+          color: #d0d4d8;
+        }
+        .star-icon{
+          color: #d0d4d8;
+        }
+        .copy-url-icon{
+          color: #d0d4d8;
+        }
+      }
+    }
+  }
+}
 
 // more than desktop
 @media (min-width: 992px) {
@@ -6,13 +78,20 @@
     // display: flex;
     h1{
       display: inline;
+      font-size: 30px;
       line-height: 2.0;
-      padding-left: 30px;
       margin-right: 50px;
-      // margin-bottom: 20px;
     }
+    .difficulty, .cooking_time{
+      font-size: 20px;
+    }
+
     .difficulty{
-      margin-right: 30px;
+      margin-left: 30px;
+    }
+
+    .cooking_time{
+      margin-left: 10px;
     }
 
 
@@ -26,16 +105,9 @@
       }
 
       .foodstuff-list{
-        // margin: 0 20px;
         font-size: 17px;
         line-height: 2.0;
         border-top:1px solid #cccccc;
-
-        // .food-name{
-        // }
-        // .food-quantity{
-
-        // }
       }
 
       .foodstuff-list:last-child{
@@ -43,7 +115,6 @@
       }
 
       .procedure-list{
-        // margin: 0 20px;
         font-size: 17px;
         line-height: 2.0;
         border-top:1px solid #cccccc;
@@ -55,6 +126,25 @@
 
       .description-and-etc{
         margin-top: 30px;
+      }
+
+      .share-button{
+        display: flex;
+        justify-content: space-around;
+        width: 400px;
+        padding: 20px 0;
+
+        .share-button-item{
+          .twitter-icon{
+            color: #d0d4d8;
+          }
+          .star-icon{
+            color: #d0d4d8;
+          }
+          .copy-url-icon{
+            color: #d0d4d8;
+          }
+        }
       }
     }
 

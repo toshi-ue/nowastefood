@@ -9,9 +9,9 @@ class Managers::CuisinesController < ApplicationController
 
   def show
     # UNKNOWN:
-      # cuisineのアソシエーション経由で全情報を取得した方が良いのか?
-      # 複数のインスタンスを作成してそれぞれ取得した方がよいのか?
-      #   e.g. @cuisine, @foodstuffs, @procedures など
+    # cuisineのアソシエーション経由で全情報を取得した方が良いのか?
+    # 複数のインスタンスを作成してそれぞれ取得した方がよいのか?
+    #   e.g. @cuisine, @foodstuffs, @procedures など
 
     # UNKNOWN: bulletで警告が発生する
     # See 'Uniform Notifier' in JS Console for Stacktrace×
@@ -57,6 +57,6 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :main_image, :discarded_at)
+    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :description, :main_image, :discarded_at)
   end
 end
