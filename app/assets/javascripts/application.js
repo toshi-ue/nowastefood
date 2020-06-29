@@ -7,8 +7,8 @@
 //= require @fortawesome/fontawesome-free/js/all.js
 
 // TODO: jQueryの動作確認がとれない1
-$(function () { // if document is ready
-  alert('jQuery is ready.')
-});
+// $(function () { // if document is ready
+//   alert('jQuery is ready.')
+// });
 
-console.log("aaa")
+console.log("loaded application.js")
