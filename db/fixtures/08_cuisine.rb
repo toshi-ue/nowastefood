@@ -12,6 +12,15 @@ Cuisine.seed_once(
     cooking_time: 20,
     description: "味付けで失敗することがない簡単・お手軽な親子丼です!!",
     main_image: Rails.root.join("db/fixtures/images/oyakodon_width_400.jpg").open
+  },
+  {
+    id: 2,
+    name: "苦味少なめのゴーヤチャンプルー",
+    difficulty: 1,
+    calories: nil,
+    cooking_time: 20,
+    description: "味付けで失敗することがない簡単・お手軽な親子丼です!!",
+    main_image: Rails.root.join("db/fixtures/images/oyakodon_width_400.jpg").open
   }
 )
 
