@@ -1,7 +1,3 @@
-require 'fileutils'
-Dir.chdir 'public/uploads/cuisine/main_image/'
-FileUtils.rm(Dir.glob('*.*'))
-
 Cuisine.seed_once(
   :id,
   {
