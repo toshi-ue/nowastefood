@@ -15,12 +15,30 @@ Rails.application.config.assets.precompile += %w[
   managers/confirmations.css
   managers/cookedstates.css
   managers/cuisines.css
+  managers/cuisines.js
   managers/foodcategories.css
   managers/foodstuffs.css
+  managers/foodstuffs.js
   managers/ingredients.css
+  managers/procedures.css
   managers/rawmaterials.css
   managers/registrations.css
   managers/sessions.css
+  managers/sessions.js
+  users/cuisines.css
   users/sessions.css
   users/registrations.css
 ]
+
+# TODO: 下の記述だと ActionView::Template::Error が発生する
+# Rails.application.config.assets.precompile += [
+#   '*.css',
+#   '*.js',
+#   'managers/*.css',
+#   'managers/*.js',
+#   'users/*.css',
+#   'users/*.js',
+#   'devise/*.css'
+# ]
+
+# Rails.application.config.assets.precompile += ['*.css', '*.js', 'managers/*.css', 'managers/*.js', 'users/*.css', 'users/*.js', 'devise/*.css']

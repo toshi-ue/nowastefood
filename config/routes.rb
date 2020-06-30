@@ -37,6 +37,12 @@ Rails.application.routes.draw do
     end
   end
 
+
+  # ユーザー側
+  # UNKNOWN: urlはusersを含めない、アプリ構成ではmanagersとusersをフォルダ分けしたい
+  namespace :users do
+    resources :cuisines, only: [:show]
+  end
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
@@ -52,11 +58,14 @@ Rails.application.routes.draw do
     registrations: 'managers/registrations'
   }
 
-  get 'home/index'
+
 
   # for sign_in by Devise
   authenticated do
     root to: "secret#index", as: :authenticated_root
   end
+
+  get 'home/toppage'
+  get 'home/index'
   root to: 'home#index'
 end

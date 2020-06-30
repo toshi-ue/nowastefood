@@ -10,8 +10,6 @@ services:
         - "4306:3306"
     volumes:
         - db-data:/var/lib/mysql
-        - bundle:/usr/local/bundle
-        - yarn-cache:/usr/local/share/.cache/yarn/v6
   web:
     # ゾンビプロセスをkill
     init: true
@@ -25,13 +23,16 @@ services:
     #
     volumes:
       - .:/webapp
+      - bundle:/usr/local/bundle
     # 公開ポートの設定(ホスト(Mac側):コンテナ側)
     ports:
       - "3000:3000"
     #
     links:
       - db
-      - chrome
+      # - chrome
+    environment:
+      RAILS_ENV: development
   chrome:
     # image: selenium/standalone-chrome:latest
     # 視認で確認する
@@ -43,5 +44,6 @@ services:
 
 volumes:
   db-data:
+    driver: local
   bundle:
-  yarn-cache:
+    driver: local

@@ -3,6 +3,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "jquery-ui/themes/base/sortable.css";
+
+$xs: 0px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+
 h2{
   color: green;
 }
@@ -122,4 +128,25 @@ $dropDown       : false;
 
 .container-fluid{
   padding: 0
+}
+
+// less than tablet
+@media (min-width: 576px) {}
+
+// more than desktop
+@media (min-width: 992px) {
+  .content_wrapper{
+    width: 980px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  .twitter-icon{
+    color: #00B8FF;
+  }
+  .star-icon{
+    color: #d0d4d8;
+  }
+  .copy-url-icon{
+    color: #d0d4d8;
+  }
 }

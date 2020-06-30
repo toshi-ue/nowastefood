@@ -1,5 +1,10 @@
-//= require rails-ujs/lib/assets/compiled/rails-ujs.js
 //= require jquery/dist/jquery.js
-//= require popper.js/dist/popper.js
+//= require rails-ujs/lib/assets/compiled/rails-ujs.js
+//= require jquery-ui/ui/widget.js
+//= require popper.js/dist/umd/popper.min.js
 //= require bootstrap/dist/js/bootstrap.js
-//= require jquery-ui/ui/widgets/sortable.js
+//= require clipboard/dist/clipboard.min.js
+//= require @fortawesome/fontawesome-free/js/all.js
+//= require_tree .
+
+// console.log("loaded application.js")

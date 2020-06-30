@@ -1,3 +1,5 @@
+<%= render "shared/flash_messages" %>
+
 <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, local: true) do |form| %>
   <%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
   <div class="text-center">

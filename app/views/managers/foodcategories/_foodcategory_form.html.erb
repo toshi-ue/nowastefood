@@ -1,14 +1,4 @@
-<% if foodcategory.errors.any? %>
-  <div id="error_explanation">
-<!--      <h2><%= pluralize(foodcategory.errors.count, "error") %> prohibited this aaa from being saved:</h2>
--->
-    <ul>
-    <% foodcategory.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'shared/error_messages', {resource: foodcategory} if foodcategory.errors.any? %>
 
   <div class="form-group">
     <%= form.label :name %>

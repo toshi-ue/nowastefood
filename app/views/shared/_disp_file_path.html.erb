@@ -1,5 +1,7 @@
-<div class="my-2 border border-warning">
-  <h2>
+<% unless "#{controller.controller_path}/#{controller.action_name}" == "users/cuisines/show" %>
+<div class="border border-warning">
+  <p>
     <%= controller.controller_path %>/<%= controller.action_name %>.html.erb
-  </h2>
+  </p>
 </div>
+<% end %>

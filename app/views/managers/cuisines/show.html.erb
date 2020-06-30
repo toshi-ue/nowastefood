@@ -17,6 +17,9 @@
     調理時間:<%= @cuisine.cooking_time %>分
   </div>
   <div>
+    レシピの説明:<%= @cuisine.description %>
+  </div>
+  <div>
     画像:<%= image_tag @cuisine.main_image.url, size: '70x70' %>
   </div>
   <div>
@@ -24,13 +27,12 @@
   </div>
 </div>
 
-<h2>料理レシピの食材</h2>
+<%# <h2>料理レシピの食材</h2> %>
 
 <%= render 'managers/cuisines/cuisine_foodstuffs', foodstuffs: @cuisine.foodstuffs %>
 
-<h2>料理の手順</h2>
-
-<%= render 'managers/cuisines/cuisine_procedures', procedures: @cuisine.procedures %>
+<%# <h2>料理の手順</h2> %>
+<%= render 'managers/cuisines/cuisine_procedures', {cuisine: @cuisine, procedures: @cuisine.procedures} %>
 
 
 

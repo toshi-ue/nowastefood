@@ -1,12 +1,5 @@
-  <% if foodstuff.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% foodstuff.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render 'shared/error_messages', {resource: foodstuff} if foodstuff.errors.any? %>
+
   <%# quantity-数量 %>
   <div class="form-group">
     <%= form.label :quantity %>

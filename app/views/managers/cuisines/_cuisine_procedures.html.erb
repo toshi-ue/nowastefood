@@ -1,5 +1,4 @@
 <h1>レシピの手順</h1>
-<p><%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %></p>
 
 <% if procedures.present? %>
 <div class="my-2 border border-secondary">
@@ -31,8 +30,8 @@
     </tbody>
   </table>
 </div>
-<p><%= link_to '追加する', new_managers_procedure_path, class: "btn btn-secondary", role: "button" %></p>
+<p><%= link_to '追加する', managers_procedures_path(id: cuisine.id), class: "btn btn-secondary", role: "button" %></p>
 <% else %>
   <p>登録はまだありません</p>
-  <%= link_to '追加する', new_managers_procedure_path, class: "btn btn-secondary", role: "button" %>
+  <%= link_to '追加する', managers_procedures_path(id: cuisine.id), class: "btn btn-secondary", role: "button" %>
 <% end %>

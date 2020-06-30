@@ -1,0 +1,23 @@
+
+
+  <% procedures.each_with_index do |pd, idx| %>
+    <tr id="procedure_<%= pd.id %>">
+      <td><%= idx + 1 %></td>
+      <td><%= pd.cooking_detail %></td>
+      <td>
+        <%= link_to edit_managers_procedure_path(pd.id), class: 'btn btn-secondary', role: "button", remote: true do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+        <%= button_to managers_procedure_path(pd.id),  class: "btn btn-secondary", role: "button", width: '42', method: :delete, remote: true do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+<!--
+
+<div id="procedure-list">
+</div>
+
+-->

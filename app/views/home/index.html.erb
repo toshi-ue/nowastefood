@@ -5,6 +5,8 @@
 <p><%= link_to 'ユーザーとしてログイン',new_user_session_path, class: 'btn btn-success' %></p>
 <% end %>
 
+<p><%= link_to '親子丼リンク',users_cuisine_path(1), class: 'btn btn-success' %></p>
+
 <%= render 'managers/shared/all_crud_links' %>
 <%= render 'managers/shared/manager_log_out' %>
 
