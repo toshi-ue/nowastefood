@@ -17,7 +17,12 @@ Rawmaterial.seed_once(
   { id: 13, name: "塩", min_quantity: 10, foodcategory_id: 4 },
   { id: 14, name: "豚バラ肉", min_quantity: 100, foodcategory_id: 1 },
   { id: 15, name: "かつお節", min_quantity: 10, foodcategory_id: 4 },
-  { id: 16, name: "お湯", min_quantity: 5, foodcategory_id: 5 }
+  { id: 16, name: "お湯", min_quantity: 5, foodcategory_id: 5 },
+  # タコ飯
+  { id: 17, name: "タコ", min_quantity: 1, foodcategory_id: 6 },
+  { id: 18, name: "生姜", min_quantity: 1, foodcategory_id: 4 },
+  { id: 19, name: "酒", min_quantity: 50, foodcategory_id: 4 },
+  { id: 20, name: "和風だし", min_quantity: 10, foodcategory_id: 4 }
   # {id: , name: "", min_quantity: , foodcategory_id: },
 )
 # Foodcategory
@@ -26,6 +31,7 @@ Rawmaterial.seed_once(
 # 3: 炭水化物
 # 4: 調味料
 # 5: その他
+# 6: 魚介類
 
 # 1.親子丼
 # [麺つゆだけで簡単親子丼 by アサムラサキ 【クックパッド】 簡単おいしいみんなのレシピが333万品](https://cookpad.com/recipe/4905547)
@@ -34,3 +40,7 @@ Rawmaterial.seed_once(
 # 2.ゴーヤチャンプルー
 # [苦味が少ない！簡単ゴーヤチャンプルー by 元料理人の時短レシピ 【クックパッド】 簡単おいしいみんなのレシピが333万品](https://cookpad.com/recipe/6321929)
 # [苦さ控えめゴーヤチャンプルー 作り方・レシピ | クラシル](https://www.kurashiru.com/recipes/7514b07b-7df8-4b5d-a022-0245633c4434)
+
+# 3.タコ飯
+# [絶品たこ飯 by さくら2016 【クックパッド】 簡単おいしいみんなのレシピが333万品](https://cookpad.com/recipe/5721589)
+# [簡単アレンジたこめし 作り方・レシピ | クラシル](https://www.kurashiru.com/recipes/905ce97e-ad49-4954-b131-400e6793e166)
