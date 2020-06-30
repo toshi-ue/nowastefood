@@ -41,4 +41,4 @@ Rails.application.config.assets.precompile += %w[
 #   'devise/*.css'
 # ]
 
-# Rails.application.config.assets.precompile += ['*.css', '*.js', 'managers/*.css', 'managers/*.js', 'users/*.css', 'users/*.js', 'devise/*.css']
+# Rails.application.config.assets.precompile += ['*.js', '*.css']
