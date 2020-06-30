@@ -1,5 +1,5 @@
 //= require jquery/dist/jquery.js
-//= require jquery_ujs
+//= require rails-ujs/lib/assets/compiled/rails-ujs.js
 //= require jquery-ui/ui/widget.js
 //= require popper.js/dist/umd/popper.min.js
 //= require bootstrap/dist/js/bootstrap.js

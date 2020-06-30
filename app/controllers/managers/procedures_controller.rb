@@ -18,7 +18,6 @@ class Managers::ProceduresController < ApplicationController
 
   def edit; end
 
-  # TODO: updateアクションが実行されない
   def update
     if @procedure.update(procedure_params)
       @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)

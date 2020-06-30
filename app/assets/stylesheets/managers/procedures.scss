@@ -1,16 +1,12 @@
-// TODO: ActionController::RoutingError (No route matches [GET] "/assets/managers/bootstrap/dist/css/bootstrap.css") が発生する
-//  application.scssで定義した$xsなどの変数を別のscssファイルでも使えるようにしたい
-// @import "application.scss";を追加するとエラーが発生するようになった
-// @import "application.scss";
+@import "variables";
 
 // mobile
-// @media (min-width: $xs) {
-@media (min-width: 0px) {
+@media (min-width: $xs) {
+
 }
 
 // tablet
-// @media (min-width: $md) {
-@media (min-width: 768px) {
+@media (min-width: $md) {
   .content_wrapper{
     padding: 0 20px;
   }
@@ -20,6 +16,6 @@
 }
 
 // more than desktop
-// @media (min-width: $lg) {
-@media (min-width: 992px) {
+@media (min-width: $lg) {
+
 }
