@@ -30,7 +30,7 @@ Rails.application.config.assets.precompile += %w[
   users/registrations.css
 ]
 
-# TODO: 下の記述だと ActionView::Template::Error が発生する
+# TODO: 下2つの記述だと ActionView::Template::Error が発生する
 # Rails.application.config.assets.precompile += [
 #   '*.css',
 #   '*.js',

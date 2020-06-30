@@ -9,12 +9,6 @@ class Managers::ProceduresController < ApplicationController
     @procedure = Procedure.new(cuisine_id: params[:id])
   end
 
-  # def show; end
-
-  def new
-    @procedure = Procedure.new
-  end
-
   def create
     @procedure = Procedure.new(procedure_params)
     @procedure.save
