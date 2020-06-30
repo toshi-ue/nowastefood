@@ -4,3 +4,6 @@ ja:
       sessions:
         new:
           # submit: ログイン
+      procedures:
+        new:
+          submit: 追加

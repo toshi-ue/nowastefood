@@ -32,7 +32,7 @@
 <%= render 'managers/cuisines/cuisine_foodstuffs', foodstuffs: @cuisine.foodstuffs %>
 
 <%# <h2>料理の手順</h2> %>
-<%= render 'managers/cuisines/cuisine_procedures', procedures: @cuisine.procedures %>
+<%= render 'managers/cuisines/cuisine_procedures', {cuisine: @cuisine, procedures: @cuisine.procedures} %>
 
 
 

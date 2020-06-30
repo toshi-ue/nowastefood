@@ -5,10 +5,6 @@
 //= require bootstrap/dist/js/bootstrap.js
 //= require clipboard/dist/clipboard.min.js
 //= require @fortawesome/fontawesome-free/js/all.js
+//= require_tree .
 
-// TODO: jQueryの動作確認がとれない1
-// $(function () { // if document is ready
-//   alert('jQuery is ready.')
-// });
-
-console.log("loaded application.js")
+// console.log("loaded application.js")

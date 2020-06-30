@@ -8,13 +8,23 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= stylesheet_link_tag    "#{controller.controller_path}", media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "#{controller.controller_path}" %>
   </head>
-  <body>
+  <%# TODO: data属性が特定のページで反映されない
+              managers/cuisines/show.html.erb,
+              http://localhost:3000/managers/cuisines/2
+  %>
+  <body data-controller="<%= controller_path %>" data-action="<%= action_name %>">
   <div class="container-fluid">
     <%# navbar %>
     <%= render 'managers/shared/manager_navbar' %>
-    <%= render 'shared/disp_file_path' if Rails.env.development? %>
+
     <div class="main-contents d-flex flex-column mb-auto">
+      <% if Rails.env.development? %>
+      <%# if Rails.env.production? %>
+        <%= render 'shared/disp_file_path' %>
+        <%= render 'shared/disp_time' %>
+      <% end %>
       <%= yield %>
     </div>
   </div>

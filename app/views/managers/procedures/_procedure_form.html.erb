@@ -1,0 +1,15 @@
+
+<div id="procedure_form">
+  <%= render 'shared/error_messages', {resource: procedure} if procedure.errors.any? %>
+
+  <%= form_with(model: procedure, url: managers_procedures_path, remote: true) do |form| %>
+    <div class="form-group">
+      <%= form.text_area :cooking_detail, id: :cooking_detail, class: 'form-control', rows: "3" %>
+    </div>
+    <%= form.hidden_field :cuisine_id, value: procedure.cuisine_id %>
+
+    <div class="actions text-center">
+      <%= form.submit "手順を追加する", id: "submit_procedure", class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

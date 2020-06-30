@@ -6,7 +6,6 @@
       <th>料理レシピ名</th>
       <th>お手軽度</th>
       <th>調理時間(分)</th>
-      <th>摂取カロリー</th>
       <th>登録日</th>
       <th></th>
       <th></th>
@@ -26,13 +25,8 @@
         <td> 未登録 </td>
         <% end %>
         <td><%= cn.name %></td>
-        <td><%= cn.difficulty %></td>
+        <td><%= cn.difficulty_i18n %></td>
         <td><%= cn.cooking_time %></td>
-        <% if cn.calories.present? %>
-        <td><%= cn.calories %></td>
-        <% else %>
-        <td> - </td>
-        <% end %>
         <td><%= cn.created_at %></td>
         <td><%= link_to '詳細', managers_cuisine_path(cn.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
         <td><%= link_to '修正', edit_managers_cuisine_path(cn.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>

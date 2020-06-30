@@ -28,6 +28,8 @@ ja:
           cookedstate_id: 加工された状態の名前id
       ingredient:
         name: 部位名
+      procedure:
+        cooking_detail: 手順
       rawmaterial:
         name: 原材料名
         min_quantity: 最小数量
