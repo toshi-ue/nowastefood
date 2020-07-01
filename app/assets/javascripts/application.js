@@ -7,4 +7,4 @@
 //= require @fortawesome/fontawesome-free/js/all.js
 //= require_tree .
 
-// console.log("loaded application.js")
+console.log("loaded application.js")

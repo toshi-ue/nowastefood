@@ -2,11 +2,11 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
+    "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.5.0",
     "clipboard": "^2.0.6",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
-    "jquery-ujs": "^1.2.2",
     "popper.js": "^1.16.1",
     "rails-ujs": "^5.2.4-3"
   },
@@ -14,5 +14,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/toshi-ue/app_for_job_change.git",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
 }
