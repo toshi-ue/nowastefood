@@ -22,6 +22,7 @@ gem 'ranked-model'
 gem 'sassc-rails'
 gem 'seed-fu'
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker'
 
 group :development, :test do
   gem 'awesome_print'
