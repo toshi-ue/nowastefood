@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap'
 import 'clipboard/dist/clipboard.min'
 import '@fortawesome/fontawesome-free/js/all'
 
+window.$ = window.jQuery = require('jquery');
 
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
