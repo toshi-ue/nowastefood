@@ -1,3 +1,15 @@
+// import 'core-js/stable'
+// import 'regenerator-runtime/runtime'
+
+import 'jquery/dist/jquery'
+import 'rails-ujs/lib/assets/compiled/rails-ujs'
+import 'jquery-ui/ui/widget'
+import 'popper.js/dist/umd/popper.min'
+import 'bootstrap/dist/js/bootstrap'
+import 'clipboard/dist/clipboard.min'
+import '@fortawesome/fontawesome-free/js/all'
+
+
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -16,3 +28,5 @@
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
+
+import '../stylesheets/application'
