@@ -8,6 +8,7 @@ import 'popper.js/dist/umd/popper.min'
 import 'bootstrap/dist/js/bootstrap'
 import 'clipboard/dist/clipboard.min'
 import '@fortawesome/fontawesome-free/js/all'
+import 'jquery-ui/ui/widgets/sortable'
 
 window.$ = window.jQuery = require('jquery');
 

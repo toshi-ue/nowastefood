@@ -122,6 +122,7 @@ GEM
     ffi (1.13.1)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
+    foreman (0.87.1)
     formatador (0.2.5)
     gimei (0.5.0)
       romaji
@@ -395,6 +396,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   font-awesome-sass
+  foreman
   gimei
   guard-livereload (~> 2.5)
   jbuilder (~> 2.5)
