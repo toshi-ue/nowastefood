@@ -27,14 +27,64 @@
   </div>
 </div>
 
-<%# <h2>料理レシピの食材</h2> %>
 
-<%= render 'managers/cuisines/cuisine_foodstuffs', foodstuffs: @cuisine.foodstuffs %>
+<h1>レシピで使う食材</h1>
+<% if @foodstuffs.present? %>
+  <div class="my-2 border border-secondary">
+    <table class="table table-hover table-sm table-responsive">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>料理レシピ名<br />(cuisine_id)</th>
+          <th>数量</th>
+          <th>原材料</th>
+          <th>部位名</th>
+          <th>加工された<br />状態の名前</th>
+          <th>作成日</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'managers/cuisines/foodstuff', collection: @foodstuffs, as: "foodstuff" %>
+      </tbody>
+    </table>
+  </div>
+  <p><%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %></p>
+<% else %>
+  <p>登録はまだありません</p>
+  <%= link_to '追加する', new_managers_foodstuff_path, class: "btn btn-secondary", role: "button" %>
+<% end %>
+
 
 <%# <h2>料理の手順</h2> %>
-<%= render 'managers/cuisines/cuisine_procedures', {cuisine: @cuisine, procedures: @cuisine.procedures} %>
+<%# render partial: 'managers/cuisines/foodstuff', collection: @foodstuffs, as: "foodstuff" %>
+<h1>レシピの手順</h1>
 
-
+<% if @procedures.present? %>
+<div class="my-2 border border-secondary">
+  <table class="table table-hover table-sm table-responsive table-sortable-procedure">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>料理レシピ名<br />(cuisine_id)</th>
+        <th>料理手順の詳細</th>
+        <th>順番</th>
+        <th>作成日</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'managers/cuisines/procedure', collection: @procedures, as: "procedure" %>
+    </tbody>
+  </table>
+</div>
+<p><%= link_to '追加する', managers_procedures_path(id: @cuisine.id), class: "btn btn-secondary", role: "button" %></p>
+<% else %>
+  <p>登録はまだありません</p>
+  <%= link_to '追加する', managers_procedures_path(id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
+<% end %>
 
 
 <%= render 'managers/shared/all_crud_links' %>
