@@ -1,0 +1,12 @@
+<tr>
+  <td><%= foodstuff.id %></td>
+  <td><%= foodstuff.cuisine.name %></td>
+  <td><%= foodstuff.quantity %><%= foodstuff.unit.name %></td>
+  <td><%= foodstuff.rawmaterial.name %></td>
+  <td><%= disp_ingredient_name(foodstuff) %></td>
+
+  <td><%= disp_cookedstate_name(foodstuff) %></td>
+  <td><%= foodstuff.created_at %></td>
+  <td><%= link_to '修正', edit_managers_foodstuff_path(foodstuff.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+  <td><%= button_to '削除', managers_foodstuff_path(foodstuff.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+</tr>
