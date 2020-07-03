@@ -6,9 +6,7 @@
     <title>Webapp</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag    "#{controller.controller_path}", media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag "#{controller.controller_path}" %>
+    <%= javascript_pack_tag 'application' %>
   </head>
   <%# TODO: data属性が特定のページで反映されない
               managers/cuisines/show.html.erb,

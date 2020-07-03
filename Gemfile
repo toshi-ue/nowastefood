@@ -22,6 +22,7 @@ gem 'ranked-model'
 gem 'sassc-rails'
 gem 'seed-fu'
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker'
 
 group :development, :test do
   gem 'awesome_print'
@@ -37,6 +38,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'foreman'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'letter_opener_web'
   gem 'listen', '>= 3.0.5', '< 3.2'
