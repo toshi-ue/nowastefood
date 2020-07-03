@@ -33,6 +33,12 @@ class Managers::ProceduresController < ApplicationController
     @procedure = Procedure.new(cuisine_id: params[:id])
   end
 
+  def sort
+    @procedure = Procedure.find(params[:id])
+    @procedure.update(procedure_params)
+    head :ok
+  end
+
   private
 
   def set_procedure

@@ -10,7 +10,7 @@ Foodstuff.seed_once(
     rawmaterial_id: 5, # 原材料id
     ingredient_id: nil, # 部位id
     cookedstate_id: nil, # 加工された状態の名前id
-    row_order: 1
+    row_order: 0
   },
   {
     # 玉ねぎ
@@ -21,7 +21,7 @@ Foodstuff.seed_once(
     rawmaterial_id: 4, # 原材料id
     ingredient_id: nil, # 部位id
     cookedstate_id: nil, # 加工された状態の名前id
-    row_order: 2
+    row_order: 0
   },
   {
     # 鶏肉
@@ -32,7 +32,7 @@ Foodstuff.seed_once(
     rawmaterial_id: 3, # 原材料id
     ingredient_id: 3, # 部位id
     cookedstate_id: nil, # 加工された状態の名前id
-    row_order: 3
+    row_order: 0
   },
   {
     # めんつゆ
@@ -43,7 +43,7 @@ Foodstuff.seed_once(
     rawmaterial_id: 6, # 原材料id
     ingredient_id: nil, # 部位id
     cookedstate_id: nil, # 加工された状態の名前id
-    row_order: 4
+    row_order: 0
   },
   {
     # 水
@@ -54,6 +54,6 @@ Foodstuff.seed_once(
     rawmaterial_id: 8, # 原材料id
     ingredient_id: nil, # 部位id
     cookedstate_id: nil, # 加工された状態の名前id
-    row_order: 5
+    row_order: 0
   }
 )
