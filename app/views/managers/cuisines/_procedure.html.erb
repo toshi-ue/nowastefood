@@ -1,5 +1,4 @@
-<tr class="procedure" data-model_name: <%= procedure.class.name.underscore %>, data-update_url: <%= sort_managers_procedure_path(procedure.id) %> >
-  <%# binding.pry %>
+<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>", data-update_url="<%= sort_managers_procedure_path(procedure) %>">
   <td><%= procedure.id %></td>
   <td><%= procedure.cuisine.name %></td>
   <td><%= procedure.cooking_detail %></td>
