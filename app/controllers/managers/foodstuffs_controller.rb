@@ -4,7 +4,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   layout 'manager'
   def index
-    @foodstuffs = Foodstuff.includes(:cookedstate, :cuisine, :ingredient, :rawmaterial)
+    @foodstuffs = Foodstuff.includes(:cuisine, :rawmaterial, :unit)
   end
 
   def new
@@ -41,6 +41,12 @@ class Managers::FoodstuffsController < ApplicationController
     redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff} が復元されました" }
   end
 
+  def sort
+    @foodstuff = Foodstuff.find(params[:id])
+    @foodstuff.update(foodstuff_params)
+    head :ok
+  end
+
   private
 
   def set_foodstuff
@@ -48,6 +54,6 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def foodstuff_params
-    params.require(:foodstuff).permit(:id, :quantity, :measure_unit, :cuisine_id, :rawmaterial_id, :ingredient_id, :cookedstate_id, :discarded_at)
+    params.require(:foodstuff).permit(:id, :quantity, :unit_id, :cuisine_id, :rawmaterial_id, :row_order_position)
   end
 end

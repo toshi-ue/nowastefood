@@ -6,8 +6,6 @@
       <th>数量</th>
       <th>単位</th>
       <th>原材料</th>
-      <th>部位名</th>
-      <th>加工された<br />状態の名前</th>
       <th>作成日</th>
       <th></th>
       <th></th>
@@ -19,10 +17,8 @@
       <td><%= fs.id %></td>
       <td><%= fs.cuisine.name %></td>
       <td><%= fs.quantity %></td>
-      <td><%= fs.measure_unit %></td>
+      <td><%= fs.unit.name %></td>
       <td><%= fs.rawmaterial.name %></td>
-      <td><%= fs.ingredient.name %></td>
-      <td><%= fs.cookedstate.name %></td>
       <td><%= fs.created_at %></td>
       <td><%= link_to '修正', edit_managers_foodstuff_path(fs.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
       <td><%= button_to '削除', managers_foodstuff_path(fs.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>

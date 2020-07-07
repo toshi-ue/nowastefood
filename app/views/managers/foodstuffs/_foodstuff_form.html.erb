@@ -7,8 +7,8 @@
   </div>
   <%# measure_unit-単位 %>
   <div class="form-group">
-    <%= form.label :measure_unit %>
-    <%= form.text_field :measure_unit, id: :foodstuff_measure_unit, class: 'form-control' %>
+    <%= form.label :unit_id %>
+    <%= form.select(:unit_id, Unit.all.map{|u| [u.name, u.id]}, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
   </div>
   <%# cuisine_id-料理レシピid %>
   <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control' %>
@@ -16,14 +16,4 @@
   <div class="form-group">
     <%= form.label :rawmaterial_id %>
     <%= form.text_field :rawmaterial_id, id: :foodstuff_rawmaterial_id, class: 'form-control' %>
-  </div>
-  <%# ingredient_id-部位id %>
-  <div class="form-group">
-    <%= form.label :ingredient_id %>
-    <%= form.text_field :ingredient_id, id: :foodstuff_ingredient_id, class: 'form-control' %>
-  </div>
-  <%# cookedstate_id-加工された状態の名前id %>
-  <div class="form-group">
-    <%= form.label :cookedstate_id %>
-    <%= form.text_field :cookedstate_id, id: :foodstuff_cookedstate_id, class: 'form-control' %>
   </div>
