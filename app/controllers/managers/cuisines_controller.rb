@@ -1,6 +1,6 @@
 class Managers::CuisinesController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_cuisine, only: [:show, :update, :edit, :destroy]
+  before_action :set_cuisine, only: [:update, :edit, :destroy]
 
   layout 'manager'
   def index
@@ -8,16 +8,9 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def show
-    # UNKNOWN:
-    # cuisineのアソシエーション経由で全情報を取得した方が良いのか?
-    # 複数のインスタンスを作成してそれぞれ取得した方がよいのか?
-    #   e.g. @cuisine, @foodstuffs, @procedures など
-
-    # UNKNOWN: bulletで警告が発生する
-    # See 'Uniform Notifier' in JS Console for Stacktrace×
-    # user: root USE eager loading detected Foodstuff => [:rawmaterial] Add to your query: .includes([:rawmaterial])
-    # user: root USE eager loading detected Foodstuff => [:unit] Add to your query: .includes([:unit])
-    # user: root USE eager loading detected Foodstuff => [:ingredient] Add to your query: .includes([:ingredient])
+    @cuisine = Cuisine.find(params[:id])
+    @foodstuffs = Foodstuff.includes(:cuisine, :ingredient, :rawmaterial, :unit).where(cuisine_id: @cuisine.id)
+    @procedures = Procedure.includes(:cuisine).where(cuisine_id: @cuisine.id)
   end
 
   def new
