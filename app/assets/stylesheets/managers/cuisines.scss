@@ -1,3 +1,21 @@
-// Place all the styles related to the managers/cuisines controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@media (min-width: 576px) {
+  #show-managers-cuisines{
+    #table-sortable-procedure{
+      tr.procedure{
+        cursor: row-resize;
+      }
+    }
+  }
+}
+
+// more than desktop
+@media (min-width: 992px) {
+  #show-managers-cuisines{
+    #table-sortable-procedure{
+      tr.procedure{
+        cursor: row-resize;
+      }
+    }
+
+  }
+}

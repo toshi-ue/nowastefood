@@ -12,7 +12,7 @@
               managers/cuisines/show.html.erb,
               http://localhost:3000/managers/cuisines/2
   %>
-  <body data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
   <div class="container-fluid">
     <%# navbar %>
     <%= render 'managers/shared/manager_navbar' %>
