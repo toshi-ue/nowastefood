@@ -1,5 +1,15 @@
-@media (min-width: 576px) {
+@media (min-width: $sm) {
   #show-managers-cuisines{
+    .cuisine-overview{
+      display: flex;
+    }
+
+    #table-sortable-foodstuff{
+      tr.foodstuff{
+        cursor: row-resize;
+      }
+    }
+
     #table-sortable-procedure{
       tr.procedure{
         cursor: row-resize;
@@ -9,8 +19,21 @@
 }
 
 // more than desktop
-@media (min-width: 992px) {
+@media (min-width: $lg) {
   #show-managers-cuisines{
+    .title{
+
+    }
+    // .cuisine-overview{
+    //   display: flex;
+    // }
+
+    #table-sortable-foodstuff{
+      tr.foodstuff{
+        cursor: row-resize;
+      }
+    }
+
     #table-sortable-procedure{
       tr.procedure{
         cursor: row-resize;
