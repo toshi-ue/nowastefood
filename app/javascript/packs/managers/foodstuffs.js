@@ -33,8 +33,20 @@ $(function () {
         preInput = input;
       })
 
-      // //
-      // let rawmaterial_el = doc
+      // get clicked-element
+      $("#rawmaterial_5").on("click", function(){
+        console.log(this.id)
+        console.log(this)
+        $(this).attr("id")
+      })
+
+      $(".rawmaterial").on("click", function () {
+        // 下記の書き方でクリックしたエレメントのidが取れる
+        console.log(this.id)
+        console.log(this)
+        $(this).attr("id")
+        let rawmaterial_id = this.id
+      })
       break;
     default:
       console.log("not passed");
