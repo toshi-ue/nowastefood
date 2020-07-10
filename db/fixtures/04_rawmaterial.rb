@@ -1,28 +1,28 @@
 Rawmaterial.seed_once(
   :id,
-  { id: 1, name: "牛肉", min_quantity: 100, foodcategory_id: 1 },
-  { id: 2, name: "豚肉", min_quantity: 100, foodcategory_id: 1 },
+  { id: 1, name: "牛肉", hiragana: 'ぎゅうにく', min_quantity: 100, foodcategory_id: 1 },
+  { id: 2, name: "豚肉", hiragana: 'ぶたにく', min_quantity: 100, foodcategory_id: 1 },
   # 親子丼の食材
-  { id: 3, name: "鶏もも肉", min_quantity: 100, foodcategory_id: 1 },
-  { id: 4, name: "玉ねぎ", min_quantity: 1, foodcategory_id: 2 },
-  { id: 5, name: "卵", min_quantity: 1, foodcategory_id: 1 },
-  { id: 6, name: "めんつゆ", min_quantity: 5, foodcategory_id: 4 },
-  { id: 7, name: "ごはん", min_quantity: 0, foodcategory_id: 3 },
-  { id: 8, name: "水", min_quantity: 5, foodcategory_id: 5 },
+  { id: 3, name: "鶏もも肉", hiragana: "とりももにく", min_quantity: 100, foodcategory_id: 1 },
+  { id: 4, name: "玉ねぎ", hiragana: "たまねぎ", min_quantity: 1, foodcategory_id: 2 },
+  { id: 5, name: "卵", hiragana: "たまご", min_quantity: 1, foodcategory_id: 1 },
+  { id: 6, name: "めんつゆ", hiragana: "めんつゆ", min_quantity: 5, foodcategory_id: 4 },
+  { id: 7, name: "ごはん", hiragana: "ごはん", min_quantity: 0, foodcategory_id: 3 },
+  { id: 8, name: "水", hiragana: "みず", min_quantity: 5, foodcategory_id: 5 },
   # ゴーヤチャンプルー
-  { id: 9, name: "ゴーヤ", min_quantity: 1, foodcategory_id: 2 },
-  { id: 10, name: "木綿豆腐", min_quantity: 1, foodcategory_id: 2 },
-  { id: 11, name: "もやし", min_quantity: 1, foodcategory_id: 2 },
-  { id: 12, name: "ゴーヤチャンプルーのたれ", min_quantity: 100, foodcategory_id: 4 },
-  { id: 13, name: "塩", min_quantity: 10, foodcategory_id: 4 },
-  { id: 14, name: "豚バラ肉", min_quantity: 100, foodcategory_id: 1 },
-  { id: 15, name: "かつお節", min_quantity: 10, foodcategory_id: 4 },
-  { id: 16, name: "お湯", min_quantity: 5, foodcategory_id: 5 },
+  { id: 9, name: "ゴーヤ", hiragana: "ごーや", min_quantity: 1, foodcategory_id: 2 },
+  { id: 10, name: "木綿豆腐", hiragana: "もめんどうふ", min_quantity: 1, foodcategory_id: 2 },
+  { id: 11, name: "もやし", hiragana: "もやし", min_quantity: 1, foodcategory_id: 2 },
+  { id: 12, name: "ゴーヤチャンプルーのたれ", hiragana: "ごーやちゃんぷるーのたれ", min_quantity: 100, foodcategory_id: 4 },
+  { id: 13, name: "塩", hiragana: "しお", min_quantity: 10, foodcategory_id: 4 },
+  { id: 14, name: "豚バラ肉", hiragana: "ぶたばらにく", min_quantity: 100, foodcategory_id: 1 },
+  { id: 15, name: "かつお節", hiragana: "かつおぶし", min_quantity: 10, foodcategory_id: 4 },
+  { id: 16, name: "お湯", hiragana: "おゆ", min_quantity: 5, foodcategory_id: 5 },
   # タコ飯
-  { id: 17, name: "タコ", min_quantity: 1, foodcategory_id: 6 },
-  { id: 18, name: "生姜", min_quantity: 1, foodcategory_id: 4 },
-  { id: 19, name: "酒", min_quantity: 50, foodcategory_id: 4 },
-  { id: 20, name: "和風だし", min_quantity: 10, foodcategory_id: 4 }
+  { id: 17, name: "タコ", hiragana: "たこ", min_quantity: 1, foodcategory_id: 6 },
+  { id: 18, name: "生姜", hiragana: "しょうが", min_quantity: 1, foodcategory_id: 4 },
+  { id: 19, name: "酒", hiragana: "さけ", min_quantity: 50, foodcategory_id: 4 },
+  { id: 20, name: "和風だし", hiragana: "わふうだし", min_quantity: 10, foodcategory_id: 4 }
   # {id: , name: "", min_quantity: , foodcategory_id: },
 )
 # Foodcategory
