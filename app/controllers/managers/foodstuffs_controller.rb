@@ -47,6 +47,12 @@ class Managers::FoodstuffsController < ApplicationController
     head :ok
   end
 
+  def search_rawmaterial
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    # binding.pry
+    p @rawmaterials
+  end
+
   private
 
   def set_foodstuff

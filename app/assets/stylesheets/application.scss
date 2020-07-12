@@ -4,7 +4,8 @@
 @import "font-awesome";
 @import "jquery-ui/themes/base/sortable.css";
 @import "variables";
-
+@import "managers/cuisines";
+// managers/cuisines.scss
 
 h2{
   color: green;
@@ -135,7 +136,7 @@ $dropDown       : false;
   .content_wrapper{
     width: 980px;
     margin: 0 auto;
-    padding: 30px;
+    // padding: 30px;
   }
   .twitter-icon{
     color: #00B8FF;

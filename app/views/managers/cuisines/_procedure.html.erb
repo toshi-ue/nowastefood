@@ -1,9 +1,19 @@
 <tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>", data-update_url="<%= sort_managers_procedure_path(procedure) %>">
+  <% if Rails.env.production? %>
   <td><%= procedure.id %></td>
   <td><%= procedure.cuisine.name %></td>
-  <td><%= procedure.cooking_detail %></td>
   <td><%= procedure.row_order %></td>
   <td><%= procedure.created_at %></td>
-  <td><%= link_to '修正', edit_managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
-  <td><%= button_to '削除', managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
+  <% end %>
+  <td><%= procedure.cooking_detail %></td>
+  <td>
+    <%= link_to edit_managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", remote: true do %>
+      <i class="fas fa-pen"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= button_to managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  </td>
 </tr>

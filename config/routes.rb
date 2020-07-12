@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # 管理者側
   namespace :managers do
     resources :cookedstates, except: [:show] do
@@ -19,6 +18,9 @@ Rails.application.routes.draw do
     resources :foodstuffs, except: [:show] do
       member do
         put :sort
+      end
+      collection do
+        get 'search_rawmaterial'
       end
     end
 
@@ -41,7 +43,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   # ユーザー側
   # UNKNOWN: urlはusersを含めない、アプリ構成ではmanagersとusersをフォルダ分けしたい
   namespace :users do
@@ -61,8 +62,6 @@ Rails.application.routes.draw do
     passwords: 'managers/passwords',
     registrations: 'managers/registrations'
   }
-
-
 
   # for sign_in by Devise
   authenticated do

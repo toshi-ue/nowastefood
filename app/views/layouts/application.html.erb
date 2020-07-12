@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <body>
+  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
     <div class="container-fluid">
       <%# navbar %>
       <%= render 'shared/user_navbar' %>
