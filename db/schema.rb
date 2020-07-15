@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200712015220) do
+ActiveRecord::Schema.define(version: 20200715034101) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20200712015220) do
 
   create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "quantity", comment: "数量"
-    t.bigint "unit_id", comment: "単位id"
     t.bigint "cuisine_id", comment: "料理id"
     t.bigint "rawmaterial_id", comment: "原材料id"
     t.integer "row_order"
@@ -65,7 +64,6 @@ ActiveRecord::Schema.define(version: 20200712015220) do
     t.datetime "updated_at", null: false
     t.index ["cuisine_id"], name: "index_foodstuffs_on_cuisine_id"
     t.index ["rawmaterial_id"], name: "index_foodstuffs_on_rawmaterial_id"
-    t.index ["unit_id"], name: "index_foodstuffs_on_unit_id"
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -158,11 +156,13 @@ ActiveRecord::Schema.define(version: 20200712015220) do
     t.string "name", null: false, comment: "原材料名"
     t.string "hiragana"
     t.integer "min_quantity", null: false, comment: "原材料最小数量"
+    t.bigint "unit_id"
     t.bigint "foodcategory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["foodcategory_id"], name: "index_rawmaterials_on_foodcategory_id"
     t.index ["name"], name: "index_rawmaterials_on_name", unique: true
+    t.index ["unit_id"], name: "index_rawmaterials_on_unit_id"
   end
 
   create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -210,9 +210,9 @@ ActiveRecord::Schema.define(version: 20200712015220) do
   end
 
   add_foreign_key "cookedstates", "foodcategories"
-  add_foreign_key "foodstuffs", "units"
   add_foreign_key "nutrients", "rawmaterials"
   add_foreign_key "procedureimages", "cuisines"
+  add_foreign_key "rawmaterials", "units"
   add_foreign_key "stocks", "rawmaterials"
   add_foreign_key "stocks", "users"
 end

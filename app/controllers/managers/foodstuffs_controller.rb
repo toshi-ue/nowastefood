@@ -60,6 +60,6 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def foodstuff_params
-    params.require(:foodstuff).permit(:id, :quantity, :unit_id, :cuisine_id, :rawmaterial_id, :row_order_position)
+    params.require(:foodstuff).permit(:id, :quantity, :cuisine_id, :rawmaterial_id, :row_order_position)
   end
 end
