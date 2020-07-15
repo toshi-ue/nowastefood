@@ -1,27 +1,20 @@
-<%= render 'shared/error_messages', {resource: foodstuff} if foodstuff.errors.any? %>
-
-  <div class="search_rawmaterial">
-    <%= form_with(url: search_rawmaterial_managers_foodstuffs_path, method: :get, local: true) do |f| %>
-      <%= f.label :keyword %>
-      <%= f.text_field :keyword, id: :search_rawmaterial, class: 'form-control', placeholder:'追加したい食材を入力してください' %>
-    <% end %>
-  </div>
-  <div id="search_results">
+  <div id="search_results" class="col-10 offset-1">
   </div>
   <%# rawmaterial_id-原材料id %>
-  <div class="form-group">
+  <%# TODO: 実装できたらhidden_fieldに変更 %>
+  <div class="form-group col-10 offset-1">
     <%= form.label :rawmaterial_id %>
     <%= form.text_field :rawmaterial_id, id: :foodstuff_rawmaterial_id, class: 'form-control' %>
   </div>
   <%# quantity-数量 %>
-  <div class="form-group">
+  <div class="form-group col-10 offset-1">
     <%= form.label :quantity %>
-    <%= form.text_field :quantity, id: :foodstuff_quantity, class: 'form-control' %>
-  </div>
-  <%# measure_unit-単位 %>
-  <div class="form-group">
-    <%= form.label :unit_id %>
-    <%= form.select(:unit_id, Unit.all.map{|u| [u.name, u.id]}, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+    <div class="input-group">
+      <%= form.text_field :quantity, id: :foodstuff_quantity, class: 'form-control' %>
+      <div class="input-group-prepend">
+        <div class="input-group-text"></div>
+      </div>
+    </div>
   </div>
   <%# cuisine_id-料理レシピid %>
   <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control' %>
