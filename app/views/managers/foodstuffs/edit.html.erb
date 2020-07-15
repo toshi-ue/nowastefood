@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'managers/foodstuffs' %>
+<%= render 'search_form' %>
 <%= form_with(model: @foodstuff, url: managers_foodstuff_path, local: true, method: :patch) do |form| %>
   <%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
   <div>

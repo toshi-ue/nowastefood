@@ -5,7 +5,10 @@
     <% end %>
   </div>
 <% else %>
-  <div class="btn btn-primary">
-    登録がありません
+  <div class="text-center rawmaterial">
+    <p>登録がありません</p>
+    <p>
+      <%= link_to '原材料を追加する', new_managers_rawmaterial_path, class: "btn btn-primary" %>
+    </p>
   </div>
 <% end %>

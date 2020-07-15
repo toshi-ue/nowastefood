@@ -4,16 +4,28 @@ $(function () {
 
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
-  switch (action_name) {
-    case "index":
-      break;
-    case "show":
-      break;
-    case "new":
+  // switch (action_name) {
+  //   case "index":
+  //     break;
+  //   case "show":
+  //     break;
+  //   case "new":
       // initialize
       $('#choiced_rawmaterial').hide()
       $('#rawmaterial_name').hide()
       $("#btnResetRawmaterial").hide()
+
+      // check existence of cuisine_id
+  let initial_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()
+  console.log(initial_rawmaterial_id)
+
+  if(initial_rawmaterial_id){
+    $('#choiced_rawmaterial').show()
+    $('#rawmaterial_name').show()
+    $("#btnResetRawmaterial").show()
+    $(".search_rawmaterial").hide()
+    $("#search_rawmaterial").hide()
+  }
 
       // increamental search
       let preFunc = null;
@@ -46,10 +58,10 @@ $(function () {
         // console.log(this)
         // console.log(this.dataset.unitName)
         // rawmaterial_idを取得
-        let rawmaterial_id = parseInt((this.id).replace("rawmaterial_", ""))
+        let clicked_rawmaterial_id = parseInt((this.id).replace("rawmaterial_", ""))
         // rawmaterial_idを代入
         console.log(this.textContent)
-        $('#foodstuff_rawmaterial_id').val(rawmaterial_id)
+        $('#foodstuff_rawmaterial_id').val(clicked_rawmaterial_id)
         // 食材名をalert内に表示
         $('#rawmaterial_name').text(this.textContent)
         // alertを表示
@@ -78,14 +90,19 @@ $(function () {
         // 数量フォームの単位をクリア
         $('.input-group-text').text("")
         // 検索フォームを表示する
+        $('.search_rawmaterial').show()
         $('#search_rawmaterial').show()
         // 非表示する
         $('#choiced_rawmaterial').hide()
         $("#btnResetRawmaterial").hide()
+        console.log("11")
       })
-      break;
-    default:
-      console.log("not passed");
-      break;
-  }
+  //     break;
+  //   case "edit":
+  //     console.log(action_name + "2");
+  //     break;
+  //   default:
+  //     console.log("not passed");
+  //     break;
+  // }
 });
