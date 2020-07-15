@@ -9,6 +9,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   def new
     @foodstuff = Foodstuff.new
+    @foodstuff.cuisine_id = params[:cuisine_id]
   end
 
   def create
