@@ -9,7 +9,7 @@ RSpec.describe "Foodcategories", type: :request do
     # UNKNOWN: 管理者アカウントは作成しなくても良いか(seedデータで作成済)?
     manager = FactoryBot.create(:manager)
     sign_in manager
-    get authenticated_root_path
+    # get authenticated_root_path
   end
 
   describe "GET #index" do

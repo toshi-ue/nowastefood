@@ -65,11 +65,6 @@ Rails.application.routes.draw do
     registrations: 'managers/registrations'
   }
 
-  # for sign_in by Devise
-  authenticated do
-    root to: "secret#index", as: :authenticated_root
-  end
-
   get 'home/toppage'
   get 'home/index'
   root to: 'home#index'
