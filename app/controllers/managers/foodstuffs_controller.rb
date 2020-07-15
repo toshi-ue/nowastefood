@@ -4,7 +4,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   layout 'manager'
   def index
-    @foodstuffs = Foodstuff.includes(:cuisine, :rawmaterial, :unit)
+    @foodstuffs = Foodstuff.includes(:cuisine, :rawmaterial)
   end
 
   def new
@@ -18,6 +18,7 @@ class Managers::FoodstuffsController < ApplicationController
       redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff.quantity} が追加されました" }
     else
       render 'new'
+      @foodstuff.cuisine_id = params[:cuisine_id]
     end
   end
 
@@ -34,7 +35,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   def destroy
     @foodstuff.destroy
-    redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff.name} が削除されました" }
+    redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
   end
 
   def restore
