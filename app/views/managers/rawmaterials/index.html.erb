@@ -4,15 +4,11 @@
 <%= render 'shared/flash_messages' %>
 
 <% if @rawmaterials.present? %>
-<div class="my-2 border border-secondary">
-  <h3>登録済み</h3>
-  <%= render 'registered_list' %>
-</div>
+  <div class="my-2 border border-secondary">
+    <h3>登録済み</h3>
+    <%= render 'registered_list' %>
+  </div>
 
-<div class="my-2 border border-secondary">
-  <h3>削除済み</h3>
-  <%= render 'discarded_list' %>
-</div>
 <% else %>
   <p>まだ登録がありません</p>
   <%= link_to '追加する', new_managers_rawmaterial_path, class: "btn btn-secondary", role: "button" %>
