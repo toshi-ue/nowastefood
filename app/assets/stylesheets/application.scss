@@ -5,6 +5,7 @@
 @import "jquery-ui/themes/base/sortable.css";
 @import "variables";
 @import "managers/cuisines";
+@import "managers/foodstuffs";
 // managers/cuisines.scss
 
 h2{
@@ -126,6 +127,10 @@ $dropDown       : false;
 
 .container-fluid{
   padding: 0
+}
+
+.alert ol{
+  margin: 0;
 }
 
 // less than tablet

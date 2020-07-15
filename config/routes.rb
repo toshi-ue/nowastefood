@@ -47,7 +47,9 @@ Rails.application.routes.draw do
   # UNKNOWN: urlはusersを含めない、アプリ構成ではmanagersとusersをフォルダ分けしたい
   namespace :users do
     resources :cuisines, only: [:show]
+    resources :stocks
   end
+
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 

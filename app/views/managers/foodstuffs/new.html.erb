@@ -1,5 +1,9 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
-<%= render "shared/flash_messages" %>
+<div class="col-10 offset-1">
+<%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+</div>
+
+<%= render 'search_form' %>
 
 <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, local: true) do |form| %>
   <%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>

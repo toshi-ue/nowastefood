@@ -9,7 +9,7 @@ class Managers::CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
-    @foodstuffs = Foodstuff.includes(:cuisine, :rawmaterial, :unit).where(cuisine_id: @cuisine.id).rank(:row_order)
+    @foodstuffs = Foodstuff.includes(:cuisine, :rawmaterial).where(cuisine_id: @cuisine.id).rank(:row_order)
     @procedures = Procedure.includes(:cuisine).where(cuisine_id: @cuisine.id).rank(:row_order)
   end
 

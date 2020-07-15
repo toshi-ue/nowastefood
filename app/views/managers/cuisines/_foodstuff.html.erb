@@ -5,7 +5,7 @@
   <td><%= foodstuff.row_order %></td>
   <% end %>
   <td><%= foodstuff.rawmaterial.name %></td>
-  <td><%= foodstuff.quantity %><%= foodstuff.unit.name %></td>
+  <td><%= foodstuff.quantity %><%= foodstuff.rawmaterial.unit.name %></td>
   <td>
     <%= link_to edit_managers_foodstuff_path(foodstuff.id),  class: "page-link text-dark d-inline-block", role: "button", remote: true do %>
       <i class="fas fa-pen"></i>

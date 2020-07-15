@@ -4,19 +4,21 @@ class Managers::FoodstuffsController < ApplicationController
 
   layout 'manager'
   def index
-    @foodstuffs = Foodstuff.includes(:cuisine, :rawmaterial, :unit)
+    @foodstuffs = Foodstuff.includes({ rawmaterial: :unit })
   end
 
   def new
     @foodstuff = Foodstuff.new
+    @foodstuff.cuisine_id = params[:cuisine_id]
   end
 
   def create
     @foodstuff = Foodstuff.new(foodstuff_params)
     if @foodstuff.save
-      redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff.quantity} が追加されました" }
+      redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
     else
       render 'new'
+      # @foodstuff.cuisine_id = params[:cuisine_id]
     end
   end
 
@@ -24,7 +26,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   def update
     if @foodstuff.update(foodstuff_params)
-      redirect_to managers_foodstuffs_path, flash: { notice: "変更されました" }
+      redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "変更されました" }
     else
       # flash.now[:alert] = "aaa"
       render 'edit'
@@ -33,7 +35,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   def destroy
     @foodstuff.destroy
-    redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff.name} が削除されました" }
+    redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
   end
 
   def restore
@@ -60,6 +62,6 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def foodstuff_params
-    params.require(:foodstuff).permit(:id, :quantity, :unit_id, :cuisine_id, :rawmaterial_id, :row_order_position)
+    params.require(:foodstuff).permit(:id, :quantity, :cuisine_id, :rawmaterial_id, :row_order_position)
   end
 end
