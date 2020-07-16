@@ -1,175 +1,23 @@
-  <%# 原材料名 %>
-  <div class="form-group">
-    <%= form.label :name, class:'control-label' %>
-    <%= form.text_field :name, id: :rawmaterial_name, autofocus: true, class: 'form_control' %>
-  </div>
+<%# 食材ジャンル %>
+<div class="form-group">
+  <%= form.label :foodcategory_id, class:'control-label' %>
+  <%= form.collection_select(:foodcategory_id, Foodcategory.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+</div>
 
-  <%# 原材料名 %>
-  <div class="form-group">
-    <%= form.label :foodcategory_id, class:'control-label' %>
-    <%= form.collection_select(:foodcategory_id, Foodcategory.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
-  </div>
+<%# 原材料名 %>
+<div class="form-group">
+  <%= form.label :name, class:'control-label' %>
+  <%= form.text_field :name, id: :rawmaterial_name, autofocus: true, class: 'form_control' %>
+</div>
 
-  <%# 最小数量 %>
-  <div class="form-group">
-    <%= form.label :min_quantity, class:'control-label' %>
-    <%= form.text_field :min_quantity, id: :rawmaterial_min_quantity, autofocus: true, class: 'form_control' %>
-  </div>
+<%# 原材料名(ひらがな) %>
+<div class="form-group">
+  <%= form.label :hiragana, class:'control-label' %>
+  <%= form.text_field :hiragana, id: :rawmaterial_hiragana, autofocus: true, class: 'form_control' %>
+</div>
 
-  <%= form.fields_for :nutrient do |d| %>
-  <%# 脂質 %>
-  <div class="form-group">
-    <%= d.label :lipid, class:'control-label' %>
-    <%= d.text_field :lipid, class: 'form_control' %>
-  </div>
-
-  <%# 炭水化物 %>
-  <div class="form-group">
-    <%= d.label :carbonhydrate, class:'control-label' %>
-    <%= d.text_field :carbonhydrate, class: 'form_control' %>
-  </div>
-
-  <%# タンパク質 %>
-  <div class="form-group">
-    <%= d.label :protein, class:'control-label' %>
-    <%= d.text_field :protein, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンA %>
-  <div class="form-group">
-    <%= d.label :vit_a, class:'control-label' %>
-    <%= d.text_field :vit_a, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンD %>
-  <div class="form-group">
-    <%= d.label :vit_d , class:'control-label' %>
-    <%= d.text_field :vit_d, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンD %>
-  <div class="form-group">
-    <%= d.label :vit_d , class:'control-label' %>
-    <%= d.text_field :vit_d, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンE %>
-  <div class="form-group">
-    <%= d.label :vit_e, class:'control-label' %>
-    <%= d.text_field :vit_e, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンK %>
-  <div class="form-group">
-    <%= d.label :vit_k , class:'control-label' %>
-    <%= d.text_field :vit_k, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンB1 %>
-  <div class="form-group">
-    <%= d.label :vit_b1 , class:'control-label' %>
-    <%= d.text_field :vit_b1, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンB2 %>
-  <div class="form-group">
-    <%= d.label :vit_b2, class:'control-label' %>
-    <%= d.text_field :vit_b2, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンB6 %>
-  <div class="form-group">
-    <%= d.label :vit_b6 , class:'control-label' %>
-    <%= d.text_field :vit_b6, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンB12 %>
-  <div class="form-group">
-    <%= d.label :vit_b12 , class:'control-label' %>
-    <%= d.text_field :vit_b12, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンC %>
-  <div class="form-group">
-    <%= d.label :vit_c , class:'control-label' %>
-    <%= d.text_field :vit_c, class: 'form_control' %>
-  </div>
-
-  <%# カリウム %>
-  <div class="form-group">
-    <%= d.label :potassium , class:'control-label' %>
-    <%= d.text_field :potassium, class: 'form_control' %>
-  </div>
-
-  <%# カルシウム %>
-  <div class="form-group">
-    <%= d.label :calcium, class:'control-label' %>
-    <%= d.text_field :calcium, class: 'form_control' %>
-  </div>
-
-  <%# マグネシウム %>
-  <div class="form-group">
-    <%= d.label :magnesium , class:'control-label' %>
-    <%= d.text_field :magnesium, class: 'form_control' %>
-  </div>
-
-  <%# リン %>
-  <div class="form-group">
-    <%= d.label :phosphorus , class:'control-label' %>
-    <%= d.text_field :phosphorus, class: 'form_control' %>
-  </div>
-
-  <%# 鉄 %>
-  <div class="form-group">
-    <%= d.label :iron , class:'control-label' %>
-    <%= d.text_field :iron, class: 'form_control' %>
-  </div>
-
-  <%# 亜鉛 %>
-  <div class="form-group">
-    <%= d.label :zinc , class:'control-label' %>
-    <%= d.text_field :zinc, class: 'form_control' %>
-  </div>
-
-  <%# ビタミンC %>
-  <div class="form-group">
-    <%= d.label :vit_c , class:'control-label' %>
-    <%= d.text_field :vit_c, class: 'form_control' %>
-  </div>
-
-  <%# 銅 %>
-  <div class="form-group">
-    <%= d.label :copper , class:'control-label' %>
-    <%= d.text_field :copper, class: 'form_control' %>
-  </div>
-
-  <%# マンガン %>
-  <div class="form-group">
-    <%= d.label :manganese, class:'control-label' %>
-    <%= d.text_field :manganese, class: 'form_control' %>
-  </div>
-
-  <%# βカロテン %>
-  <div class="form-group">
-    <%= d.label :beta_carotene , class:'control-label' %>
-    <%= d.text_field :beta_carotene, class: 'form_control' %>
-  </div>
-
-  <%# ナイアシン %>
-  <div class="form-group">
-    <%= d.label :niacin , class:'control-label' %>
-    <%= d.text_field :niacin, class: 'form_control' %>
-  </div>
-
-  <%# 葉酸 %>
-  <div class="form-group">
-    <%= d.label :folic_acid , class:'control-label' %>
-    <%= d.text_field :folic_acid, class: 'form_control' %>
-  </div>
-
-  <%# パントテン酸 %>
-  <div class="form-group">
-    <%= d.label :pantothenic_acid , class:'control-label' %>
-    <%= d.text_field :pantothenic_acid, class: 'form_control' %>
-  </div>
-  <% end %>
+<%# 単位id %>
+<div class="form-group">
+  <%= form.label :unit_id, class:'control-label' %>
+  <%= form.collection_select(:unit_id, Unit.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+</div>
