@@ -10,5 +10,7 @@
 <%= render 'managers/shared/all_crud_links' %>
 <%= render 'managers/shared/manager_log_out' %>
 
-
-<%= render 'users/shared/user_log_out' %>
+<% if user_signed_in? %>
+  <%= render 'users/shared/all_crud_links' %>
+  <%= render 'users/shared/user_log_out' %>
+<% end %>
