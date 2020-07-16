@@ -9,18 +9,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @rawmaterials.each do |fc| %>
+    <% @rawmaterials.each do |rm| %>
       <tr>
-        <td><%= fc.id %></td>
-        <td><%= fc.name %></td>
-        <td><%= fc.foodcategory.name %></td>
+        <td><%= rm.id %></td>
+        <td><%= rm.name %></td>
+        <td><%= rm.foodcategory.name %></td>
         <td>
-          <%= link_to edit_managers_rawmaterial_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", remote: true do %>
+          <%= link_to edit_managers_rawmaterial_path(rm.id),  class: "page-link text-dark d-inline-block", role: "button", remote: true do %>
               <i class="fas fa-pen"></i>
             <% end %>
         </td>
         <td>
-          <%= button_to managers_rawmaterial_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
+          <%= button_to managers_rawmaterial_path(rm.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </td>
