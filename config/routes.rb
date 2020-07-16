@@ -61,6 +61,9 @@ Rails.application.routes.draw do
     registrations: 'managers/registrations'
   }
 
+  # authenticated do
+  #   root to: "secret#index", as: :authenticated_root
+  # end
   get 'home/toppage'
   get 'home/index'
   root to: 'home#index'

@@ -19,7 +19,6 @@ RSpec.describe "Foodcategories", type: :request do
     it "テンプレートの取得、インスタンスの取得ができること" do
       create(:foodcategory, name: "bbb")
       get managers_foodcategories_path
-      # UNKNOWN: テンプレートの取得、インスタンスの取得ができることは業務でも同じような書き方か?
       expect(response.body).to include "aaa"
       expect(response.body).to include "bbb"
     end
@@ -92,8 +91,6 @@ RSpec.describe "Foodcategories", type: :request do
   describe "PATCH #update" do
     context "パラメーターが妥当な場合" do
       it "リクエストが成功すること" do
-        # UNKNOWN: なぜ管理者としてログインしていないのにテストをパスするのか?
-        # line9〜11が記述されていなくてもテストをパスする
         patch managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory) }
         expect(response.status).to eq 302
       end
@@ -117,11 +114,11 @@ RSpec.describe "Foodcategories", type: :request do
       expect(response.status).to eq 302
     end
 
-    # it "既存レコードが削除されること" do
-    #   expect do
-    #     delete managers_foodcategory_path @foodcategory1
-    #   end.to change(Foodcategory, :count).by(-1)
-    # end
+    it "既存レコードが削除されること" do
+      expect do
+        delete managers_foodcategory_path @foodcategory1
+      end.to change(Foodcategory, :count).by(-1)
+    end
 
     it "(妥当なページへ)リダイレクトすること" do
       delete managers_foodcategory_path @foodcategory1
