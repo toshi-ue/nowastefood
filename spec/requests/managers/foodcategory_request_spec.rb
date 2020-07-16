@@ -4,9 +4,7 @@ RSpec.describe "Foodcategories", type: :request do
   before do
     # foodcategoryのインスタンスを登録
     @foodcategory1 = create(:foodcategory, name: "aaa")
-
     # 管理者を作成し、ログイン
-    # UNKNOWN: 管理者アカウントは作成しなくても良いか(seedデータで作成済)?
     manager = FactoryBot.create(:manager)
     sign_in manager
     # get authenticated_root_path
@@ -89,15 +87,6 @@ RSpec.describe "Foodcategories", type: :request do
         expect(response.body).to include "aaa"
       end
     end
-
-    # UNKNOWN: インスタンスが存在しない場合のテストはどのように書けば良いのか?
-    # context "インスタンスが存在しない場合" do
-    #   it "エラーを返す(ActiveRecord::RecordNotFound)" do
-    #     expect do
-    #       get edit_managers_foodcategory_path 300
-    #     end.to raise_error(ActiveRecord::RecordNotFound)
-    #   end
-    # end
   end
 
   describe "PATCH #update" do
@@ -120,24 +109,6 @@ RSpec.describe "Foodcategories", type: :request do
         expect(response).to redirect_to managers_foodcategories_path
       end
     end
-
-    # UNKNOW: updateアクションの異常系のテストは必要ないのか?
-    # context "パラメーターが不正な場合" do
-    #   it "リクエストが成功すること" do
-    #     patch managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory) }
-    #     expect(response.status).to eq 302
-    #   end
-
-    # it "既存レコードが更新されないこと" do
-    #   manager = FactoryBot.create(:manager)
-    #   sign_in manager
-    #   get authenticated_root_path
-    #   expect do
-    #     put managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory, name: nil) }
-    #   end.to_not change { Foodcategory.find(@foodcategory1.id).reload.name }.from("aaa").to(nil)
-    # end
-    # it "エラーを返す、表示されること(ActiveRecord::RecordNotFound)"
-    # end
   end
 
   describe "DELETE #destroy" do

@@ -9,11 +9,7 @@ Rails.application.routes.draw do
 
     resources :cuisines
 
-    resources :foodcategories, except: [:show] do
-      member do
-        get 'restore'
-      end
-    end
+    resources :foodcategories, except: [:show]
 
     resources :foodstuffs, except: [:show] do
       member do
