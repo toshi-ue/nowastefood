@@ -51,7 +51,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
   # request_specを使用する場合
-  config.include RequestSpecHelper, type: :request
+  # config.include RequestSpecHelper, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # system_specを使用する場合
   config.include Devise::Test::IntegrationHelpers, type: :system
 
