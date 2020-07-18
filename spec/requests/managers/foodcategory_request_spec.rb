@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Foodcategories", type: :request do
-  # before do
-  #   # foodcategoryのインスタンスを登録
-  #   @foodcategory1 = create(:foodcategory)
-  #   # 管理者を作成し、ログイン
-  #   manager = FactoryBot.create(:manager)
-  #   sign_in manager
-  #   get authenticated_root_path
-  #   # get root_path
-  # end
+  before do
+    # foodcategoryのインスタンスを登録
+    @foodcategory1 = create(:foodcategory, name: "aaa")
+    # 管理者を作成し、ログイン
+    manager = FactoryBot.create(:manager)
+    sign_in manager
+    get root_path
+  end
 
   describe "GET #index" do
     it "リクエストが成功すること" do
@@ -82,7 +81,7 @@ RSpec.describe "Foodcategories", type: :request do
         expect(response.status).to eq 200
       end
 
-      it "editテンプレートで表示されること(インスタンスのカラムが実際に表示されていること)" do
+      it "editテンプレートで表示されること" do
         get edit_managers_foodcategory_path @foodcategory1
         expect(response.body).to include "aaa"
       end
@@ -92,12 +91,7 @@ RSpec.describe "Foodcategories", type: :request do
   describe "PATCH #update" do
     context "パラメーターが妥当な場合" do
       it "リクエストが成功すること" do
-        @foodcategory1 = create(:foodcategory)
-        manager = FactoryBot.create(:manager)
-        sign_in manager
-        # get authenticated_root_path
-        get root_path
-        patch managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory, name: "faoihfa") }
+        patch managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory) }
         expect(response.status).to eq 302
       end
 
