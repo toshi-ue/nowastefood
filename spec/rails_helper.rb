@@ -1,10 +1,11 @@
 require 'spec_helper'
-ENV['RAILS_ENV'] ||= 'test'
+ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'simplecov'
 require 'capybara/rspec'
+require 'database_cleaner'
 require 'selenium-webdriver'
 require 'factory_bot'
 require 'shoulda-matchers'
@@ -50,7 +51,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
   # request_specを使用する場合
-  config.include RequestSpecHelper, type: :request
+  # config.include RequestSpecHelper, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # system_specを使用する場合
   config.include Devise::Test::IntegrationHelpers, type: :system
 

@@ -1,6 +1,6 @@
 class Managers::FoodcategoriesController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_foodcategory, only: [:update, :edit, :destroy, :restore]
+  before_action :set_foodcategory, only: [:update, :edit, :destroy]
 
   layout 'manager'
   def index
@@ -32,13 +32,8 @@ class Managers::FoodcategoriesController < ApplicationController
   end
 
   def destroy
-    @foodcategory.discard
+    @foodcategory.destroy
     redirect_to managers_foodcategories_path, flash: { notice: "#{@foodcategory.name} が削除されました" }
-  end
-
-  def restore
-    @foodcategory.undiscard
-    redirect_to managers_foodcategories_path, flash: { notice: "#{@foodcategory.name} が復元されました" }
   end
 
   private
@@ -48,6 +43,6 @@ class Managers::FoodcategoriesController < ApplicationController
   end
 
   def foodcategory_params
-    params.require(:foodcategory).permit(:name, :discarded_at)
+    params.require(:foodcategory).permit(:name)
   end
 end

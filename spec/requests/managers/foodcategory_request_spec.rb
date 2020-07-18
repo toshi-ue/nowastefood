@@ -4,12 +4,10 @@ RSpec.describe "Foodcategories", type: :request do
   before do
     # foodcategoryのインスタンスを登録
     @foodcategory1 = create(:foodcategory, name: "aaa")
-
     # 管理者を作成し、ログイン
-    # UNKNOWN: 管理者アカウントは作成しなくても良いか(seedデータで作成済)?
     manager = FactoryBot.create(:manager)
     sign_in manager
-    # get authenticated_root_path
+    get root_path
   end
 
   describe "GET #index" do
@@ -21,7 +19,6 @@ RSpec.describe "Foodcategories", type: :request do
     it "テンプレートの取得、インスタンスの取得ができること" do
       create(:foodcategory, name: "bbb")
       get managers_foodcategories_path
-      # UNKNOWN: テンプレートの取得、インスタンスの取得ができることは業務でも同じような書き方か?
       expect(response.body).to include "aaa"
       expect(response.body).to include "bbb"
     end
@@ -84,27 +81,16 @@ RSpec.describe "Foodcategories", type: :request do
         expect(response.status).to eq 200
       end
 
-      it "editテンプレートで表示されること(インスタンスのカラムが実際に表示されていること)" do
+      it "editテンプレートで表示されること" do
         get edit_managers_foodcategory_path @foodcategory1
         expect(response.body).to include "aaa"
       end
     end
-
-    # UNKNOWN: インスタンスが存在しない場合のテストはどのように書けば良いのか?
-    # context "インスタンスが存在しない場合" do
-    #   it "エラーを返す(ActiveRecord::RecordNotFound)" do
-    #     expect do
-    #       get edit_managers_foodcategory_path 300
-    #     end.to raise_error(ActiveRecord::RecordNotFound)
-    #   end
-    # end
   end
 
   describe "PATCH #update" do
     context "パラメーターが妥当な場合" do
       it "リクエストが成功すること" do
-        # UNKNOWN: なぜ管理者としてログインしていないのにテストをパスするのか?
-        # line9〜11が記述されていなくてもテストをパスする
         patch managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory) }
         expect(response.status).to eq 302
       end
@@ -120,24 +106,6 @@ RSpec.describe "Foodcategories", type: :request do
         expect(response).to redirect_to managers_foodcategories_path
       end
     end
-
-    # UNKNOW: updateアクションの異常系のテストは必要ないのか?
-    # context "パラメーターが不正な場合" do
-    #   it "リクエストが成功すること" do
-    #     patch managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory) }
-    #     expect(response.status).to eq 302
-    #   end
-
-    # it "既存レコードが更新されないこと" do
-    #   manager = FactoryBot.create(:manager)
-    #   sign_in manager
-    #   get authenticated_root_path
-    #   expect do
-    #     put managers_foodcategory_path @foodcategory1, params: { foodcategory: FactoryBot.attributes_for(:foodcategory, name: nil) }
-    #   end.to_not change { Foodcategory.find(@foodcategory1.id).reload.name }.from("aaa").to(nil)
-    # end
-    # it "エラーを返す、表示されること(ActiveRecord::RecordNotFound)"
-    # end
   end
 
   describe "DELETE #destroy" do
@@ -146,11 +114,11 @@ RSpec.describe "Foodcategories", type: :request do
       expect(response.status).to eq 302
     end
 
-    # it "既存レコードが削除されること" do
-    #   expect do
-    #     delete managers_foodcategory_path @foodcategory1
-    #   end.to change(Foodcategory, :count).by(-1)
-    # end
+    it "既存レコードが削除されること" do
+      expect do
+        delete managers_foodcategory_path @foodcategory1
+      end.to change(Foodcategory, :count).by(-1)
+    end
 
     it "(妥当なページへ)リダイレクトすること" do
       delete managers_foodcategory_path @foodcategory1

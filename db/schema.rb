@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200715034101) do
+ActiveRecord::Schema.define(version: 20200716211702) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(version: 20200715034101) do
     t.string "name", null: false, comment: "食材区分名(肉、野菜、魚、炭水化物など)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "discarded_at"
-    t.index ["discarded_at"], name: "index_foodcategories_on_discarded_at"
     t.index ["name"], name: "index_foodcategories_on_name", unique: true
   end
 

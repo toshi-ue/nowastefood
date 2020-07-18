@@ -10,7 +10,6 @@
   </thead>
   <tbody>
     <% @foodcategories.each do |fc| %>
-      <% if fc.undiscarded? %>
       <tr>
         <td><%= fc.id %></td>
         <td><%= fc.name %></td>
@@ -18,7 +17,6 @@
         <td><%= link_to '修正', edit_managers_foodcategory_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
         <td><%= button_to '削除', managers_foodcategory_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %></td>
       </tr>
-      <% end %>
     <% end %>
   </tbody>
 </table>

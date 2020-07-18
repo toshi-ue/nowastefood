@@ -9,11 +9,7 @@ Rails.application.routes.draw do
 
     resources :cuisines
 
-    resources :foodcategories, except: [:show] do
-      member do
-        get 'restore'
-      end
-    end
+    resources :foodcategories, except: [:show]
 
     resources :foodstuffs, except: [:show] do
       member do
@@ -65,6 +61,9 @@ Rails.application.routes.draw do
     registrations: 'managers/registrations'
   }
 
+  # authenticated do
+  #   root to: "secret#index", as: :authenticated_root
+  # end
   get 'home/toppage'
   get 'home/index'
   root to: 'home#index'

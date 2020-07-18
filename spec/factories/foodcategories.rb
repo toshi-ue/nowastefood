@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :foodcategory do
-    sequence(:name) { |n| "料理区分#{n}" }
+    sequence(:name) { |n| "食材区分#{n}" }
   end
 end

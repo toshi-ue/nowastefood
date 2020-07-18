@@ -1,39 +1,13 @@
-<h1>Users::Stocks#index</h1>
-<p>Find me in app/views/users/stocks/index.html.erb</p>
-
-<p>show, create, update.html.erbは不要?</p>
-<p>edit destroy</p>
-
-
-
-
-
-
-<h1>Stocks</h1>
-
-<%= link_to 'New Stock', new_stock_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>quantity</th>
-      <th>rawmaterial_id</th>
-      <th>user_id</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.quantity %></td>
-        <td><%= stock.rawmaterial_id %></td>
-        <td><%= stock.user_id %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="content_wrapper">
+  <p>show, create, update.html.erbは不要?</p>
+  <p>edit destroy</p>
+  <h1>Stocks</h1>
+  <%= link_to 'New Stock', new_users_stock_path %>
+  <% if @stocks.present? %>
+    <%= render 'stock_list' %>
+  <% else %>
+    <p class="text-center">
+      まだ登録がありません
+    </p>
+  <% end %>
+</div>

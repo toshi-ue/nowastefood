@@ -4,15 +4,10 @@
 <%= render 'shared/flash_messages' %>
 
 <% if @foodcategories.present? %>
-<div class="my-2 border border-secondary">
-  <h3>登録済み</h3>
-  <%= render 'registered_list' %>
-</div>
-
-<div class="my-2 border border-secondary">
-  <h3>削除済み</h3>
-  <%= render 'discarded_list' %>
-</div>
+  <div class="my-2 border border-secondary">
+    <h3>登録済み</h3>
+    <%= render 'registered_list' %>
+  </div>
 <% else %>
   <p>現在登録がありません</p>
   <%= link_to '追加する', new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" %>
