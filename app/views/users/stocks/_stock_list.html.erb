@@ -14,9 +14,11 @@
         <td class="align-middle"><%= st.quantity %><%= st.rawmaterial.unit.name %></td>
         <td class="align-middle"><%= st.rawmaterial.foodcategory.name %></td>
         <td class="align-middle">
-          <%= link_to edit_users_stock_path(st.id),  class: "page-link text-dark", role: "button", remote: true do %>
-            <i class="fas fa-pen"></i>
-          <% end %>
+          <div class="d-inline">
+            <%= link_to edit_users_stock_path(st.id),  class: "page-link text-dark", role: "button", remote: true do %>
+              <i class="fas fa-pen"></i>
+            <% end %>
+          </div>
           <div class="d-inline">
             <%= button_to users_stock_path(st.id),  class: "page-link text-dark", role: "button", method: :delete do %>
               <i class="far fa-trash-alt"></i>
