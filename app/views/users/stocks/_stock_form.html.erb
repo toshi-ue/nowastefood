@@ -1,0 +1,19 @@
+
+<%# rawmaterial_id-原材料id %>
+<%# TODO: 実装できたらhidden_fieldに変更 %>
+<div class="form-group col-10 offset-1">
+  <%= form.label :rawmaterial_id %>
+  <%= form.text_field :rawmaterial_id, id: :stock_rawmaterial_id, class: 'form-control' %>
+</div>
+<%# quantity-数量 %>
+<div class="form-group col-10 offset-1">
+  <%= form.label :quantity %>
+  <div class="input-group">
+    <%= form.text_field :quantity, id: :foodstuff_quantity, class: 'form-control' %>
+    <div class="input-group-prepend">
+      <div class="input-group-text"></div>
+    </div>
+  </div>
+</div>
+<%# user_id-ユーザーid %>
+<%= form.hidden_field :user_id, value: current_user.id %>

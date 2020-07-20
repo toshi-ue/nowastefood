@@ -1,8 +1,8 @@
 class Users::StocksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_stock, only: [:show, :update, :edit, :destroy]
+  before_action :set_stock, only: [:update, :edit, :destroy]
   def index
-    @stocks = Stock.all.where(user_id: prams[:id])
+    @stocks = Stock.includes(:rawmaterial, { rawmaterial: [:foodcategory, :unit] }).where(user_id: current_user.id)
   end
 
   # def show; end
@@ -14,6 +14,9 @@ class Users::StocksController < ApplicationController
   def create
     @stock = Stock.new(stock_params)
     if @stock.save
+      redirect_to users_stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加されました" }
+    else
+      render 'new'
     end
   end
 
@@ -26,6 +29,11 @@ class Users::StocksController < ApplicationController
 
   def destroy
     @stock.destroy
+    redirect_to users_stocks_path, flash: { notice: "#{@stock.rawmaterial.name}を削除しました" }
+  end
+
+  def search_rawmaterial
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
   end
 
   private

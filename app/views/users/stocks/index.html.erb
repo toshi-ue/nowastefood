@@ -1,10 +1,12 @@
 <div class="content_wrapper">
-  <p>show, create, update.html.erbは不要?</p>
-  <p>edit destroy</p>
-  <h1>Stocks</h1>
+  <%= render 'shared/flash_messages' %>
+
+  <h1>家にある食材</h1>
   <%= link_to 'New Stock', new_users_stock_path %>
   <% if @stocks.present? %>
-    <%= render 'stock_list' %>
+    <div class="mx-2">
+      <%= render 'stock_list' %>
+    </div>
   <% else %>
     <p class="text-center">
       まだ登録がありません
