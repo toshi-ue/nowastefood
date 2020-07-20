@@ -1,8 +1,16 @@
 <div class="content_wrapper">
   <%= render 'shared/flash_messages' %>
+  <div id="heading" class="row my-2 mx-2">
+    <div class="col-12 col-lg-6">
+      <h1 class="text-center text-lg-left">家にある食材</h1>
+    </div>
+    <div id="newStockBtn" class="col-12 col-lg-6">
+      <div class="text-center text-lg-right">
+        <%= link_to '食材を追加する', new_users_stock_path, class: 'btn btn-secondary ' %>
+      </div>
 
-  <h1>家にある食材</h1>
-  <%= link_to 'New Stock', new_users_stock_path %>
+    </div>
+  </div>
   <% if @stocks.present? %>
     <div class="mx-2">
       <%= render 'stock_list' %>

@@ -12,23 +12,25 @@
   .content_wrapper{
     // padding: 0 1rem;
     // padding: 30px;
+    #newStockBtn{
+      margin: 0 auto;
+    }
   }
 }
 
 // more than desktop
 @media (min-width: $lg) {
   .content_wrapper{
-    width: 980px;
-    margin: 0 auto;
-    // padding: 30px;
-  }
-  .twitter-icon{
-    color: #00B8FF;
-  }
-  .star-icon{
-    color: #d0d4d8;
-  }
-  .copy-url-icon{
-    color: #d0d4d8;
+    #heading{
+      #newStockBtn{
+        position: relative;
+
+        div{
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
   }
 }
