@@ -74,6 +74,7 @@ $(function () {
     $('.input-group-text').text(this.dataset.unitName)
     // 検索フォームを非表示にする
     $("#search_rawmaterial").hide()
+    $("#label_keyword").hide()
     // 検索結果を非表示
     $('#search_results').hide()
     $('.rawmaterial').hide()
@@ -92,6 +93,7 @@ $(function () {
     // 数量フォームの単位をクリア
     $('.input-group-text').text("")
     // 検索フォームを表示する
+    $("#label_keyword").show()
     $('.search_rawmaterial').show()
     $('#search_rawmaterial').show()
     // 非表示する

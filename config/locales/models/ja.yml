@@ -36,7 +36,6 @@ ja:
       rawmaterial/nutrient:
         lipid: 脂質
       stock:
-        keyword: 食材名(検索できます)
         rawmaterial_id: 原材料id
         quantity: 数量
   enums:
