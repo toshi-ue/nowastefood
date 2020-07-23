@@ -1,14 +1,16 @@
 <%= javascript_pack_tag 'users/stocks' %>
-<%= render 'shared/error_messages', {resource: @stock} if @stock.errors.any? %>
+<div class="content_wrapper">
+  <%= render 'shared/error_messages', {resource: @stock} if @stock.errors.any? %>
 
-<%= render 'search_form_rawmaterial' %>
+  <%= render 'search_form_rawmaterial' %>
 
-<%= form_with(model: @stock, url: users_stocks_path, local: true) do |form| %>
-  <%= render 'stock_form', {form: form , stock: @stock} %>
-  <div class="text-center">
-    <%= form.submit class: 'btn btn-secondary' %>
-  </div>
-<% end %>
+  <%= form_with(model: @stock, url: users_stocks_path, local: true) do |form| %>
+    <%= render 'stock_form', {form: form , stock: @stock} %>
+    <div class="text-center">
+      <%= form.submit class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
 
-<%= render 'shared/back_previous' %>
-<%= render 'managers/shared/back_to_home' %>
+  <%= render 'shared/back_previous' %>
+  <%= render 'managers/shared/back_to_home' %>
+</div>
