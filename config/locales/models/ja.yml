@@ -38,6 +38,7 @@ ja:
       stock:
         rawmaterial_id: 原材料id
         quantity: 数量
+        rawmaterial: 食材
   enums:
     cuisine:
       difficulty:
