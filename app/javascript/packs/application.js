@@ -34,4 +34,31 @@ window.$ = window.jQuery = require('jquery');
 
 console.log('Hello World from Webpacker')
 
+
+
 // import 'packs/managers/cuisines'
+// console.log($(window).width())
+
+$(function () {
+  let xs = 0, sm = 576, lg = 992, browserSize = 0, displaySizeText = ""
+
+  function getBrowserWidth() {
+    browserSize = $(window).width()
+    console.log(browserSize)
+    if (browserSize >= lg) {
+      displaySizeText = "lg (desktop " + lg + 'px)'
+    } else if (browserSize >= sm) {
+      displaySizeText = "sm (tablet " + lg + 'px)'
+    } else {
+      displaySizeText = "xs (mobile " + lg + 'px)'
+    }
+    console.log(displaySizeText)
+    $('#browserWidth').html(displaySizeText)
+  }
+
+  getBrowserWidth()
+
+  $(window).resize(function () {
+    getBrowserWidth()
+  });
+});

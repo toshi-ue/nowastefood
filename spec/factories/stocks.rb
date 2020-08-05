@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :stock do
-    quantity { "MyString" }
+    quantity { rand(1..100).to_s }
     rawmaterial { nil }
     user { nil }
   end
