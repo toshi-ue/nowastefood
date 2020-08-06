@@ -1,0 +1,36 @@
+// mobile
+@media (min-width: $xs) {
+  .content_wrapper{
+    .table{
+      border:solid 1px red;
+    }
+  }
+}
+
+// less than tablet
+@media (min-width: $sm) {
+  .content_wrapper{
+    // padding: 0 1rem;
+    // padding: 30px;
+    #newStockBtn{
+      margin: 0 auto;
+    }
+  }
+}
+
+// more than desktop
+@media (min-width: $lg) {
+  .content_wrapper{
+    #heading{
+      #newStockBtn{
+        position: relative;
+
+        div{
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

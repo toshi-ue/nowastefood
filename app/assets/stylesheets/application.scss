@@ -6,6 +6,7 @@
 @import "variables";
 @import "managers/cuisines";
 @import "managers/foodstuffs";
+@import "users/stocks";
 // managers/cuisines.scss
 
 h2{
@@ -133,11 +134,23 @@ $dropDown       : false;
   margin: 0;
 }
 
+// mobile
+@media (min-width: $xs) {
+  .content_wrapper{
+
+  }
+}
+
 // less than tablet
-@media (min-width: 576px) {}
+@media (min-width: $sm) {
+  .content_wrapper{
+    // padding: 0 3rem;
+    // padding: 30px;
+  }
+}
 
 // more than desktop
-@media (min-width: 992px) {
+@media (min-width: $lg) {
   .content_wrapper{
     width: 980px;
     margin: 0 auto;

@@ -1,9 +1,10 @@
 {
-  "ruby.rubocop.configFilePath": "/Users/toshihiro/programs/app_for_recruit/app_for_job_change/.rubocop.yml",
-  "ruby.lint":{
+  "ruby.rubocop.configFilePath": "/Users/yr/progs/ruby/rails/app_for_job_change/.rubocop.yml",
+  "ruby.rubocop.executePath": "/Users/yr/.rbenv/shims/rubocop",
+  "ruby.lint": {
     "rubocop": true
   },
-  "[ruby]":{
+  "[ruby]": {
     "editor.formatOnSave": true
   },
   "ruby.format": "rubocop",

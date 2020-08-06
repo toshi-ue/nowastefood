@@ -35,6 +35,10 @@ ja:
         min_quantity: 最小数量
       rawmaterial/nutrient:
         lipid: 脂質
+      stock:
+        rawmaterial_id: 原材料id
+        quantity: 数量
+        rawmaterial: 食材
   enums:
     cuisine:
       difficulty:

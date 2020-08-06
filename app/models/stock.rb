@@ -1,7 +1,12 @@
 class Stock < ApplicationRecord
+  before_save :convert_specific_format
   belongs_to :rawmaterial
   belongs_to :user
+  validates :quantity, presence: true, format: { with: %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}, message: "は数字(整数)で入力してください" }
+  # validates :quantity, presence: true, format: { with: /\A([0-9０-９]+|少々|適量|お好みで|)\z/, message: "特定の文字のみ使用できます" }
+
   # quantityのvalidation
+  #  validationがokなら値を半角に変換して保存したい
   #   もとはstring
   #   変換する必要あり
   #   整数(大文字、小文字)ならok
@@ -20,16 +25,8 @@ class Stock < ApplicationRecord
 
   # validates :cannot_save_except_specific_format
 
-  def cannot_save_except_specific_format
-    errors.add(:quantity, "数量を入力してください") if quantity.blank?
-
-    specific_format = '\A[0-9０-９]+[ 　]*[\/／0-9０-９]*[ 　]*[0-9０-９]+'
-    # specific_formatと合致していれば変換
-    if /#{specific_format}/.match?(quantity)
-      # 空白を削除, 全角があれば半角に
-      quantity.gsub(" " | "　", "").tr("／", "/").strip!.tr('０-９', '0-9')
-              .else
-      errors.add(:quantity, "例にしたがって入力してください") if quantity.blank?
-    end
+  def convert_specific_format
+    # 空白を削除, 全角があれば半角に
+    self.quantity = quantity.gsub(/ 　/, "").tr("／", "/").strip.tr('０-９', '0-9')
   end
 end

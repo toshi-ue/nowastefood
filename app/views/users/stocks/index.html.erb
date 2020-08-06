@@ -1,10 +1,20 @@
 <div class="content_wrapper">
-  <p>show, create, update.html.erbは不要?</p>
-  <p>edit destroy</p>
-  <h1>Stocks</h1>
-  <%= link_to 'New Stock', new_users_stock_path %>
+  <%= render 'shared/flash_messages' %>
+  <div id="heading" class="row my-2 mx-2">
+    <div class="col-12 col-lg-6">
+      <h1 class="text-center text-lg-left">家にある食材</h1>
+    </div>
+    <div id="newStockBtn" class="col-12 col-lg-6">
+      <div class="text-center text-lg-right">
+        <%= link_to '食材を追加する', new_users_stock_path, class: 'btn btn-secondary ' %>
+      </div>
+
+    </div>
+  </div>
   <% if @stocks.present? %>
-    <%= render 'stock_list' %>
+    <div class="col-10 offset-1 col-lg-12 offset-lg-0">
+      <%= render 'stock_list' %>
+    </div>
   <% else %>
     <p class="text-center">
       まだ登録がありません

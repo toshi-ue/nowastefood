@@ -1,7 +1,7 @@
 # README
 
 ## 初期動作環境構築
-
+<!--
 git clone後に下記コマンドを実行すれば動作確認できると思います。<br />
 
 yarn・jQueryなどのfrontendはほぼ初心者ですのでコマンドの抜け等がありましたら申し訳ありません。<br>
@@ -15,6 +15,21 @@ docker-compose run web rails db:seed_fu;
 docker-compose run web rails db:seed_fu;
 docker-compose up -d && docker attach app_for_job_change_web_1;
 ```
+-->
+```bash
+git clone ;
+docker-compose build;
+
+docker-compose run --rm web bundle install;
+docker-compose run --rm web bundle update;
+docker-compose run --rm web bin/yarn install;
+docker-compose run --rm web rails db:create;
+docker-compose run --rm web rails db:migrate;
+docker-compose run --rm web rails db:seed_fu;
+```
+<!--
+docker-compose run --rm --service-ports web bundle exec foreman start -f Procfile;
+-->
 
 ## 問題点
 - 問題点リスト
