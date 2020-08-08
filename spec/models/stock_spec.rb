@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Stock, type: :model do
+  # 以下は全てquantityプロパティのvalidationテスト
+  describe "#convert_specific_format" do
+    context "OK" do
+      it "空白は除去される" do
+        stock = FactoryBot.build(:stock, quantity: " 1 ")
+        stock. convert_specific_format
+        expect(stock.quantity.to_s).to eq("1")
+      end
+    end
+  end
+
   describe "#quantity" do
     context "OK" do
       it '整数ならば有効' do
