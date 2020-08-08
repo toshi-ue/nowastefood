@@ -1,6 +1,8 @@
 {
   "ruby.rubocop.configFilePath": "/Users/yr/progs/ruby/rails/app_for_job_change/.rubocop.yml",
-  "ruby.rubocop.executePath": "/Users/yr/.rbenv/shims/rubocop",
+  "ruby.rubocop.executePath": "/Users/yr/.rbenv/shims/",
+  "ruby.rubocop.onSave": true,
+  "ruby.useBundler": true,
   "ruby.lint": {
     "rubocop": true
   },
@@ -8,5 +10,5 @@
     "editor.formatOnSave": true
   },
   "ruby.format": "rubocop",
-  // "editor.formatOnSaveTimeout": 5000
+  "editor.formatOnSaveTimeout": 5000
 }
