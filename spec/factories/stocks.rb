@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :stock do
     association :rawmaterial
     association :user
-    # ランダムじゃなくてもいいのか?
-    quantity { rand(1..100).to_s }
+    quantity { 10 }
   end
 end
