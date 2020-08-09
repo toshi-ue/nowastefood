@@ -2,7 +2,7 @@ inherit_from: .rubocop_todo.yml
 
 # 追加した規約ファイル読込
 require:
-  - rubocop-rspec
+  # - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
 
@@ -85,6 +85,8 @@ Lint/UnusedMethodArgument:
 Rails/BulkChangeTable:
   Enabled: false
 
+RSpec/ContextWording:
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
@@ -97,5 +99,5 @@ RSpec/MultipleExpectations:
     - spec/requests/*.rb
     - spec/requests/*/*.rb
 
-RSpec/ContextWording:
-  Enabled: false
+RSpec/ReturnFromStub:
+  EnforcedStyle: block
