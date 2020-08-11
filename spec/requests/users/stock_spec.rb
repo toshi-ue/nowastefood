@@ -8,11 +8,13 @@ RSpec.describe "Users::Stocks", type: :request do
   end
 
   describe "GET /index" do
-    # before do
-    #   (1..2).each do |n|
-    #     create(:stock, quantity: ((n + 1) * 100).to_s)
-    #   end
-    # end
+    before do
+      (1..2).each do |n|
+        stock = create(:stock, quantity: ((n + 1) * 100).to_s)
+        # puts stock
+        # byebug
+      end
+    end
 
     context "ログインしている場合" do
       it "リクエストが成功すること" do
@@ -58,7 +60,7 @@ RSpec.describe "Users::Stocks", type: :request do
         it "リクエストが成功すること" do
           expect{
             post users_stocks_path,
-                 params: { stock: attributes_for(:stock, user: @user.id, quantity: "100") }
+                 params: { stock: attributes_for(:stock, user_id: @user.id, quantity: "100") }
           }.to change{Stock.count}.by(1)
         end
 
