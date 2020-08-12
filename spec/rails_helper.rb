@@ -31,13 +31,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.use_transactional_fixtures = true
   # config.filter_gems_from_backtrace("gem name")
-  config.before(:suite) do
-    # DBを綺麗にする手段を指定、トランザクションを張ってrollbackするように指定
-    DatabaseCleaner.strategy = :transaction
-    # truncate table文を実行し、レコードを消す
-    DatabaseCleaner.clean_with(:truncation)
-    SeedFu.seed
-  end
+  # config.before(:suite) do
+  #   # DBを綺麗にする手段を指定、トランザクションを張ってrollbackするように指定
+  #   DatabaseCleaner.strategy = :transaction
+  #   # truncate table文を実行し、レコードを消す
+  #   DatabaseCleaner.clean_with(:truncation)
+  #   SeedFu.seed
+  # end
 
   # exampleが始まるごとに実行
   config.before do
