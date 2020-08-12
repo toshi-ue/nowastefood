@@ -60,7 +60,6 @@ RSpec.describe "Users::Stocks", type: :request do
           post users_stocks_path,
                 params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "1/2") }
         }.to change{Stock.count}.by(1)
-        # expect(response.status).to eq 200
         expect(response).to redirect_to(users_stocks_path)
         follow_redirect!
         expect(response.body).to include("家にある食材")
