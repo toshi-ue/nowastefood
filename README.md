@@ -25,11 +25,18 @@ docker-compose run --rm web bundle update;
 docker-compose run --rm web bin/yarn install;
 docker-compose run --rm web rails db:create;
 docker-compose run --rm web rails db:migrate;
-docker-compose run --rm web rails db:seed_fu;
+# 初期データを投入
+docker-compose run --rm web rails seed_fu_all_datas:all;
+# 既存DBからデータをバックアップ
+docker-compose run --rm web rails seed_fu_gen:all;
+# 現在不使用
+# docker-compose run --rm web rails db:seed_fu;
 ```
 <!--
 docker-compose run --rm --service-ports web bundle exec foreman start -f Procfile;
 -->
+
+
 
 ## 問題点
 - 問題点リスト
