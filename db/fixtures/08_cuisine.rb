@@ -1,3 +1,9 @@
+require "fileutils"
+
+# remove prev image files
+Dir.chdir 'public/uploads/cuisine/'
+FileUtils.rm(Dir.glob('*.*'))
+
 Cuisine.seed_once(
   :id,
   {
@@ -7,7 +13,7 @@ Cuisine.seed_once(
     calories: nil,
     cooking_time: 20,
     description: "味付けで失敗することがない簡単・お手軽な親子丼です!!",
-    main_image: Rails.root.join("db/fixtures/images/oyakodon_width_400.jpg").open
+    main_image: Rails.root.join("db/fixtures/images/oyakodon.jpg").open
   },
   {
     id: 2,
@@ -16,7 +22,7 @@ Cuisine.seed_once(
     calories: nil,
     cooking_time: 20,
     description: "味付けで失敗することがない簡単・お手軽な親子丼です!!",
-    main_image: Rails.root.join("db/fixtures/images/go-ya_champru_width_400.jpg").open
+    main_image: Rails.root.join("db/fixtures/images/go-ya_champru.jpg").open
   },
   {
     id: 3,
@@ -25,6 +31,6 @@ Cuisine.seed_once(
     calories: nil,
     cooking_time: 30,
     description: "ぷりぷりなタコの旨みとだしが食欲をそそる1品",
-    main_image: Rails.root.join("db/fixtures/images/takomesi_width_400.jpg").open
+    main_image: Rails.root.join("db/fixtures/images/takomesi.jpg").open
   }
 )

@@ -2,9 +2,9 @@
   <article class="container">
     <div class="col-xs-10 col-lg-12">
       <h1 class="title">
-      <%= @cuisine.name %>
-      <span class="difficulty d-none d-lg-inline"> (難易度:<%= @cuisine.difficulty_i18n %></span>
-      <span class="cooking_time d-none d-lg-inline">所要時間: 約<%= @cuisine.cooking_time %>分)</span>
+        <%= @cuisine.name %>
+        <span class="difficulty d-none d-lg-inline"> (難易度:<%= @cuisine.difficulty_i18n %></span>
+        <span class="cooking_time d-none d-lg-inline">所要時間: 約<%= @cuisine.cooking_time %>分)</span>
       </h1>
     </div>
 
@@ -13,7 +13,7 @@
       <div class="share-button">
         <div class="share-button-item">
           <%= link_to "https://twitter.com/share?&text=#{@cuisine.name}&url=#{request.url}", title: 'Twitter', target: '_blank' do %>
-            <%= icon('fab', 'twitter fa-2x', class: 'twitter-icon') %>
+          <%= icon('fab', 'twitter fa-2x', class: 'twitter-icon') %>
           <% end %>
         </div>
         <div class="share-button-item">
@@ -40,20 +40,19 @@
     </div>
     <div class="foodstuffs col-lg-6">
       <p><%= @cuisine.description %></p>
-
       <h3 class="d-none d-md-block">食材</h3>
       <% @foodstuffs.each_with_index do |fs| %>
-        <%# binding.pry%>
-        <div class="foodstuff-list">
-          <span class="food-name text-left"><%= disp_foodstuff(fs) %></span>
-          <span class="food-quantity float-right"><%= disp_quantity(fs) %></span>
-        </div>
+      <%# binding.pry%>
+      <div class="foodstuff-list">
+        <span class="food-name text-left"><%# disp_foodstuff(fs) %></span>
+        <span class="food-quantity float-right"><%# disp_quantity(fs) %></span>
+      </div>
       <% end %>
     </div>
     <div class="procedure col-lg">
       <h3 class="d-none d-md-block">手順</h3>
       <% @procedures.each_with_index do |pd, idx| %>
-        <div class="procedure-list"><%= idx + 1 %>. <%= pd.cooking_detail %></div>
+      <div class="procedure-list"><%= idx + 1 %>. <%= pd.cooking_detail %></div>
       <% end %>
     </div>
   </article>
