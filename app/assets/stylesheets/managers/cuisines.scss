@@ -18,8 +18,15 @@
   }
 }
 
+
 // more than desktop
 @media (min-width: $lg) {
+  #new-managers-cuisines{
+    .cuisine_form_box{
+      display: flex;
+    }
+  }
+
   #show-managers-cuisines{
     .title{
 
