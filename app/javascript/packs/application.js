@@ -40,17 +40,19 @@ console.log('Hello World from Webpacker')
 // console.log($(window).width())
 
 $(function () {
-  let xs = 0, sm = 576, lg = 992, browserSize = 0, displaySizeText = ""
+  let xs = 0, sm = 576, md = 768, lg = 992, browserSize = 0, displaySizeText = ""
 
   function getBrowserWidth() {
     browserSize = $(window).width()
     console.log(browserSize)
     if (browserSize >= lg) {
-      displaySizeText = "lg (desktop " + lg + 'px)'
+      displaySizeText = "lg (desktop " + browserSize + 'px)'
+    } else if (browserSize >= md) {
+      displaySizeText = "md (tablet " + browserSize + 'px)'
     } else if (browserSize >= sm) {
-      displaySizeText = "sm (tablet " + lg + 'px)'
+      displaySizeText = "sm (tablet " + browserSize + 'px)'
     } else {
-      displaySizeText = "xs (mobile " + lg + 'px)'
+      displaySizeText = "xs (mobile " + browserSize + 'px)'
     }
     console.log(displaySizeText)
     $('#browserWidth').html(displaySizeText)
