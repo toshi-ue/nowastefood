@@ -38,8 +38,7 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def destroy
-    # @cuisine.discard
-    @cuisine.destory
+    @cuisine.destroy
     redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
   end
 
@@ -50,6 +49,6 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :description, :main_image, :discarded_at)
+    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :description, :main_image)
   end
 end
