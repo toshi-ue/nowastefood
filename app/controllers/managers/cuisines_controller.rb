@@ -39,7 +39,8 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def destroy
-    @cuisine.discard
+    # @cuisine.discard
+    @cuisine.destory
     redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
   end
 

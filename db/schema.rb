@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200808055313) do
+ActiveRecord::Schema.define(version: 20200818053426) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(version: 20200808055313) do
     t.string "main_image", comment: "メイン画像"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "discarded_at"
-    t.index ["discarded_at"], name: "index_cuisines_on_discarded_at"
     t.index ["name"], name: "index_cuisines_on_name", unique: true
   end
 
