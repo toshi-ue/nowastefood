@@ -1,15 +1,16 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
 <div class="col-10 offset-1">
-<%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
 </div>
 
 <%= render 'search_form' %>
 
 <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, local: true) do |form| %>
-  <%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
-  <div class="text-center">
-    <%= form.submit class: 'btn btn-secondary' %>
-  </div>
+<%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
+<div class="text-center">
+  <%= form.submit class: 'btn btn-secondary' %>
+</div>
 <% end %>
 
 <%= render 'shared/back_previous' %>

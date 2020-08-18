@@ -20,7 +20,6 @@ class Managers::CuisinesController < ApplicationController
   def create
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
-      # redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が作成されました" }
       redirect_to new_managers_foodstuff_path(cuisine_id: @cuisine.id), flash: { notice: "#{@cuisine.name} が作成されました" }
     else
       render 'new'
