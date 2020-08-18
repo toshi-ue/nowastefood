@@ -19,10 +19,12 @@
 </div>
 
 <%# カロリー %>
+<!--
 <div class="form-group">
-  <%= form.label :calories %>
-  <%= form.text_field :calories, id: :cuisine_calories, autofocus: true, class: 'form-control' %>
+  <%# form.label :calories %>
+  <%# form.text_field :calories, id: :cuisine_calories, autofocus: true, class: 'form-control' %>
 </div>
+-->
 
 <%# 説明 %>
 <div class="form-group">
@@ -34,9 +36,9 @@
 <div class="form-group">
   <%= form.label :main_image %>
   <% if cuisine.present? %>
-    <%= image_tag cuisine.main_image.url unless cuisine.main_image.blank? %>
-    <%= form.hidden_field :main_image_cache %>
-      <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
+  <%= image_tag cuisine.main_image.url unless cuisine.main_image.blank? %>
+  <%= form.hidden_field :main_image_cache %>
+  <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
   <% else %>
   <% end %>
   <%# form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
