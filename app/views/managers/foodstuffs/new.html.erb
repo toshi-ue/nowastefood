@@ -1,5 +1,6 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
 <div class="col-10 offset-1">
+
   <%= render 'shared/flash_messages' %>
   <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
 </div>

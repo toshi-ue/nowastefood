@@ -23,7 +23,10 @@ ja:
           quantity: 数量
           measure_unit: 単位
           cuisine_id: 料理レシピid
-          rawmaterial_id: 原材料id
+          rawmaterial: 材料
+          rawmaterial_id: 材料
+
+          keyword: 材料を検索
           ingredient_id: 部位id
           cookedstate_id: 加工された状態の名前id
       ingredient:
