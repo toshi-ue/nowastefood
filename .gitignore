@@ -7,7 +7,7 @@ capybara-*.html
 # .rspec
 /db/*.sqlite3
 /db/*.sqlite3-journal
-# /db/fixtures/*
+/db/fixtures/*
 /public/system
 /coverage/
 /spec/tmp
@@ -148,3 +148,5 @@ yarn-debug.log*
 .yarn-integrity
 
 new_user_credentials_app_for_job_change.csv
+sample_upload_image.html.erb
+.DS_Store

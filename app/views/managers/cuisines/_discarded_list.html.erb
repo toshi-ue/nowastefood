@@ -11,14 +11,14 @@
   </thead>
   <tbody>
     <% @cuisines.each do |fc| %>
-      <% if fc.discarded? %>
-      <tr>
-        <td><%= fc.id %></td>
-        <td><%= fc.name %></td>
-        <td><%= fc.discarded_at %></td>
-        <td><%= link_to '復元', restore_managers_cuisine_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
-      </tr>
-      <% end %>
+    <% if fc.discarded? %>
+    <tr>
+      <td><%= fc.id %></td>
+      <td><%= fc.name %></td>
+      <td><%= fc.discarded_at %></td>
+      <td><%= link_to '復元', restore_managers_cuisine_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" %></td>
+    </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
