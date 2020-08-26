@@ -4,35 +4,39 @@ $(function () {
 
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
-  // switch (action_name) {
-  //   case "index":
-  //     break;
-  //   case "show":
-  //     break;
-  //   case "new":
+  switch (action_name) {
+    //   case "index":
+    //     break;
+    //   case "show":
+    //     break;
+    case "new":
       // initialize
       $('#choiced_rawmaterial').hide()
-      $('#rawmaterial_name').hide()
-      $("#btnResetRawmaterial").hide()
+      // $('#rawmaterial_name').hide()
+      // $("#btnResetRawmaterial").hide()
 
       // check existence of cuisine_id
-  let initial_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()
-  console.log(initial_rawmaterial_id)
+      // saveメソッドが失敗した時に実行してほしい
+      let initial_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()
+      console.log(initial_rawmaterial_id)
 
-  if(initial_rawmaterial_id){
-    $('#choiced_rawmaterial').show()
-    $('#rawmaterial_name').show()
-    $("#btnResetRawmaterial").show()
-    $(".search_rawmaterial").hide()
-    $("#search_rawmaterial").hide()
-  }
+      if (initial_rawmaterial_id) {
+        $('#choiced_rawmaterial').show()
+        $('#rawmaterial_name').show()
+        $("#btnResetRawmaterial").show()
+        $(".search_rawmaterial").hide()
+        $("#search_rawmaterial").hide()
+      } else {
+        // saveメソッドが失敗した時に実行してほしい
+        $('#choiced_rawmaterial').hide()
+      }
 
       // increamental search
       let preFunc = null;
-          preInput = '';
-          input = '';
+      preInput = '';
+      input = '';
 
-      ajaxSearch = function(){
+      ajaxSearch = function () {
         $.ajax({
           type: 'GET',
           url: '/managers/foodstuffs/search_rawmaterial',
@@ -42,9 +46,10 @@ $(function () {
       }
 
       // search rawmaterial
-      $("#search_rawmaterial").on("keyup", function(){
+      // saveメソッドが失敗しても実行できるようにしたい
+      $("#search_rawmaterial").on("keyup", function () {
         input = $.trim($("#search_rawmaterial").val());
-        if(preInput !== input){
+        if (preInput !== input) {
           clearTimeout(preFunc);
           setTimeout(ajaxSearch, 1000);
           console.log(input);
@@ -97,12 +102,12 @@ $(function () {
         $("#btnResetRawmaterial").hide()
         console.log("11")
       })
-  //     break;
-  //   case "edit":
-  //     console.log(action_name + "2");
-  //     break;
-  //   default:
-  //     console.log("not passed");
-  //     break;
-  // }
+      break;
+    //   case "edit":
+    //     console.log(action_name + "2");
+    //     break;
+    default:
+      //     console.log("not passed");
+      break;
+  }
 });
