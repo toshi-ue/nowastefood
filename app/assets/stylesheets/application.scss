@@ -13,6 +13,15 @@ h2{
   color: green;
 }
 
+.field_with_errors {
+  display: contents;
+  // もしくは diplay: inline;
+  input {
+    // @extend .is-invalid optional;
+
+    @extend .is-invalid !optional;
+  }
+}
 
 // footer固定用の設定
 .container-fluid{
