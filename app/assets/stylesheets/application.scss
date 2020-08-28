@@ -16,11 +16,11 @@ h2{
 .field_with_errors {
   display: contents;
   // もしくは diplay: inline;
-  input {
-    // @extend .is-invalid optional;
+  // input {
+  //   // @extend .is-invalid optional;
 
-    @extend .is-invalid !optional;
-  }
+  //   @extend .is-invalid !optional;
+  // }
 }
 
 // footer固定用の設定

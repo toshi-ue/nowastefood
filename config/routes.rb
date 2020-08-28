@@ -16,6 +16,8 @@ Rails.application.routes.draw do
         put :sort
       end
       collection do
+        get 'extract_rawmaterial_name'
+        get 'extract_rawmaterial_measure_unit'
         get 'search_rawmaterial'
       end
     end

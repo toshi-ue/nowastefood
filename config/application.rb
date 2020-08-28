@@ -38,5 +38,6 @@ module Webapp
         # 20-05-17-ジェネレータはない
         # system_specs: true
     end
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

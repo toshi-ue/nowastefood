@@ -39,6 +39,16 @@ class Managers::FoodstuffsController < ApplicationController
     redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
   end
 
+  def extract_rawmaterial_measure_unit
+    @unit = Unit.find_by(id: params[:unit_id_param])
+    render json: @unit.name
+  end
+
+  def extract_rawmaterial_name
+    @rawmaterial = Rawmaterial.find_by(id: params[:rawmaterial_id_param])
+    render json: @rawmaterial
+  end
+
   def restore
     @foodstuff.undiscard
     redirect_to managers_foodstuffs_path, flash: { notice: "#{@foodstuff} が復元されました" }
@@ -53,7 +63,7 @@ class Managers::FoodstuffsController < ApplicationController
   def search_rawmaterial
     @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     # binding.pry
-    p @rawmaterials
+    # p @rawmaterials
   end
 
   private
