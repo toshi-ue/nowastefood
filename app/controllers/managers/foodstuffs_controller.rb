@@ -18,8 +18,8 @@ class Managers::FoodstuffsController < ApplicationController
     if @foodstuff.save
       redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
     else
+      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
       render 'new'
-      # @foodstuff.cuisine_id = params[:cuisine_id]
     end
   end
 
@@ -37,16 +37,6 @@ class Managers::FoodstuffsController < ApplicationController
   def destroy
     @foodstuff.destroy
     redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
-  end
-
-  def extract_rawmaterial_measure_unit
-    @unit = Unit.find_by(id: params[:unit_id_param])
-    render json: @unit.name
-  end
-
-  def extract_rawmaterial_name
-    @rawmaterial = Rawmaterial.find_by(id: params[:rawmaterial_id_param])
-    render json: @rawmaterial
   end
 
   def restore

@@ -32,7 +32,7 @@ window.$ = window.jQuery = require('jquery');
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+// console.log('Hello World from Webpacker')
 
 
 
@@ -44,7 +44,7 @@ $(function () {
 
   function getBrowserWidth() {
     browserSize = $(window).width()
-    console.log(browserSize)
+    // console.log(browserSize)
     if (browserSize >= lg) {
       displaySizeText = "lg (desktop " + browserSize + 'px)'
     } else if (browserSize >= md) {
@@ -54,7 +54,7 @@ $(function () {
     } else {
       displaySizeText = "xs (mobile " + browserSize + 'px)'
     }
-    console.log(displaySizeText)
+    // console.log(displaySizeText)
     $('#browserWidth').html(displaySizeText)
   }
 

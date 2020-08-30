@@ -1,5 +1,9 @@
 // mobile
 @media (min-width: $xs) {
+  #choiced_rawmaterial{
+    display: none;
+  }
+
   .rawmaterial{
     line-height: 200%;
     background-color: #ECEFF1;

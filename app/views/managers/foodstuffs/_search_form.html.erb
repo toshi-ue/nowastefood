@@ -20,6 +20,9 @@
 -->
 <div id="choiced_rawmaterial" class="col-10 offset-1 my-2 border border-dark rounded alert-dismissible">
   <p id="rawmaterial_name" class="text-break">
+    <% if @rawmaterial.present? %>
+    <%= @rawmaterial.name %>
+    <% end %>
   </p>
   <button id="btnResetRawmaterial" type="button" class="close" aria-label="閉じる">
     <span aria-hidden="true">&times;</span>
