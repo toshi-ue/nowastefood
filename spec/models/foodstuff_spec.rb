@@ -31,7 +31,7 @@ RSpec.describe Foodstuff, type: :model do
       end
       context "/、数字、スペース以外の文字列を含むこと" do
         let(:quantity) { "aaa" }
-        it { is_expected.to "aaa" }
+        it { is_expected.to eq "aaa" }
       end
     end
   end

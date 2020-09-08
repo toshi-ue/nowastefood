@@ -40,14 +40,8 @@ class Managers::ProceduresController < ApplicationController
   def destroy
     @procedure.destroy
     case params[:action_name]
-    when "new"
+    when "new", "edit"
       redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "削除しました"}
-    when "edit"
-      if @procedure.id == params[:current_procedure_id]
-        redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "削除しました"}
-      else
-        redirect_to edit_managers_procedure_path(params[:current_procedure_id]), flash: { notice: "削除しました"}
-      end
     when "show"
       redirect_to managers_cuisine_path(@procedure.cuisine_id), flash: { notice: "手順を削除しました"}
     end
