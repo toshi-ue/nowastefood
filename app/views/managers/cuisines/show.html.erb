@@ -33,7 +33,7 @@
                 button_toが原因(横幅いっぱいに広がっている)?
                 aタグはlink_toで統一していることが多いのか?
       -->
-      <%= button_to 'レシピを削除する', managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %>
+      <%= link_to 'レシピを削除する', managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %>
     </div>
   </div>
   <div class="col-md-8 offset-md-2 mt-3">
