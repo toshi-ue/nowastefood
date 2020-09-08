@@ -2,7 +2,7 @@
 // import 'regenerator-runtime/runtime'
 
 import 'jquery/dist/jquery'
-import 'rails-ujs/lib/assets/compiled/rails-ujs'
+import Rails from 'rails-ujs/lib/assets/compiled/rails-ujs'
 // import 'jquery-ui/ui/core'
 // import 'jquery-ui/ui/widgets/sortable'
 // import 'jquery-ui/sortable'
@@ -12,7 +12,7 @@ import 'clipboard/dist/clipboard.min'
 import '@fortawesome/fontawesome-free/js/all'
 // import Sortable from 'sortablejs/modular/sortable.complete.esm.js'
 
-
+Rails.start()
 window.$ = window.jQuery = require('jquery');
 
 /* eslint no-console:0 */
