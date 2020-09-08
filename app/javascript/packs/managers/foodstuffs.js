@@ -15,6 +15,8 @@ $(function () {
     //     break;
     case "new":
     case "create":
+    case "edit":
+    case "update":
       // check existence of cuisine_id
       // saveメソッドが失敗した時に実行してほしい
       h_value_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()

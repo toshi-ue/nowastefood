@@ -11,14 +11,17 @@ class Managers::FoodstuffsController < ApplicationController
     @foodstuff = Foodstuff.new
     @foodstuff.cuisine_id = params[:cuisine_id]
     @cuisine = Cuisine.find(@foodstuff.cuisine_id)
+    @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
   end
 
   def create
     @foodstuff = Foodstuff.new(foodstuff_params)
     if @foodstuff.save
-      redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
+      redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
     else
       @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+      @cuisine = Cuisine.find(@foodstuff.cuisine_id)
+      @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
       render 'new'
     end
   end

@@ -28,11 +28,6 @@
       <!--<div class="my-3">-->
 
       <%= link_to 'レシピ概要を変更する', edit_managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button" %>
-      <!--
-        FIXME: 横並びにしたいのにできない
-                button_toが原因(横幅いっぱいに広がっている)?
-                aタグはlink_toで統一していることが多いのか?
-      -->
       <%= link_to 'レシピを削除する', managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %>
     </div>
   </div>
@@ -106,15 +101,12 @@
         </div>
         <% end %>
         <div class="text-center">
-          <%= link_to '追加する', managers_procedures_path(id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
+          <%= link_to '追加する', new_managers_procedure_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<%= render 'shared/flash_messages' %>
 
 
 <%= render 'managers/shared/all_crud_links' %>
