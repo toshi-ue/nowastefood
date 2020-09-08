@@ -12,8 +12,9 @@ class Managers::ProceduresController < ApplicationController
   def create
     @procedure = Procedure.new(procedure_params)
     @procedure.save
-    @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
-    @procedure = Procedure.new(cuisine_id: params[:id])
+    redirect_to managers_cuisine_path(@procedure.cuisine_id), flash: { notice: "調理の手順が追加されました"}
+    # @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
+    # @procedure = Procedure.new(cuisine_id: params[:id])
   end
 
   def edit; end
@@ -29,8 +30,9 @@ class Managers::ProceduresController < ApplicationController
 
   def destroy
     @procedure.destroy
-    @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
-    @procedure = Procedure.new(cuisine_id: params[:id])
+    redirect_to managers_cuisine_path(@procedure.cuisine_id), flash: { notice: "調理の手順が削除されました"}
+    # @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
+    # @procedure = Procedure.new(cuisine_id: params[:id])
   end
 
   def sort

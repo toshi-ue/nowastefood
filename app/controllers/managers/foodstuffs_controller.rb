@@ -23,13 +23,15 @@ class Managers::FoodstuffsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+  end
 
   def update
     if @foodstuff.update(foodstuff_params)
       redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "変更されました" }
     else
-      # flash.now[:alert] = "aaa"
+      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
       render 'edit'
     end
   end
