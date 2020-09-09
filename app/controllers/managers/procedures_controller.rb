@@ -3,34 +3,48 @@ class Managers::ProceduresController < ApplicationController
   before_action :set_procedure, only: [:edit, :update, :destroy]
 
   # TODO: もう少しDRYに書けないか?
-  def index
-    @cuisine = Cuisine.find(params[:id])
-    @procedures = Procedure.where(cuisine_id: params[:id]).rank(:row_order)
-    @procedure = Procedure.new(cuisine_id: params[:id])
+  # def index
+  #   @cuisine = Cuisine.find(params[:id])
+  #   @procedures = Procedure.where(cuisine_id: params[:id]).rank(:row_order)
+  #   @procedure = Procedure.new(cuisine_id: params[:id])
+  # end
+
+  def new
+    @procedure = Procedure.new(cuisine_id: params[:cuisine_id])
+    set_cuisine_and_registerd_pds
   end
 
   def create
     @procedure = Procedure.new(procedure_params)
-    @procedure.save
-    @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
-    @procedure = Procedure.new(cuisine_id: params[:id])
+    if @procedure.save
+      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "手順が追加されました"}
+    else
+      set_cuisine_and_registerd_pds
+      render "new"
+    end
   end
 
-  def edit; end
+  def edit
+    set_cuisine_and_registerd_pds
+  end
 
   def update
     if @procedure.update(procedure_params)
-      @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
-      @procedure = Procedure.new(cuisine_id: params[:id])
+      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "更新されました"}
+    else
+      set_cuisine_and_registerd_pds
+      render 'edit'
     end
-    # @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
-    # @procedure = Procedure.new(cuisine_id: params[:id])
   end
 
   def destroy
     @procedure.destroy
-    @procedures = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
-    @procedure = Procedure.new(cuisine_id: params[:id])
+    case params[:action_name]
+    when "new", "edit"
+      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "削除しました"}
+    when "show"
+      redirect_to managers_cuisine_path(@procedure.cuisine_id), flash: { notice: "手順を削除しました"}
+    end
   end
 
   def sort
@@ -40,9 +54,13 @@ class Managers::ProceduresController < ApplicationController
   end
 
   private
-
   def set_procedure
     @procedure = Procedure.find(params[:id])
+  end
+
+  def set_cuisine_and_registerd_pds
+    @cuisine = Cuisine.find_by(id: @procedure.cuisine_id)
+    @registered_pds = Procedure.where(cuisine_id: @procedure.cuisine_id).rank(:row_order)
   end
 
   def procedure_params

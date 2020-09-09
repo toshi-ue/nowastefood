@@ -1,24 +1,21 @@
-<h1>料理レシピ一覧</h1>
-<p><%= link_to '追加する', new_managers_cuisine_path, class: "btn btn-secondary", role: "button" %></p>
+<div class="content_wrapper container">
+  <h1>料理レシピ一覧</h1>
+  <p><%= link_to '追加する', new_managers_cuisine_path, class: "btn btn-secondary", role: "button" %></p>
 
-<%= render 'shared/flash_messages' %>
+  <%= render 'shared/flash_messages' %>
 
-<% if @cuisines.present? %>
-<div class="my-2 border border-secondary">
-  <h3>登録済み</h3>
-  <%= render 'registered_list' %>
-</div>
-
-<div class="my-2 border border-secondary">
-  <h3>削除済み</h3>
-  <%= render 'discarded_list' %>
-</div>
-<% else %>
+  <% if @cuisines.present? %>
+  <div class="my-2 border border-secondary">
+    <h3>登録済み</h3>
+    <%= render 'registered_list' %>
+  </div>
+  <% else %>
   <p>現在登録がありません</p>
   <%= link_to '追加する', new_managers_cuisine_path, class: "btn btn-secondary", role: "button" %>
-<% end %>
+  <% end %>
 
 
-<%= render 'managers/shared/all_crud_links' %>
-<%= render 'managers/shared/back_to_home' %>
-<%= render 'managers/shared/manager_log_out' %>
+  <%= render 'managers/shared/all_crud_links' %>
+  <%= render 'managers/shared/back_to_home' %>
+  <%= render 'managers/shared/manager_log_out' %>
+</div>

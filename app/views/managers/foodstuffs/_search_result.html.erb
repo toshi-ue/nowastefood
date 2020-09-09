@@ -1,14 +1,12 @@
 <% if @rawmaterials.present? %>
-  <div>
-    <% @rawmaterials.each do |rm| %>
-      <div id="rawmaterial_<%= rm.id %>" class="text-center rawmaterial" data-unit-name="<%= rm.unit.name %>"><%= rm.name %></div>
-    <% end %>
-  </div>
+<div>
+  <% @rawmaterials.each do |rm| %>
+  <div id="rawmaterial_<%= rm.id %>" class="text-center rawmaterial" data-unit-name="<%= rm.unit.name %>"><%= rm.name %></div>
+  <% end %>
+</div>
 <% else %>
-  <div class="text-center rawmaterial">
-    <p>登録がありません</p>
-    <p>
-      <%= link_to '原材料を追加する', new_managers_rawmaterial_path, class: "btn btn-primary" %>
-    </p>
-  </div>
+<div class="text-center rawmaterial">
+  <p>登録がありません</p>
+
+</div>
 <% end %>

@@ -10,25 +10,31 @@ class Managers::FoodstuffsController < ApplicationController
   def new
     @foodstuff = Foodstuff.new
     @foodstuff.cuisine_id = params[:cuisine_id]
+    @cuisine = Cuisine.find(@foodstuff.cuisine_id)
+    @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
   end
 
   def create
     @foodstuff = Foodstuff.new(foodstuff_params)
     if @foodstuff.save
-      redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
+      redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
     else
+      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+      @cuisine = Cuisine.find(@foodstuff.cuisine_id)
+      @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
       render 'new'
-      # @foodstuff.cuisine_id = params[:cuisine_id]
     end
   end
 
-  def edit; end
+  def edit
+    @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+  end
 
   def update
     if @foodstuff.update(foodstuff_params)
       redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "変更されました" }
     else
-      # flash.now[:alert] = "aaa"
+      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
       render 'edit'
     end
   end
@@ -52,7 +58,7 @@ class Managers::FoodstuffsController < ApplicationController
   def search_rawmaterial
     @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     # binding.pry
-    p @rawmaterials
+    # p @rawmaterials
   end
 
   private

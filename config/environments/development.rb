@@ -63,7 +63,7 @@ Rails.application.configure do
   # letter_opener_web
   config.action_mailer.delivery_method = :letter_opener_web
 
-  # config.web_console.whitelisted_ips = '0.0.0.0/0'
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker

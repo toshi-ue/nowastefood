@@ -13,6 +13,9 @@ h2{
   color: green;
 }
 
+.field_with_errors {
+  display: contents;
+}
 
 // footer固定用の設定
 .container-fluid{
@@ -137,7 +140,7 @@ $dropDown       : false;
 // mobile
 @media (min-width: $xs) {
   .content_wrapper{
-
+    padding: 0;
   }
 }
 
@@ -164,5 +167,12 @@ $dropDown       : false;
   }
   .copy-url-icon{
     color: #d0d4d8;
+  }
+}
+
+
+.alert{
+  ul{
+    margin-bottom: 0;
   }
 }

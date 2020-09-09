@@ -1,4 +1,4 @@
-<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>", data-update_url="<%= sort_managers_procedure_path(procedure) %>">
+<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>" , data-update_url="<%= sort_managers_procedure_path(procedure) %>">
   <% if Rails.env.production? %>
   <td><%= procedure.id %></td>
   <td><%= procedure.cuisine.name %></td>
@@ -7,13 +7,13 @@
   <% end %>
   <td><%= procedure.cooking_detail %></td>
   <td>
-    <%= link_to edit_managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", remote: true do %>
-      <i class="fas fa-pen"></i>
+    <%= link_to edit_managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", local: true do %>
+    <i class="fas fa-pen"></i>
     <% end %>
   </td>
   <td>
-    <%= button_to managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
-      <i class="far fa-trash-alt"></i>
+    <%= link_to managers_procedure_path(procedure.id, action_name: "show", current_procedure_id: procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
+    <i class="far fa-trash-alt"></i>
     <% end %>
   </td>
 </tr>

@@ -20,7 +20,6 @@ class Managers::CuisinesController < ApplicationController
   def create
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
-      # redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が作成されました" }
       redirect_to new_managers_foodstuff_path(cuisine_id: @cuisine.id), flash: { notice: "#{@cuisine.name} が作成されました" }
     else
       render 'new'
@@ -39,7 +38,7 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def destroy
-    @cuisine.discard
+    @cuisine.destroy
     redirect_to managers_cuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
   end
 
@@ -50,6 +49,6 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :description, :main_image, :discarded_at)
+    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :description, :main_image)
   end
 end

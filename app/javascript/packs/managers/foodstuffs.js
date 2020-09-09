@@ -1,38 +1,39 @@
 $(function () {
+
   let action_name = $('body').data('action')
-  console.log(action_name);
+  // console.log(action_name);
 
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
-  // switch (action_name) {
-  //   case "index":
-  //     break;
-  //   case "show":
-  //     break;
-  //   case "new":
-      // initialize
-      $('#choiced_rawmaterial').hide()
-      $('#rawmaterial_name').hide()
-      $("#btnResetRawmaterial").hide()
+  let h_value_rawmaterial_id
 
+
+  switch (action_name) {
+    //   case "index":
+    //     break;
+    //   case "show":
+    //     break;
+    case "new":
+    case "create":
+    case "edit":
+    case "update":
       // check existence of cuisine_id
-  let initial_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()
-  console.log(initial_rawmaterial_id)
-
-  if(initial_rawmaterial_id){
-    $('#choiced_rawmaterial').show()
-    $('#rawmaterial_name').show()
-    $("#btnResetRawmaterial").show()
-    $(".search_rawmaterial").hide()
-    $("#search_rawmaterial").hide()
-  }
+      // saveメソッドが失敗した時に実行してほしい
+      h_value_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()
+      console.log(h_value_rawmaterial_id)
+      if (h_value_rawmaterial_id) {
+        $('#choiced_rawmaterial').show()
+        $(".search_rawmaterial").hide()
+      } else {
+        $('#choiced_rawmaterial').hide()
+      }
 
       // increamental search
       let preFunc = null;
-          preInput = '';
-          input = '';
+      preInput = '';
+      input = '';
 
-      ajaxSearch = function(){
+      ajaxSearch = function () {
         $.ajax({
           type: 'GET',
           url: '/managers/foodstuffs/search_rawmaterial',
@@ -42,9 +43,9 @@ $(function () {
       }
 
       // search rawmaterial
-      $("#search_rawmaterial").on("keyup", function(){
+      $("#search_rawmaterial").on("keyup", function () {
         input = $.trim($("#search_rawmaterial").val());
-        if(preInput !== input){
+        if (preInput !== input) {
           clearTimeout(preFunc);
           setTimeout(ajaxSearch, 1000);
           console.log(input);
@@ -60,14 +61,12 @@ $(function () {
         // rawmaterial_idを取得
         let clicked_rawmaterial_id = parseInt((this.id).replace("rawmaterial_", ""))
         // rawmaterial_idを代入
-        console.log(this.textContent)
+        // console.log(this.textContent)
         $('#foodstuff_rawmaterial_id').val(clicked_rawmaterial_id)
-        // 食材名をalert内に表示
+        // 食材名をバッジt内に表示
         $('#rawmaterial_name').text(this.textContent)
-        // alertを表示
+        // バッジを表示
         $('#choiced_rawmaterial').show()
-        $('#rawmaterial_name').show()
-        $("#btnResetRawmaterial").show()
         // 数量フォームに単位を表示する
         $('.input-group-text').text(this.dataset.unitName)
         // 検索フォームを非表示にする
@@ -79,8 +78,6 @@ $(function () {
 
       // reset choiced rawmaterial
       $("#btnResetRawmaterial").on("click", function () {
-        // alertの背景色を変更する- 動作確認
-        // $('#choiced_rawmaterial').css('background-color', 'Red')
         // alert内の原材料名をクリアする
         $('#rawmaterial_name').text("")
         // 原材料idの値をクリアする
@@ -94,15 +91,10 @@ $(function () {
         $('#search_rawmaterial').show()
         // 非表示する
         $('#choiced_rawmaterial').hide()
-        $("#btnResetRawmaterial").hide()
-        console.log("11")
       })
-  //     break;
-  //   case "edit":
-  //     console.log(action_name + "2");
-  //     break;
-  //   default:
-  //     console.log("not passed");
-  //     break;
-  // }
+      break;
+    default:
+      //     console.log("not passed");
+      break;
+  }
 });

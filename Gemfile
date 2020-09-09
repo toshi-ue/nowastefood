@@ -30,6 +30,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'gimei'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails'
 end
@@ -42,8 +44,6 @@ group :development do
   # gem 'guard-livereload', '~> 2.5', require: false
   gem 'letter_opener_web'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false

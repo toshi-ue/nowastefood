@@ -1,50 +1,51 @@
 <%= javascript_pack_tag 'managers/cuisines' %>
-<%= render 'shared/flash_messages' %>
+<div class="content_wrapper container">
+  <%= render 'shared/flash_messages' %>
 
-<div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1">
-  <h1>料理レシピ概要</h1>
-  <div class="cuisine-overview">
-    <div class="col-sm-5">
-      <%= image_tag @cuisine.main_image.url, class: 'img-fluid' %>
+  <div class="col-md-10 offset-md-1">
+    <h1>料理レシピ概要</h1>
+    <div class="cuisine-overview">
+      <div class="col-sm-5">
+        <%= image_tag @cuisine.main_image.url, class: 'img-fluid' %>
+      </div>
+      <div class="col-sm-7">
+        <div class="title">
+          料理名:<%= @cuisine.name %>
+        </div>
+        <div>
+          難易度:<%= @cuisine.difficulty_i18n %>
+        </div>
+        <div>
+          調理時間:<%= @cuisine.cooking_time %>分
+        </div>
+        <div>
+          レシピの説明:<%= @cuisine.description %>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-7">
-      <div class="title">
-        料理名:<%= @cuisine.name %>
-      </div>
-      <div>
-        難易度:<%= @cuisine.difficulty_i18n %>
-      </div>
-      <div>
-        調理時間:<%= @cuisine.cooking_time %>分
-      </div>
-      <div>
-        レシピの説明:<%= @cuisine.description %>
-      </div>
+    <div class="change-buttons-cuisine col-md-12">
+      <!---->
+      <!--<div class="my-3">-->
+
+      <%= link_to 'レシピ概要を変更する', edit_managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button" %>
+      <%= link_to 'レシピを削除する', managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %>
     </div>
   </div>
-
-  <div class="text-center my-3">
-    <%= link_to '上記の内容を変更する', edit_managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button" %>
-  </div>
-</div>
-
-
-<div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1">
-  <%# タブ部分 %>
-  <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a href="#foodstuffs" id="foodstuffs-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="foodstuffs" aria-selected="true">食材</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a href="#procedure" id="procedure-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="procedure" aria-selected="false">手順</a>
-    </li>
-  </ul>
-
-  <%# パネル部分%>
-  <div id="myTabContent" class="tab-content mt-2">
-    <%# パネル1 %>
-    <div id="foodstuffs" class="tab-pane active" role="tabpanel" aria-labelledby="foodstuffs-tab">
-      <% if @foodstuffs.present? %>
+  <div class="col-md-8 offset-md-2 mt-3">
+    <%# タブ部分 %>
+    <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a href="#foodstuffs" id="foodstuffs-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="foodstuffs" aria-selected="true">食材</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a href="#procedure" id="procedure-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="procedure" aria-selected="false">手順</a>
+      </li>
+    </ul>
+    <%# パネル部分%>
+    <div id="myTabContent" class="tab-content mt-2">
+      <%# パネル1 %>
+      <div id="foodstuffs" class="tab-pane active" role="tabpanel" aria-labelledby="foodstuffs-tab">
+        <% if @foodstuffs.present? %>
         <table id="table-sortable-foodstuff" class="table table-hover table-sm table-responsive">
           <thead>
             <tr>
@@ -63,16 +64,16 @@
             <%= render partial: 'managers/cuisines/foodstuff', collection: @foodstuffs, as: "foodstuff" %>
           </tbody>
         </table>
-      <% else %>
+        <% else %>
         <p>登録はまだありません</p>
-      <% end %>
-      <div class="text-center">
-        <%= link_to '追加する', new_managers_foodstuff_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
+        <% end %>
+        <div class="text-center">
+          <%= link_to '追加する', new_managers_foodstuff_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
+        </div>
       </div>
-    </div>
-    <%# パネル2 %>
-    <div id="procedure" class="tab-pane" role="tabpanel" aria-labelledby="procedure-tab">
-      <% if @procedures.present? %>
+      <%# パネル2 %>
+      <div id="procedure" class="tab-pane" role="tabpanel" aria-labelledby="procedure-tab">
+        <% if @procedures.present? %>
         <table id="table-sortable-procedure" class="table table-hover table-sm table-responsive">
           <thead>
             <tr>
@@ -94,22 +95,18 @@
             <%= render partial: 'managers/cuisines/procedure', collection: @procedures, as: "procedure" %>
           </tbody>
         </table>
-      <% else %>
+        <% else %>
         <div class="text-center">
           <p>登録はまだありません</p>
         </div>
-      <% end %>
-      <div class="text-center">
-        <%= link_to '追加する', managers_procedures_path(id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
+        <% end %>
+        <div class="text-center">
+          <%= link_to '追加する', new_managers_procedure_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
 
 
 <%= render 'managers/shared/all_crud_links' %>

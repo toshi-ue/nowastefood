@@ -1,16 +1,56 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
 <div class="col-10 offset-1">
-<%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
 </div>
 
 <%= render 'search_form' %>
 
 <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, local: true) do |form| %>
-  <%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
-  <div class="text-center">
-    <%= form.submit class: 'btn btn-secondary' %>
-  </div>
+<%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
+<div class="text-center">
+  <%= form.submit class: 'btn btn-secondary' %>
+</div>
 <% end %>
+<div class="text-center">
+  <p>
+    <%= link_to new_managers_procedure_path(cuisine_id: @foodstuff.cuisine_id),  class: "page-link text-dark d-inline-block", role: "button" do %>
+    手順を登録する
+    <% end %>
+  </p>
+</div>
+<div class="col-10 offset-1">
+  <% if @registered_fs.blank? %>
+  <div class="text-center">
+    <p>登録がまだありません</p>
+  </div>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <td>食材</td>
+        <td>数量</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @registered_fs.each do |rfs| %>
+      <tr>
+        <td class="col-6"><%= rfs.rawmaterial.name %></td>
+        <td class="col-6"><%= rfs.quantity %><%= rfs.rawmaterial.unit.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  <div class="text-center">
+    <p>
+      <%= link_to managers_cuisine_path(@foodstuff.cuisine_id),  class: "page-link text-dark d-inline-block", role: "button" do %>
+      <%= @cuisine.name %>のトップへ
+      <% end %>
+    </p>
+  </div>
+</div>
 
 <%= render 'shared/back_previous' %>
 <%= render 'managers/shared/back_to_home' %>
