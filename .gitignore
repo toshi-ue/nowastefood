@@ -148,5 +148,4 @@ yarn-debug.log*
 .yarn-integrity
 
 new_user_credentials_app_for_job_change.csv
-sample_upload_image.html.erb
 .DS_Store
