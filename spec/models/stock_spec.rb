@@ -1,13 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe Stock, type: :model do
-  # 以下は全てquantityプロパティのvalidationテスト
   describe "#convert_specific_format" do
-    context "OK" do
-      it "空白は除去される" do
-        stock = FactoryBot.build(:stock, quantity: " 1 ")
-        stock. convert_specific_format
+    it "空白は除去されること" do
+      stock = FactoryBot.build(:stock, quantity: " 1 ")
+      stock.convert_specific_format
+      expect(stock.quantity.to_s).to eq("1")
+    end
+
+    context "整数の場合" do
+      it "全角でも半角で返ってくること" do
+        stock = FactoryBot.build(:stock, quantity: "１")
+        stock.convert_specific_format
         expect(stock.quantity.to_s).to eq("1")
+      end
+    end
+
+    context "分数の場合" do
+      it "全角でも半角で返ってくること" do
+        stock = FactoryBot.build(:stock, quantity: "１／２")
+        stock.convert_specific_format
+        expect(stock.quantity.to_s).to eq("1/2")
+      end
+    end
+
+    context "文字列の場合" do
+      it "そのまま返すこと" do
+        stock = FactoryBot.build(:stock, quantity: "aaa")
+        stock.convert_specific_format
+        expect(stock.quantity.to_s).to eq("aaa")
       end
     end
   end
@@ -23,25 +44,19 @@ RSpec.describe Stock, type: :model do
         stock = FactoryBot.create(:stock, quantity: "1/2")
         expect(stock).to be_valid
       end
-
-      it "空白は除去される" do
-        stock = FactoryBot.build(:stock, quantity: " 1 ")
-        stock.convert_specific_format
-        expect(stock.quantity.to_s).to eq("1")
-      end
-
-      it "全角は半角に変換される" do
-        stock = FactoryBot.build(:stock, quantity: " １／２ ")
-        stock.convert_specific_format
-        expect(stock.quantity.to_s).to eq("1/2")
-      end
     end
 
     context "NG" do
-      it '文字列の場合は無効' do
+      it '数字を含まない文字列であること' do
         stock = FactoryBot.build(:stock, quantity: "aaaa")
         stock.valid?
         expect(stock.errors.messages[:quantity]).to include("は数字(整数)で入力してください")
+      end
+
+      it '未入力であること' do
+        stock = FactoryBot.build(:stock, quantity: "")
+        stock.valid?
+        expect(stock.errors.messages[:quantity]).to include("を入力してください")
       end
     end
   end
@@ -55,10 +70,27 @@ RSpec.describe Stock, type: :model do
     end
 
     context "NG" do
-      it "原材料idがなければ無効" do
-        stock = FactoryBot.build(:stock, rawmaterial_id: nil)
+      before do
+        @user = create(:user)
+      end
+
+      it "なければ無効であること" do
+        stock = FactoryBot.build(:stock, rawmaterial_id: nil, user_id: @user.id)
         expect(stock).to be_invalid
       end
+
+      it "なければエラーメッセージを表示すること" do
+        stock = FactoryBot.build(:stock, rawmaterial_id: nil, user_id: @user.id)
+        stock.valid?
+        expect(stock.errors[:rawmaterial]).to include("を入力してください")
+      end
+
+      # it "すでに同じrawmaterial_idのstockがあるとき" do
+      #   stock = FactoryBot.create(:stock, user_id: @user.id)
+      #   dupulicated_stock = FactoryBot.build(:stock, rawmaterial_id: stock.rawmaterial_id, user_id: stock.user_id, quantity: "1")
+      #   dupulicated_stock.valid?
+      #   expect(stock.errors.messages[:rawmaterial]).to include("すでにstockされている食材は登録できません")
+      # end
     end
   end
 

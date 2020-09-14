@@ -53,40 +53,64 @@ RSpec.describe "Users::Stocks", type: :request do
   end
 
   describe "POST /create" do
-    context "値が妥当な場合" do
-      it "indexアクションへリダイレクトされること" do
-        rawmaterial = create(:rawmaterial)
-        expect{
-          post users_stocks_path,
-                params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "1/2") }
-        }.to change{Stock.count}.by(1)
-        expect(response).to redirect_to(users_stocks_path)
-        follow_redirect!
-        expect(response.body).to include("家にある食材")
-      end
-    end
-
-    context "値が不当な場合" do
-      it "newアクションにリダイレクトする" do
-        rawmaterial = create(:rawmaterial)
-        expect{
+    context "ログインしているとき" do
+      context "値が妥当なとき" do
+        it "indexアクションへリダイレクトされること" do
+          rawmaterial = create(:rawmaterial)
+          expect{
             post users_stocks_path,
-                  params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "") }
-        }.to change{Stock.count}.by(0)
-        expect(response.status).to eq 200
-        expect(response.body).to include("食材名")
+                  params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "1/2") }
+          }.to change{Stock.count}.by(1)
+          expect(response).to redirect_to(users_stocks_path)
+          follow_redirect!
+          expect(response.body).to include("家にある食材")
+        end
+      end
+
+      context "値が不当なとき" do
+        it "newアクションにリダイレクトする" do
+          rawmaterial = create(:rawmaterial)
+          expect{
+              post users_stocks_path,
+                    params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "") }
+          }.to change{Stock.count}.by(0)
+          expect(response.status).to eq 200
+          expect(response.body).to include("食材名")
+        end
+
+        context "同一ユーザーでrawmaterial_idが重複しているとき" do
+          it "登録ができないこと" do
+            @stock = create(:stock, user_id: @user.id)
+            expect do
+              post users_stocks_path, params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: @stock.rawmaterial_id, quantity: "100" )}
+            end.to_not change(Foodcategory, :count)
+            expect(response.body).to include("すでにstockされている食材は登録できません")
+          end
+        end
       end
     end
   end
 
   describe "DELETE /destroy" do
     before do
-      @stock = create(:stock)
+      @stock = create(:stock, user_id: @user.id)
     end
-    it "インスタンスを削除できる" do
+
+    it "インスタンスを削除できること" do
       expect{
         delete users_stock_path(@stock)
       }.to change{Stock.count}.by(-1)
+    end
+
+    it "indexページへリダイレクトされること" do
+        (1..2).each do |n|
+          create(:stock, user_id: @stock.user_id, quantity: (n * 100).to_s)
+        end
+
+        delete users_stock_path(@stock)
+        follow_redirect!
+        expect(response.body).to include "100"
+        expect(response.body).to include "200"
     end
   end
 end
