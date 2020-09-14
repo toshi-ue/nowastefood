@@ -2,6 +2,7 @@
 // import 'regenerator-runtime/runtime'
 
 import 'jquery/dist/jquery'
+// 原因1?
 import Rails from 'rails-ujs/lib/assets/compiled/rails-ujs'
 // import 'jquery-ui/ui/core'
 // import 'jquery-ui/ui/widgets/sortable'
@@ -12,6 +13,7 @@ import 'clipboard/dist/clipboard.min'
 import '@fortawesome/fontawesome-free/js/all'
 // import Sortable from 'sortablejs/modular/sortable.complete.esm.js'
 
+// 原因2?
 Rails.start()
 window.$ = window.jQuery = require('jquery');
 

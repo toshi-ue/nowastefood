@@ -33,8 +33,13 @@ ja:
       procedure:
         cooking_detail: 手順
       rawmaterial:
+
         name: 原材料名
-        min_quantity: 最小数量
+        hiragana: ひらがな
+        foodcategory: 食材区分
+        foodcategory_id: 食材区分id
+        unit: 単位
+        unit_id: 単位id
       rawmaterial/nutrient:
         lipid: 脂質
       stock:
