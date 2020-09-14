@@ -36,9 +36,10 @@ ja:
 
         name: 原材料名
         hiragana: ひらがな
-        # エラーメッセージが翻訳されない
-        foodcategory_id: 食材区分
-        unit_id: 単位
+        foodcategory: 食材区分
+        foodcategory_id: 食材区分id
+        unit: 単位
+        unit_id: 単位id
       rawmaterial/nutrient:
         lipid: 脂質
       stock:
