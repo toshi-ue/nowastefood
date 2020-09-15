@@ -1,6 +1,6 @@
 class Managers::RawmaterialsController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_rawmaterial, only: [:update, :edit, :destroy, :restore]
+  before_action :set_rawmaterial, only: [ :edit, :update, :destroy, :restore]
 
   layout 'manager'
   def index
@@ -10,14 +10,11 @@ class Managers::RawmaterialsController < ApplicationController
 
   def new
     @rawmaterial = Rawmaterial.new
-    # @rawmaterial.build_nutrient
   end
 
   def create
     @rawmaterial = Rawmaterial.new(rawmaterial_params)
-    # binding.pry
     if @rawmaterial.save
-      # binding.pry
       redirect_to managers_rawmaterials_path, flash: { notice: "食材区分 #{@rawmaterial.name} が作成されました" }
     else
       render 'new'
@@ -25,17 +22,12 @@ class Managers::RawmaterialsController < ApplicationController
   end
 
   def edit
-    # @rawmaterial.build_nutrient
   end
 
   def update
     if @rawmaterial.update(rawmaterial_params)
-      p "a"
-      binding.pry
       redirect_to managers_rawmaterials_path, flash: { notice: "変更されました" }
     else
-      p "b"
-      binding.pry
       render 'edit'
     end
   end
@@ -57,7 +49,6 @@ class Managers::RawmaterialsController < ApplicationController
   end
 
   def rawmaterial_params
-    params.require(:rawmaterial).permit(:name, :hiragana, :min_quantity, :unit_id, :foodcategory_id)
-    # params.require(:rawmaterial).permit(:name, :min_quantity, :foodcategory_id, :discarded_at, nutrient_attributes: [:lipid, :carbonhydrate, :protein, :vit_a, :vit_d, :vit_e, :vit_k, :vit_b1, :vit_b2, :vit_b6, :vit_b12, :vit_c, :potassium, :calcium, :magnesium, :phosphorus, :iron, :zinc, :copper, :manganese, :beta_carotene, :niacin, :folic_acid, :pantothenic_acid])
+    params.require(:rawmaterial).permit(:name, :hiragana, :unit_id, :foodcategory_id)
   end
 end
