@@ -9,25 +9,18 @@
   </thead>
   <tbody>
     <% @stocks.each do |st| %>
-      <tr>
-        <td class="align-middle"><%= st.rawmaterial.name %><br></td>
-        <td class="align-middle"><%= st.quantity %><%= st.rawmaterial.unit.name %></td>
-        <td class="align-middle"><%= st.rawmaterial.foodcategory.name %></td>
-        <td class="align-middle text-center">
-          <div class="text-center">
-            <button class="page-link">
-              <%= link_to edit_users_stock_path(st.id), class: "text-dark", role: "button", remote: true do %>
-                <i class="fas fa-pen"></i>
-              <% end %>
-            </button>
-          </div>
-          <div class="text-center">
-            <%= button_to users_stock_path(st.id),  class: "page-link text-dark", role: "button", method: :delete do %>
-              <i class="far fa-trash-alt"></i>
-            <% end %>
-          </div>
-        </td>
-      </tr>
+    <tr>
+      <td class="align-middle"><%= st.rawmaterial.name %><br></td>
+      <td class="align-middle"><%= st.quantity %><%= st.rawmaterial.unit.name %></td>
+      <td class="align-middle"><%= st.rawmaterial.foodcategory.name %></td>
+      <td class="align-middle text-center">
+        <div>
+          <%= link_to users_stock_path(st.id),  class: "page-link text-dark", role: "button", method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
