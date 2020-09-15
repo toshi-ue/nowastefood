@@ -1,8 +1,10 @@
+<%= render 'shared/error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
+
 <%= form_with(model: @rawmaterial, url: managers_rawmaterial_path, local: true, method: :patch) do |form| %>
-  <%= render 'rawmaterial_form', {form: form , rawmaterial: @rawmaterial} %>
-  <div>
-    <%= form.submit class: "btn btn-secondary" %>
-  </div>
+<%= render 'rawmaterial_form', {form: form , rawmaterial: @rawmaterial} %>
+<div>
+  <%= form.submit class: "btn btn-secondary" %>
+</div>
 <% end %>
 
 <%= render 'shared/back_previous' %>
