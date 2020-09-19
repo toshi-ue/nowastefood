@@ -7,6 +7,7 @@
 @import "managers/cuisines";
 @import "managers/foodstuffs";
 @import "users/stocks";
+@import "tops";
 // managers/cuisines.scss
 
 h2{
@@ -31,11 +32,11 @@ h2{
 //   // min-height: 100vh;
 // }
 
-$bgDefault      : #e3c754;
-$bgHighlight    : #ebbd00;
+$bgDefault      : #00AA00;
+$bgHighlight    : #00BB00;
 $colDefault     : #ecf0f1;
-$colHighlight   : #f1e2ac;
-$dropDown       : false;
+$colHighlight   : #ecf0f1;
+$dropDown       : true;
 .navbar {
   background-color: $bgDefault;
   .navbar-brand {
