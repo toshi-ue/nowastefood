@@ -68,7 +68,12 @@ Rails.application.routes.draw do
   # authenticated do
   #   root to: "secret#index", as: :authenticated_root
   # end
-  get 'home/toppage'
   get 'home/index'
-  root to: 'home#index'
+  get 'tops/about'
+  get 'tops/login_which'
+  if Rails.env.development?
+    root to: 'home#index'
+  else
+    root to: 'tops#about'
+  end
 end
