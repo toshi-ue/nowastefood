@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # get 'favorites/index'
+
+  # get 'favorites/create'
+
+  # get 'favorites/destroy'
+
   # 管理者側
   namespace :managers do
     resources :cookedstates, except: [:show] do
@@ -42,13 +48,18 @@ Rails.application.routes.draw do
   # ユーザー側
   # UNKNOWN: urlはusersを含めない、アプリ構成ではmanagersとusersをフォルダ分けしたい
   namespace :users do
-    resources :cuisines, only: [:show]
+    # resources :cuisines, only: [:show]
     resources :stocks do
       collection do
         get 'search_rawmaterial'
       end
     end
   end
+  resources :cuisines, only: [:show] do
+    post :favorite, action: :create, controller: 'favorites'
+    delete :favorite, action: :destroy, controller: 'favorites'
+  end
+  get 'favorites/index'
 
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
@@ -70,6 +81,7 @@ Rails.application.routes.draw do
   # end
   get 'home/index'
   get 'tops/about'
+  get 'tops/index'
   get 'tops/login_which'
   if Rails.env.development?
     root to: 'home/index'

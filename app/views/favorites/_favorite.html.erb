@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+  <% if Favorite.find_by(user_id: current_user.id, cuisine_id: cuisine.id) %>
+  <%# if current_user.already_favorite?(cuisine) %>
+    <%= link_to cuisine_favorite_path(cuisine.id), method: :delete, remote: true do %>
+      <button class="btn btn-warning btn-block" type="button">
+        <i class="far fa-bookmark"></i><br>
+        wish true
+        Favorite
+      </button>
+    <% end %>
+  <% else %>
+    <%= link_to cuisine_favorite_path(cuisine.id), method: :post, remote: true do %>
+      <button class="btn btn-outline-primary btn-block" type="button">
+        <i class="far fa-bookmark"></i><br>
+
+        wish false
+        Favorite
+      </button>
+    <% end %>
+  <% end %>
+<% else %>
+  <%# FIXME: ログインページへリダイレクトしない(before_actionが実行されていない?)
+              Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+  %>
+  <%= link_to cuisine_favorite_path(cuisine.id), method: :post, remote: true do %>
+    <button class="btn btn-outline-primary btn-block" type="button">
+      <i class="far fa-bookmark"></i><br>
+      not login
+      Favorite
+    </button>
+  <% end %>
+<% end %>

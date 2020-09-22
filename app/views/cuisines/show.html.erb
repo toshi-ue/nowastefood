@@ -1,4 +1,4 @@
-<%= javascript_pack_tag 'users/cuisines' %>
+<%= javascript_pack_tag 'cuisines' %>
 <div class="content_wrapper container-fluid">
   <%# by bss %>
   <div id="overview" class="mt-2">
@@ -37,11 +37,8 @@
             <span class="badge badge-info ml-1">tag1</span>
           </div>
           <div class="row">
-            <div class="col-12 col-sm-4 mt-2 text-center">
-              <button class="btn btn-outline-primary btn-block" type="button">
-                <i class="far fa-bookmark"></i><br>
-                Favorite
-              </button>
+            <div id="btn-favorite" class="col-12 col-sm-4 mt-2 text-center">
+            <%= render partial: 'favorites/favorite', locals: {cuisine: @cuisine} %>
             </div>
             <div class="col-12 col-sm-4 mt-2 text-center">
               <button class="btn btn-outline-primary btn-block" type="button">
