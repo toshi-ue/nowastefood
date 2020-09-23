@@ -66,14 +66,14 @@
         <div class="mt-2">
           <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
             <li class="nav-item" role="presentation">
-              <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1" id="tab-foodstuff">食材</a>
+              <a class="nav-link active" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
             </li>
             <li class="nav-item" role="presentation">
-              <a class="nav-link" role="tab" data-toggle="tab" href="#tab-2" id="tab-procedure">手順</a>
+              <a class="nav-link" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
             </li>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" role="tabpanel" id="tab-1">
+            <div class="tab-pane active" role="tabpanel" id="tab1">
               <div class="foodstuff-list">
                 <% @foodstuffs.each_with_index do |fs, idx| %>
                   <div class="row mt-3">
@@ -96,7 +96,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="tab-pane" role="tabpanel" id="tab-2">
+            <div class="tab-pane" role="tabpanel" id="tab2">
               <div class="procedure-list">
                 <% @procedures.each_with_index do |pd, idx| %>
                   <div class="row mt-3">
