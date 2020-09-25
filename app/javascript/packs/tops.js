@@ -1,4 +1,7 @@
 $(function () {
+  const userTabHeight = $("#tab-1").outerHeight()
+  $("#tab-2").outerHeight(userTabHeight)
+
   $("#user-tab").css("font-weight", "bold");
 
   $("#admin-tab").click(function () {

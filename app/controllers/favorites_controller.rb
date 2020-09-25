@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  # ajaxの場合は実行されない?
   before_action :authenticate_user!
 
   # TODO: セレクトボックスでソート機能を実装するか検討
