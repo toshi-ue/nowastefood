@@ -1,4 +1,4 @@
-module Users::CuisinesHelper
+module CuisinesHelper
   def disp_foodstuff(instance)
     if instance.ingredient_id.present? && instance.cookedstate_id.present?
       "#{instance.rawmaterial.name}#{instance.ingredient.name}#{instance.cookedstate.name}"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200818053426) do
+ActiveRecord::Schema.define(version: 20200922051429) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20200818053426) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_cuisines_on_name", unique: true
+  end
+
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "cuisine_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuisine_id"], name: "index_favorites_on_cuisine_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "foodcategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -205,6 +214,8 @@ ActiveRecord::Schema.define(version: 20200818053426) do
   end
 
   add_foreign_key "cookedstates", "foodcategories"
+  add_foreign_key "favorites", "cuisines"
+  add_foreign_key "favorites", "users"
   add_foreign_key "nutrients", "rawmaterials"
   add_foreign_key "procedureimages", "cuisines"
   add_foreign_key "rawmaterials", "units"
