@@ -9,8 +9,9 @@
 @import "users/cuisines";
 @import "users/stocks";
 @import "cuisines";
+@import "favorites";
 @import "tops";
-// managers/cuisines.scss
+@import "todaysmenus";
 
 h2{
   color: green;

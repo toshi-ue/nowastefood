@@ -13,12 +13,12 @@
         <ul class="nav navbar-nav d-md-flex d-xl-flex ml-auto align-items-md-center align-items-xl-center">
           <%# TODO: Stock機能が完成したらのリンクを追加 %>
           <li class="nav-item d-xl-flex align-items-xl-center"><a class="nav-link  text-center" href="#">Stock</a></li>
-          <%# TODO: Today機能が完成したらのリンクを追加 %>
-          <li class="nav-item d-xl-flex align-items-xl-center"><a class="nav-link text-center" href="#">Today</a></li>
-          <%# TODO: Favorite機能が完成したらのリンクを追加 %>
+          <li class="nav-item d-xl-flex align-items-xl-center">
+            <%= link_to 'Today', todaysmenus_path, class: "nav-link text-center" %>
+          </li>
+
           <li class="nav-item align-items-xl-center">
             <%= link_to 'Favorite', favorites_index_path, class: "nav-link text-center" %>
-            <%# <a class="nav-link text-center" href="#">Favorite</a> %>
           </li>
           <li class="nav-item d-md-none align-items-xl-center">
             <%# TODO: 設定画面へのリンクを追加 %>

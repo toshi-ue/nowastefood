@@ -1,0 +1,2 @@
+module TodaysmenusHelper
+end

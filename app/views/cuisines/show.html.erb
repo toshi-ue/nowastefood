@@ -38,16 +38,13 @@
           </div>
           <div class="row">
             <div id="btn-favorite" class="col-12 col-sm-4 mt-2 text-center">
-            <%= render partial: 'favorites/favorite', locals: {cuisine: @cuisine} %>
+            <%= render partial: 'favorite', locals: {cuisine: @cuisine} %>
+            </div>
+            <div id="btn-today" class="col-12 col-sm-4 mt-2 text-center">
+            <%= render partial: 'today', locals: {cuisine: @cuisine} %>
             </div>
             <div class="col-12 col-sm-4 mt-2 text-center">
-              <button class="btn btn-outline-primary btn-block" type="button">
-                <i class="fas fa-plus"></i><br>
-                Today
-              </button>
-            </div>
-            <div class="col-12 col-sm-4 mt-2 text-center">
-              <button class="btn btn-outline-primary btn-block" type="button">
+              <button class="btn btn-outline-secondary btn-block" type="button">
                 <i class="fas fa-share"></i><br>
                 share
               </button>

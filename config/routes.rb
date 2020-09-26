@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  # get 'favorites/index'
-
-  # get 'favorites/create'
-
-  # get 'favorites/destroy'
 
   # 管理者側
   namespace :managers do
@@ -58,7 +53,12 @@ Rails.application.routes.draw do
   resources :cuisines, only: [:show] do
     post :favorite, action: :create, controller: 'favorites'
     delete :favorite, action: :destroy, controller: 'favorites'
+    post :add_favorite
+    delete :remove_favorite
+    post :add_menu
+    delete :remove_menu
   end
+  resources :todaysmenus, only: [:index, :destroy]
   get 'favorites/index'
 
   # letter_opener_web

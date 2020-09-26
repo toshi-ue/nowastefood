@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  # TODO: すぐに不要なコメントアウトを削除
   # ajaxの場合は実行されない?
   before_action :authenticate_user!
 
@@ -9,16 +10,9 @@ class FavoritesController < ApplicationController
 
   # FIXME: あとでAjaxにする
   def create
-    @favorite = current_user.favorites.build(cuisine_id: params[:cuisine_id])
-    @favorite.save
-    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
   end
 
   def destroy
-    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
-    @favorite = current_user.favorites.find_by(cuisine_id: params[:cuisine_id])
-    # binding.pry
-    @favorite.destroy
   end
 
   private
