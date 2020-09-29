@@ -51,15 +51,15 @@ Rails.application.routes.draw do
     end
   end
   resources :cuisines, only: [:show] do
-    post :favorite, action: :create, controller: 'favorites'
-    delete :favorite, action: :destroy, controller: 'favorites'
     post :add_favorite
     delete :remove_favorite
     post :add_menu
     delete :remove_menu
   end
-  resources :todaysmenus, only: [:index, :destroy]
-  get 'favorites/index'
+  resources :favorites, only: [:index, :create, :destroy] do
+    post :add_to_today
+  end
+  resources :todaysmenus, only: [:index, :update, :destroy]
 
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
