@@ -7,6 +7,7 @@ class Cuisine < ApplicationRecord
   has_many :favorites
   has_many :foodstuffs, dependent: :destroy
   has_many :procedures, dependent: :destroy
+  has_many :todaysmenus, dependent: :destroy
   mount_uploader :main_image, ImageUploader
   validates :main_image, presence: { message: "を追加してください" }
 end

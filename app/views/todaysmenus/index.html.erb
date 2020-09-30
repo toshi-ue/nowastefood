@@ -1,0 +1,76 @@
+<%= javascript_pack_tag 'todaysmenus' %>
+<% unless @todaysmenus.blank? %>
+  <div class="content_wrapper">
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-lg-4">
+        <%= render "shared/flash_messages" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-lg-4">
+        <div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <td class="page-title text-center no-border-top">今日の献立</td>
+                <td class="text-center align-bottom no-border-top">人数</td>
+                <td class="no-border-top"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @todaysmenus.each do |tm| %>
+                <tr>
+                  <td class="text-break align-middle"><%= tm.cuisine.name %></td>
+                  <td class="align-middle text-center">
+                    <%= form_with model: tm, url: todaysmenu_path(tm.id), method: :put do |f| %>
+                      <%= f.select :serving_count,
+                            serving_count_num(tm),
+                            {selected: tm.serving_count},
+                            { class: "form-control-sm", "data-id": tm.id, "data-cuisine-id": tm.cuisine_id, "data-user-id": current_user.id}
+                      %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      <%= link_to todaysmenu_path(tm.id), method: :delete do %>
+                        <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="content_wrapper">
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-lg-4">
+        <%= render "shared/flash_messages" %>
+      </div>
+    </div>
+    <div id="no-todaysmenus" class="d-flex justify-content-center align-items-center">
+      <div>
+        <div>
+          <div class="page-title text-center">今日の献立(Today)</div>
+          <p class="text-muted text-center no-todaysmenus-description">本日の献立はまだありません<br>追加しましょう!!</p>
+          <p class="text-center">
+            <%= link_to favorites_path do %>
+              <button class="btn btn-warning">Favoriteへ</button>
+            <% end %>
+          </p>
+          <p class="text-center">
+            <%= link_to root_path do %>
+              <button class="btn btn-warning">一覧から探す</button>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

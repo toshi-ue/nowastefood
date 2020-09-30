@@ -9,8 +9,9 @@
 @import "users/cuisines";
 @import "users/stocks";
 @import "cuisines";
+@import "favorites";
 @import "tops";
-// managers/cuisines.scss
+@import "todaysmenus";
 
 h2{
   color: green;
@@ -29,10 +30,6 @@ h2{
   height: 100px;
   width: 100px;
 }
-
-// .main-contents{
-//   // min-height: 100vh;
-// }
 
 $bgDefault      : #00AA00;
 $bgHighlight    : #00BB00;
@@ -132,9 +129,6 @@ $dropDown       : true;
     color: $colHighlight;
     background-color: $bgHighlight; }}
 
-// .container-fluid{
-//   padding: 0
-// }
 
 .content_wrapper{
   max-width: 980px;
@@ -150,33 +144,6 @@ $dropDown       : true;
     padding: 0;
   }
 }
-
-// // less than tablet
-// @media (min-width: $sm) {
-//   .content_wrapper{
-//   //   // padding: 0 3rem;
-//   //   // padding: 30px;
-//   }
-// }
-
-// // more than desktop
-// @media (min-width: $lg) {
-//   .content_wrapper{
-//     width: 980px;
-//     margin: 0 auto;
-//     // padding: 30px;
-//   }
-//   .twitter-icon{
-//     color: #00B8FF;
-//   }
-//   .star-icon{
-//     color: #d0d4d8;
-//   }
-//   .copy-url-icon{
-//     color: #d0d4d8;
-//   }
-// }
-
 
 .alert{
   ul{
