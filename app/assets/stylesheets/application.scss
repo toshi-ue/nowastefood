@@ -130,23 +130,14 @@ $dropDown       : true;
     background-color: $bgHighlight; }}
 
 
-.content_wrapper{
+main{
   max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .alert ol{
   margin: 0;
-}
-
-// mobile
-@media (min-width: $xs) {
-  .content_wrapper{
-    padding: 0;
-  }
-}
-
-.alert{
-  ul{
-    margin-bottom: 0;
-  }
 }
