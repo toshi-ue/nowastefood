@@ -51,11 +51,10 @@ Rails.application.routes.draw do
     post :add_favorite
     delete :remove_favorite
     post :add_menu
+    post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
     delete :remove_menu
   end
-  resources :favorites, only: [:index, :create, :destroy] do
-    post :add_to_today
-  end
+  resources :favorites, only: [:index, :create, :destroy]
   resources :todaysmenus, only: [:index, :update, :destroy]
 
   # letter_opener_web

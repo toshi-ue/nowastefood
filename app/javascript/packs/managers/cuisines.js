@@ -1,14 +1,9 @@
+// TODO: 後でコメント,console.logを削除
 // import Sortable from 'sortablejs';
 import 'jquery-ui/ui/widgets/sortable';
 
-$(document).ready(function () {
-  // let action_name = $('body').data('action')
-  // console.log(action_name)
-});
-
 $(function () {
   let action_name = $('body').data('action')
-  console.log(action_name)
 
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
@@ -27,15 +22,11 @@ $(function () {
           params = {
             _method: 'put'
           };
-
           // parameterを作成
           params[item_data.model_name] = {
             row_order_position: item.index()
           };
-
           params = JSON.stringify(params);
-          console.log(item_data.update_url);
-          console.log(params)
 
           return $.ajax({
             type: 'PUT',
@@ -61,15 +52,11 @@ $(function () {
           params = {
             _method: 'put'
           };
-
           // parameterを作成
           params[item_data.model_name] = {
             row_order_position: item.index()
           };
-
           params = JSON.stringify(params);
-          console.log(item_data.update_url);
-          console.log(params);
 
           return $.ajax({
             type: 'PUT',

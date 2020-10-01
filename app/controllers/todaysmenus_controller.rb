@@ -7,6 +7,7 @@ class TodaysmenusController < ApplicationController
   def update
     @todaysmenu = Todaysmenu.find_by(id: params[:id])
     @todaysmenu.update(todaysmenu_params)
+    head :ok
   end
 
   def destroy
