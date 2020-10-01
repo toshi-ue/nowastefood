@@ -33,14 +33,15 @@ class Managers::RawmaterialsController < ApplicationController
   end
 
   def destroy
-    @rawmaterial.discard
-    redirect_to managers_rawmaterials_path, flash: { notice: "食材区分 #{@rawmaterial.name} が削除されました" }
+    @rawmaterial&.destroy
+    redirect_to managers_rawmaterials_path, flash: { notice: "原材料 #{@rawmaterial.name} が削除されました" }
   end
 
-  def restore
-    @rawmaterial.undiscard
-    redirect_to managers_rawmaterials_path, flash: { notice: "食材区分 #{@rawmaterial.name} が復元されました" }
-  end
+  # TODO: 最後に削除(エラーがなければ)
+  # def restore
+  #   @rawmaterial.undiscard
+  #   redirect_to managers_rawmaterials_path, flash: { notice: "食材区分 #{@rawmaterial.name} が復元されました" }
+  # end
 
   private
 
