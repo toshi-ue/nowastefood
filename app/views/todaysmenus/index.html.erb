@@ -12,7 +12,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <td class="page-title text-center no-border-top">今日の献立</td>
+                <td class="page-title text-center no-border-top" colspan="2">今日の献立</td>
                 <td class="text-center align-bottom no-border-top">人数</td>
                 <td class="no-border-top"></td>
               </tr>
@@ -20,6 +20,9 @@
             <tbody>
               <% @todaysmenus.each do |tm| %>
                 <tr>
+                  <td class="text-center align-middle">
+                    <%= image_tag tm.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{tm.cuisine.name}" %>
+                  </td>
                   <td class="text-break align-middle"><%= tm.cuisine.name %></td>
                   <td class="align-middle text-center">
                     <%= form_with model: tm, url: todaysmenu_path(tm.id), method: :put do |f| %>
@@ -30,8 +33,8 @@
                       %>
                     <% end %>
                   </td>
-                  <td>
-                    <div class="text-center">
+                  <td class="text-center align-middle">
+                    <div>
                       <%= link_to todaysmenu_path(tm.id), method: :delete do %>
                         <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
                           <i class="far fa-trash-alt"></i>
