@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
@@ -13,6 +14,7 @@ gem 'discard'
 gem 'jbuilder', '~> 2.5'
 gem 'enum_help'
 gem 'font-awesome-sass'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 gem 'puma', '~> 3.7'

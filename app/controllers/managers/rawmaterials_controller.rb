@@ -1,11 +1,11 @@
 class Managers::RawmaterialsController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_rawmaterial, only: [ :edit, :update, :destroy, :restore]
-
   layout 'manager'
+  KAMINARI_PAGINATION_COUNT = 13
+
   def index
-    @rawmaterials = Rawmaterial.includes(:foodcategory)
-    # binding.pry
+    @rawmaterials = Rawmaterial.includes(:foodcategory).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
   end
 
   def new
