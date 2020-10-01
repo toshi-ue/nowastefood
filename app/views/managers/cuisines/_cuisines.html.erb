@@ -60,3 +60,14 @@
     <% end %>
   </tbody>
 </table>
+<div class="row">
+  <div class="col">
+    <%= page_entries_info @cuisines %>
+  </div>
+  <div class="col">
+    <%= paginate @cuisines, theme: 'twitter-bootstrap-4',
+                          pagination_class: "pagination-sm",
+                          nav_class: "d-inline-b"
+    %>
+  </div>
+</div>

@@ -1,10 +1,11 @@
 class Managers::FoodcategoriesController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_foodcategory, only: [:update, :edit, :destroy]
-
   layout 'manager'
+  KAMINARI_PAGINATION_COUNT = 13
+
   def index
-    @foodcategories = Foodcategory.all
+    @foodcategories = Foodcategory.all.page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
   end
 
   def new
