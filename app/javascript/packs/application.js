@@ -13,9 +13,9 @@ import 'clipboard/dist/clipboard.min'
 import '@fortawesome/fontawesome-free/js/all'
 // import Sortable from 'sortablejs/modular/sortable.complete.esm.js'
 
-// 原因2?
 Rails.start()
 window.$ = window.jQuery = require('jquery');
+require('data-confirm-modal')
 
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files

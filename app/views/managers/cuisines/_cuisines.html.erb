@@ -1,0 +1,62 @@
+<table class="table table-hover table-sm table-responsive">
+  <thead>
+    <tr>
+      <th class="align-middle">ID</th>
+      <th class="align-middle">メイン画像</th>
+      <th class="align-middle text-center">料理レシピ名</th>
+      <th class="align-middle">お手軽度</th>
+      <th class="align-middle">調理時間(分)</th>
+      <th class="align-middle text-center">登録日</th>
+      <th class="align-middle"></th>
+      <th class="align-middle"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cuisines.each do |cn| %>
+    <% if cn.present? %>
+    <tr>
+      <td class="align-middle"><%= cn.id %></td>
+      <% if cn.main_image.present? %>
+      <td>
+        <%# cn.main_image %>
+        <%= image_tag cn.main_image.url, size: '70x70' %>
+      </td>
+      <% else %>
+      <td> 未登録 </td>
+      <% end %>
+      <td class="align-middle"><%= cn.name %></td>
+      <td class="align-middle"><%= cn.difficulty_i18n %></td>
+      <td class="align-middle text-center"><%= cn.cooking_time %></td>
+      <td class="align-middle"><%= cn.created_at %></td>
+      <td class="align-middle">
+        <%= link_to managers_cuisine_path(cn.id),  class: "page-link text-dark d-inline-block", role: "button" do %>
+        <i class="far fa-eye"></i>
+        <% end %>
+      </td>
+      <td class="align-middle">
+        <%= link_to edit_managers_cuisine_path(cn.id),
+              class: "page-link text-dark d-inline-block",
+              role: "button" do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      </td>
+      <td class="align-middle">
+        <%= link_to managers_cuisine_path(cn.id),
+              class: "page-link text-dark d-inline-block",
+              data: {
+                confirm: "<i class='fas fa-exclamation-circle'></i>
+                  本当に「<strong>#{cn.name}</strong>」を削除しますか?",
+                cansel: "キャンセル",
+                commit: "削除",
+                title: "削除確認"
+              },
+              role: "button",
+              method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
