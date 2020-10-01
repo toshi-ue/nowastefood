@@ -46,6 +46,13 @@
       <%# パネル1 %>
       <div id="foodstuffs" class="tab-pane active" role="tabpanel" aria-labelledby="foodstuffs-tab">
         <% if @foodstuffs.present? %>
+          <p>
+            <div class="text-center">
+              <%= link_to new_managers_foodstuff_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" do %>
+                <i class="fas fa-plus"></i> 追加する
+              <% end %>
+            </div>
+          </p>
         <table id="table-sortable-foodstuff" class="table table-hover table-sm table-responsive">
           <thead>
             <tr>
@@ -67,42 +74,57 @@
         <% else %>
         <p>登録はまだありません</p>
         <% end %>
-        <div class="text-center">
-          <%= link_to '追加する', new_managers_foodstuff_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
-        </div>
+        <p>
+          <div class="text-center">
+            <%= link_to new_managers_foodstuff_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" do %>
+              <i class="fas fa-plus"></i> 追加する
+            <% end %>
+          </div>
+        </p>
       </div>
       <%# パネル2 %>
       <div id="procedure" class="tab-pane" role="tabpanel" aria-labelledby="procedure-tab">
         <% if @procedures.present? %>
-        <table id="table-sortable-procedure" class="table table-hover table-sm table-responsive">
-          <thead>
-            <tr>
-              <% if Rails.env.production? %>
-              <th>ID</th>
-              <th>料理レシピ名<br />(cuisine_id)</th>
-              <th>順番(idx)</th>
-              <th>作成日</th>
+          <p>
+            <div class="text-center">
+              <%= link_to new_managers_procedure_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" do %>
+                <i class="fas fa-plus"></i> 追加する
               <% end %>
-              <!--
-              <th>料理手順の詳細</th>
-              -->
-              <th class="col-8"></th>
-              <th class="col-2"></th>
-              <th class="col-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render partial: 'managers/cuisines/procedure', collection: @procedures, as: "procedure" %>
-          </tbody>
-        </table>
+            </div>
+          </p>
+          <table id="table-sortable-procedure" class="table table-hover table-sm table-responsive">
+            <thead>
+              <tr>
+                <% if Rails.env.production? %>
+                <th>ID</th>
+                <th>料理レシピ名<br />(cuisine_id)</th>
+                <th>順番(idx)</th>
+                <th>作成日</th>
+                <% end %>
+                <!--
+                <th>料理手順の詳細</th>
+                -->
+                <th class="col-8"></th>
+                <th class="col-2"></th>
+                <th class="col-2"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: 'managers/cuisines/procedure', collection: @procedures, as: "procedure" %>
+            </tbody>
+          </table>
         <% else %>
-        <div class="text-center">
-          <p>登録はまだありません</p>
-        </div>
+          <div class="text-center">
+            <p>登録はまだありません</p>
+          </div>
         <% end %>
-        <div class="text-center">
-          <%= link_to '追加する', new_managers_procedure_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" %>
-        </div>
+        <p>
+          <div class="text-center">
+            <%= link_to new_managers_procedure_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" do %>
+              <i class="fas fa-plus"></i> 追加する
+            <% end %>
+          </div>
+        </p>
       </div>
     </div>
   </div>

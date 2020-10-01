@@ -1,23 +1,13 @@
 <div class="search_rawmaterial col-10 offset-1">
-  <!-- FIXME:
-  saveメソッド失敗時に動作しなくなる(検索できなくなる)
-  -->
+
   <%= form_with(url: search_rawmaterial_managers_foodstuffs_path, method: :get, local: true) do |f| %>
   <label for="keyword">食材を検索</label>
-  <%= f.text_field :keyword, id: :search_rawmaterial, class: 'form-control', placeholder:'追加したい食材を入力してください' %>
+  <%= f.text_field :keyword, id: :search_rawmaterial, class: 'form-control', placeholder:'追加したい食材を入力してください', autofocus: true %>
   <% end %>
 </div>
 <%# 検索結果を表示 %>
 <div id="search_results" class="col-10 offset-1">
 </div>
-
-
-<%# 選択された原材料を表示する %>
-<!-- FIXME:
-      saveメソッド失敗時に表示がおかしくなる場所
-        divのid="choiced_rawmaterial"
-        buttonのid="btnResetRawmaterial"がひょうじされたままになる
--->
 <div id="choiced_rawmaterial" class="col-10 offset-1 my-2 border border-dark rounded alert-dismissible">
   <p id="rawmaterial_name" class="text-break">
     <% if @rawmaterial.present? %>
