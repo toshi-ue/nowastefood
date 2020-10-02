@@ -1,20 +1,24 @@
 <table class="table table-hover table-sm table-responsive">
   <thead>
     <tr>
-      <th class="align-middle">ID</th>
-      <th class="align-middle">原材料名</th>
-      <th class="align-middle">食材区分名</th>
-      <th></th>
-      <th></th>
+      <td class="align-middle text-center"><%= sort_link(@q, :id, "ID") %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :name, "原材料名") %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :foodcategory_id, "食材区分名") %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
     <% @rawmaterials.each do |rm| %>
     <tr>
-      <td><%= rm.id %></td>
-      <td><%= rm.name %></td>
-      <td><%= rm.foodcategory.name %></td>
-      <td>
+      <td class="align-middle text-center"><%= rm.id %></td>
+      <td class="align-middle"><%= rm.name %></td>
+      <td class="align-middle text-center"><%= rm.foodcategory.name %></td>
+      <td class="align-middle text-center">
+        <%= rm.foodstuffs_count %>
+      </td>
+      <td class="align-middle">
         <%= link_to edit_managers_rawmaterial_path(rm.id),
               class: "page-link text-dark d-inline-block",
               role: "button",
@@ -22,7 +26,7 @@
           <i class="fas fa-pen"></i>
         <% end %>
       </td>
-      <td>
+      <td class="align-middle">
         <%= button_to managers_rawmaterial_path(rm.id),
           class: "page-link text-dark d-inline-block",
           data: {

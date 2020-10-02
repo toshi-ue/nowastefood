@@ -141,3 +141,9 @@ main{
 .alert ol{
   margin: 0;
 }
+
+#index-managers-foodcategories,#index-managers-cuisines,#index-managers-rawmaterials{
+  thead > tr > td > a{
+    color: $soberColor;
+  }
+}

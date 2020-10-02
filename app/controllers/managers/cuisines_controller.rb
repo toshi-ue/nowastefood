@@ -2,10 +2,11 @@ class Managers::CuisinesController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_cuisine, only: [:update, :edit, :destroy]
   layout 'manager'
-  KAMINARI_PAGINATION_COUNT = 8
+  KAMINARI_PAGINATION_COUNT = 7
 
   def index
-    @cuisines = Cuisine.all.page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
+    @q = Cuisine.ransack(params[:q])
+    @cuisines = @q.result.page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
   end
 
   def show
