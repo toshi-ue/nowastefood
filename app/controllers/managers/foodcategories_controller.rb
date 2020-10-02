@@ -5,7 +5,8 @@ class Managers::FoodcategoriesController < ApplicationController
   KAMINARI_PAGINATION_COUNT = 13
 
   def index
-    @foodcategories = Foodcategory.all.page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
+    @q = Foodcategory.ransack(params[:q])
+    @foodcategories = @q.result.page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
   end
 
   def new

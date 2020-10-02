@@ -5,7 +5,8 @@ class Managers::RawmaterialsController < ApplicationController
   KAMINARI_PAGINATION_COUNT = 13
 
   def index
-    @rawmaterials = Rawmaterial.includes(:foodcategory).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
+    @q = Rawmaterial.includes(:foodcategory).ransack(params[:q])
+    @rawmaterials = @q.result.page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
   end
 
   def new

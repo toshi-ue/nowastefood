@@ -1,5 +1,4 @@
 class Rawmaterial < ApplicationRecord
-  # include Discard::Model
   validates :name, presence: true, uniqueness: true
   belongs_to :foodcategory
   belongs_to :unit
