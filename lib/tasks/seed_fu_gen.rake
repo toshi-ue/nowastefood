@@ -59,11 +59,11 @@ namespace :seed_fu_gen do
       end
     end
 
-    # 05_ingredient.rb
-    ingredients = Ingredient.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/05_ingredient.rb", class_name: "Ingredient", seed_type: :seed_once) do |writer|
-      ingredients.each do |ig|
-        writer << ig.attributes.except("created_at", "updated_at")
+    # 05_genre.rb
+    genres = Genre.all
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/05_genre.rb", class_name: "Genre", seed_type: :seed_once) do |writer|
+      genres.each do |gr|
+        writer << gr.attributes.except("created_at", "updated_at")
       end
     end
 
