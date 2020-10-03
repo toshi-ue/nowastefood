@@ -6,7 +6,11 @@
       <span>※</span><%= form.label :name %>
       <%= form.text_area :name, id: :cuisine_name, autofocus: true, class: 'form-control' %>
     </div>
-
+    <%# ジャンル %>
+    <div class="form-group">
+      <span>※</span><%= form.label :genre %><br />
+      <%= form.collection_select(:genre_id, Genre.all, :id, :name, {}, {selected: cuisine.genre_id, class: 'form-control'}) %>
+    </div>
     <%# お手軽度 %>
     <div class="form-group">
       <span>※</span><%= form.label :difficulty %>
@@ -17,6 +21,11 @@
     <div class="form-group">
       <span>※</span><%= form.label :cooking_time %>
       <%= form.text_field :cooking_time, id: :cuisine_cooking_time, autofocus: true, class: 'form-control' %>
+    </div>
+    <%# タグ %>
+    <div class="form-group">
+      <span>※</span><%= form.label :tag_list, "タグ" %>
+      <%= form.text_field :tag_list, value: @cuisine.tag_list.join(',') ,id: :cuisine_tag_list, autofocus: true, class: 'form-control' %>
     </div>
     <%# 説明 %>
     <div class="form-group">
