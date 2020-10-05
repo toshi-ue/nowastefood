@@ -51,6 +51,6 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :difficulty, :calories, :cooking_time, :description, :main_image)
+    params.require(:cuisine).permit(:name, :genre_id, :difficulty, :calories, :cooking_time, :description, :main_image, :tag_list)
   end
 end

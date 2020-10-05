@@ -6,7 +6,11 @@
     <h1>料理レシピ概要</h1>
     <div class="cuisine-overview">
       <div class="col-sm-5">
+        <% if @cuisine.main_image.url.present? %>
         <%= image_tag @cuisine.main_image.url, class: 'img-fluid' %>
+        <% else %>
+          まだ登録がありません。
+        <% end %>
       </div>
       <div class="col-sm-7">
         <div class="title">
@@ -20,6 +24,14 @@
         </div>
         <div>
           レシピの説明:<%= @cuisine.description %>
+        </div>
+        <div>
+          タグ:
+          <% @cuisine.tag_list.each do |tag| %>
+            <span class="badge badge-light text-muted">
+              <%= tag %>
+            </span>
+          <% end %>
         </div>
       </div>
     </div>

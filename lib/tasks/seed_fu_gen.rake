@@ -31,7 +31,7 @@ namespace :seed_fu_gen do
     managers = Manager.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/01_manager.rb", class_name: 'Manager', seed_type: :seed_once) do |writer|
       managers.find_each do |mg|
-        writer << mg.attributes.except("created_at", "updated_at")
+        writer << mg.attributes.except("current_sign_in_at", "last_sign_in_at", "created_at", "updated_at")
       end
     end
 
@@ -39,7 +39,7 @@ namespace :seed_fu_gen do
     users = User.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/02_user.rb", class_name: "User", seed_type: :seed_once) do |writer|
     users.each do |user|
-        writer << user.attributes.except("created_at", "updated_at")
+        writer << user.attributes.except("current_sign_in_at", "last_sign_in_at", "created_at", "updated_at")
       end
     end
 
@@ -59,11 +59,11 @@ namespace :seed_fu_gen do
       end
     end
 
-    # 05_ingredient.rb
-    ingredients = Ingredient.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/05_ingredient.rb", class_name: "Ingredient", seed_type: :seed_once) do |writer|
-      ingredients.each do |ig|
-        writer << ig.attributes.except("created_at", "updated_at")
+    # 05_genre.rb
+    genres = Genre.all
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/05_genre.rb", class_name: "Genre", seed_type: :seed_once) do |writer|
+      genres.each do |gr|
+        writer << gr.attributes.except("created_at", "updated_at")
       end
     end
 
@@ -75,17 +75,25 @@ namespace :seed_fu_gen do
       end
     end
 
-    # 07_cookedstate.rb
-    cookedstates = Cookedstate.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/07_cookedstate.rb", class_name: "Cookedstate", seed_type: :seed_once) do |writer|
-      cookedstates.each do |cs|
-        writer << cs.attributes.except("created_at", "updated_at")
+    # # 08_tagging.rb
+    taggings = ActsAsTaggableOn::Tagging.all
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/08_tagging.rb", class_name: "Tagging", seed_type: :seed_once) do |writer|
+      taggings.each do |tgg|
+        writer << tgg.attributes.except("created_at", "updated_at")
       end
     end
 
-    # 08_cuisine.rb
+    # # 09_tag.rb
+    tags = ActsAsTaggableOn::Tag.all
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/09_tag.rb", class_name: "Tag", seed_type: :seed_once) do |writer|
+      tags.each do |tg|
+        writer << tg.attributes.except("created_at", "updated_at")
+      end
+    end
+
+    # 21_cuisine.rb
     cuisines = Cuisine.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/08_cuisine.rb", class_name: "Cuisine", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/21_cuisine.rb", class_name: "Cuisine", seed_type: :seed_once) do |writer|
       cuisines.each do |cn|
         FileUtils.cp("#{Rails.root}/public#{cn.main_image}", "#{Rails.root}/db/afixtures/#{t_folder_name}#{cn.main_image}")
         cn.main_image = File.new("#{Rails.root}/public#{cn.main_image}")
@@ -93,23 +101,23 @@ namespace :seed_fu_gen do
       end
     end
 
-    # 10_foodstuff.rb
+    # 22_foodstuff.rb
     foodstuffs = Foodstuff.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/10_foodstuff.rb", class_name: "Foodstuff", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/22_foodstuff.rb", class_name: "Foodstuff", seed_type: :seed_once) do |writer|
       foodstuffs.each do |fs|
         writer << fs.attributes.except("created_at", "updated_at")
       end
     end
 
-    # 11_procedure.rb
+    # 23_procedure.rb
     procedures = Procedure.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/11_procedure.rb", class_name: "Procedure", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/23_procedure.rb", class_name: "Procedure", seed_type: :seed_once) do |writer|
       procedures.each do |pd|
         writer << pd.attributes.except("created_at", "updated_at")
       end
     end
 
-    # 12_stock.rb
+    # 24_stock.rb
     stocks = Stock.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/12_stock.rb", class_name: "Stock", seed_type: :seed_once) do |writer|
       stocks.each do |st|
@@ -144,7 +152,6 @@ namespace :seed_fu_all_datas do
       Dir.chdir("#{seed_gen_folder}/#{latest_folder_name}/uploads/#{ms}/")
       # target_folder内へ db/afixtures/#{latest_folder_name}/uploads/#{ms} フォルダの画像をコピーする
       Dir.glob('*') do |item|
-        puts item
         FileUtils.cp(item, "#{target_folder}")
       end
     end
@@ -158,5 +165,18 @@ namespace :seed_fu_all_datas do
     FileUtils.cp_r("#{Rails.root}/db/afixtures/#{latest_folder_name}/uploads", "#{Rails.root}/public/uploads")
     # "#{Rails.root}/db/afixtures/*"
 
+  end
+end
+
+namespace :change_main_image_properties do
+  desc 'change main_image properties'
+  task all: :environment do |t|
+    targetFile = Rails.root.join("db/fixtures/21_cuisine.rb")
+
+    buffer = File.open(targetFile, "r") { |f| f.read() }
+    File.open("#{targetFile}.bak" , "w") { |f| f.write(buffer) }
+    buffer.gsub!(/\"main_image\"=>\"/, "\"main_image\"=>Rails.root.join(\"db\/fixtures\/uploads\/cuisine\/")
+    buffer.gsub!(/\.jpg\"/, "\.jpg\")\.open")
+    File.open(targetFile, "w") { |f| f.write(buffer) }
   end
 end

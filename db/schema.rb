@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201002072909) do
+ActiveRecord::Schema.define(version: 20201003105324) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -34,13 +34,15 @@ ActiveRecord::Schema.define(version: 20201002072909) do
 
   create_table "cuisines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false, comment: "料理名"
+    t.bigint "genre_id"
     t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
     t.string "calories", comment: "摂取カロリー"
     t.integer "cooking_time", null: false, comment: "調理時間"
     t.string "description"
-    t.string "main_image", comment: "メイン画像"
+    t.string "main_image", null: false, comment: "メイン画像"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_cuisines_on_genre_id"
     t.index ["name"], name: "index_cuisines_on_name", unique: true
   end
 
@@ -69,6 +71,12 @@ ActiveRecord::Schema.define(version: 20201002072909) do
     t.datetime "updated_at", null: false
     t.index ["cuisine_id"], name: "index_foodstuffs_on_cuisine_id"
     t.index ["rawmaterial_id"], name: "index_foodstuffs_on_rawmaterial_id"
+  end
+
+  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -180,6 +188,33 @@ ActiveRecord::Schema.define(version: 20201002072909) do
     t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
+  create_table "taggings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", collation: "utf8_bin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "todaysmenus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "cuisine_id"
     t.bigint "user_id"
@@ -226,6 +261,7 @@ ActiveRecord::Schema.define(version: 20201002072909) do
   end
 
   add_foreign_key "cookedstates", "foodcategories"
+  add_foreign_key "cuisines", "genres"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
   add_foreign_key "nutrients", "rawmaterials"
