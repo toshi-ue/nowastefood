@@ -2,6 +2,7 @@ class Cuisine < ApplicationRecord
   enum difficulty: { easy: 0, normal: 1, hard: 2 }
   # has_many :rawmaterials
   # has_many :cookedstates
+  belongs_to :genre
   has_many :favorites
   has_many :foodstuffs, dependent: :destroy
   has_many :procedures, dependent: :destroy
@@ -12,5 +13,6 @@ class Cuisine < ApplicationRecord
   validates :main_image, presence: { message: "を追加してください" }
 
   acts_as_taggable
+  counter_culture :genre
   mount_uploader :main_image, ImageUploader
 end

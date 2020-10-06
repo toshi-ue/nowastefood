@@ -37,7 +37,7 @@
             <span class="badge badge-info ml-1">tag1</span>
           </div>
           <div class="row">
-            <div id="btn-favorite" class="col-12 col-sm-4 mt-2 text-center">
+            <div id="btn-favorite-<%= @cuisine.id %>" class="col-12 col-sm-4 mt-2 text-center">
             <%= render partial: 'favorite', locals: {cuisine: @cuisine} %>
             </div>
             <div id="btn-today" class="col-12 col-sm-4 mt-2 text-center">

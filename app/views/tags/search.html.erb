@@ -1,0 +1,48 @@
+<div class="container-fluid" id="wrapper_container">
+  <div class="mt-2">
+    <div class="row">
+      <div class="col">
+        <span class="title">
+          <strong><%= params[:tag_name] %></strong> のレシピ一覧
+        </span>
+        <span>
+          (<%= @cuisines.total_count %>)
+        </span>
+      </div>
+      <div class="col d-flex justify-content-end align-items-end">
+        <%= page_entries_info @cuisines %>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <% @cuisines.each do |cn| %>
+      <div class="col-6 col-sm-6 col-md-3 align-items-xl-center px-2 mt-2">
+        <div class="card">
+          <%= link_to cuisine_path(cn) do %>
+          <div class="img-filter">
+            <%= image_tag cn.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+          </div>
+          <% end %>
+          <div class="card-body">
+            <%= link_to cuisine_path(cn) do %>
+            <p class="card-title text-black-50 d-flex align-items-center"><%= cn.name.truncate(14) %></p>
+            <% end %>
+            <div id="btn-favorite-<%= cn.id %>">
+              <%= render partial: 'cuisines/favorite', locals: {cuisine: cn} %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-center mt-3">
+        <%= paginate @cuisines, theme: 'twitter-bootstrap-4',
+                          pagination_class: "pagination-sm",
+                          nav_class: "d-inline-b"
+        %>
+      </div>
+    </div>
+  </div>
+</div>

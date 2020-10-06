@@ -10,7 +10,8 @@
     "jquery-ui": "^1.12.1",
     "popper.js": "^1.16.1",
     "rails-ujs": "^5.2.4-3",
-    "sortablejs": "^1.10.2"
+    "sortablejs": "^1.10.2",
+    "swiper": "<6"
   },
   "name": "webapp",
   "version": "1.0.0",

@@ -24,6 +24,7 @@ services:
     volumes:
       - .:/webapp
       - bundle:/usr/local/bundle
+      - node-modules:/webapp/node_modules
     # 公開ポートの設定(ホスト(Mac側):コンテナ側)
     ports:
       - "3000:3000"
@@ -47,4 +48,6 @@ volumes:
   db-data:
     driver: local
   bundle:
+    driver: local
+  node-modules:
     driver: local

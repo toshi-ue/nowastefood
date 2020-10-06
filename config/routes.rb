@@ -48,13 +48,18 @@ Rails.application.routes.draw do
     end
   end
   resources :cuisines, only: [:show] do
-    post :add_favorite
     delete :remove_favorite
+    delete :remove_menu
+    post :add_favorite
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
-    delete :remove_menu
+
   end
   resources :favorites, only: [:index, :create, :destroy]
+  get 'genres/search'
+  # TODO: 原材料から探せるようにする
+  # get 'rawmaterials/search'
+  get 'tag_search', action: :search, controller: 'tags'
   resources :todaysmenus, only: [:index, :update, :destroy]
 
   # letter_opener_web
