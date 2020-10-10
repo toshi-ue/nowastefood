@@ -1,5 +1,11 @@
+@import 'swiper/css/swiper';
 
-#about-tops{
+// TODO: swiperの矢印を変更する
+// $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+// @import "@fortawesome/fontawesome-free/scss/regular.scss";
+// @import "@fortawesome/fontawesome-free/scss/solid.scss";
+// @import "@fortawesome/fontawesome-free/scss/brands.css";
+#about-tops {
   .text-right.more-cuisine {
     height: 100%;
   }
@@ -14,7 +20,7 @@
     font-size: 6rem;
   }
 
-  .app-description{
+  .app-description {
     font-size: 1.3rem;
   }
 
@@ -94,8 +100,19 @@
   }
 }
 
-#login_which-tops{
-  .nav-link{
+#index-tops {
+  .swiper-container {
+    width: 100%;
+    max-width: 980px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+#login_which-tops {
+  .nav-link {
     color: #495057;
   }
 }

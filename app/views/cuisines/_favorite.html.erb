@@ -2,26 +2,20 @@
   <% if current_user.already_favorite?(cuisine) %>
     <%= link_to cuisine_remove_favorite_path(cuisine.id), method: :delete, remote: true do %>
       <button class="btn btn-warning btn-block" type="button">
-        <i class="far fa-bookmark"></i><br>
-        remove
-        Favorite
+        <i class="far fa-bookmark"></i> Favorite
       </button>
     <% end %>
   <% else %>
     <%= link_to cuisine_add_favorite_path(cuisine.id), method: :post, remote: true do %>
       <button class="btn btn-outline-secondary btn-block" type="button">
-        <i class="far fa-bookmark"></i><br>
-        add
-        Favorite
+        <i class="far fa-bookmark"></i> Favorite
       </button>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_user_session_path, local: true do %>
     <button class="btn btn-outline-secondary btn-block" type="button">
-      <i class="far fa-bookmark"></i><br>
-      add
-      Favorite
+      <i class="far fa-bookmark"></i> Favorite
     </button>
   <% end %>
 <% end %>
