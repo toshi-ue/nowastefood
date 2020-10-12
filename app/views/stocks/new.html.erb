@@ -4,15 +4,31 @@
     <%= render "shared/flash_messages" %>
     <%= render 'shared/error_messages', {resource: @stock} if @stock.errors.any? %>
   </div>
-  <%= render 'search_form_rawmaterial' %>
 
   <%= form_with(model: @stock, url: stocks_path, local: true) do |form| %>
-  <%= render 'stock_form', {form: form , stock: @stock} %>
-  <div class="text-center">
-    <%= form.submit class: 'btn btn-secondary' %>
-  </div>
+    <%# 検索部分 %>
+    <div class="form-group row">
+      <label for="keyword" id="label_keyword" class="col-10 offset-1 col-sm-2 offset-sm-1 text-sm-right col-md-2 offset-md-3 col-form-label">食材名</label>
+      <div class="col-10 offset-1 col-sm-8 offset-sm-0 col-md-4 offset-md-0">
+        <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, {include_blank: '選択して下さい'},  class: "selectfa form-control" %>
+      </div>
+    </div>
+    <%# quantity-数量 %>
+    <div class="form-group row">
+      <%= form.label :quantity, class: 'col-form-label col-10 offset-1 col-sm-2 offset-sm-1 text-sm-right  col-md-2 offset-md-3' %>
+      <div class="input-group col-10 offset-1 col-sm-8 offset-sm-0 col-md-4 offset-md-0">
+        <%= form.text_field :quantity, id: :foodstuff_quantity, class: 'form-control' %>
+        <div class="input-group-prepend">
+          <div class="input-group-text"></div>
+        </div>
+      </div>
+    </div>
+    <%# user_id-ユーザーid %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div class="text-center">
+      <%= form.submit class: 'btn btn-secondary' %>
+    </div>
   <% end %>
-
   <%= render 'shared/back_previous' %>
   <%= render 'managers/shared/back_to_home' %>
 </div>
