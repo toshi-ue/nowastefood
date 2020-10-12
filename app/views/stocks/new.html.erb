@@ -1,4 +1,4 @@
-<%= javascript_pack_tag 'users/stocks' %>
+<%= javascript_pack_tag 'stocks' %>
 <div class="content_wrapper">
   <div class="col-10 offset-1">
     <%= render "shared/flash_messages" %>
@@ -6,7 +6,7 @@
   </div>
   <%= render 'search_form_rawmaterial' %>
 
-  <%= form_with(model: @stock, url: users_stocks_path, local: true) do |form| %>
+  <%= form_with(model: @stock, url: stocks_path, local: true) do |form| %>
   <%= render 'stock_form', {form: form , stock: @stock} %>
   <div class="text-center">
     <%= form.submit class: 'btn btn-secondary' %>
