@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
   has_many :favorites, dependent: :destroy, inverse_of: :user
   has_many :todaysmenus, dependent: :destroy
+  has_many :stocks
+  has_one :subscription
 
   def already_favorite?(cuisine)
     self.favorites.exists?(cuisine_id: cuisine.id)

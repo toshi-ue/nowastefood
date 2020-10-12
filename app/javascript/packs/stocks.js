@@ -1,105 +1,48 @@
-$(function () {
-  console.log("stocks")
-  // app/javascript/packs/managers/foodstuffs.js と同じ処理がしたい
-  let action_name = $('body').data('action')
-  console.log(action_name);
+import 'select2'
+import 'select2/dist/css/select2.css'
+import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css'
 
+$(function () {
+  let action_name = $('body').data('action')
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
   switch (action_name) {
     case "new":
-      // initialize
-      $('#choiced_rawmaterial').hide()
-      $('#rawmaterial_name').hide()
-      $("#btnResetRawmaterial").hide()
+      $(".selectfa").select2({
+        ajax: {
+          url: '/stocks/search_rawmaterial',
+          datatype: 'json',
+          delay: 500,
+          data: function (params) {
+            return { q: params.term }
+          },
+          processResults: function (data, params) {
+            return {
+              results: $.map(data, function (obj) {
+                return { id: obj.id, text: obj.name };
+              })
+            };
+          }
+        },
+        theme: 'bootstrap4',
+      })
 
-      // check existence of cuisine_id
-      // let initial_rawmaterial_id = $('#stock_rawmaterial_id').val()
-      // console.log(initial_rawmaterial_id)
-
-      // if (initial_rawmaterial_id) {
-      //   $('#choiced_rawmaterial').show()
-      //   $('#rawmaterial_name').show()
-      //   $("#btnResetRawmaterial").show()
-      //   $(".search_rawmaterial").hide()
-      //   $("#search_rawmaterial").hide()
-      // }
-
-      // increamental search
-      let preFunc = null;
-      preInput = '';
-      input = '';
-
-      ajaxSearch = function () {
+      $(".selectfa").on('select2:select', function (e) {
+        let rawmaterial_id = e.params.data.id
+        $(".input-group-text").text("")
         $.ajax({
           type: 'GET',
-          url: '/stocks/search_rawmaterial',
-          data: {
-            keyword: input
-          },
-          datatype: 'json'
+          url: '/stocks/unit_search',
+          data: { rm_id: rawmaterial_id },
+          dataType: 'json'
+        }).done(function (data) {
+          $(".input-group-text").text(data.name)
+        }).fail(function () {
+          console.log("could not get unit name.")
         })
-      }
-
-      // search rawmaterial
-      $("#search_rawmaterial").on("keyup", function () {
-        input = $.trim($("#search_rawmaterial").val());
-        if (preInput !== input) {
-          clearTimeout(preFunc);
-          setTimeout(ajaxSearch, 1000);
-          console.log(input);
-        }
-        preInput = input;
-        $('#search_results').show()
-      })
-
-      // get clicked-element(choice rawmaterial)
-      $(document).on('click', 'div.rawmaterial', function () {
-        // rawmaterial_idを取得
-        let clicked_rawmaterial_id = parseInt((this.id).replace("rawmaterial_", ""))
-        // rawmaterial_idを代入
-        console.log(this.textContent)
-        $('#stock_rawmaterial_id').val(clicked_rawmaterial_id)
-        // 食材名をalert内に表示
-        $('#rawmaterial_name').text(this.textContent)
-        // alertを表示
-        $('#choiced_rawmaterial').show()
-        $('#rawmaterial_name').show()
-        $("#btnResetRawmaterial").show()
-        // 数量フォームに単位を表示する
-        $('.input-group-text').text(this.dataset.unitName)
-        // 検索フォームを非表示にする
-        $("#search_rawmaterial").hide()
-        $("#label_keyword").hide()
-        // 検索結果を非表示
-        $('#search_results').hide()
-        $('.rawmaterial').hide()
-      })
-
-      // reset choiced rawmaterial
-      $("#btnResetRawmaterial").on("click", function () {
-        // alertの背景色を変更する- 動作確認
-        // $('#choiced_rawmaterial').css('background-color', 'Red')
-        // alert内の原材料名をクリアする
-        $('#rawmaterial_name').text("")
-        // 原材料idの値をクリアする
-        $('#stock_rawmaterial_id').val("")
-        // 検索フォームをクリアする
-        $('#search_rawmaterial').val("")
-        // 数量フォームの単位をクリア
-        $('.input-group-text').text("")
-        // 検索フォームを表示する
-        $("#label_keyword").show()
-        $('.search_rawmaterial').show()
-        $('#search_rawmaterial').show()
-        // 非表示する
-        $('#choiced_rawmaterial').hide()
-        $("#btnResetRawmaterial").hide()
-        console.log("11")
       })
       break;
     default:
-      // console.log("not passed");
       break;
   }
 });

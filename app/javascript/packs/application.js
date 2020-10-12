@@ -11,17 +11,25 @@ require('data-confirm-modal')
 
 
 $(function () {
-  let xs = 0, sm = 576, md = 768, lg = 992, browserSize = 0, displaySizeText = ""
+  let xs = 0,
+    sm = 576,
+    md = 768,
+    lg = 992,
+    xl = 1200,
+    browserSize = 0,
+    displaySizeText = ""
 
   function getBrowserWidth() {
     browserSize = $(window).width()
     // console.log(browserSize)
-    if (browserSize >= lg) {
+    if (browserSize >= xl) {
+      displaySizeText = "xl (desktop " + browserSize + 'px)'
+    } else if (browserSize >= lg) {
       displaySizeText = "lg (desktop " + browserSize + 'px)'
     } else if (browserSize >= md) {
       displaySizeText = "md (tablet " + browserSize + 'px)'
     } else if (browserSize >= sm) {
-      displaySizeText = "sm (tablet " + browserSize + 'px)'
+      displaySizeText = "sm (mobile landscope" + browserSize + 'px)'
     } else {
       displaySizeText = "xs (mobile " + browserSize + 'px)'
     }
