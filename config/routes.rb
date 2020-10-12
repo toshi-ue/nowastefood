@@ -38,28 +38,19 @@ Rails.application.routes.draw do
   end
 
   # ユーザー側
-  # UNKNOWN: urlはusersを含めない、アプリ構成ではmanagersとusersをフォルダ分けしたい
-  namespace :users do
-    # resources :cuisines, only: [:show]
-    resources :stocks do
-      collection do
-        get 'search_rawmaterial'
-      end
-    end
-  end
   resources :cuisines, only: [:show] do
     delete :remove_favorite
     delete :remove_menu
     post :add_favorite
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
-
   end
   resources :favorites, only: [:index, :create, :destroy]
-  get 'genres/search'
-  # TODO: 原材料から探せるようにする
-  # get 'rawmaterials/search'
-  get 'tag_search', action: :search, controller: 'tags'
+  resources :stocks, only: [:index, :new, :create, :destroy] do
+    collection do
+      get 'search_rawmaterial'
+    end
+  end
   resources :todaysmenus, only: [:index, :update, :destroy]
 
   # letter_opener_web
@@ -77,10 +68,11 @@ Rails.application.routes.draw do
     registrations: 'managers/registrations'
   }
 
-  # authenticated do
-  #   root to: "secret#index", as: :authenticated_root
-  # end
+  get 'genres/search'
   get 'home/index'
+  # TODO: 原材料から探せるようにする
+  # get 'rawmaterials/search'
+  get 'tag_search', action: :search, controller: 'tags'
   get 'tops/about'
   get 'tops/index'
   get 'tops/login_which'

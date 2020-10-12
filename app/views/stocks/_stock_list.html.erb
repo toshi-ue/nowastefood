@@ -15,7 +15,7 @@
       <td class="align-middle"><%= st.rawmaterial.foodcategory.name %></td>
       <td class="align-middle text-center">
         <div>
-          <%= link_to users_stock_path(st.id),  class: "page-link text-dark", role: "button", method: :delete do %>
+          <%= link_to stock_path(st.id),  class: "page-link text-dark", role: "button", method: :delete do %>
           <i class="far fa-trash-alt"></i>
           <% end %>
         </div>

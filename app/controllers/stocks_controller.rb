@@ -1,4 +1,4 @@
-class Users::StocksController < ApplicationController
+class StocksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_stock, only: [:update, :edit, :destroy]
   def index
@@ -15,11 +15,11 @@ class Users::StocksController < ApplicationController
     @stock = Stock.new(stock_params)
     @duplicated_stock = Stock.find_by(rawmaterial_id: @stock.rawmaterial_id, user_id: current_user.id)
     if @duplicated_stock
-        flash.now[:error] = "すでにstockされている食材は登録できません"
-        return render 'new'
+      flash.now[:error] = "すでにstockされている食材は登録できません"
+      return render 'new'
     end
     if @stock.save
-      redirect_to users_stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加されました" }
+      redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加されました" }
     else
       render 'new'
     end
@@ -34,7 +34,7 @@ class Users::StocksController < ApplicationController
 
   def destroy
     @stock.destroy
-    redirect_to users_stocks_path, flash: { notice: "#{@stock.rawmaterial.name}を削除しました" }
+    redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name}を削除しました" }
   end
 
   def search_rawmaterial

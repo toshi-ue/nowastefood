@@ -1,10 +1,5 @@
-
 <%# rawmaterial_id-原材料id %>
-<%# TODO: 実装できたらhidden_fieldに変更 %>
-<div class="form-group col-10 offset-1">
-  <%= form.label :rawmaterial_id %>
-  <%= form.text_field :rawmaterial_id, id: :stock_rawmaterial_id, class: 'form-control' %>
-</div>
+<%= form.hidden_field :rawmaterial_id, id: :stock_rawmaterial_id %>
 <%# quantity-数量 %>
 <div class="form-group col-10 offset-1 row">
   <%= form.label :quantity, class: 'col-sm-2 offset-sm-3 col-form-label text-sm-right' %>
@@ -17,3 +12,14 @@
 </div>
 <%# user_id-ユーザーid %>
 <%= form.hidden_field :user_id, value: current_user.id %>
+
+<%#
+TODO: Model, View
+  UIをmd以上はパソコン表示と同一にする
+    md以上のカラム数は中央6カラム名
+  検索を同じファイルに追加する
+  検索フォームはselect2を設定する
+  下記エラーメッセージを修正する
+    x すでにstockされている食材は登録できません
+    o すでに登録されている食材は登録できません
+%>

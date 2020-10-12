@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users::Stocks", type: :request do
+RSpec.describe "Stocks", type: :request do
   before do
     @user = create(:user)
     sign_in @user
@@ -8,22 +8,22 @@ RSpec.describe "Users::Stocks", type: :request do
   end
 
   describe "GET /index" do
-    context "ログインしている場合" do
+    context "ログインしているとき" do
       it "indexページを表示すること" do
         (1..2).each do |n|
           create(:stock, user_id: @user.id, quantity: (n * 100).to_s)
         end
-        get users_stocks_path
+        get stocks_path
         expect(response.status).to eq 200
         expect(response.body).to include("100")
         expect(response.body).to include("200")
       end
     end
 
-    context "ログインしていない場合" do
-      it "サインインページへリダイレクトする" do
+    context "ログインしていないとき" do
+      it "サインインページへリダイレクトすること" do
         sign_out @user
-        get users_stocks_path
+        get stocks_path
         expect(response.status).to eq 302
         expect(response).to redirect_to(new_user_session_path)
         follow_redirect!
@@ -33,18 +33,18 @@ RSpec.describe "Users::Stocks", type: :request do
   end
 
   describe "GET /new" do
-    context "ログインしている場合" do
-      it "newページを表示する" do
-        get new_users_stock_path
+    context "ログインしているとき" do
+      it "newページを表示すること" do
+        get new_stock_path
         expect(response.status).to eq 200
         expect(response.body).to include("食材名")
       end
     end
 
-    context "ログインしていない場合" do
-      it "サインインページへリダイレクトする" do
+    context "ログインしていないとき" do
+      it "サインインページへリダイレクトすること" do
         sign_out @user
-        get new_users_stock_path
+        get new_stock_path
         expect(response).to redirect_to(new_user_session_path)
         follow_redirect!
         expect(response.body).to include("メールアドレス")
@@ -57,23 +57,23 @@ RSpec.describe "Users::Stocks", type: :request do
       context "値が妥当なとき" do
         it "indexアクションへリダイレクトされること" do
           rawmaterial = create(:rawmaterial)
-          expect{
-            post users_stocks_path,
-                  params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "1/2") }
-          }.to change{Stock.count}.by(1)
-          expect(response).to redirect_to(users_stocks_path)
+          expect do
+            post stocks_path,
+                 params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "1/2") }
+          end.to change(Stock, :count).by(1)
+          expect(response).to redirect_to(stocks_path)
           follow_redirect!
           expect(response.body).to include("家にある食材")
         end
       end
 
       context "値が不当なとき" do
-        it "newアクションにリダイレクトする" do
+        it "newアクションにリダイレクトすること" do
           rawmaterial = create(:rawmaterial)
-          expect{
-              post users_stocks_path,
-                    params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "") }
-          }.to change{Stock.count}.by(0)
+          expect do
+            post stocks_path,
+                 params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "") }
+          end.to change(Stock, :count).by(0)
           expect(response.status).to eq 200
           expect(response.body).to include("食材名")
         end
@@ -82,8 +82,8 @@ RSpec.describe "Users::Stocks", type: :request do
           it "登録ができないこと" do
             @stock = create(:stock, user_id: @user.id)
             expect do
-              post users_stocks_path, params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: @stock.rawmaterial_id, quantity: "100" )}
-            end.to_not change(Foodcategory, :count)
+              post stocks_path, params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: @stock.rawmaterial_id, quantity: "100") }
+            end.not_to change(Foodcategory, :count)
             expect(response.body).to include("すでにstockされている食材は登録できません")
           end
         end
@@ -96,21 +96,21 @@ RSpec.describe "Users::Stocks", type: :request do
       @stock = create(:stock, user_id: @user.id)
     end
 
-    it "インスタンスを削除できること" do
-      expect{
-        delete users_stock_path(@stock)
-      }.to change{Stock.count}.by(-1)
+    it "インスタンスが削除できること" do
+      expect do
+        delete stock_path(@stock)
+      end.to change(Stock, :count).by(-1)
     end
 
     it "indexページへリダイレクトされること" do
-        (1..2).each do |n|
-          create(:stock, user_id: @stock.user_id, quantity: (n * 100).to_s)
-        end
+      (1..2).each do |n|
+        create(:stock, user_id: @stock.user_id, quantity: (n * 100).to_s)
+      end
 
-        delete users_stock_path(@stock)
-        follow_redirect!
-        expect(response.body).to include "100"
-        expect(response.body).to include "200"
+      delete stock_path(@stock)
+      follow_redirect!
+      expect(response.body).to include "100"
+      expect(response.body).to include "200"
     end
   end
 end
