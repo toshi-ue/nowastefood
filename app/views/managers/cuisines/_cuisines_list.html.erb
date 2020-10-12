@@ -1,12 +1,12 @@
 <table class="table table-hover table-sm table-responsive">
   <thead>
     <tr>
-      <td class="align-middle"><%= sort_link(@q, :id, 'ID') %></td>
+      <td class="align-middle"><%= sort_link(@q, :id, 'ID', default_order: :desc) %></td>
       <td class="align-middle">メイン画像</td>
-      <td class="align-middle text-center"><%= sort_link(@q, :name, '料理レシピ名') %></td>
-      <td class="align-middle"><%= sort_link(@q, :difficulty, 'お手軽度') %></td>
-      <td class="align-middle"><%= sort_link(@q, :cooking_time, '調理時間(分)') %></td>
-      <td class="align-middle text-center"><%= sort_link(@q, :created_at, '登録日') %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :name, '料理レシピ名', default_order: :desc) %></td>
+      <td class="align-middle"><%= sort_link(@q, :difficulty, 'お手軽度', default_order: :desc) %></td>
+      <td class="align-middle"><%= sort_link(@q, :cooking_time, '調理時間(分)', default_order: :desc) %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :created_at, '登録日', default_order: :desc) %></td>
       <td class="align-middle"></td>
       <td class="align-middle"></td>
     </tr>
