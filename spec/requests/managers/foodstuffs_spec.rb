@@ -61,7 +61,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
         }
       }
       follow_redirect!
-      expect(response.body).to include "#{@cuisine.name}"
+      expect(response.body).to include @cuisine.name.to_s
     end
   end
 
@@ -89,7 +89,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
 
     it "既存レコードが更新されること" do
       put managers_foodstuff_path @foodstuff, params: {
-        foodstuff:{
+        foodstuff: {
           cuisine_id: @foodstuff.cuisine_id,
           rawmaterial_id: @foodstuff.rawmaterial_id,
           quantity: "1/2"
@@ -97,15 +97,16 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
       }
       expect(Foodstuff.find_by(id: @foodstuff.id).quantity). to eq "1/2"
     end
+
     it "cuisine/showページヘリダイレクトすること" do
       put managers_foodstuff_path @foodstuff, params: {
-        foodstuff:{
+        foodstuff: {
           cuisine_id: @foodstuff.cuisine_id,
           rawmaterial_id: @foodstuff.rawmaterial_id,
           quantity: "1/2"
         }
       }
-      expect(response).to redirect_to(managers_cuisine_path( @foodstuff.cuisine_id))
+      expect(response).to redirect_to(managers_cuisine_path(@foodstuff.cuisine_id))
     end
   end
 
@@ -127,7 +128,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
 
     it "cuisine/showページヘリダイレクトすること" do
       delete managers_foodstuff_path @foodstuff
-      expect(response).to redirect_to(managers_cuisine_path( @foodstuff.cuisine_id))
+      expect(response).to redirect_to(managers_cuisine_path(@foodstuff.cuisine_id))
     end
   end
 end
