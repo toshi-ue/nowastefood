@@ -53,6 +53,9 @@ Rails.application.routes.draw do
     end
   end
   resources :todaysmenus, only: [:index, :update, :destroy]
+  resources :users, only: [:show] do
+    resources :subscriptions, only: [:show, :create, :destroy]
+  end
 
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
