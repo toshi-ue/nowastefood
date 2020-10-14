@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   resources :stocks, only: [:index, :new, :create, :destroy] do
     collection do
       get 'search_rawmaterial'
+      get 'unit_search'
     end
   end
   resources :todaysmenus, only: [:index, :update, :destroy]

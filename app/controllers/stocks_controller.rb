@@ -9,6 +9,7 @@ class StocksController < ApplicationController
 
   def new
     @stock = Stock.new
+    @rawmaterials = Rawmaterial.all
   end
 
   def create
@@ -38,7 +39,16 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.json { render json: @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%") }
+    end
+  end
+
+  def unit_search
+    @unit = Rawmaterial.find_by(id: params[:rm_id])&.unit
+    respond_to do |format|
+      format.json { render json: @unit }
+    end
   end
 
   private
