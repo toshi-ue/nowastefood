@@ -11,17 +11,11 @@
           </li>
         </ul>
         <ul class="nav navbar-nav d-md-flex d-xl-flex ml-auto align-items-md-center align-items-xl-center">
-          <%# TODO: Stock機能が完成したらのリンクを追加 %>
-          <li class="nav-item d-xl-flex align-items-xl-center"><a class="nav-link  text-center" href="#">Stock</a></li>
+          <li class="nav-item d-xl-flex align-items-xl-center"><%= link_to 'Stock', stocks_path, class: 'nav-link text-center' %></li>
           <li class="nav-item d-xl-flex align-items-xl-center"><a class="nav-link  text-center" href="#">Purchase</a></li>
           <li class="nav-item d-xl-flex align-items-xl-center"><a class="nav-link  text-center" href="#">History</a></li>
-          <li class="nav-item d-xl-flex align-items-xl-center">
-            <%= link_to 'Today', todaysmenus_path, class: "nav-link text-center" %>
-          </li>
-
-          <li class="nav-item align-items-xl-center">
-            <%= link_to 'Favorite', favorites_path, class: "nav-link text-center" %>
-          </li>
+          <li class="nav-item d-xl-flex align-items-xl-center"><%= link_to 'Today', todaysmenus_path, class: "nav-link text-center" %></li>
+          <li class="nav-item align-items-xl-center"><%= link_to 'Favorite', favorites_path, class: "nav-link text-center" %></li>
           <li class="nav-item d-md-none align-items-xl-center">
             <%# TODO: 設定画面へのリンクを追加 %>
             <a class="nav-link text-center" href="#">設定</a>
@@ -38,11 +32,9 @@
           </li>
           <li class="nav-item dropdown d-none d-md-block"><a class="dropdown-toggle nav-link text-center" data-toggle="dropdown" aria-expanded="false" href="#">メニュー&nbsp;</a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">昨日までのレシピ</a>
               <% if user_signed_in? %>
               <%# TODO: 設定画面へのリンクを追加 %>
               <a class="dropdown-item" href="#">設定</a>
-              <a class="dropdown-item" href="#">ログアウト</a>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               <% else %>
               <%= link_to 'ログイン',tops_login_which_path, class: 'dropdown-item' %>
