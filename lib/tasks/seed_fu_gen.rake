@@ -2,14 +2,14 @@ require 'active_record'
 require "fileutils"
 require 'date'
 
-t = Time.now + 9.hours
+t = Time.current
 t_folder_name = t.strftime("%y%m%d")
 seed_gen_folder = "#{Rails.root}/db/afixtures"
 
 models_image_exists = ["cuisine"]
 
 namespace :seed_fu_gen do
-  desc 'generate seed-fu files'
+  desc "back up datas to folder named \"#{seed_gen_folder}/#{t_folder_name}\"."
   task all: :environment do |_t|
     # add or clean directory
     if Dir.exist?(seed_gen_folder)
@@ -76,7 +76,7 @@ namespace :seed_fu_gen do
       end
     end
 
-    # # 08_tagging.rb
+    # 08_tagging.rb
     taggings = ActsAsTaggableOn::Tagging.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/08_tagging.rb", class_name: "Tagging", seed_type: :seed_once) do |writer|
       taggings.each do |tgg|
@@ -84,7 +84,7 @@ namespace :seed_fu_gen do
       end
     end
 
-    # # 09_tag.rb
+    # 09_tag.rb
     tags = ActsAsTaggableOn::Tag.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/09_tag.rb", class_name: "Tag", seed_type: :seed_once) do |writer|
       tags.each do |tg|
@@ -125,20 +125,11 @@ namespace :seed_fu_gen do
         writer << st.attributes.except("created_at", "updated_at")
       end
     end
-
-    # 25_todaysmenu.rb
-    # todaysmenus = Todaysmenu.all
-    # SeedFu::Writer.write("db/afixtures/#{t_folder_name}/25_todaysmenu.rb", class_name: "Stock", seed_type: :seed_once) do |writer|
-    #   todaysmenus.each do |tm|
-    #     # TODO: あとで時間指定の方法を探る
-    #     writer << tm.attributes.except("created_at", "updated_at")
-    #   end
-    # end
   end
 end
 
 namespace :seed_fu_all_datas do
-  desc 'seed files and images'
+  desc 'create seed files and images'
   task all: :environment do |_t|
     # find latest foloder name
     folder_names = []
@@ -150,23 +141,21 @@ namespace :seed_fu_all_datas do
     # copy image files
     models_image_exists.each do |ms|
       target_folder = "#{Rails.root}/public/uploads/#{ms}"
+      # remove jpg files of target_folder
       if Dir.exist?(target_folder)
-        # target_folderへ移動
         Dir.chdir(target_folder)
-        # target_folder以下の画像を全部削除
         FileUtils.rm(Dir.glob('*.jpg'))
       else
         FileUtils.mkdir_p(target_folder)
       end
-      # target_folderへ移動
       Dir.chdir("#{seed_gen_folder}/#{latest_folder_name}/uploads/#{ms}/")
-      # target_folder内へ db/afixtures/#{latest_folder_name}/uploads/#{ms} フォルダの画像をコピーする
+      # duplicate jpg files
       Dir.glob('*') do |item|
         FileUtils.cp(item, target_folder.to_s)
       end
     end
 
-    # re_make seed folder and files
+    # re:make seed folder and files
     should_re_change_folder = "#{Rails.root}/db/fixtures"
     FileUtils.rm_rf(should_re_change_folder)
     # FileUtils.mkdir_p(should_re_change_folder)
@@ -180,12 +169,12 @@ end
 namespace :change_main_image_properties do
   desc 'change main_image properties'
   task all: :environment do |_t|
-    targetFile = Rails.root.join("db/fixtures/21_cuisine.rb")
+    target_file = Rails.root.join("db/fixtures/21_cuisine.rb")
 
-    buffer = File.open(targetFile, "r") { |f| f.read }
+    buffer = File.open(target_file, "r") { |f| f.read }
     # File.open("#{targetFile}.bak" , "w") { |f| f.write(buffer) }
     buffer.gsub!(/\"main_image\"=>\"/, "\"main_image\"=>Rails.root.join(\"db\/fixtures\/uploads\/cuisine\/")
     buffer.gsub!(/\.jpg\"/, "\.jpg\")\.open")
-    File.open(targetFile, "w") { |f| f.write(buffer) }
+    File.open(target_file, "w") { |f| f.write(buffer) }
   end
 end
