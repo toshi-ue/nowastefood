@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   # 管理者側
+  devise_for :managers, controllers: {
+    sessions: 'managers/sessions',
+    passwords: 'managers/passwords',
+    registrations: 'managers/registrations'
+  }
   namespace :managers do
     resources :cookedstates, except: [:show] do
       member do
@@ -38,6 +43,11 @@ Rails.application.routes.draw do
   end
 
   # ユーザー側
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
   resources :cuisines, only: [:show] do
     delete :remove_favorite
     delete :remove_menu
@@ -57,21 +67,6 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:show, :create, :destroy]
   end
 
-  # letter_opener_web
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
-
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations'
-  }
-
-  devise_for :managers, controllers: {
-    sessions: 'managers/sessions',
-    passwords: 'managers/passwords',
-    registrations: 'managers/registrations'
-  }
-
   get 'genres/search'
   get 'home/index'
   # TODO: 原材料から探せるようにする
@@ -80,9 +75,17 @@ Rails.application.routes.draw do
   get 'tops/about'
   get 'tops/index'
   get 'tops/login_which'
+  get 'user/profile', to: 'users#show'
+  get 'user/subscription', to: 'subscriptions#show'
+  post 'register_subscription', to: 'subscriptions#create'
+  delete 'cancel_subscription', to: 'subscriptions#destroy'
+
   if Rails.env.development?
     root to: 'home#index'
   else
     root to: 'tops#about'
   end
+
+  # letter_opener_web
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

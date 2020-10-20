@@ -21,7 +21,7 @@ class User < ApplicationRecord
     self.save
   end
 
-  def cancel_subscription
+  def stop_subscription
     self.subscribed = false
     self.subscribed_at = nil
     self.save
