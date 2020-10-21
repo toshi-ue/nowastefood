@@ -1,9 +1,7 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
-  # 処理がなくても動作する
-  #   処理がない場合は書かない方が良いのか?
-  # def show; end
+  def show; end
 
   def create
     current_user.join_subscription
