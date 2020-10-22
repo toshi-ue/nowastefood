@@ -1,0 +1,10 @@
+<h1>Subscriptions#show</h1>
+<p>Find me in app/views/subscriptions/show.html.erb</p>
+<h3>お客様のプラン</h3>
+<% if current_user.subscribed %>
+  有料プラン
+  <%= link_to '有料プランをやめる', cancel_subscription_path, class: 'btn btn-primary', method: :delete %>
+<% else %>
+  無料プラン
+  <%= link_to '有料プランに登録する', register_subscription_path, class: 'btn btn-primary', method: :post %>
+<% end %>

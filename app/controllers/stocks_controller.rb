@@ -14,14 +14,16 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
-    @duplicated_stock = Stock.find_by(rawmaterial_id: @stock.rawmaterial_id, user_id: current_user.id)
+    @duplicated_stock = current_user.stocks.find_by(rawmaterial_id: @stock.rawmaterial_id)
     if @duplicated_stock
       flash.now[:error] = "すでにstockされている食材は登録できません"
+      @rawmaterials = Rawmaterial.all
       return render 'new'
     end
     if @stock.save
       redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加されました" }
     else
+      @rawmaterials = Rawmaterial.all
       render 'new'
     end
   end
@@ -39,8 +41,9 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
     respond_to do |format|
-      format.json { render json: @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%") }
+      format.json { render json: @rawmaterials }
     end
   end
 
@@ -58,6 +61,6 @@ class StocksController < ApplicationController
   end
 
   def stock_params
-    params.require(:stock).permit(:quantity, :rawmaterial_id, :user_id)
+    params.require(:stock).permit(:quantity, :rawmaterial_id).merge(user_id: current_user.id)
   end
 end
