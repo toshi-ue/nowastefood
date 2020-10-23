@@ -1,0 +1,16 @@
+#show-users{
+  .user-profile-image{
+    width: 100px;
+    height: 100px;
+    // background-color: #f8f8f8;
+  }
+
+  #user-profile-no-image{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

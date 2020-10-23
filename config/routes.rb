@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   get 'tops/login_which'
   get 'user/profile', to: 'users#show'
   get 'user/subscription', to: 'subscriptions#show'
+  put 'update_profile', to: 'users#update_profile'
   post 'register_subscription', to: 'subscriptions#create'
   delete 'cancel_subscription', to: 'subscriptions#destroy'
 

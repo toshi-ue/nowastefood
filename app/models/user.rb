@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
   has_many :favorites, dependent: :destroy, inverse_of: :user
   has_many :todaysmenus, dependent: :destroy
-  has_many :stocks
+  has_many :stocks, dependent: :destroy
+  # userscontrollerのupdate_profileアクションでのみvalidationを実行したいが、実行されない
+  validates :nickname, presence: true, on: :update_profile
+  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, on: :update_profile
+  mount_uploader :profile_image, ProfileImageUploader
 
   def already_favorite?(cuisine)
     self.favorites.exists?(cuisine_id: cuisine.id)

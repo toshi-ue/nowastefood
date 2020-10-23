@@ -1,0 +1,82 @@
+<%= javascript_pack_tag 'users' %>
+<div class="container-fluid" id="wrapper_container">
+  <div id="settings" class="mt-2">
+    <div class="row">
+      <div class="col offset-md-1 offset-lg-2">
+        <h2>設定</h2>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-12 col-sm-4 col-md-3 offset-md-1 offset-lg-2 d-xl-flex align-items-xl-center px-2 mt-2">
+        <div id="items">
+          <div class="text-center">
+            <%= image_tag @user.profile_image, class: "rounded-circle img-fluid" %>
+            <% unless @user.nickname.blank? %>
+              <p><%= @user.nickname %><br>さん</p>
+            <% end %>
+          </div>
+          <div>
+            <ul class="list-group mt-2">
+              <li class="list-group-item"><span>ユーザー情報</span></li>
+              <li class="list-group-item"><span>プラン情報</span></li>
+              <li class="list-group-item"><span>退会</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-8 col-md-7 col-lg-5 justify-content-lg-center align-items-lg-center px-2 mt-2 mb-5">
+        <div id="edit-profile">
+          <h4 class="text-center">ユーザー情報</h4>
+          <hr>
+          <%= form_with(model: @user, url: update_profile_path, local: true, method: :put) do |f| %>
+            <div class="form-group">
+              <% unless @user.profile_image.blank? %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="user-profile-image">
+                    <%= image_tag @user.profile_image, id: 'user-avatar', size: '100x100' %>
+                  </div>
+                </div>
+              <% else %>
+                <div id="user-profile-no-image" class="d-flex  justify-content-center align-items-center">
+                  <div id="no-image">
+                    <%= image_tag 'no_image_100x100', id: 'user-avatar', size: '100x100' %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <%= f.file_field :profile_image, id: 'user-img' %>
+            </div>
+            <div class="form-group">
+              <label class="text-black-50" for="nickname">ニックネーム(10文字以内)</label>
+              <%= f.text_field :nickname, class: "form-control", placeholder: "入力してください" %>
+            </div>
+            <div class="form-group">
+              <label class="text-black-50" for="default_serving_count">○人前(数字のみ、1000以下まで)</label>
+              <%= f.text_field :default_serving_count, class: "form-control", placeholder: "例）4" %>
+            </div>
+            <div>
+              <%= f.submit '更新する', class: "btn btn-outline-success btn-block" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#user_img").change(function(){
+        readURL(this);
+    });
+  });
+</script>
