@@ -33,7 +33,6 @@ ja:
       procedure:
         cooking_detail: 手順
       rawmaterial:
-
         name: 原材料名
         hiragana: ひらがな
         foodcategory: 食材区分
@@ -46,6 +45,9 @@ ja:
         rawmaterial_id: 原材料id
         quantity: 数量
         rawmaterial: 食材
+      user:
+        nickname: ニックネーム
+        default_serving_count: 提供人数
   enums:
     cuisine:
       difficulty:

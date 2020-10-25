@@ -1,8 +1,15 @@
 #show-users{
+  .no-gutters{
+    li{
+      border-collapse: collapse;
+      border-left-style: none;
+      border-right-style: none;
+    }
+
+  }
   .user-profile-image{
     width: 100px;
     height: 100px;
-    // background-color: #f8f8f8;
   }
 
   #user-profile-no-image{

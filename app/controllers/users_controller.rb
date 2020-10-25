@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :update_profile]
+  before_action :set_user, only: [:show, :update]
 
   def show; end
 
   # このアクションでvalidationを実行させたい
-  def update_profile
-    if @user.update(update_profile_params)
+  def update
+    if @user.update(user_params)
       redirect_to user_profile_path, flash: { notice: "プロフィールを更新しました" }
     else
-      redirect_to user_profile_path
+      render 'show'
     end
   end
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def update_profile_params
+  def user_params
     params.require(:user).permit(:nickname, :profile_image, :default_serving_count)
   end
 end

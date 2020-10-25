@@ -1,0 +1,33 @@
+<% current_page = "#{controller.controller_path}\##{controller.action_name}" %>
+<div class="col-12 col-sm-4 col-md-3 offset-md-1 offset-lg-2 d-xl-flex align-items-xl-center px-2 mt-2">
+  <div id="items">
+    <div class="text-center">
+      <%= image_tag @user.profile_image, class: "rounded-circle img-fluid" %>
+      <% unless @user.nickname.blank? %>
+        <p><%= @user.nickname %><br>さん</p>
+      <% end %>
+    </div>
+    <div>
+      <%# binding.pry%>
+      <ul class="list-group mt-2">
+        <li class="list-group-item">
+          <span>
+          <%=current_page%>
+            <%= link_to 'ユーザー情報', user_profile_path, class: "text-black-50 #{change_font_weight(current_page, 'users#show')}" %>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <span>
+            <%= link_to 'プラン情報', user_subscription_path, class: "text-black-50 #{change_font_weight(current_page, 'subscriptions#show')}" %></span>
+        </li>
+        <li class="list-group-item">
+          <span>
+            <%= link_to 'パスワード変更', edit_user_registration_path, class: "text-black-50 #{change_font_weight(current_page, 'users/registrations#edit')}" %></span>
+          </li>
+        <li class="list-group-item">
+          <span class="text-black-50">退会</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
