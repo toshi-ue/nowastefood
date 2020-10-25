@@ -8,7 +8,6 @@
       <% end %>
     </div>
     <div>
-      <%# binding.pry%>
       <ul class="list-group mt-2">
         <li class="list-group-item">
           <span>
@@ -22,10 +21,22 @@
         </li>
         <li class="list-group-item">
           <span>
-            <%= link_to 'パスワード変更', edit_user_registration_path, class: "text-black-50 #{change_font_weight(current_page, 'users/registrations#edit')}" %></span>
+            <%= link_to 'パスワード変更', edit_password_path, class: "text-black-50 #{change_font_weight(current_page, 'passwords#edit')}" %></span>
           </li>
         <li class="list-group-item">
-          <span class="text-black-50">退会</span>
+          <%= link_to '退会する', user_registration_path(@user.id),
+                class: "text-black-50",
+                data: {
+                  confirm: "<i class='fas fa-exclamation-circle'></i>
+                    アカウントを削除します。<br>よろしいですか?<br><small>※ お使いのアカウント情報を削除すると全てのサービスがご利用できなくなります。再度ご利用いただくには再登録していただく必要がございます。</small>",
+                  cancel: "キャンセル",
+                  commit: "削除",
+                  title: "削除確認"
+                },
+                role: "button",
+                method: :delete, local: true %>
+          <span class="text-black-50">
+          </span>
         </li>
       </ul>
     </div>

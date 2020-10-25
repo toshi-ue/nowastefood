@@ -7,6 +7,8 @@
 
 <p><%= link_to 'id: 1リンク(親子丼)',cuisine_path(1), class: 'btn btn-success' %></p>
 <p><%= link_to 'id: 2リンク(チャンプルー)',cuisine_path(2), class: 'btn btn-success' %></p>
+<p><%= link_to '設定画面へ', user_profile_path, class: 'btn btn-success' %></p>
+<p><%= link_to 'パスワード変更画面へ', edit_password_path, class: 'btn btn-success' %></p>
 
 <%= render 'managers/shared/all_crud_links' %>
 <%= render 'managers/shared/manager_log_out' %>
