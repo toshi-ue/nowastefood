@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def show; end
 
-  # このアクションでvalidationを実行させたい
   def update
-    if @user.update(user_params)
+    @user.assign_attributes(user_params)
+    if @user.save(context: :update_profile)
       redirect_to user_profile_path, flash: { notice: "プロフィールを更新しました" }
     else
       render 'show'

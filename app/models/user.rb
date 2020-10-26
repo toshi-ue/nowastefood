@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy, inverse_of: :user
   has_many :todaysmenus, dependent: :destroy
   has_many :stocks, dependent: :destroy
-  validates :nickname, length: { in: 1..10 }, on: :update
-  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, on: :update
+  validates :nickname, length: { in: 1..10 }, if: -> { validation_context == :update_profile }
+  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: -> { validation_context == :update_profile }
   mount_uploader :profile_image, ProfileImageUploader
 
   def already_favorite?(cuisine)

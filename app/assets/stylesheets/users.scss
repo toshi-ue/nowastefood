@@ -1,8 +1,4 @@
-#show-users{
-  .list-group-item a{
-    color:inherit;
-  }
-
+#show-users,#update-users{
   input[type="file"]{
     display: none;
   }
@@ -11,6 +7,12 @@
     padding: 10px;
     background-color: #E5E5E5;
     cursor: pointer;
+  }
+
+}
+#show-users{
+  .list-group-item a{
+    color:inherit;
   }
 
   .no-gutters{

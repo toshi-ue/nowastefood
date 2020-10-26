@@ -4,7 +4,8 @@ class PasswordsController < ApplicationController
 
   def update
     if current_user.update_with_password(user_params)
-      sign_in(current_user, bypass: true)
+      bypass_sign_in(current_user)
+      # sign_in(current_user, bypass: true)
       redirect_to edit_password_path, flash: { notice: "パスワードを更新しました" }
     else
       set_user
