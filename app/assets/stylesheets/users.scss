@@ -1,4 +1,18 @@
 #show-users{
+  .list-group-item a{
+    color:inherit;
+  }
+
+  input[type="file"]{
+    display: none;
+  }
+
+  label[for="profile_image"]{
+    padding: 10px;
+    background-color: #E5E5E5;
+    cursor: pointer;
+  }
+
   .no-gutters{
     li{
       border-collapse: collapse;

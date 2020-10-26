@@ -1,7 +1,9 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
-  def show; end
+  def show
+    @user = current_user
+  end
 
   def create
     current_user.join_subscription
