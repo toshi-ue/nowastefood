@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     nickname { Gimei.unique.name.kanji }
-    sequence(:email) { |n| "heascook_user#{n + 2}@ahk.jp" }
+    sequence(:email) { |n| "user#{n + 2}@example.com" }
     password { 'password' }
     password_confirmation { 'password' }
     profile_image { Faker::Avatar.image(slug: "my-own-slug", size: "50x50") }
