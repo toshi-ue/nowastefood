@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201016025800) do
+ActiveRecord::Schema.define(version: 20201022075810) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -189,16 +189,6 @@ ActiveRecord::Schema.define(version: 20201016025800) do
     t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
-  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_id"
-    t.integer "amount"
-    t.string "stripe_customer_id"
-    t.string "stripe_subscription_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_subscriptions_on_user_id"
-  end
-
   create_table "taggings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -246,10 +236,9 @@ ActiveRecord::Schema.define(version: 20201016025800) do
     t.string "nickname"
     t.string "email", default: "", null: false
     t.integer "default_serving_count", default: 1
-    t.string "stripe_customer_id"
-    t.string "stripe_card_id"
     t.boolean "subscribed"
     t.datetime "subscribed_at"
+    t.string "profile_image"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -284,7 +273,6 @@ ActiveRecord::Schema.define(version: 20201016025800) do
   add_foreign_key "rawmaterials", "units"
   add_foreign_key "stocks", "rawmaterials"
   add_foreign_key "stocks", "users"
-  add_foreign_key "subscriptions", "users"
   add_foreign_key "todaysmenus", "cuisines"
   add_foreign_key "todaysmenus", "users"
 end

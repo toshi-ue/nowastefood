@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  resource :password, only: [:edit, :update]
   resources :cuisines, only: [:show] do
     delete :remove_favorite
     delete :remove_menu
@@ -74,6 +75,7 @@ Rails.application.routes.draw do
   get 'tops/login_which'
   get 'user/profile', to: 'users#show'
   get 'user/subscription', to: 'subscriptions#show'
+  put 'update_profile', to: 'users#update'
   post 'register_subscription', to: 'subscriptions#create'
   delete 'cancel_subscription', to: 'subscriptions#destroy'
 
