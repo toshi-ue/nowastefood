@@ -76,21 +76,21 @@ namespace :seed_fu_gen do
       end
     end
 
-    # 08_tagging.rb
-    taggings = ActsAsTaggableOn::Tagging.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/08_tagging.rb", class_name: "Tagging", seed_type: :seed_once) do |writer|
-      taggings.each do |tgg|
-        writer << tgg.attributes.except("created_at", "updated_at")
-      end
-    end
+    # # 08_tagging.rb
+    # taggings = ActsAsTaggableOn::Tagging.all
+    # SeedFu::Writer.write("db/afixtures/#{t_folder_name}/08_tagging.rb", class_name: "Tagging", seed_type: :seed_once) do |writer|
+    #   taggings.each do |tgg|
+    #     writer << tgg.attributes.except("created_at", "updated_at")
+    #   end
+    # end
 
-    # 09_tag.rb
-    tags = ActsAsTaggableOn::Tag.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/09_tag.rb", class_name: "Tag", seed_type: :seed_once) do |writer|
-      tags.each do |tg|
-        writer << tg.attributes.except("created_at", "updated_at")
-      end
-    end
+    # # 09_tag.rb
+    # tags = ActsAsTaggableOn::Tag.all
+    # SeedFu::Writer.write("db/afixtures/#{t_folder_name}/09_tag.rb", class_name: "Tag", seed_type: :seed_once) do |writer|
+    #   tags.each do |tg|
+    #     writer << tg.attributes.except("created_at", "updated_at")
+    #   end
+    # end
 
     # 21_cuisine.rb
     cuisines = Cuisine.all
