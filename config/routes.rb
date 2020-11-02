@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index, :create, :destroy]
   resources :stocks, only: [:index, :new, :create, :destroy] do
     collection do
+      get 'auto_today_create'
       get 'search_rawmaterial'
       get 'unit_search'
     end
