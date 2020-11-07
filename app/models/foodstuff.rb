@@ -12,9 +12,21 @@ class Foodstuff < ApplicationRecord
     self.quantity = quantity.gsub(/ |　/, "").tr("／", "/").strip.tr('０-９', '0-9')
   end
 
-  private
-    def uniqueness_rawmaterial_id
-      foodstuff = Foodstuff.find_by(cuisine_id: self.cuisine_id, rawmaterial_id: self.rawmaterial_id)
-      errors.add(:base, "1つの料理に同じ材料を登録できません") if foodstuff && foodstuff.id != self.id
+  def self.get_best_cuisine(foodstuffs, todaysmenus, quantity_want_to_consume, user_serving_count)
+    cuisines = {}
+    foodstuffs.each do |fs|
+      result_quantity = Rational(quantity_want_to_consume) - Rational(fs.quantity) * user_serving_count
+      cuisines.store(fs.cuisine_id, result_quantity)
     end
+    candidates = cuisines.delete_if { |key, _| todaysmenus.include?(key) }
+    optimal_value = candidates.values.partition { |v| v <= 0 }[0].first
+    cuisines.key(optimal_value)
+  end
+
+  private
+
+  def uniqueness_rawmaterial_id
+    foodstuff = Foodstuff.find_by(cuisine_id: self.cuisine_id, rawmaterial_id: self.rawmaterial_id)
+    errors.add(:base, "1つの料理に同じ材料を登録できません") if foodstuff && foodstuff.id != self.id
+  end
 end
