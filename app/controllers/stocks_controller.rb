@@ -60,6 +60,8 @@ class StocksController < ApplicationController
 
     @foodstuffs = Foodstuff.where(rawmaterial_id: rawmaterial_want_to_consume)
     todaysmenus = current_user.todaysmenus.pluck(:cuisine_id)
+    # if @foodstuffs.present?
+    # foodstuffsがnilのときの場合どうするかのコードが書いていない(redirect_to が妥当?)
     optimal_cuisine_id = @foodstuffs.get_best_cuisine(@foodstuffs, todaysmenus, quantity_want_to_consume, current_user.default_serving_count)
 
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: optimal_cuisine_id, serving_count: current_user.default_serving_count)

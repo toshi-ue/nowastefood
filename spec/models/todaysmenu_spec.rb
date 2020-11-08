@@ -15,4 +15,16 @@ RSpec.describe Todaysmenu, type: :model do
     other_menu.valid?
     expect(other_menu).to be_invalid
   end
+
+  describe "#count_quantities" do
+    it "cuisine_id, quantityで構成されたをかえすこと"
+  end
+
+  describe "#create_hash_todaysmenus" do
+    it "hashをかえすこと"
+  end
+
+  describe "#summarize_by_rawmaterial" do
+    it "cuisine_idとrawmaterialごとの合計値をかえすこと"
+  end
 end

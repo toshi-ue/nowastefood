@@ -2,36 +2,62 @@ require 'rails_helper'
 
 RSpec.describe Foodstuff, type: :model do
   describe "#convert_specific_format" do
-    let(:foodstuff){ Foodstuff.new(quantity: quantity) }
     subject { foodstuff.convert_specific_format }
+
+    let(:foodstuff) { Foodstuff.new(quantity: quantity) }
+
     context "OK" do
       context "半角数字のみの場合" do
         let(:quantity) { "1" }
+
         it { is_expected.to eq "1" }
       end
 
       context "全角数字のみの場合" do
         let(:quantity) { "１" }
+
         it { is_expected.to eq("1") }
       end
 
       context "スペースを含んでいる数字の場合" do
         let(:quantity) { " 1　" }
+
         it { is_expected.to eq "1" }
       end
 
       context "分数であること" do
         let(:quantity) { " 1/2" }
+
         it { is_expected.to eq "1/2" }
       end
 
       context "スペースを含んでいる分数であること" do
         let(:quantity) { " 1/2　" }
+
         it { is_expected.to eq "1/2" }
       end
+
       context "/、数字、スペース以外の文字列を含むこと" do
         let(:quantity) { "aaa" }
+
         it { is_expected.to eq "aaa" }
+      end
+    end
+  end
+
+  describe "#get_best_cuisine" do
+    context "foodstuffsがnilのとき" do
+      it "stocks#indexへリダイレクトすること"
+      it "機能を使えるcuisineがありませんでしたと表示されること"
+    end
+
+    context "foodstuffsに値が格納されている時" do
+      context "todaysmenusがnilのとき" do
+        it "optimal_valueが絶対値から最小のマイナスの値をもつcuisine_idを返すこと(なければoptimal_valueが絶対値から最小のプラスの値をもつcuisine_idを返すこと)"
+      end
+
+      context "todaysmenusに値が格納されている時" do
+        it "optimal_valueが絶対値から最小のマイナスの値をもつcuisine_idを返すこと(なければoptimal_valueが絶対値から最小のプラスの値をもつcuisine_idを返すこと)"
       end
     end
   end
