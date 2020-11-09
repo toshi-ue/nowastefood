@@ -16,15 +16,20 @@ RSpec.describe Todaysmenu, type: :model do
     expect(other_menu).to be_invalid
   end
 
-  describe "#count_quantities" do
-    it "cuisine_id, quantityで構成されたをかえすこと"
-  end
-
+  # TODO: create_hash_todaysmenusメソッドのテストを書く
   describe "#create_hash_todaysmenus" do
-    it "hashをかえすこと"
-  end
+    let(:todaysmenu) { create(:todaysmenu, cuisine_id: cuisine.id, serving_count: serving_count) }
+    let(:cuisine) { create(:cuisine) }
+    let(:foodstuff) { create(:foodstuff, cuisine_id: cuisine.id, rawmaterial_id: rawmaterial.id, quantity: quantity) }
+    let(:rawmaterial) { create(:rawmaterial) }
 
-  describe "#summarize_by_rawmaterial" do
-    it "cuisine_idとrawmaterialごとの合計値をかえすこと"
+    context "todaysmenuが1つ、foodstuffが一つのとき、fs.quantityが1/3、tm.serving_countが1のとき" do
+      let(:quantity) { "1/3" }
+      let(:serving_count) { 1 }
+
+      it "[todaysmenu(s).cuisine.foodstuffs.rawmaterial_id, Rational(todaysmenu(s).cuisine.foodstuffs.quantity) * todaymenu(s).serving_count]の形式であること" do
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq [1, "(1/3)"]
+      end
+    end
   end
 end
