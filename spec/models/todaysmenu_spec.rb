@@ -28,7 +28,7 @@ RSpec.describe Todaysmenu, type: :model do
       let(:serving_count) { 1 }
 
       it "[todaysmenu(s).cuisine.foodstuffs.rawmaterial_id, Rational(todaysmenu(s).cuisine.foodstuffs.quantity) * todaymenu(s).serving_count]の形式であること" do
-        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq [1, "(1/3)"]
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq [rawmaterials_id, "(1/3)"]
       end
     end
   end

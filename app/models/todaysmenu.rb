@@ -11,8 +11,7 @@ class Todaysmenu < ApplicationRecord
     errors.add(:base, "すでに同じ料理が登録されています") if todaysmenu.exists?
   end
 
-  def self.count_quantities(todaysmenus)
-    # puts "count_quantities method passed."
+  def self.create_hash_todaysmenus(todaysmenus)
     quantities = []
     todaysmenus.each do |tm|
       c = tm.cuisine
@@ -20,11 +19,8 @@ class Todaysmenu < ApplicationRecord
         quantities.push([fs.rawmaterial_id, Rational(fs.quantity) * tm.serving_count])
       end
     end
-    quantities
-  end
+    binding.pry
 
-  def self.summarize_by_rawmaterial(quantities)
-    # puts "summarize_by_rawmaterial method passed."
     tmp_grouped_todaysmenus = quantities.group_by do |r|
       r.first
     end
@@ -34,13 +30,5 @@ class Todaysmenu < ApplicationRecord
       end
     end
     grouped_todaysmenus = tmp_grouped_todaysmenus
-    grouped_todaysmenus
-  end
-
-  def self.create_hash_todaysmenus(todaysmenus)
-    quantities = count_quantities(todaysmenus)
-    # binding.pry
-    grouped_todaysmenus = summarize_by_rawmaterial(quantities)
-    grouped_todaysmenus
   end
 end
