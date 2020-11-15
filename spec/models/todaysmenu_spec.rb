@@ -35,6 +35,7 @@ RSpec.describe Todaysmenu, type: :model do
         binding.pry
         todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
         # hashの結果がおかしい
+        # 修正方法がわからない
         expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ "1": "(1/3)" })
       end
     end
