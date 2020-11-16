@@ -5,7 +5,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 require 'simplecov'
 require 'capybara/rspec'
-require 'database_cleaner'
+# require 'database_cleaner'
 require 'selenium-webdriver'
 require 'factory_bot'
 require 'shoulda-matchers'
@@ -26,30 +26,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.use_transactional_fixtures = true
-  # config.filter_gems_from_backtrace("gem name")
-  # config.before(:suite) do
-  #   # DBを綺麗にする手段を指定、トランザクションを張ってrollbackするように指定
-  #   DatabaseCleaner.strategy = :transaction
-  #   # truncate table文を実行し、レコードを消す
-  #   DatabaseCleaner.clean_with(:truncation)
-  #   SeedFu.seed
-  # end
-
-  # exampleが始まるごとに実行
-  config.before do
-    # strategyがtransactionなので、トランザクションを張る
-    DatabaseCleaner.start
-  end
-
-  # exampleが終わるごとに実行
-  config.after do
-    # strategyがtransactionなので、rollbackする
-    DatabaseCleaner.clean
-  end
   # request_specを使用する場合
   # config.include RequestSpecHelper, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :request
