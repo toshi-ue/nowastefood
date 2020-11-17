@@ -24,17 +24,44 @@ RSpec.describe Todaysmenu, type: :model do
     let!(:foodstuff) { create(:foodstuff, cuisine_id: cuisine.id, rawmaterial_id: rawmaterial.id, quantity: quantity) }
     let(:rawmaterial) { create(:rawmaterial) }
 
-    context "todaysmenuが1つ、foodstuffが一つのとき、fs.quantityが1/3、tm.serving_countが1のとき" do
+    context "todaysmenuが1つ、foodstuffが1つのとき" do
       let(:quantity) { "1/3" }
       let(:serving_count) { 1 }
 
-      it "{todaysmenu(s).cuisine.foodstuffs.rawmaterial_id=>(Rational(todaysmenu(s).cuisine.foodstuffs.quantity) * todaymenu(s).serving_count)}の形式であること" do
+      it "hashで帰ってくること({rawmaterial.id => fs.quantity)" do
         user = User.find(todaysmenu.user_id)
-        fs1 = Foodstuff.find_by(cuisine_id: cuisine.id)
-        cs1 = Cuisine.find_by(id: foodstuff.cuisine_id)
+        todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational("1/3") })
+      end
+    end
+
+    context "todaysmenusが1つ、foodstuffが複数のとき" do
+      let!(:foodstuff2) { create(:foodstuff, cuisine_id: cuisine.id, rawmaterial_id: rawmaterial2.id, quantity: quantity2) }
+      let(:rawmaterial2) { create(:rawmaterial) }
+      let(:quantity) { "1/3" }
+      let(:quantity2) { "2/3" }
+      let(:serving_count) { 1 }
+
+      it "hashで帰ってくること({rawmaterial.id => fs.quantity, rawmaterial(2).id => fs.quantity(2)})" do
+        user = User.find(todaysmenu.user_id)
+        todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational("1/3"), rawmaterial2.id => Rational("2/3") })
+      end
+    end
+
+    context "todaysmenusが2つ、foodstuffが同一のrawmaterial_idのとき" do
+      let!(:todaysmenu2) { create(:todaysmenu, cuisine_id: cuisine2.id, serving_count: serving_count, user_id: user.id) }
+      let!(:foodstuff2) { create(:foodstuff, cuisine_id: cuisine2.id, rawmaterial_id: rawmaterial.id, quantity: quantity2) }
+      let(:cuisine2) { create(:cuisine) }
+      let(:quantity) { "1/3" }
+      let(:quantity2) { "2/3" }
+      let(:serving_count) { 1 }
+
+      it "hashで帰ってくること({rawmaterial.id => fs.quantity + fs.quantity2})" do
+        user = User.find(todaysmenu.user_id)
         todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
         # binding.pry
-        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ 1 => Rational("1/3") })
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational("1/1") })
       end
     end
   end
