@@ -10,7 +10,7 @@ class Stock < ApplicationRecord
     self.quantity = quantity.gsub(/ 　/, "").tr("／", "/").strip.tr('０-９', '0-9')
   end
 
-  def self.return_remaining_amount(stocks, todaysmenus)
+  def self.remaining_amount(stocks, todaysmenus)
     # puts "return_remaining_amount method passed."
     stocks_result = {}
     stocks.each do |st|

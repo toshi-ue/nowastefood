@@ -25,12 +25,15 @@ docker-compose run --rm web bundle update;
 docker-compose run --rm web bin/yarn install;
 docker-compose run --rm web rails db:create;
 docker-compose run --rm web rails db:migrate;
-# 初期データを投入
-docker-compose run --rm web rails seed_fu_all_datas:all;
-# 既存DBからデータをバックアップ
+
+# 既存DBからデータを db/afixtures/ にバックアップ
 docker-compose run --rm web rails seed_fu_gen:all;
-# 現在不使用
-# docker-compose run --rm web rails db:seed_fu;
+# 投入用のseedデータを作成
+docker-compose run --rm web rails seed_fu_all_datas:all;
+# seedデータの main_imageカラムの設定を変更
+docw rails change_main_image_properties:all;
+# データをseedする
+docker-compose run --rm web rails db:seed_fu;
 ```
 <!--
 docker-compose run --rm --service-ports web bundle exec foreman start -f Procfile;

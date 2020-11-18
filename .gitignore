@@ -152,4 +152,3 @@ db/afixtures/*
 db/fixtures/*
 db/fixtures/images/*
 db/fixtures/uploads/*
-.env.development

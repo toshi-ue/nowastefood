@@ -8,11 +8,13 @@ class Cuisine < ApplicationRecord
   has_many :procedures, dependent: :destroy
   has_many :rawmaterials, through: :foodstuffs
   has_many :todaysmenus, dependent: :destroy
+  has_many :users, through: :todaysmenus
   validates :description, presence: true
   validates :genre_id, presence: { message: "を選択してください" }
   validates :name, presence: true, uniqueness: true
   validates :main_image, presence: { message: "を追加してください" }
 
+  include CommonScope
   acts_as_taggable
   counter_culture :genre
   mount_uploader :main_image, ImageUploader
@@ -34,14 +36,6 @@ class Cuisine < ApplicationRecord
     "大人数で",
     "汁物"
   ].freeze
-
-  def aaa(quantity, cuisine_id, rawmaterial_id, default_serving_count)
-    new_quantity = Foodstuff.find_by(cuisine_id: cuisine_id, rawmaterial_id: rawmaterial_id).quantity
-    rational_value_result = Rational(quantity) - Rational(new_quantity) * default_serving_count
-    # binding.pry
-    [cuisine_id, rational_value_result]
-    # binding.pry
-  end
 end
 
 # [has_many through のアソシエーションに条件を追加する - Qiita](https://qiita.com/QUANON/items/a58ff3960b43af472bfb)

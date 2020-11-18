@@ -19,8 +19,6 @@ class Todaysmenu < ApplicationRecord
         quantities.push([fs.rawmaterial_id, Rational(fs.quantity) * tm.serving_count])
       end
     end
-    binding.pry
-
     tmp_grouped_todaysmenus = quantities.group_by do |r|
       r.first
     end

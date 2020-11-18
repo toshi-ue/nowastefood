@@ -58,14 +58,13 @@ class StocksController < ApplicationController
     quantity_want_to_consume = params[:stock_should_consumed][1]
 
     @foodstuffs = Foodstuff.where(rawmaterial_id: rawmaterial_want_to_consume)
-    todaysmenus = current_user.todaysmenus.pluck(:cuisine_id)
+    cuisine_ids = current_user.todaysmenus.pluck(:cuisine_id)
     # if @foodstuffs.present?
     # foodstuffsがnilのときの場合どうするかのコードが書いていない(redirect_to が妥当?)
-    optimal_cuisine_id = @foodstuffs.get_best_cuisine(@foodstuffs, todaysmenus, quantity_want_to_consume, current_user.default_serving_count)
+    optimal_cuisine_id = @foodstuffs.best_cuisine(@foodstuffs, cuisine_ids, quantity_want_to_consume, current_user.default_serving_count)
 
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: optimal_cuisine_id, serving_count: current_user.default_serving_count)
 
-    @todaysmenu.save!
     if @todaysmenu.save
       redirect_to todaysmenus_path, flash: { notice: "エコ機能で#{@todaysmenu.cuisine.name}が追加されました" }
     else

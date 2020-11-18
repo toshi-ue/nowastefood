@@ -12,7 +12,7 @@ class Foodstuff < ApplicationRecord
     self.quantity = quantity.gsub(/ |　/, "").tr("／", "/").strip.tr('０-９', '0-9')
   end
 
-  def self.get_best_cuisine(foodstuffs, todaysmenus, quantity_want_to_consume, user_serving_count)
+  def self.best_cuisine(foodstuffs, todaysmenus, quantity_want_to_consume, user_serving_count)
     cuisines = {}
     foodstuffs.each do |fs|
       result_quantity = Rational(quantity_want_to_consume) - Rational(fs.quantity) * user_serving_count
