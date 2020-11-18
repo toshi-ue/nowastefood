@@ -5,7 +5,6 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 require 'simplecov'
 require 'capybara/rspec'
-# require 'database_cleaner'
 require 'selenium-webdriver'
 require 'factory_bot'
 require 'shoulda-matchers'
