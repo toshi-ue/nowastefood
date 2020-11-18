@@ -31,7 +31,7 @@ RSpec.describe Todaysmenu, type: :model do
       it "hashで帰ってくること({rawmaterial.id => fs.quantity)" do
         user = User.find(todaysmenu.user_id)
         todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
-        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational("1/3") })
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational(quantity) })
       end
     end
 
@@ -45,7 +45,7 @@ RSpec.describe Todaysmenu, type: :model do
       it "hashで帰ってくること({rawmaterial.id => fs.quantity, rawmaterial(2).id => fs.quantity(2)})" do
         user = User.find(todaysmenu.user_id)
         todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
-        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational("1/3"), rawmaterial2.id => Rational("2/3") })
+        expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational(quantity), rawmaterial2.id => Rational(quantity2) })
       end
     end
 
@@ -60,7 +60,6 @@ RSpec.describe Todaysmenu, type: :model do
       it "hashで帰ってくること({rawmaterial.id => fs.quantity + fs.quantity2})" do
         user = User.find(todaysmenu.user_id)
         todaysmenus = user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
-        # binding.pry
         expect(todaysmenus.create_hash_todaysmenus(todaysmenus)).to eq({ rawmaterial.id => Rational("1/1") })
       end
     end

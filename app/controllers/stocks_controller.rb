@@ -3,22 +3,21 @@ class StocksController < ApplicationController
   before_action :set_stock, only: [:update, :edit, :destroy]
 
   def index
+    @stocks_not_plan_to_consume = {}
     @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: [:foodcategory, :unit] })
     @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
 
-    stocks = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
     if @todaysmenus.present?
+      stocks = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
       todaysmenus = @todaysmenus.create_hash_todaysmenus(@todaysmenus)
-      # puts "came back to index action!!"
-      stocks = @stocks.return_remaining_amount(stocks, todaysmenus)
+      stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
     end
 
     # 残るstocksがある場合は@stocks_not_plan_to_consumeに値が格納されている
-    @stocks_not_plan_to_consume = stocks
-    # binding.pry
+    @stocks_not_plan_to_consume = stocks_results if stocks_results
   end
 
-  # def show; end
+  def show; end
 
   def new
     @stock = Stock.new
