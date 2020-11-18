@@ -101,4 +101,9 @@ RSpec.describe Stock, type: :model do
       expect(stock.errors.messages[:user_id]).to include('を入力してください')
     end
   end
+
+  # TODO: remaining_amountメソッドのテストを書く
+  describe "#remaining_amount" do
+    it "pending"
+  end
 end

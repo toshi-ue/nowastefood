@@ -45,7 +45,8 @@ RSpec.describe Foodstuff, type: :model do
     end
   end
 
-  describe "#get_best_cuisine" do
+  # TODO: best_cuisineメソッドのテストを書く
+  describe "best_cuisine" do
     context "foodstuffsがnilのとき" do
       it "stocks#indexへリダイレクトすること"
       it "機能を使えるcuisineがありませんでしたと表示されること"
