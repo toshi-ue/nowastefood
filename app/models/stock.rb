@@ -9,4 +9,15 @@ class Stock < ApplicationRecord
     # 空白を削除、 全角があれば半角に、文字列はそのまま
     self.quantity = quantity.gsub(/ 　/, "").tr("／", "/").strip.tr('０-９', '0-9')
   end
+
+  def self.remaining_amount(stocks, todaysmenus)
+    # puts "return_remaining_amount method passed."
+    stocks_result = {}
+    stocks.each do |st|
+      todaysmenus.each do |tm|
+        stocks_result.store(st[0].to_s, st[1] - tm[1]) if st[0] == tm[0]
+      end
+    end
+    stocks_result.delete_if { |_key, value| value <= 0 }
+  end
 end

@@ -26,7 +26,7 @@ class FavoritesController < ApplicationController
     else
       @todaysmenu.serving_count = current_user.default_serving_count == 1 ? 1 : current_user.default_serving_count
       @todaysmenu.save
-      redirect_to favorites_path, flash: { notice: "Todayに追加されました" }
+      redirect_to favorites_path, flash: { notice: "#{@todaysmenu.cuisine.name}がTodayに追加されました" }
     end
   end
 end

@@ -47,7 +47,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'bullet'
   gem 'foreman'
-  # gem 'guard-livereload', '~> 2.5', require: false
   gem 'letter_opener_web'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', require: false
@@ -63,7 +62,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers',

@@ -11,12 +11,13 @@ class TodaysmenusController < ApplicationController
   end
 
   def destroy
-    @todaysmenu = Todaysmenu.find_by(params[:id])
+    @todaysmenu = Todaysmenu.find_by(id: params[:id])
     @todaysmenu.destroy
-    redirect_to todaysmenus_path, flash: { notice: "#{@todaysmenu.cuisine.name}を削除しました"}
+    redirect_to todaysmenus_path, flash: { notice: "#{@todaysmenu.cuisine.name}を削除しました" }
   end
 
   private
+
   def todaysmenu_params
     params.require(:todaysmenu).permit(:cuisine_id, :user_id, :serving_count)
   end
