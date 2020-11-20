@@ -22,9 +22,14 @@
       まだ登録がありません
     </p>
   <% end %>
-  <% unless @stocks_not_plan_to_consume.empty? %>
-    <%= link_to 'Todayをエコ昨日で自動生成', auto_today_create_stocks_path(stock_should_consumed: @stocks_not_plan_to_consume.first) %>
-  <% end %>
+  <div class="text-center">
+    <% unless @stocks_not_plan_to_consume.empty? %>
+      <%= link_to 'Todayをエコ昨日で自動生成', auto_today_create_stocks_path(stock_should_consumed: @stocks_not_plan_to_consume.first), class: "btn btn-success" %>
+    <% end %>
+  </div>
+
   <br><br>
-  <%# @stocks_not_plan_to_consume %>
+  @stocks_not_plan_to_consume:<br>
+  <%= @stocks_not_plan_to_consume %>
+  <br><br>
 </div>

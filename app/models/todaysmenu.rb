@@ -15,6 +15,7 @@ class Todaysmenu < ApplicationRecord
     quantities = []
     todaysmenus.each do |tm|
       c = tm.cuisine
+      # binding.pry
       c.foodstuffs.each do |fs|
         quantities.push([fs.rawmaterial_id, Rational(fs.quantity) * tm.serving_count])
       end

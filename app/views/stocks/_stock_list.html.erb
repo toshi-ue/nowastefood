@@ -9,8 +9,10 @@
   </thead>
   <tbody>
     <% @stocks.each do |st| %>
-    <tr>
-      <td class="align-middle"><%= st.rawmaterial.name %><br></td>
+    <tr class="<%= background_color_consume(@stocks, @stocks_not_plan_to_consume, st.rawmaterial_id) %>">
+      <td class="align-middle"><%= st.rawmaterial.name %><br>
+      <%= st.rawmaterial_id %>
+      </td>
       <td class="align-middle"><%= st.quantity %><%= st.rawmaterial.unit.name %></td>
       <td class="align-middle"><%= st.rawmaterial.foodcategory.name %></td>
       <td class="align-middle text-center">
@@ -20,6 +22,7 @@
           <% end %>
         </div>
       </td>
+      <% binding.pry %>
     </tr>
     <% end %>
   </tbody>
