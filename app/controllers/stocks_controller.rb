@@ -14,7 +14,7 @@ class StocksController < ApplicationController
       stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
       @stocks_not_plan_to_consume = stocks_results
     else
-      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
+      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
     end
   end
 
@@ -60,8 +60,6 @@ class StocksController < ApplicationController
 
     @foodstuffs = Foodstuff.where(rawmaterial_id: rawmaterial_want_to_consume)
     cuisine_ids = current_user.todaysmenus.pluck(:cuisine_id)
-    # if @foodstuffs.present?
-    # foodstuffsがnilのときの場合どうするかのコードが書いていない(redirect_to が妥当?)
     optimal_cuisine_id = @foodstuffs.best_cuisine(@foodstuffs, cuisine_ids, quantity_want_to_consume, current_user.default_serving_count)
 
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: optimal_cuisine_id, serving_count: current_user.default_serving_count)
