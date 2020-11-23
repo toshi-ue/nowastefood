@@ -36,6 +36,12 @@ docw rails change_main_image_properties:all;
 docker-compose run --rm web rails db:seed_fu;
 ```
 <!--
+docker-compose run --rm web rails seed_fu_gen:all;
+docker-compose run --rm web rails seed_fu_all_datas:all;
+docw rails change_main_image_properties:all;
+docker-compose run --rm web rails db:seed_fu;
+ -->
+<!--
 docker-compose run --rm --service-ports web bundle exec foreman start -f Procfile;
 -->
 
