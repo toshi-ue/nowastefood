@@ -56,41 +56,33 @@ $(function () {
 
       // get clicked-element(choice rawmaterial)
       $(document).on('click', 'div.rawmaterial', function () {
-        // console.log(this)
-        // console.log(this.dataset.unitName)
         // rawmaterial_idを取得
         let clicked_rawmaterial_id = parseInt((this.id).replace("rawmaterial_", ""))
-        // rawmaterial_idを代入
-        // console.log(this.textContent)
         $('#foodstuff_rawmaterial_id').val(clicked_rawmaterial_id)
-        // 食材名をバッジt内に表示
+        // 食材名をバッジ内に表示、バッジを表示
         $('#rawmaterial_name').text(this.textContent)
-        // バッジを表示
         $('#choiced_rawmaterial').show()
-        // 数量フォームに単位を表示する
-        $('.input-group-text').text(this.dataset.unitName)
-        // 検索フォームを非表示にする
+        console.log(this.dataset.unitName === "その他")
+        if (this.dataset.unitName === "その他") {
+          $('#rawmaterial_measure_unit').hide()
+        }else{
+          $('.input-group-text').text(this.dataset.unitName)
+        }
         $("#search_rawmaterial").hide()
-        // 検索結果を非表示
         $('#search_results').hide()
         $('.rawmaterial').hide()
       })
 
       // reset choiced rawmaterial
       $("#btnResetRawmaterial").on("click", function () {
-        // alert内の原材料名をクリアする
         $('#rawmaterial_name').text("")
-        // 原材料idの値をクリアする
         $('#foodstuff_rawmaterial_id').val("")
-        // 検索フォームをクリアする
         $('#search_rawmaterial').val("")
-        // 数量フォームの単位をクリア
         $('.input-group-text').text("")
-        // 検索フォームを表示する
         $('.search_rawmaterial').show()
         $('#search_rawmaterial').show()
-        // 非表示する
         $('#choiced_rawmaterial').hide()
+        $('#rawmaterial_measure_unit').show()
       })
       break;
     default:
