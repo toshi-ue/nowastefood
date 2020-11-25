@@ -1,16 +1,16 @@
 // mobile
 @media (min-width: $xs) {
-  #choiced_rawmaterial{
+  #choiced_rawmaterial {
     display: none;
   }
 
-  .rawmaterial{
+  .rawmaterial {
     line-height: 200%;
     background-color: #ECEFF1;
     border-bottom: 1px solid #FFFFFF;
   }
 
-  #rawmaterial_name{
+  #rawmaterial_name {
     // line-height: 200%;
     margin: 7px 3px;
   }
@@ -18,12 +18,16 @@
 
 // more than desktop
 @media (min-width: $lg) {
-  .rawmaterial{
+  .rawmaterial {
     line-height: 2;
     background-color: #ECEFF1;
   }
 
-  #choiced_rawmaterial{
+  #choiced_rawmaterial {
     display: flex;
   }
+}
+
+#rawmaterial_measure_unit {
+  display: none;
 }

@@ -6,7 +6,6 @@ class Foodstuff < ApplicationRecord
   validate :uniqueness_rawmaterial_id
   # FIXME: 正規表現がうまくいかない?
   validate :check_quantity
-  # validates :quantity, presence: true, format: { with: %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z} || /\A(?:適量|少々|お好みで){1}\z/, message: "は分数、数字または指定の文字で入力してください(例: 1/2, 120など)" }
   include RankedModel
   ranks :row_order, with_same: :cuisine_id
 
