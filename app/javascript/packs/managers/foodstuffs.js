@@ -1,12 +1,9 @@
 $(function () {
-
   let action_name = $('body').data('action')
-  // console.log(action_name);
 
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
   let h_value_rawmaterial_id
-
 
   switch (action_name) {
     //   case "index":
@@ -20,7 +17,7 @@ $(function () {
       // check existence of cuisine_id
       // saveメソッドが失敗した時に実行してほしい
       h_value_rawmaterial_id = $('#foodstuff_rawmaterial_id').val()
-      console.log(h_value_rawmaterial_id)
+      // console.log(h_value_rawmaterial_id)
       if (h_value_rawmaterial_id) {
         $('#choiced_rawmaterial').show()
         $(".search_rawmaterial").hide()
@@ -63,7 +60,9 @@ $(function () {
         $('#rawmaterial_name').text(this.textContent)
         $('#choiced_rawmaterial').show()
         console.log(this.dataset.unitName === "その他")
-        if (this.dataset.unitName === "その他") {
+        // if (this.dataset.unitName === "その他") {
+        const undisplay_unit_names = ["その他"]
+        if (undisplay_unit_names.includes(this.dataset.unitName)) {
           $('#rawmaterial_measure_unit').hide()
         }else{
           $('.input-group-text').text(this.dataset.unitName)
@@ -84,6 +83,46 @@ $(function () {
         $('#choiced_rawmaterial').hide()
         $('#rawmaterial_measure_unit').show()
       })
+
+      function copyquantity(e){
+        let originalEl = document.getElementById("foodstuff_quantity")
+        const insertedEl = document.getElementById("quantity-prepared")
+        if (this.checked) {
+
+          originalEl.style.display = "none"
+          originalEl = ""
+          originalEl = this.value
+          // document.getElementById(this.id).style.display = "none"
+          console.log(insertedEl)
+          insertedEl.innerHTML = this.value
+        }else{
+          insertedEl.innerHTML = ""
+          console.log(originalEl)
+          originalEl.innerHTML = ""
+          console.log(originalEl)
+          originalEl.style.display = "block"
+
+        }
+        // console.log(e)
+        // console.log(e.checked)
+        // console.log(e.returnValue)
+        // console.log(this.checked)
+        // console.log(this.value)
+        // console.log(this.id)
+      }
+      const proper = document.getElementById("proper")
+      const little = document.getElementById("little")
+      const asyoulike = document.getElementById("asyoulike")
+      console.log(proper.checked)
+      if(proper.checked){
+        console.log(proper)
+      }
+
+
+
+      proper.addEventListener("change", copyquantity)
+      little.addEventListener("change", copyquantity)
+      asyoulike.addEventListener("change", copyquantity)
       break;
     default:
       //     console.log("not passed");
