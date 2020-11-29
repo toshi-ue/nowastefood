@@ -45,7 +45,7 @@ $(function () {
         if (preInput !== input) {
           clearTimeout(preFunc);
           setTimeout(ajaxSearch, 1000);
-          console.log(input);
+          // console.log(input);
         }
         preInput = input;
         $('#search_results').show()
@@ -66,6 +66,7 @@ $(function () {
           $('#rawmaterial_measure_unit').hide()
         }else{
           $('.input-group-text').text(this.dataset.unitName)
+          document.getElementById("rawmaterial_measure_unit").style.display = "block"
         }
         $("#search_rawmaterial").hide()
         $('#search_results').hide()
@@ -81,44 +82,23 @@ $(function () {
         $('.search_rawmaterial').show()
         $('#search_rawmaterial').show()
         $('#choiced_rawmaterial').hide()
-        $('#rawmaterial_measure_unit').show()
+        document.getElementById("rawmaterial_measure_unit").style.display = "none"
       })
 
       function copyquantity(e){
-        let originalEl = document.getElementById("foodstuff_quantity")
-        const insertedEl = document.getElementById("quantity-prepared")
+        const formEl = document.getElementById("foodstuff_quantity")
         if (this.checked) {
-
-          originalEl.style.display = "none"
-          originalEl = ""
-          originalEl = this.value
-          // document.getElementById(this.id).style.display = "none"
-          console.log(insertedEl)
-          insertedEl.innerHTML = this.value
+          formEl.value = this.value
+          formEl.readOnly = true
         }else{
-          insertedEl.innerHTML = ""
-          console.log(originalEl)
-          originalEl.innerHTML = ""
-          console.log(originalEl)
-          originalEl.style.display = "block"
-
+          formEl.readOnly = false
+          formEl.value = ""
         }
-        // console.log(e)
-        // console.log(e.checked)
-        // console.log(e.returnValue)
-        // console.log(this.checked)
-        // console.log(this.value)
-        // console.log(this.id)
       }
+
       const proper = document.getElementById("proper")
       const little = document.getElementById("little")
       const asyoulike = document.getElementById("asyoulike")
-      console.log(proper.checked)
-      if(proper.checked){
-        console.log(proper)
-      }
-
-
 
       proper.addEventListener("change", copyquantity)
       little.addEventListener("change", copyquantity)
