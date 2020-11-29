@@ -4,7 +4,8 @@ class Foodstuff < ApplicationRecord
   belongs_to :rawmaterial
   counter_culture :rawmaterial
   validate :uniqueness_rawmaterial_id
-  validates :quantity, presence: true, format: { with: %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}, message: "は分数もしくは数字で入力してください(例: 1/2, 120など)" }
+  # FIXME: 正規表現がうまくいかない?
+  validate :check_quantity
   include RankedModel
   ranks :row_order, with_same: :cuisine_id
 
@@ -24,6 +25,16 @@ class Foodstuff < ApplicationRecord
   end
 
   private
+
+  def check_quantity
+    if %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}.match?(self.quantity)
+      true
+    elsif /\A(適量|少々|お好みで){1}\z/.match?(self.quantity)
+      true
+    else
+      errors.add(:base, "数量は分数、数字または指定の文字で入力してください(例: 1/2, 120など)")
+    end
+  end
 
   def uniqueness_rawmaterial_id
     foodstuff = Foodstuff.find_by(cuisine_id: self.cuisine_id, rawmaterial_id: self.rawmaterial_id)
