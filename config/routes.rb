@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # 管理者側
   devise_for :managers, controllers: {
     sessions: 'managers/sessions',
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resource :password, only: [:edit, :update]
+  resources :cookinghistorys, only: [:index]
   resources :cuisines, only: [:show] do
     delete :remove_favorite
     delete :remove_menu
