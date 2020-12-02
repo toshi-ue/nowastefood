@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     post :add_favorite
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
+    post :add_to_todays_menu, action: :add_to_todays_menu, controller: 'cookinghistorys'
   end
   resources :favorites, only: [:index, :create, :destroy]
   resources :stocks, only: [:index, :new, :create, :destroy] do

@@ -1,5 +1,6 @@
 <h1>Cookinghistorys#index</h1>
 <p>Find me in app/views/cookinghistorys/index.html.erb</p>
+
 <% if Rails.env.development? %>
   現在のプラン
   <% if current_user.subscribed? %>
@@ -9,4 +10,75 @@
     <p>無料プラン</p>
     <%= link_to '有料プランに変更', toggle_subscription_path, class: "btn btn-success" %>
   <% end %>
+<% end %>
+
+<%# copied from favorites/index.html.erb %>
+<% unless @cookinghistorys.blank? %>
+<div class="content_wrapper">
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3">
+      <%= render "shared/flash_messages" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3">
+      <div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td class="page-title text-center no-border-top" colspan="3">調理履歴</td>
+            </tr>
+          </thead>
+          <tbody id="favorites-list">
+            <% @cookinghistorys.each do |ch| %>
+            <%# binding.pry%>
+            <tr>
+              <td class="text-center align-middle">
+                <%= image_tag ch.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{ch.cuisine.name}" %>
+              </td>
+              <td class="text-break align-middle"><%= ch.cuisine.name %></td>
+              <td class="text-center align-middle">
+                <div>
+                  <%# TODO: Todayに追加されてたらボタンの色を変更する %>
+                  <%= link_to(cuisine_add_to_todays_menu_path(ch.cuisine_id), class: check_already_in(ch.cuisine_id, @cuisine_ids_already_in), method: :post, local: true) do %>
+                  <button class="btn btn-outline-secondary btn-delete-from-today <%= check_already_in(ch.cuisine_id, @cuisine_ids_already_in) %>" type="button">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <% end %>
+                </div>
+              </td>
+              <td class="text-center align-middle">
+                <div class="text-center text-muted">
+                  <time datetime="<%= ch.created_at %>">
+                    <small><%= time_ago_in_words(ch.created_at) %>前</small>
+                  </time>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="content_wrapper">
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 offset-sm-1 offset-md-2 offset-lg-3 offset-lg-4">
+      <%= render "shared/flash_messages" %>
+    </div>
+  </div>
+  <div id="no-favorites" class="d-flex justify-content-center align-items-center">
+    <div>
+      <div class="page-title text-center">あなたのFavorite</div>
+      <p class="text-muted text-center no-favorites-description">まだ登録がありません<br>追加しましょう!!</p>
+      <p class="text-center">
+        <%= link_to root_path do %>
+        <button class="btn btn-warning">一覧から探す</button>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
 <% end %>
