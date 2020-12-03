@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   resources :cuisines, only: [:show] do
     delete :remove_favorite
     delete :remove_menu
+    delete :remove_from_todays_menus, action: :remove_from_todays_menus, controller: 'cookinghistorys'
     post :add_favorite
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'

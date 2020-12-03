@@ -11,13 +11,17 @@ class CookinghistorysController < ApplicationController
   end
 
   def add_to_todays_menu
-    # binding.pry
-
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: params[:cuisine_id])
     if @todaysmenu.save
       redirect_to cookinghistorys_path, flash: { notice: "#{@todaysmenu.cuisine.name} added." }
     else
       redirect_to cookinghistorys_path, flash: { error: @todaysmenu.errors.full_messages.to_s }
     end
+  end
+
+  def remove_from_todays_menus
+    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    @todaysmenu.destroy
+    redirect_to cookinghistorys_path, flash: { notice: "#{@todaysmenu.cuisine.name} deleted." }
   end
 end

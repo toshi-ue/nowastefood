@@ -1,4 +1,3 @@
-<h1>Cookinghistorys#index</h1>
 <p>Find me in app/views/cookinghistorys/index.html.erb</p>
 
 <% if Rails.env.development? %>
@@ -12,7 +11,6 @@
   <% end %>
 <% end %>
 
-<%# copied from favorites/index.html.erb %>
 <% unless @cookinghistorys.blank? %>
 <div class="content_wrapper">
   <div class="row">
@@ -31,27 +29,37 @@
           </thead>
           <tbody id="favorites-list">
             <% @cookinghistorys.each do |ch| %>
-            <%# binding.pry%>
             <tr>
               <td class="text-center align-middle">
-                <%= image_tag ch.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{ch.cuisine.name}" %>
+                <%= image_tag ch.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', alt: "#{ch.cuisine.name}" %>
               </td>
-              <td class="text-break align-middle"><%= ch.cuisine.name %></td>
-              <td class="text-center align-middle">
+              <td class="text-break align-middle">
                 <div>
-                  <%# TODO: Todayに追加されてたらボタンの色を変更する %>
-                  <%= link_to(cuisine_add_to_todays_menu_path(ch.cuisine_id), class: check_already_in(ch.cuisine_id, @cuisine_ids_already_in), method: :post, local: true) do %>
-                  <button class="btn btn-outline-secondary btn-delete-from-today <%= check_already_in(ch.cuisine_id, @cuisine_ids_already_in) %>" type="button">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                  <% end %>
+                  <div>
+                    <%= ch.cuisine.name %>
+                  </div>
+                  <div class="text-right">
+                    <time datetime="<%= ch.created_at %>">
+                      <small class="text-muted"><%= time_ago_in_words(ch.created_at) %>前</small>
+                    </time>
+                  </div>
                 </div>
               </td>
               <td class="text-center align-middle">
-                <div class="text-center text-muted">
-                  <time datetime="<%= ch.created_at %>">
-                    <small><%= time_ago_in_words(ch.created_at) %>前</small>
-                  </time>
+                <div>
+                  <% if @cuisine_ids_already_in.include?(ch.cuisine_id) %>
+                    <%= link_to(cuisine_remove_from_todays_menus_path(ch.cuisine_id), method: :delete) do %>
+                      <button class="btn btn-outline-success" type="button">
+                        <i class="fas fa-check"></i>
+                      </button>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(cuisine_add_to_todays_menu_path(ch.cuisine_id), method: :post) do %>
+                      <button class="btn btn-outline-secondary" type="button">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    <% end %>
+                  <% end %>
                 </div>
               </td>
             </tr>
