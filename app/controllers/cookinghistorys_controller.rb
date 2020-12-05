@@ -5,6 +5,7 @@ class CookinghistorysController < ApplicationController
     now = Time.zone.now
     @cuisine_ids_already_in = current_user.todaysmenus.search_in_today.pluck(:cuisine_id)
     @cookinghistorys = if current_user.subscribed
+                         #  昨日のtodaysmenuが取得できない
                          current_user.todaysmenus.includes(:cuisine).where("created_at <= ?", now.yesterday).order(created_at: "DESC")
                        else
                          current_user.todaysmenus.where(created_at: now.ago(4.days).beginning_of_day..now.yesterday).order(created_at: "DESC")
