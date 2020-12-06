@@ -8,7 +8,7 @@ class CookinghistorysController < ApplicationController
                          #  昨日のtodaysmenuが取得できない
                          current_user.todaysmenus.includes(:cuisine).where("created_at <= ?", now.yesterday).order(created_at: "DESC")
                        else
-                         current_user.todaysmenus.where(created_at: now.ago(4.days).beginning_of_day..now.yesterday).order(created_at: "DESC")
+                         current_user.todaysmenus.includes(:cuisine).where(created_at: now.ago(4.days).beginning_of_day..now.yesterday).order(created_at: "DESC")
                        end
   end
 
