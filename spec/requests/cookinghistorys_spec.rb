@@ -27,12 +27,12 @@ RSpec.describe "Cookinghistorys", type: :request do
     context "有料ユーザーのとき" do
       before do
         @user.subscribed = true
+        @user.save!
         cuisine = create(:cuisine)
         @todaysmenu_gt_5days1 = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.ago(5.days).to_date)
       end
 
       it "5日以上前のtodaysmenuが表示されること" do
-        binding.pry
         get cookinghistorys_path
         expect(response.status).to eq 200
         expect(response.body).to include @todaysmenu_gt_5days1.cuisine.name.to_s
@@ -42,6 +42,7 @@ RSpec.describe "Cookinghistorys", type: :request do
     context "無料ユーザーのとき" do
       before do
         @user.subscribed = false
+        @user.save!
         cuisine = create(:cuisine)
         @todaysmenu_gt_5days = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.ago(5.days).to_date)
       end
@@ -65,7 +66,7 @@ RSpec.describe "Cookinghistorys", type: :request do
     end
   end
 
-  describe "post remove_from_todays_menus" do
+  describe "delete remove_from_todays_menus" do
     it "削除できること" do
       cuisine = create(:cuisine)
       todaysmenu = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id)

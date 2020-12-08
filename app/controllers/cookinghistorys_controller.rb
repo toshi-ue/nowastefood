@@ -22,9 +22,8 @@ class CookinghistorysController < ApplicationController
   end
 
   def remove_from_todays_menus
-    binding.pry
     now = Time.zone.now
-    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: now.to_date)
+    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: now.all_day)
     @todaysmenu.destroy
     redirect_to cookinghistorys_path, flash: { notice: "#{@todaysmenu.cuisine.name} deleted." }
   end
