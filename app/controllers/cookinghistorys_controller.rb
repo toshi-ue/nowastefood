@@ -4,10 +4,11 @@ class CookinghistorysController < ApplicationController
   def index
     now = Time.zone.now
     @cuisine_ids_already_in = current_user.todaysmenus.search_in_today.pluck(:cuisine_id)
+    # binding.pry
     @cookinghistorys = if current_user.subscribed
                          current_user.todaysmenus.includes(:cuisine).where("created_at < ?", now.to_date).order(created_at: "DESC")
                        else
-                         current_user.todaysmenus.includes(:cuisine).where(created_at: now.ago(4.days).beginning_of_day..now.yesterday.to_date).order(created_at: "DESC")
+                         current_user.todaysmenus.includes(:cuisine).where(created_at: now.ago(4.days).to_date..now.yesterday.to_date).order(created_at: "DESC")
                        end
   end
 
