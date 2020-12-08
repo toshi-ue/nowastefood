@@ -8,7 +8,7 @@ class CookinghistorysController < ApplicationController
     @cookinghistorys = if current_user.subscribed
                          current_user.todaysmenus.includes(:cuisine).where("created_at < ?", now.to_date).order(created_at: "DESC")
                        else
-                         current_user.todaysmenus.includes(:cuisine).where(created_at: now.ago(4.days).to_date..now.yesterday.to_date).order(created_at: "DESC")
+                         current_user.todaysmenus.includes(:cuisine).where(created_at: now.ago(4.days).to_date.beginning_of_day..now.yesterday.to_date.end_of_day).order(created_at: "DESC")
                        end
   end
 
@@ -22,8 +22,9 @@ class CookinghistorysController < ApplicationController
   end
 
   def remove_from_todays_menus
+    binding.pry
     now = Time.zone.now
-    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: now.beginning_of_day..now.end_of_day)
+    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: now.to_date)
     @todaysmenu.destroy
     redirect_to cookinghistorys_path, flash: { notice: "#{@todaysmenu.cuisine.name} deleted." }
   end
