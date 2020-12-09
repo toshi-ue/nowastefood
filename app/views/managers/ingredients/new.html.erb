@@ -1,9 +1,0 @@
-<%= form_with(model: @ingredient, url: managers_ingredients_path, local: true) do |form| %>
-  <%= render 'ingredient_form', {form: form , ingredient: @ingredient} %>
-  <div class="text-center">
-    <%= form.submit class: 'btn btn-secondary'%>
-  </div>
-<% end %>
-
-<%= render 'shared/back_previous' %>
-<%= render 'managers/shared/back_to_home' %>

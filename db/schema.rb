@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201022075810) do
+ActiveRecord::Schema.define(version: 20201209032545) do
 
   create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "加工された状態の名前"
@@ -78,15 +78,6 @@ ActiveRecord::Schema.define(version: 20201022075810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cuisines_count", default: 0, null: false
-  end
-
-  create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", null: false, comment: "部位の名称"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "discarded_at"
-    t.index ["discarded_at"], name: "index_ingredients_on_discarded_at"
-    t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
   create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
