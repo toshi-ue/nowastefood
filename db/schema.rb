@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201209032545) do
-
-  create_table "cookedstates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", comment: "加工された状態の名前"
-    t.bigint "foodcategory_id"
-    t.datetime "discarded_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_cookedstates_on_discarded_at"
-    t.index ["foodcategory_id"], name: "index_cookedstates_on_foodcategory_id"
-    t.index ["name"], name: "index_cookedstates_on_name", unique: true
-  end
+ActiveRecord::Schema.define(version: 20201209090020) do
 
   create_table "cookinghistories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "cuisine_id", comment: "料理id"
@@ -255,7 +244,6 @@ ActiveRecord::Schema.define(version: 20201209032545) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "cookedstates", "foodcategories"
   add_foreign_key "cuisines", "genres"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
