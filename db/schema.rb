@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201209090020) do
+ActiveRecord::Schema.define(version: 20201209091101) do
 
   create_table "cookinghistories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "cuisine_id", comment: "料理id"
@@ -95,37 +95,6 @@ ActiveRecord::Schema.define(version: 20201209090020) do
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
-  end
-
-  create_table "nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "rawmaterial_id"
-    t.integer "lipid", comment: "脂質"
-    t.integer "carbonhydrate", comment: "炭水化物"
-    t.integer "protein", comment: "タンパク質"
-    t.integer "vit_a", comment: "ビタミンA"
-    t.integer "vit_d", comment: "ビタミンD"
-    t.integer "vit_e", comment: "ビタミンE"
-    t.integer "vit_k", comment: "ビタミンK"
-    t.integer "vit_b1", comment: "ビタミンB1"
-    t.integer "vit_b2", comment: "ビタミンB2"
-    t.integer "vit_b6", comment: "ビタミンB6"
-    t.integer "vit_b12"
-    t.integer "vit_c", comment: "ビタミンC"
-    t.integer "potassium", comment: "カリウム"
-    t.integer "calcium", comment: "カルシウム"
-    t.integer "magnesium", comment: "マグネシウム"
-    t.integer "phosphorus", comment: "リン"
-    t.integer "iron", comment: "鉄"
-    t.integer "zinc", comment: "亜鉛"
-    t.integer "copper", comment: "銅"
-    t.integer "manganese", comment: "マンガン"
-    t.integer "beta_carotene", comment: "βカロテン"
-    t.integer "niacin", comment: "ナイアシン"
-    t.integer "folic_acid", comment: "葉酸"
-    t.integer "pantothenic_acid", comment: "パントテン酸"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rawmaterial_id"], name: "index_nutrients_on_rawmaterial_id"
   end
 
   create_table "procedureimages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -247,7 +216,6 @@ ActiveRecord::Schema.define(version: 20201209090020) do
   add_foreign_key "cuisines", "genres"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
-  add_foreign_key "nutrients", "rawmaterials"
   add_foreign_key "procedureimages", "cuisines"
   add_foreign_key "rawmaterials", "units"
   add_foreign_key "stocks", "rawmaterials"
