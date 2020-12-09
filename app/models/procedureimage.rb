@@ -1,2 +1,0 @@
-class Procedureimage < ApplicationRecord
-end
