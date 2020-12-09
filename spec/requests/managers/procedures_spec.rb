@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Managers::Procedures", type: :request do
-
   before do
     manager = create(:manager)
     sign_in manager
@@ -44,7 +43,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
       it "新規レコードが作成されること" do
         expect do
-          post managers_procedures_path, params:{
+          post managers_procedures_path, params: {
             procedure: {
               cooking_detail: "valid_cooking_detail",
               cuisine_id: @cuisine.id
@@ -56,7 +55,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
     context "NG" do
       it "リクエストが成功すること" do
-        post managers_procedures_path, params:{
+        post managers_procedures_path, params: {
           procedure: {
             cooking_detail: "",
             cuisine_id: @cuisine.id
@@ -67,17 +66,17 @@ RSpec.describe "Managers::Procedures", type: :request do
 
       it "登録されないこと" do
         expect do
-          post managers_procedures_path, params:{
+          post managers_procedures_path, params: {
             procedure: {
               cooking_detail: "",
               cuisine_id: @cuisine.id
             }
           }
-        end.to_not change(Procedure, :count)
+        end.not_to change(Procedure, :count)
       end
 
       it "エラーメッセージが表示されること" do
-        post managers_procedures_path, params:{
+        post managers_procedures_path, params: {
           procedure: {
             cooking_detail: "",
             cuisine_id: @cuisine.id
@@ -89,13 +88,13 @@ RSpec.describe "Managers::Procedures", type: :request do
       it "必要な情報が表示されていること" do
         @procedure2 = create(:procedure, cuisine_id: @cuisine.id, cooking_detail: "procedure2")
         @procedure3 = create(:procedure, cuisine_id: @cuisine.id, cooking_detail: "procedure3")
-        post managers_procedures_path, params:{
+        post managers_procedures_path, params: {
           procedure: {
             cooking_detail: "",
             cuisine_id: @cuisine.id
           }
         }
-        expect(response.body).to include "#{@cuisine.main_image}"
+        expect(response.body).to include @cuisine.main_image.to_s
         expect(response.body).to include "説明文"
         expect(response.body).to include "procedure2"
         expect(response.body).to include "procedure3"
@@ -126,7 +125,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
     context "OK" do
       it "リクエストが成功すること" do
-        put managers_procedure_path @procedure, params:{
+        put managers_procedure_path @procedure, params: {
           procedure: {
             cooking_detail: "valid_cooking_detail",
             cuisine_id: @procedure.cuisine_id
@@ -137,7 +136,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
       it "レコードの内容が更新されること" do
         expect do
-          put managers_procedure_path @procedure, params:{
+          put managers_procedure_path @procedure, params: {
             procedure: {
               cooking_detail: "valid_cooking_detail",
               cuisine_id: @procedure.cuisine_id
@@ -148,7 +147,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
       it "newページへリダイレクトされること" do
         expect do
-          put managers_procedure_path @procedure, params:{
+          put managers_procedure_path @procedure, params: {
             procedure: {
               cooking_detail: "valid_cooking_detail",
               cuisine_id: @procedure.cuisine_id
@@ -162,7 +161,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
     context "NG" do
       it "リクエストが成功すること" do
-        put managers_procedure_path @procedure, params:{
+        put managers_procedure_path @procedure, params: {
           procedure: {
             cooking_detail: "",
             cuisine_id: @procedure.cuisine_id
@@ -173,17 +172,17 @@ RSpec.describe "Managers::Procedures", type: :request do
 
       it "更新されないこと" do
         expect do
-          put managers_procedure_path @procedure, params:{
+          put managers_procedure_path @procedure, params: {
             procedure: {
               cooking_detail: "",
               cuisine_id: @procedure.cuisine_id
             }
           }
-        end.to_not change(Procedure.find_by(id: @procedure.id), :cooking_detail)
+        end.not_to change(Procedure.find_by(id: @procedure.id), :cooking_detail)
       end
 
       it "エラーメッセージが表示されること" do
-        put managers_procedure_path @procedure, params:{
+        put managers_procedure_path @procedure, params: {
           procedure: {
             cooking_detail: "",
             cuisine_id: @procedure.cuisine_id
@@ -195,14 +194,14 @@ RSpec.describe "Managers::Procedures", type: :request do
       it "必要な情報が取得できること" do
         @procedure2 = create(:procedure, cuisine_id: @procedure.cuisine_id, cooking_detail: "procedure2")
         @procedure3 = create(:procedure, cuisine_id: @procedure.cuisine_id, cooking_detail: "procedure3")
-        put managers_procedure_path @procedure, params:{
+        put managers_procedure_path @procedure, params: {
           procedure: {
             cooking_detail: "",
             cuisine_id: @procedure.cuisine_id
           }
         }
         expect(response.body).to include "更新"
-        expect(response.body).to include "#{@procedure.cuisine.main_image}"
+        expect(response.body).to include @procedure.cuisine.main_image.to_s
         expect(response.body).to include "procedure2"
         expect(response.body).to include "procedure3"
       end
