@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # 管理者側
   devise_for :managers, controllers: {
     sessions: 'managers/sessions',
@@ -49,12 +50,15 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resource :password, only: [:edit, :update]
+  resources :cookinghistorys, only: [:index]
   resources :cuisines, only: [:show] do
     delete :remove_favorite
     delete :remove_menu
+    delete :remove_from_todays_menus, action: :remove_from_todays_menus, controller: 'cookinghistorys'
     post :add_favorite
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
+    post :add_to_todays_menu, action: :add_to_todays_menu, controller: 'cookinghistorys'
   end
   resources :favorites, only: [:index, :create, :destroy]
   resources :stocks, only: [:index, :new, :create, :destroy] do
@@ -76,6 +80,7 @@ Rails.application.routes.draw do
   get 'tops/login_which'
   get 'user/profile', to: 'users#show'
   get 'user/subscription', to: 'subscriptions#show'
+  get 'toggle_subscription', to: 'subscriptions#toggle'
   put 'update_profile', to: 'users#update'
   post 'register_subscription', to: 'subscriptions#create'
   delete 'cancel_subscription', to: 'subscriptions#destroy'
