@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201209091101) do
+ActiveRecord::Schema.define(version: 20201209091613) do
 
   create_table "cookinghistories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "cuisine_id", comment: "料理id"
@@ -95,15 +95,6 @@ ActiveRecord::Schema.define(version: 20201209091101) do
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
-  end
-
-  create_table "procedureimages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "image", null: false, comment: "料理手順を示す画像"
-    t.integer "order", null: false, comment: "料理手順画像を表示する順番"
-    t.bigint "cuisine_id", comment: "料理id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cuisine_id"], name: "index_procedureimages_on_cuisine_id"
   end
 
   create_table "procedures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -216,7 +207,6 @@ ActiveRecord::Schema.define(version: 20201209091101) do
   add_foreign_key "cuisines", "genres"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
-  add_foreign_key "procedureimages", "cuisines"
   add_foreign_key "rawmaterials", "units"
   add_foreign_key "stocks", "rawmaterials"
   add_foreign_key "stocks", "users"
