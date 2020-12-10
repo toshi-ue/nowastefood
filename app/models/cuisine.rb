@@ -1,9 +1,7 @@
 class Cuisine < ApplicationRecord
   enum difficulty: { easy: 0, normal: 1, hard: 2 }
-  # has_many :rawmaterials
-  # has_many :cookedstates
   belongs_to :genre
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :foodstuffs, dependent: :destroy
   has_many :procedures, dependent: :destroy
   has_many :rawmaterials, through: :foodstuffs
