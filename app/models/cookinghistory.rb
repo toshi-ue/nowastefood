@@ -1,2 +1,0 @@
-class Cookinghistory < ApplicationRecord
-end

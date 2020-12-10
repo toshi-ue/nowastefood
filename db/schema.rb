@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201209091613) do
-
-  create_table "cookinghistories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "cuisine_id", comment: "料理id"
-    t.bigint "user_id", comment: "ユーザーid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cuisine_id"], name: "index_cookinghistories_on_cuisine_id"
-    t.index ["user_id"], name: "index_cookinghistories_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 20201210013729) do
 
   create_table "cuisines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false, comment: "料理名"
