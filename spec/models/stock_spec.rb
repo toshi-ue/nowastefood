@@ -100,7 +100,6 @@ RSpec.describe Stock, type: :model do
     context "消費される予定がない食材があるとき" do
       it "消費される予定がない食材、数量をhashで返すこと" do
         user = create(:user, default_serving_count: 1)
-        # sign_in user
         rawmaterial1 = create(:rawmaterial)
         rawmaterial2 = create(:rawmaterial)
         stock1 = create(:stock, user_id: user.id, rawmaterial_id: rawmaterial1.id, quantity: "1/2")
@@ -112,7 +111,6 @@ RSpec.describe Stock, type: :model do
         todaysmenu1 = create(:todaysmenu, user_id: user.id, cuisine_id: cuisine.id)
         todaysmenu2 = create(:todaysmenu, user_id: user.id, cuisine_id: cuisine2.id)
         todaysmenus_hash = user.todaysmenus.create_hash_todaysmenus(user.todaysmenus)
-        # binding.pry
         expect(user.stocks.remaining_amount(stocks_hash, todaysmenus_hash)).to eq({ rawmaterial1.id.to_s => Rational(stock1.quantity) - Rational(foodstuff.quantity), rawmaterial2.id.to_s => Rational(stock2.quantity) })
       end
     end

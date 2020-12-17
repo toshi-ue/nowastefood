@@ -13,6 +13,7 @@ class Foodstuff < ApplicationRecord
     self.quantity = quantity.gsub(/ |　/, "").tr("／", "/").strip.tr('０-９', '0-9')
   end
 
+  # TODO: todaysmenuがない時の処理を追加する
   def self.best_cuisine(foodstuffs, todaysmenus, quantity_want_to_consume, user_serving_count)
     cuisines = {}
     foodstuffs.each do |fs|
