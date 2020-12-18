@@ -1,6 +1,6 @@
 class Managers::RawmaterialsController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_rawmaterial, only: [ :edit, :update, :destroy, :restore]
+  before_action :set_rawmaterial, only: [:edit, :update, :destroy]
   layout 'manager'
   KAMINARI_PAGINATION_COUNT = 13
 
@@ -22,8 +22,7 @@ class Managers::RawmaterialsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @rawmaterial.update(rawmaterial_params)
@@ -37,12 +36,6 @@ class Managers::RawmaterialsController < ApplicationController
     @rawmaterial&.destroy
     redirect_to managers_rawmaterials_path, flash: { notice: "原材料 #{@rawmaterial.name} が削除されました" }
   end
-
-  # TODO: 最後に削除(エラーがなければ)
-  # def restore
-  #   @rawmaterial.undiscard
-  #   redirect_to managers_rawmaterials_path, flash: { notice: "食材区分 #{@rawmaterial.name} が復元されました" }
-  # end
 
   private
 

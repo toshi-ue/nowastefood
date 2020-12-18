@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :todaysmenus, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :cuisines, through: :todaysmenus
-  validates :nickname, length: { in: 1..10 }, if: -> { validation_context == :update_profile }
+  validates :nickname, length: { in: 1..30 }, if: -> { validation_context == :update_profile }
   validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: -> { validation_context == :update_profile }
   mount_uploader :profile_image, ProfileImageUploader
 

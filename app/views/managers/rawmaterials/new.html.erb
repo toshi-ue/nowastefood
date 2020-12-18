@@ -1,4 +1,13 @@
+<%# TODO: デザインを修正 %>
 <%= render 'shared/error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="text-wrap text-xs-center">
+      <h2>原材料を追加</h2>
+    </div>
+  </div>
+</div>
+
 
 <%= form_with(model: @rawmaterial, url: managers_rawmaterials_path, local: true) do |form| %>
   <%= render 'rawmaterial_form', {form: form , rawmaterial: @rawmaterial} %>

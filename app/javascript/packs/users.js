@@ -2,11 +2,19 @@ $(function () {
   const action_name = document.body.dataset.action
   const csrfToken = document.getElementsByName('csrf-token')[0].content
 
+  console.log("users.js passed")
+  console.log(action_name)
   switch (action_name) {
     case "show":
+      console.log("show passed")
       const file_field = document.getElementById('user-img')
-
-      $('.user-profile-no-image').click(function () {
+      const user_avatar_image = document.getElementById('user-avatar')
+      const profile_label = document.getElementById('label-click')
+      console.log(file_field)
+      user_avatar_image.addEventListener('click', function(){
+        file_field.click();
+      })
+      profile_label.addEventListener('click', function(){
         file_field.click();
       })
 
