@@ -2,8 +2,6 @@ $(function () {
   const action_name = document.body.dataset.action
   const csrfToken = document.getElementsByName('csrf-token')[0].content
 
-  console.log("users.js passed")
-  console.log(action_name)
   switch (action_name) {
     case "show":
       console.log("show passed")
