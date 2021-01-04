@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build: #job_name：任意
+  build:
     docker:
       - image: circleci/ruby:2.5.7-node-browsers
         environment:
@@ -13,7 +13,6 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
-    # working_directory: ~/repo # TODO: circleci or ... ?
     parallelism: 1
     steps:
       - checkout
@@ -31,6 +30,7 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+      - run: mv config/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
