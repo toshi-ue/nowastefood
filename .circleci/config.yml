@@ -9,6 +9,10 @@ jobs:
           - BUNDLE_PATH: vendor/bundle
           - BUNDLER_VERSION: 1.17.3
           - RAILS_ENV: 'test'
+          - MYSQL_HOST: 127.0.0.1
+          - MYSQL_USERNAME: 'root'
+          - MYSQL_PASSWORD: ''
+          - MYSQL_PORT: 3306
       - image: circleci/mysql:5.7
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
@@ -29,6 +33,20 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+      - run:
+          name: install yarn
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
       - run: mv .circleci/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
