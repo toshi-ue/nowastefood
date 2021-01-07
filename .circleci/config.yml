@@ -9,15 +9,17 @@ jobs:
           - BUNDLE_PATH: vendor/bundle
           - BUNDLER_VERSION: 1.17.3
           - RAILS_ENV: 'test'
-          - MYSQL_HOST: 127.0.0.1
+          - MYSQL_HOST: 'db'
+          # - MYSQL_HOST: 127.0.0.1
           - MYSQL_USERNAME: 'root'
           - MYSQL_PASSWORD: 'password'
           - MYSQL_PORT: 3306
-        name: db
       - image: circleci/mysql:5.7
         environment:
-          MYSQL_USERNAME: 'root'
-          MYSQL_PASSWORD: 'password'
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          MYSQL_ROOT_HOST: '%'
+          # MYSQL_USERNAME: 'root'
+          # MYSQL_PASSWORD: 'password'
           MYSQL_PORT: 3306
         name: db
     parallelism: 1
