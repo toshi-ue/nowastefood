@@ -11,12 +11,15 @@ jobs:
           - RAILS_ENV: 'test'
           - MYSQL_HOST: 127.0.0.1
           - MYSQL_USERNAME: 'root'
-          - MYSQL_PASSWORD: ''
+          - MYSQL_PASSWORD: 'password'
           - MYSQL_PORT: 3306
+        name: db
       - image: circleci/mysql:5.7
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_ROOT_HOST: '%'
+          MYSQL_USERNAME: 'root'
+          MYSQL_PASSWORD: 'password'
+          MYSQL_PORT: 3306
+        name: db
     parallelism: 1
     steps:
       - checkout
@@ -48,7 +51,7 @@ jobs:
           paths:
             - ~/.cache/yarn
 
-
+      # - run: mv .circleci/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
