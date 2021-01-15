@@ -63,6 +63,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem "rspec_junit_formatter"
   gem 'selenium-webdriver'
   gem 'shoulda-matchers',
       git: 'https://github.com/thoughtbot/shoulda-matchers.git',
