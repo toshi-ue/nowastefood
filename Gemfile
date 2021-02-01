@@ -65,9 +65,7 @@ group :test do
   gem 'launchy'
   gem "rspec_junit_formatter"
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers',
-      git: 'https://github.com/thoughtbot/shoulda-matchers.git',
-      branch: 'rails-5'
+  gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
   gem 'webdrivers'
