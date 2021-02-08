@@ -20,10 +20,10 @@ RSpec.describe "Users", type: :request do
       @user.default_serving_count = 4
       @user.save!
       expect do
-        put update_profile_path @user, params: {
+        put update_profile_path(@user), params: {
           user: {
             nickname: "bbb",
-            profile_image: @user.profile_image,
+            profile_image: Rack::Test::UploadedFile.new("#{Rails.root}/spec/factories/images/test.jpg", "image/jpeg"),
             default_serving_count: 2
           }
         }
