@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
+
+ruby '2.7.2'
 
 gem 'acts-as-taggable-on'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'counter_culture'
@@ -74,6 +78,8 @@ end
 
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# gem 'therubyracer', platforms: :ruby
+# gem 'mini_racer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
 # gem 'bcrypt', '~> 3.1.7'
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
