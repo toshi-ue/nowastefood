@@ -2,17 +2,17 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201209091613) do
+ActiveRecord::Schema.define(version: 2021_02_10_094359) do
 
-  create_table "cuisines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "料理名"
     t.bigint "genre_id"
     t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["name"], name: "index_cuisines_on_name", unique: true
   end
 
-  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "cuisine_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "foodcategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "foodcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "食材区分名(肉、野菜、魚、炭水化物など)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_foodcategories_on_name", unique: true
   end
 
-  create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "foodstuffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "quantity", comment: "数量"
     t.bigint "cuisine_id", comment: "料理id"
     t.bigint "rawmaterial_id", comment: "原材料id"
@@ -53,14 +53,14 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["rawmaterial_id"], name: "index_foodstuffs_on_rawmaterial_id"
   end
 
-  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cuisines_count", default: 0, null: false
   end
 
-  create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "managers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
   end
 
-  create_table "procedures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "procedures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "cooking_detail"
     t.bigint "cuisine_id", comment: "料理id"
     t.integer "row_order"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["cuisine_id"], name: "index_procedures_on_cuisine_id"
   end
 
-  create_table "rawmaterials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "rawmaterials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "原材料名"
     t.string "hiragana"
     t.bigint "unit_id"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["unit_id"], name: "index_rawmaterials_on_unit_id"
   end
 
-  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "quantity", null: false
     t.bigint "rawmaterial_id"
     t.bigint "user_id"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
-  create_table "taggings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", collation: "utf8_bin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "todaysmenus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "todaysmenus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "cuisine_id"
     t.bigint "user_id"
     t.integer "serving_count", default: 1, null: false
@@ -157,13 +157,13 @@ ActiveRecord::Schema.define(version: 20201209091613) do
     t.index ["user_id"], name: "index_todaysmenus_on_user_id"
   end
 
-  create_table "units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname"
     t.string "email", default: "", null: false
     t.integer "default_serving_count", default: 1
