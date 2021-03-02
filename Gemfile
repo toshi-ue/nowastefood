@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
+
+ruby '2.7.2'
 
 gem 'acts-as-taggable-on'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'counter_culture'
@@ -16,18 +20,18 @@ gem 'discard'
 gem 'dotenv-rails'
 gem 'enum_help'
 gem 'font-awesome-sass'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'
-gem 'mysql2', '>= 0.3.18', '< 0.6.0'
-gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.7'
+gem 'mysql2'
+gem 'puma'
+gem 'rails', '~> 6.0.3'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
 gem 'sassc-rails'
 gem 'seed-fu'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 gem 'webpacker'
 
 group :development, :test do
@@ -48,7 +52,7 @@ group :development do
   gem 'bullet'
   gem 'foreman'
   gem 'letter_opener_web'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
@@ -56,8 +60,8 @@ group :development do
   gem 'solargraph'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
 end
 
 group :test do
@@ -65,17 +69,17 @@ group :test do
   gem 'launchy'
   gem "rspec_junit_formatter"
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers',
-      git: 'https://github.com/thoughtbot/shoulda-matchers.git',
-      branch: 'rails-5'
+  gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# gem 'therubyracer', platforms: :ruby
+# gem 'mini_racer', platforms: :ruby
 # gem 'capistrano-rails', group: :development
 # gem 'bcrypt', '~> 3.1.7'
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
