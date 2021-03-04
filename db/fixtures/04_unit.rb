@@ -1,10 +1,10 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2020-08-17 11:46:33 +0000
+# Date: 2020-11-23 06:03:30 +0000
 # Seeding Unit
 # Written with the command:
 #
-#   /usr/local/bundle/bin/rake seed_fu_gen:all
+#   bin/rails seed_fu_gen:all
 #
 Unit.seed_once(:id,
   {"id"=>1, "name"=>"g"},

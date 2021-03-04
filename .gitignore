@@ -152,7 +152,4 @@ yarn-debug.log*
 
 new_user_credentials_app_for_job_change.csv
 .DS_Store
-db/afixtures/*
-db/fixtures/*
-db/fixtures/images/*
-db/fixtures/uploads/*
+/db/afixtures/
