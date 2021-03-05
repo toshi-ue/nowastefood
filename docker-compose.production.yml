@@ -1,0 +1,40 @@
+# [Rails On DockerでのAWSデプロイができたので，中身を整理します。 - Qiita](https://qiita.com/aaabb6211/items/982a151f614d2fcb3f9a)
+# [EC2上でRailsアプリケーションにDockerを導入する(Rails、Nginx、RDS) - Qiita](https://qiita.com/Yusuke_Hoirta/items/959f91a61ac1e607c0b1)
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.production
+    command: bundle exec puma -C config/puma.rb -e production
+    volumes:
+      - .:/webapp
+      - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
+      - log-data:/webapp/log
+      - bundle:/usr/local/bundle
+      - node-modules:/webapp/node_modules
+    # 公開ポートの設定(ホスト(Mac側):コンテナ側)
+    # ports:
+    #   - "3000:3000"
+    #   - "3035:3035"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./containers/nginx/Dockerfile
+    volumes:
+      - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  bundle:
+  node-modules:
+  public-data:
+  tmp-data:
+  log-data:
