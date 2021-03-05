@@ -1,0 +1,62 @@
+ja:
+  activerecord:
+    models:
+      managers:
+        foodcategory:
+    attributes:
+      manager:
+        email: メールアドレス
+        password: パスワード
+      cookedstate:
+        name: 加工された状態の名前
+        foodcategory_id: 食材区分
+      cuisine:
+        name: レシピ名
+        calories: 摂取カロリー(kcal)
+        difficulty: お手軽度(簡単・それなり・プロ並)
+        cooking_time: 調理時間(分)
+        description: レシピの説明
+        main_image: 画像
+      foodcategory:
+        name: 食品区分名
+      foodstuff:
+          quantity: 数量
+          measure_unit: 単位
+          cuisine_id: 料理レシピid
+          rawmaterial: 材料
+          rawmaterial_id: 材料
+          keyword: 材料を検索
+          ingredient_id: 部位id
+          cookedstate_id: 加工された状態の名前id
+      ingredient:
+        name: 部位名
+      procedure:
+        cooking_detail: 手順
+      rawmaterial:
+        name: 原材料名
+        hiragana: ひらがな
+        foodcategory: 食材区分
+        foodcategory_id: 食材区分id
+        unit: 単位
+        unit_id: 単位id
+      rawmaterial/nutrient:
+        lipid: 脂質
+      stock:
+        rawmaterial_id: 原材料id
+        quantity: 数量
+        rawmaterial: 食材
+      user:
+        nickname: ニックネーム
+        default_serving_count: 提供人数
+  enums:
+    cuisine:
+      difficulty:
+        easy: 簡単
+        normal: 普通
+        hard: 難しい
+  errors:
+    models:
+      cuisine:
+        cannot_duplicate_rawmaterial: 1つの料理に同じ材料を登録できません
+      foodstuff:
+        cannot_duplicate_rawmaterial: 1つの料理に同じ材料を登録できません

@@ -1,0 +1,12 @@
+<%# rawmaterial_id-原材料id %>
+<%= form.hidden_field :rawmaterial_id, id: :stock_rawmaterial_id %>
+<%# quantity-数量 %>
+<div class="form-group col-10 offset-1 row">
+  <%= form.label :quantity, class: 'col-sm-2 offset-sm-3 col-form-label text-sm-right' %>
+  <div class="input-group col-sm-5">
+    <%= form.text_field :quantity, id: :foodstuff_quantity, class: 'form-control' %>
+    <div class="input-group-prepend">
+      <div class="input-group-text"></div>
+    </div>
+  </div>
+</div>

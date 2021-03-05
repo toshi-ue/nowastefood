@@ -1,0 +1,24 @@
+<h1>食材区分一覧</h1>
+<%= render 'shared/flash_messages' %>
+
+<% if @foodcategories.present? %>
+  <p>
+    <%= link_to new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" do %>
+      <i class="fas fa-plus"></i> 追加する
+    <% end %>
+  </p>
+  <div class="my-2 border border-secondary">
+    <%= render 'foodcategories' %>
+  </div>
+<% else %>
+  <p>現在登録がありません</p>
+<% end %>
+<p>
+  <%= link_to new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" do %>
+    <i class="fas fa-plus"></i> 追加する
+  <% end %>
+  </p>
+
+<%= render 'managers/shared/all_crud_links' %>
+<%= render 'managers/shared/back_to_home' %>
+<%= render 'managers/shared/manager_log_out' %>

@@ -1,0 +1,13 @@
+<%= javascript_pack_tag 'managers/cuisines' %>
+<div class="content_wrapper container">
+  <div>
+    <%= form_with(model: @cuisine, url: managers_cuisines_path, local: true) do |form| %>
+    <%= render 'cuisine_form', {form: form ,cuisine: @cuisine} %>
+    <div class="text-center my-2">
+      <%= form.submit class: 'btn btn-secondary' %>
+    </div>
+    <% end %>
+    <%=link_to "戻る", managers_cuisines_path, class: 'btn btn-secondary', role: 'button' %>
+    <%= render 'managers/shared/back_to_home' %>
+  </div>
+</div>

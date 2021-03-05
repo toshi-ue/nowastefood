@@ -1,0 +1,9 @@
+<%= form_with(model: @cuisine, url: managers_cuisine_path, local: true, method: :patch) do |form| %>
+  <%= render 'cuisine_form', {form: form , cuisine: @cuisine} %>
+  <div class="text-center my-2">
+    <%= form.submit class: 'btn btn-secondary' %>
+  </div>
+<% end %>
+
+<%= render 'shared/back_previous' %>
+<%= render 'managers/shared/back_to_home' %>

@@ -1,0 +1,24 @@
+<h1>原材料一覧</h1>
+<p>
+  <%= link_to new_managers_rawmaterial_path, class: "btn btn-secondary", role: "button" do %>
+    <i class="fas fa-plus"></i> 追加する
+  <% end %>
+</p>
+<%= render 'shared/flash_messages' %>
+<% if @rawmaterials.present? %>
+  <div class="my-2 border border-secondary">
+    <%= render 'rawmaterials_list' %>
+  </div>
+<% else %>
+  <p>まだ登録がありません</p>
+<% end %>
+<p>
+  <%= link_to new_managers_rawmaterial_path, class: "btn btn-secondary", role: "button" do %>
+    <i class="fas fa-plus"></i> 追加する
+  <% end %>
+</p>
+
+<%= render 'managers/shared/all_crud_links' %>
+
+<%= render 'managers/shared/back_to_home' %>
+<%= render 'managers/shared/manager_log_out' %>

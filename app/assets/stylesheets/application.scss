@@ -1,0 +1,279 @@
+// @import "bootstrap";
+@import "bootstrap/dist/css/bootstrap.css";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "jquery-ui/themes/base/sortable.css";
+@import "variables";
+@import "managers/cuisines";
+@import "managers/foodstuffs";
+@import "cuisines";
+@import "favorites";
+@import "genres";
+@import "passwords";
+@import "stocks";
+@import "subscriptions";
+@import "tags";
+@import "tops";
+@import "todaysmenus";
+@import "users";
+
+.field_with_errors {
+  display: contents;
+}
+
+// footer固定用の設定
+.container-fluid {
+  min-height: 100vh;
+}
+
+.my-button {
+  height: 100px;
+  width: 100px;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.alert ol {
+  margin: 0;
+}
+
+#index-managers-foodcategories,
+#index-managers-cuisines,
+#index-managers-rawmaterials {
+  thead>tr>td>a {
+    color: $soberColor;
+  }
+}
+
+// bootstrap4 parts
+.card {
+  .card-title {
+    height: 2rem + 0.75rem;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .img-filter {
+    position: relative;
+    width: 100%;
+    padding-top: 67%;
+    overflow: hidden;
+
+    .card-img-top {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      max-width: 150%;
+      max-height: 150%;
+      ;
+    }
+  }
+}
+
+// navbar
+$bgDefault : #00AA00;
+$bgHighlight : #00BB00;
+$colDefault : #ecf0f1;
+$colHighlight : #ecf0f1;
+$dropDown : true;
+
+.navbar {
+  background-color: $bgDefault;
+
+  .navbar-brand {
+    color: $colDefault;
+
+    &:hover,
+    &:focus {
+      color: $colHighlight;
+    }
+  }
+
+  .navbar-text {
+    color: $colDefault;
+
+    a {
+      color: $colHighlight;
+
+      &:hover,
+      &:focus {
+        color: $colHighlight;
+      }
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $colDefault;
+      border-radius: .25rem;
+      margin: 0 0.25em;
+
+      &:not(.disabled) {
+
+        &:hover,
+        &:focus {
+          color: $colHighlight;
+        }
+      }
+    }
+
+    @if ($dropDown) {
+      .dropdown-menu {
+        background-color: $bgDefault;
+        border-color: $bgHighlight;
+
+        .dropdown-item {
+          color: $colDefault;
+
+          &:hover,
+          &:focus,
+          &.active {
+            color: $colHighlight;
+            background-color: $bgHighlight;
+          }
+        }
+
+        .dropdown-divider {
+          border-top-color: $bgHighlight;
+        }
+      }
+    }
+
+    .nav-item.active,
+    .nav-item.show {
+
+      .nav-link,
+      .nav-link:hover,
+      .nav-link:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: $bgHighlight;
+
+    &:hover,
+    &:focus {
+      background-color: $bgHighlight;
+    }
+
+    .navbar-toggler-icon {
+      color: $colDefault;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault;
+  }
+
+  .navbar-link {
+    color: $colDefault;
+
+    &:hover {
+      color: $colHighlight;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar-expend-sm .navbar-nav .show .dropdown-menu {
+    .dropdown-item {
+      color: $colDefault;
+
+      &:hover,
+      &:focus {
+        color: $colHighlight;
+      }
+    }
+
+    .dropdown-item.active {
+      color: $colHighlight;
+      background-color: $bgHighlight;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-expend-md .navbar-nav .show .dropdown-menu {
+    .dropdown-item {
+      color: $colDefault;
+
+      &:hover,
+      &:focus {
+        color: $colHighlight;
+      }
+    }
+
+    .dropdown-item.active {
+      color: $colHighlight;
+      background-color: $bgHighlight;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-expend-lg .navbar-nav .show .dropdown-menu {
+    .dropdown-item {
+      color: $colDefault;
+
+      &:hover,
+      &:focus {
+        color: $colHighlight;
+      }
+    }
+
+    .dropdown-item.active {
+      color: $colHighlight;
+      background-color: $bgHighlight;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar-expend-xl .navbar-nav .show .dropdown-menu {
+    .dropdown-item {
+      color: $colDefault;
+
+      &:hover,
+      &:focus {
+        color: $colHighlight;
+      }
+    }
+
+    .dropdown-item.active {
+      color: $colHighlight;
+      background-color: $bgHighlight;
+    }
+  }
+}
+
+.navbar-expend .navbar-nav .show .dropdown-menu {
+  .dropdown-item {
+    color: $colDefault;
+
+    &:hover,
+    &:focus {
+      color: $colHighlight;
+    }
+  }
+
+  .dropdown-item.active {
+    color: $colHighlight;
+    background-color: $bgHighlight;
+  }
+}

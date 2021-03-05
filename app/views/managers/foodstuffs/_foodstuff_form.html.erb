@@ -1,0 +1,28 @@
+<%= form.hidden_field :rawmaterial_id, id: :foodstuff_rawmaterial_id, class: 'form-control' %>
+<%# quantity-数量 %>
+<div class="form-group col-10 offset-1">
+  <%= form.label :quantity %>
+  <div class="input-group">
+    <%= form.text_field :quantity, id: :foodstuff_quantity, class: 'form-control' %>
+    <div class="input-group-prepend">
+      <!-- 単位表示のグレー枠でレイアウト崩れが発生する -->
+      <div class="input-group-text" id="rawmaterial_measure_unit">
+        <% if @rawmaterial.present? %>
+        <%= @rawmaterial.unit.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-around mt-2 mb-4">
+    <div>
+      <input type="checkbox" id="proper" value="適量">適量
+    </div>
+    <div>
+      <input type="checkbox" id="little" value="少々">少々
+    </div>
+    <div>
+      <input type="checkbox" id="asyoulike" value="お好みで">お好みで
+    </div>
+  </div>
+</div>
+<%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control' %>

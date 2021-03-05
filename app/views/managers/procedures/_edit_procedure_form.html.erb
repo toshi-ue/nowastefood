@@ -1,0 +1,20 @@
+<%= render 'shared/error_messages', {resource: procedure} if procedure.errors.any? %>
+
+<tr id="procedure_<%= procedure.id %>">
+  <td></td>
+  <td>
+    <div>
+      <%= form_with(model: procedure, url: managers_procedure_path, remote: true, method: :put) do |form| %>
+        <div class="form-group">
+          <%= form.text_area :cooking_detail, id: :cooking_detail, class: 'form-control' %>
+        </div>
+        <%= form.hidden_field :cuisine_id, value: procedure.cuisine_id %>
+        <div class="actions">
+          <%= form.submit "更新", id: "submit_procedure", class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </td>
+  <td>
+  </td>
+</tr>

@@ -1,0 +1,59 @@
+<div class="container-fluid" id="wrapper_container">
+  <div id="settings" class="mt-2">
+    <div class="row">
+      <div class="col offset-md-1 offset-lg-2">
+        <h2>設定</h2>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <%= render 'shared/user_settings_sidebar' %>
+      <div class="col-12 col-sm-8 col-md-7 col-lg-5 justify-content-lg-center align-items-lg-center px-2 mt-2 mb-5">
+        <div id="show-subscription">
+          <h4 class="text-center">プラン情報</h4>
+          <hr>
+          <div id="current-plan" class="text-center">
+            <p>
+              <h5>お客様の現在のプラン</h5>
+            </p>
+            <% if current_user.subscribed %>
+              <p>有料プラン</p>
+            <% else %>
+              <p>無料プラン</p>
+              <p><%= link_to '有料プランに登録する', register_subscription_path, class: 'btn btn-success', method: :post %></p>
+            <% end %>
+          </div>
+          <div id="difference-plan">
+            <table>
+              <tr>
+                <th></th>
+                <th>無料</th>
+                <th>有料</th>
+              </tr>
+              <tr>
+                <th>買い物リスト<br />
+                </th>
+                <td>◯</td>
+                <td>◯</td>
+              </tr>
+              <tr>
+                <th>料理履歴</th>
+                <td>3日</td>
+                <td>1ヶ月</td>
+              </tr>
+              <tr>
+                <th>レシピ<br>
+                  自動生成</th>
+                <td>×</td>
+                <td>◯</td>
+              </tr>
+            </table>
+          </div>
+
+            <% if current_user.subscribed %>
+              <p><%= link_to '有料プランをやめる', cancel_subscription_path, class: 'btn btn-default', method: :delete %></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<h1>Managers::Foodcategories#edit</h1>
+<p>Find me in app/views/managers/foodcategories/edit.html.erb</p>
+<%= form_with(model: @foodcategory, url: managers_foodcategory_path, local: true, method: :patch) do |form| %>
+  <%= render 'foodcategory_form', {form: form , foodcategory: @foodcategory} %>
+  <div class="text-center my-2">
+    <%= form.submit class: 'btn btn-secondary' %>
+  </div>
+<% end %>
+
+<%= render 'shared/back_previous' %>
+<%= render 'managers/shared/back_to_home' %>

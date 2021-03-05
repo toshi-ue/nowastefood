@@ -1,0 +1,58 @@
+<table class="table table-hover table-sm table-responsive">
+  <thead>
+    <tr>
+      <td class="align-middle text-center"><%= sort_link(@q, :id, "ID", default_order: :desc) %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :name, "原材料名", default_order: :desc) %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :foodcategory_id, "食材区分名", default_order: :desc) %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rawmaterials.each do |rm| %>
+    <tr>
+      <td class="align-middle text-center"><%= rm.id %></td>
+      <td class="align-middle"><%= rm.name %></td>
+      <td class="align-middle text-center"><%= rm.foodcategory.name %></td>
+      <td class="align-middle text-center">
+        <%= rm.foodstuffs_count %>
+      </td>
+      <td class="align-middle">
+        <%= link_to edit_managers_rawmaterial_path(rm.id),
+              class: "page-link text-dark d-inline-block",
+              role: "button",
+              local: true do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+      </td>
+      <td class="align-middle">
+        <%= button_to managers_rawmaterial_path(rm.id),
+          class: "page-link text-dark d-inline-block",
+          data: {
+          confirm: "<i class='fas fa-exclamation-circle'></i>
+            本当に「<strong>#{rm.name}</strong>」を削除しますか?",
+            cansel: "キャンセル",
+            commit: "削除",
+            title: "削除確認"
+          },
+          role: "button",
+          method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col">
+    <%= page_entries_info @rawmaterials %>
+  </div>
+  <div class="col">
+    <%= paginate @rawmaterials, theme: 'twitter-bootstrap-4',
+                          pagination_class: "pagination-sm",
+                          nav_class: "d-inline-b"
+    %>
+  </div>
+</div>

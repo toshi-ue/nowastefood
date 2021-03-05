@@ -1,0 +1,3 @@
+$('#cooking_detail').val("")
+$('#procedure-list').html("<%= escape_javascript(render 'procedure_list', procedures: @procedures) %>");
+$('#procedure_form').html("<%= escape_javascript(render 'procedure_form', procedure: @procedure) %>");

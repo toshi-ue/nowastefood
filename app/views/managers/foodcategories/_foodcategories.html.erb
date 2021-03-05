@@ -1,0 +1,51 @@
+<table class="table table-hover table-sm table-responsive">
+  <thead>
+    <tr>
+      <td class="align-middle text-center"><%= sort_link(@q, :id, "ID") %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :name, "食材区分名") %></td>
+      <td class="align-middle text-center"><%= sort_link(@q, :created_at, "登録日") %></td>
+      <td class="align-middle text-center"></td>
+      <td class="align-middle text-center"></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foodcategories.each do |fc| %>
+      <tr>
+        <td class="align-middle"><%= fc.id %></td>
+        <td class="align-middle"><%= fc.name %></td>
+        <td class="align-middle"><%= fc.created_at %></td>
+        <td class="align-middle">
+          <%= link_to edit_managers_foodcategory_path(fc.id),  class: "page-link text-dark d-inline-block", role: "button" do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+        </td>
+        <td class="align-middle">
+          <%= link_to managers_foodcategory_path(fc.id),
+                class: "page-link text-dark d-inline-block",
+                data: {
+                  confirm: "<i class='fas fa-exclamation-circle'></i>
+                    本当に「<strong>#{fc.name}</strong>」を削除しますか?",
+                  cansel: "キャンセル",
+                  commit: "削除",
+                  title: "削除確認"
+                },
+                role: "button",
+                method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col">
+    <%= page_entries_info @foodcategories %>
+  </div>
+  <div class="col">
+    <%= paginate @foodcategories, theme: 'twitter-bootstrap-4',
+                          pagination_class: "pagination-sm",
+                          nav_class: "d-inline-b"
+    %>
+  </div>
+</div>

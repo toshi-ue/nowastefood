@@ -1,0 +1,106 @@
+inherit_from: .rubocop_todo.yml
+
+# 追加した規約ファイル読込
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  # Rubyバージョン指定
+  TargetRubyVersion: 2.5.7
+  # 除外(RuboCopで解析させないフォルダ、ファイル群)
+  Exclude:
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'vendor/**/*'
+    - 'Gemfile.lock'
+  # rubocop ver0.72 以降は使わない(代わりにrequire rubocop-rails)
+  # Rails:
+  #   enabled: true
+
+
+# RSpecの設定
+#  capybara固有のメソッドを有効にする
+Capybara/FeatureMethods:
+  Enabled: false
+
+# 1行が長すぎる
+Layout/LineLength:
+  Max: 150
+
+# 未使用の引数チェック
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+# 開発者が感じていたプログラムの 匂い を定量的に判断する
+# Offense count: 2
+# default 15
+Metrics/AbcSize:
+  Max: 29
+
+# Metrics/BlockLength: Block has too many lines.　を無視
+Metrics/BlockLength:
+  Enabled: false
+
+# ネストを許可する深さ
+Metrics/BlockNesting:
+  Max: 5
+
+# メソッドの行数が長すぎる
+Metrics/MethodLength:
+  Enabled: false
+
+# 引数の数が多すぎる
+Metrics/ParameterLists:
+  Max: 12
+
+# migration高速化のための設定
+# テーブル作成、テーブルカラム編集
+Rails/BulkChangeTable:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/requests/*.rb
+    - spec/requests/*/*.rb
+
+RSpec/ReturnFromStub:
+  EnforcedStyle: block
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# クラスにコメントを残さない
+Style/Documentation:
+  Enabled: false
+
+# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantSelf:
+    Enabled: false
+
+Style/StringLiterals:
+  Enabled: false

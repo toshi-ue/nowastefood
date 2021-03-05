@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: root
+    ports:
+        - "4306:3306"
+    volumes:
+        - db-data:/var/lib/mysql
+  web:
+    # ゾンビプロセスをkill
+    init: true
+    # デバッグを可能にする
+    tty: true
+    stdin_open: true
+    # 構築時に適用するオプション
+    build: .
+    # デフォルトのコマンドを上書き
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    #
+    volumes:
+      - .:/webapp
+      - bundle:/usr/local/bundle
+      - node-modules:/webapp/node_modules
+    # 公開ポートの設定(ホスト(Mac側):コンテナ側)
+    ports:
+      - "3000:3000"
+      - "3035:3035"
+    #
+    links:
+      - db
+      # - chrome
+    environment:
+      RAILS_ENV: development
+  chrome:
+    # image: selenium/standalone-chrome:latest
+    # 視認で確認する
+    image: selenium/standalone-chrome-debug:latest
+    ports:
+      - 4444:4444
+      # 視認で確認する
+      - 5901:5900
+
+volumes:
+  db-data:
+    driver: local
+  bundle:
+    driver: local
+  node-modules:
+    driver: local

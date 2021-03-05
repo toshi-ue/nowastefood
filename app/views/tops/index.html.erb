@@ -1,0 +1,182 @@
+<%= javascript_pack_tag 'tops' %>
+
+<div class="container-fluid" id="wrapper_container">
+  <div id="genre1" class="mt-2">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-muted">和風</h2>
+      </div>
+      <div class="col">
+        <div class="text-right d-flex justify-content-end align-items-center more-cuisine pr-2">
+          <%= link_to "もっと見る", genres_search_path(id: 1), class: "text-black-50" %>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-container js-swiper">
+      <div class="no-gutters swiper-wrapper">
+        <% @japanese_style_cuisines.each do |jsc| %>
+          <div class="col-6 col-sm-6 col-md-3 align-items-xl-center px-2 mt-2 swiper-slide">
+            <div class="card">
+              <%= link_to cuisine_path(jsc) do %>
+                <div class="img-filter">
+                  <%= image_tag jsc.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+                </div>
+              <% end %>
+              <div class="card-body">
+                <%= link_to cuisine_path(jsc) do %>
+                  <p class="card-title text-black-50 d-flex align-items-center"><%= jsc.name.truncate(14) %></p>
+                <% end %>
+                <div id="btn-favorite-<%= jsc.id %>">
+                  <%= render partial: 'cuisines/favorite', locals: {cuisine: jsc} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- navigation buttons -->
+      <div class="swiper-button-prev js-swiper-button-prev"></div>
+      <div class="swiper-button-next js-swiper-button-next"></div>
+    </div>
+  </div>
+  <div id="genre2" class="mt-2">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-muted">洋風</h2>
+      </div>
+      <div class="col">
+        <div class="text-right d-flex justify-content-end align-items-center more-cuisine pr-2">
+          <%= link_to "もっと見る", genres_search_path(id: 2), class: "text-black-50" %>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-container js-swiper">
+      <div class="no-gutters swiper-wrapper">
+        <% @western_style_cuisines.each do |wsc| %>
+        <div class="col-6 col-sm-6 col-md-3 align-items-xl-center px-2 mt-2 swiper-slide">
+          <div class="card">
+            <%= link_to cuisine_path(wsc) do %>
+              <div class="img-filter">
+                <%= image_tag wsc.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+              </div>
+            <% end %>
+            <div class="card-body">
+              <%= link_to cuisine_path(wsc) do %>
+                <p class="card-title text-black-50 d-flex align-items-center"><%= wsc.name.truncate(14) %></p>
+              <% end %>
+              <div id="btn-favorite-<%= wsc.id %>">
+                <%= render partial: 'cuisines/favorite', locals: {cuisine: wsc} %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <!-- navigation buttons -->
+      <div class="swiper-button-prev js-swiper-button-prev"></div>
+      <div class="swiper-button-next js-swiper-button-next"></div>
+    </div>
+  </div>
+  <div id="genre3" class="mt-2">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-muted">中華</h2>
+      </div>
+      <div class="col">
+        <div class="text-right d-flex justify-content-end align-items-center more-cuisine pr-2">
+          <%= link_to "もっと見る", genres_search_path(id: 3), class: "text-black-50" %>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-container js-swiper">
+      <div class="no-gutters swiper-wrapper">
+        <% @chinese_style_cuisines.each do |csc| %>
+          <div class="col-6 col-sm-6 col-md-3 align-items-xl-center px-2 mt-2 swiper-slide">
+            <div class="card">
+              <%= link_to cuisine_path(csc) do %>
+                <div class="img-filter">
+                  <%= image_tag csc.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+                </div>
+              <% end %>
+              <div class="card-body">
+                <%= link_to cuisine_path(csc) do %>
+                  <p class="card-title text-black-50 d-flex align-items-center"><%= csc.name.truncate(14) %></p>
+                <% end %>
+                <div id="btn-favorite-<%= csc.id %>">
+                  <%= render partial: 'cuisines/favorite', locals: {cuisine: csc} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-prev js-swiper-button-prev"></div>
+      <div class="swiper-button-next js-swiper-button-next"></div>
+    </div>
+  </div>
+  <%# TODO: ランキング機能を実装する %>
+  <div id="ranking" class="mt-2">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-muted">ランキング</h2>
+      </div>
+      <div class="col">
+        <p class="text-right text-black-50 d-flex justify-content-end align-items-center more-cuisine pr-2">もっと見る</p>
+      </div>
+    </div>
+    <div class="swiper-container js-swiper">
+      <div class="no-gutters swiper-wrapper">
+        <% @japanese_style_cuisines.each do |jsc| %>
+          <div class="col-6 col-sm-6 col-md-3 align-items-xl-center px-2 mt-2 swiper-slide">
+            <div class="card">
+              <%= link_to cuisine_path(jsc) do %>
+                <div class="img-filter">
+                  <%= image_tag jsc.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+                </div>
+              <% end %>
+              <div class="card-body">
+                <%= link_to cuisine_path(jsc) do %>
+                  <p class="card-title text-black-50 d-flex align-items-center"><%= jsc.name.truncate(14) %></p>
+                <% end %>
+                <div id="btn-favorite-<%= jsc.id %>">
+                  <%= render partial: 'cuisines/favorite', locals: {cuisine: jsc} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-prev js-swiper-button-prev"></div>
+      <div class="swiper-button-next js-swiper-button-next"></div>
+    </div>
+  </div>
+  <div id="genre-and-tags" class="mt-2">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-muted">キーワード</h2>
+      </div>
+    </div>
+    <div class="row mb-5 px-4">
+      <div>
+        <% @genres.each do |g| %>
+          <% unless g.cuisines_count == 0%>
+            <%= link_to genres_search_path(id: g.id) do %>
+              <button type="button" class="btn btn-outline-secondary btn-sm mt-2">
+                <%= g.name %><span class="badge badge-light text-muted"><%= g.cuisines_count %></span>
+              </button>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% @tags.each do |tag| %>
+          <% unless tag.taggings_count == 0 %>
+            <%= link_to tag_search_path(tag_name: tag.name) do %>
+              <button type="button" class="btn btn-outline-secondary btn-sm mt-2">
+                <%= tag.name %><span class="badge badge-light text-muted"><%= tag.taggings_count %></span>
+              </button>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

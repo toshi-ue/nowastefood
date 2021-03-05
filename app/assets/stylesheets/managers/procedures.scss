@@ -1,0 +1,21 @@
+@import "variables";
+
+// mobile
+@media (min-width: $xs) {
+
+}
+
+// tablet
+@media (min-width: $md) {
+  .content_wrapper{
+    padding: 0 20px;
+  }
+  .cuisine-procedure{
+    padding: 0 30px;
+  }
+}
+
+// more than desktop
+@media (min-width: $lg) {
+
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+  <%# TODO: data属性が特定のページで反映されない
+              managers/cuisines/show.html.erb,
+              http://localhost:3000/managers/cuisines/2
+  %>
+  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+  <div class="container-fluid">
+    <%# navbar %>
+    <%= render 'managers/shared/manager_navbar' %>
+
+    <div class="main-contents d-flex flex-column mb-auto">
+      <% if Rails.env.development? %>
+      <%# if Rails.env.production? %>
+        <%= render 'shared/disp_file_path' %>
+        <%# render 'shared/disp_time' %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+    <%# footer %>
+    <%= render 'managers/shared/manager_footer' %>
+  </body>
+</html>
