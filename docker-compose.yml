@@ -35,6 +35,18 @@ services:
       # - chrome
     environment:
       RAILS_ENV: development
+  nginx:
+    build:
+      context: .
+      dockerfile: ./containers/nginx/Dockerfile
+    volumes:
+      - ./containers/nginx/nginx.conf:/etc/nginx/conf.d/webapp.conf
+      # - public-data:/webapp/public
+      # - tmp-data:/webapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
   chrome:
     # image: selenium/standalone-chrome:latest
     # 視認で確認する
