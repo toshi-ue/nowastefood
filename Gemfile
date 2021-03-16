@@ -33,6 +33,7 @@ gem 'sassc-rails'
 gem 'seed-fu'
 gem 'uglifier'
 gem 'webpacker'
+gem 'flog'
 
 group :development, :test do
   gem 'awesome_print'
