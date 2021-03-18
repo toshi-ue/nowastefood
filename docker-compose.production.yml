@@ -22,6 +22,7 @@ services:
       RAILS_ENV: production
       # [【Rails】assets:precompileは成功しているのにpumaを起動してもimageもjsもcssもNotFound（RAILS_SERVE_STATIC_FILESの話） - Qiita](https://qiita.com/at-946/items/b7d467bf25c40fcfca44)
       # [Rails に静的ファイルの配信をお願いする - Qiita](https://qiita.com/gouf/items/01d608d3ec46ba65f3c2)
+      # [Deploying Rails 6 Assets with Docker and Kubernetes](https://blog.cloud66.com/deploying-rails-6-assets-with-docker/)
       RAILS_SERVE_STATIC_FILES: 'true'
     volumes:
       - .:/webapp
