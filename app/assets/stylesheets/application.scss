@@ -19,18 +19,14 @@
 // @import "todaysmenus";
 // @import "users";
 
-.field_with_errors {
-  display: contents;
-}
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
 
-// footer固定用の設定
-.container-fluid {
-  min-height: 100vh;
-}
+footer {
+  margin-bottom: 2rem;
+  margin-top: auto;
 
-.my-button {
-  height: 100px;
-  width: 100px;
 }
 
 main {
@@ -45,9 +41,28 @@ main {
   }
 
   @include media-breakpoint-up(lg) {
+    width: $lg;
     margin: 0 auto;
   }
 }
+
+.field_with_errors {
+  display: contents;
+}
+
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.my-button {
+  height: 100px;
+  width: 100px;
+}
+
+
 
 .alert ol {
   margin: 0;
