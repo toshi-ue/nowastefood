@@ -11,8 +11,6 @@
   </head>
   <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
   <%= render 'shared/user_navbar' %>
-    <div class="container-fluid">
-
       <%# flash message %>
       <%# for filepath, time %>
       <% if Rails.env.development? %>
@@ -24,7 +22,6 @@
       <main>
         <%= yield %>
       </main>
-    </div>
     <%# footer %>
     <%= render 'shared/user_footer' %>
   </body>
