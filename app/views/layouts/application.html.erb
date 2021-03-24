@@ -18,11 +18,14 @@
         <%= render 'shared/disp_file_path' %>
         <%# render 'shared/disp_time' %>
       <% end %>
-      <%# メインコンテンツ %>
       <main>
         <%= yield %>
       </main>
-    <%# footer %>
-    <%= render 'shared/user_footer' %>
+    <footer class="page-footer font-small">
+      <div class="footer-copyright text-center py-2">
+        <%= link_to("© 2020 #{@appname}", root_path, { class: "text-secondary"}) %>
+        <%# binding.pry%>
+      </div>
+    </footer>
   </body>
 </html>
