@@ -12,11 +12,7 @@
   <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
   <%= render 'shared/user_navbar' %>
       <%# flash message %>
-      <div id="wrapper">
-        <% if Rails.env.development? %>
-          <%= render 'shared/disp_file_path' %>
-        <%# render 'shared/disp_time' %>
-        <% end %>
+      <div class="container-lg">
         <main>
           <%= yield %>
         </main>
