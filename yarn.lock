@@ -805,7 +805,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.11.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
@@ -850,10 +850,20 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@fortawesome/fontawesome-free@5.11.2":
+  version "5.11.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.11.2.tgz#8644bc25b19475779a7b7c1fc104bc0a794f4465"
+  integrity sha512-XiUPoS79r1G7PcpnNtq85TJ7inJWe0v+b5oZJZKb0pGHNIV6+UiNeQWiFGmuQ0aj7GEhnD/v9iqxIsjuRKtEnQ==
+
 "@fortawesome/fontawesome-free@^5.13.1":
   version "5.15.3"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
   integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+
+"@popperjs/core@^2.6.0":
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.1.tgz#7f554e7368c9ab679a11f4a042ca17149d70cf12"
+  integrity sha512-DvJbbn3dUgMxDnJLH+RZQPnXak1h4ZVYQ7CWiFWjQwBFkVajT4rfw2PdpHLTSTwxrYfnoEXkuBiwkDm6tPMQeA==
 
 "@rails/webpacker@4.2.2":
   version "4.2.2"
@@ -898,6 +908,25 @@
     webpack-assets-manifest "^3.1.1"
     webpack-cli "^3.3.10"
     webpack-sources "^1.4.3"
+
+"@themesberg/volt-bootstrap-5-dashboard@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@themesberg/volt-bootstrap-5-dashboard/-/volt-bootstrap-5-dashboard-1.3.1.tgz#bb5e1a87260d82de4dd556385a61d2989dae5779"
+  integrity sha512-XSEpPgDykBCumimgotC1oAcVRf4Dh3rnALtfYe044tkRruh5RXfPKU8P1m8+QExqh7eGxu2DwYnM7c8H/PXErg==
+  dependencies:
+    "@fortawesome/fontawesome-free" "5.11.2"
+    "@popperjs/core" "^2.6.0"
+    bootstrap "5.0.0-beta1"
+    chartist "^0.11.4"
+    chartist-plugin-tooltips "0.0.17"
+    notyf "^3.9.0"
+    nouislider "11.0.3"
+    onscreen "1.3.4"
+    simplebar "^6.0.0-beta.2"
+    smooth-scroll "^16.1.0"
+    sweetalert2 "^9.17.1"
+    vanillajs-datepicker "^1.0.3"
+    waypoints "4.0.1"
 
 "@ttskch/select2-bootstrap4-theme@^1.3.4":
   version "1.5.2"
@@ -1520,6 +1549,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
+bootstrap@5.0.0-beta1:
+  version "5.0.0-beta1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.0-beta1.tgz#18135001a452b3ec38b344ac638a1f9549285ee7"
+  integrity sha512-UrHApw/WRmT7l2rlDdn5iXr7Jps/LlMZtJlLn9G41aGDfss48hyDeYyHtX1C6NHKVcmdUarGG+ve0LZB5iHyTQ==
+
 bootstrap@^4.5.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
@@ -1782,6 +1816,11 @@ camelcase@^5.0.0, camelcase@^5.3.1:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
+can-use-dom@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
+  integrity sha1-IsxKNKCrxDlQ9CxkEQJKP2NmtFo=
+
 caniuse-api@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/caniuse-api/-/caniuse-api-3.0.0.tgz#5e4d90e2274961d46291997df599e3ed008ee4c0"
@@ -1826,6 +1865,16 @@ chalk@^2.0, chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
     ansi-styles "^3.2.1"
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
+
+chartist-plugin-tooltips@0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/chartist-plugin-tooltips/-/chartist-plugin-tooltips-0.0.17.tgz#fc1a98eb5d3771235b6e08cd1c18cc96c2110660"
+  integrity sha1-/BqY6103cSNbbgjNHBjMlsIRBmA=
+
+chartist@^0.11.4:
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/chartist/-/chartist-0.11.4.tgz#e96e1c573d8b67478920a3a6ae52359d9fc8d8b7"
+  integrity sha512-H4AimxaUD738/u9Mq8t27J4lh6STsLi4BQHt65nOtpLk3xyrBPaLiLMrHw7/WV9CmsjGA02WihjuL5qpSagLYw==
 
 chokidar@^2.1.8:
   version "2.1.8"
@@ -4260,6 +4309,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash-es@^4.17.15:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -4792,6 +4846,16 @@ normalize-url@^3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
+notyf@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/notyf/-/notyf-3.9.0.tgz#012a83d989a5017c9a37c23372ee20f78d8b33ba"
+  integrity sha512-3zqV/AuP8w5OpPhUElsLte1BFfL42tswMZM5Ya24w7GozMsQTJRYsQQgqmA9oylDL3t5TE7F4rP3ZGM6JfaKOQ==
+
+nouislider@11.0.3:
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-11.0.3.tgz#a45a31bb7846bbced498afa514a513da197d22b2"
+  integrity sha512-EmL3FHQ1vZ7wofzeLRqGZc7Lt4HpHezwfi2ODz8H2qcvltdIb4yqSo0trFN3Uk08YN7sPSQVETtH4Dg+k8xOBA==
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -4929,6 +4993,11 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   integrity sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
   dependencies:
     wrappy "1"
+
+onscreen@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/onscreen/-/onscreen-1.3.4.tgz#7bd41b0bc3b3bd18da116437a02558eeb4f15cf0"
+  integrity sha512-rtyO4Z5WagTtA31ywUUQrUN/lQ2OR/FqzDqw3S/2aWE9chCiuV0bfYychu+UqYRdI0sah5TJMMCtIMxPagONQg==
 
 opn@^5.5.0:
   version "5.5.0"
@@ -6580,6 +6649,29 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+simplebar-core@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/simplebar-core/-/simplebar-core-1.0.7.tgz#762cd0db534525184a5f96492664d40f27ce4fb5"
+  integrity sha512-hO1/nStBwXRwxeu7TT8PFVe1INEi2+RFf1Tjn1EvTwRB9yf84dJyWC7CFJfRvO2F/8Cdp0tg6MHVUGVbqFdebQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    can-use-dom "^0.1.0"
+    lodash-es "^4.17.15"
+
+simplebar@^6.0.0-beta.2:
+  version "6.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/simplebar/-/simplebar-6.0.0-beta.10.tgz#c9e38de4ab52204621a7746b8114f49dd4adc78d"
+  integrity sha512-5hwkru3qlbBffnNbDUJl6C9OpSKbVyQkpOuPd9V1Xjyet7vVoIeEnW2IG6X/AARmGyKpXngOyGARksq9tIY+ww==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    can-use-dom "^0.1.0"
+    simplebar-core "^1.0.7"
+
+smooth-scroll@^16.1.0:
+  version "16.1.3"
+  resolved "https://registry.yarnpkg.com/smooth-scroll/-/smooth-scroll-16.1.3.tgz#c5b68194b4186173f9f61065103ae4e26ce36885"
+  integrity sha512-ca9U+neJS/cbdScTBuUTCZvUWNF2EuMCk7oAx3ImdeRK5FPm+xRo9XsVHIkeEVkn7MBRx+ufVEhyveM4ZhaTGA==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -7005,6 +7097,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2@^9.17.1:
+  version "9.17.2"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.17.2.tgz#7f33ce157a64c303d2ca98863c9a3f437e5f1187"
+  integrity sha512-HkpPZVMYsnhFUBLdy/LvkU9snggKP3VAuSVnPhVXjxdg02lWbFx0W8H3m7A+WMWw2diXZS1wIa4m67XkNxdvew==
+
 swiper@<6:
   version "5.4.5"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-5.4.5.tgz#a350f654bf68426dbb651793824925512d223c0f"
@@ -7378,6 +7475,11 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vanillajs-datepicker@^1.0.3:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/vanillajs-datepicker/-/vanillajs-datepicker-1.1.4.tgz#247a5969739ca17895ae53e30218293e230e6cad"
+  integrity sha512-XJhvRx+VqtRjqrPlgNCQntLpCntFKPMBd8ahxZhLkvrWX0bNdpP3kz5j13L2Q0xfTAY/QMfQtVZvBvRF0NilcA==
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -7419,6 +7521,11 @@ watchpack@^1.7.4:
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
+
+waypoints@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/waypoints/-/waypoints-4.0.1.tgz#09979a0573810b29627cba4366a284a062ec69c8"
+  integrity sha1-CZeaBXOBCylifLpDZqKEoGLsacg=
 
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
