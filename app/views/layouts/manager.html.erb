@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'manager', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+
+
+    <nav class="navbar navbar-light bg-secondary">
+      <div class="col text-center">
+        <a class="navbar-brand" href="#"><%= @appname %>(管理者)</a>
+      </div>
+    </nav>
+    <div class="container-lg">
+      <main>
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>
