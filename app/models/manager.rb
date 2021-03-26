@@ -4,4 +4,11 @@ class Manager < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
   has_many :foodcategories
+
+  def self.create_account_as_guest
+    faker_manager_name = Faker::Name.first_name
+    self.create!(name: faker_manager_name, email: "#{faker_manager_name}@example.com") do |u|
+      u.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
