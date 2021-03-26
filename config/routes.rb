@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-
   # 管理者側
   devise_for :managers, controllers: {
     sessions: 'managers/sessions',
     passwords: 'managers/passwords',
     registrations: 'managers/registrations'
   }
+
+  devise_scope :manager do
+    post 'login_as_guest_manager', to: 'managers/sessions#login_as_guest_manager'
+  end
   namespace :managers do
     resources :cookedstates, except: [:show] do
       member do
@@ -41,6 +44,7 @@ Rails.application.routes.draw do
         get 'restore'
       end
     end
+    get 'dashboard', to: 'tops/dashboard'
   end
 
   # ユーザー側
@@ -49,6 +53,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    post 'login_as_guest_user', to: 'users/sessions#login_as_guest_user'
+  end
   resource :password, only: [:edit, :update]
   resources :cookinghistorys, only: [:index]
   resources :cuisines, only: [:show] do
