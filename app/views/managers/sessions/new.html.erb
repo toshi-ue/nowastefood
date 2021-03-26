@@ -1,4 +1,5 @@
 <div class="col-10 offset-1  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+  <h3 class="text-center">ログイン</h3>
   <%= render "shared/flash_messages" %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
@@ -22,17 +23,12 @@
       <%= f.submit "ログイン", class: 'btn btn-outline-secondary btn-block'%>
     </div>
   <% end %>
-
-  <%# render "managers/shared/links" %>
-
-  <%# render 'managers/shared/log_in_out' %>
-
-  <div class="text-center my-3">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.hidden_field :email, value: "heascook_manager1@ahk.jp"%>
-    <%= f.hidden_field :password, value: "password" %>
-    <%= f.submit "テスト管理者でログイン", class: "btn btn-outline-secondary btn-block"%>
-    <% end %>
-  </div>
-  <%= render 'managers/shared/manager_new_registration' %>
+  <hr>
+  <p class="text-muted text-center">
+    <%= link_to 'ゲスト管理者でログイン', login_as_guest_manager_path, method: :post, class: "btn btn-secondary btn-block text-white" %>
+  </p>
+  <hr>
+  <p class="text-muted text-center">
+    <%= link_to 'トップページへ移動', root_path, class: "btn btn-info btn-block" %>
+  </p>
 </div>

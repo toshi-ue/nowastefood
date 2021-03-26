@@ -1,46 +1,51 @@
-// @import "bootstrap";
 @import "bootstrap/dist/css/bootstrap";
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+@import "bootstrap/scss/mixins/_breakpoints";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "jquery-ui/themes/base/sortable";
-@import "variables";
-@import "managers/cuisines";
-@import "managers/foodstuffs";
-@import "cuisines";
-@import "favorites";
-@import "genres";
-@import "passwords";
-@import "stocks";
-@import "subscriptions";
-@import "tags";
+@import "app_variables";
+// @import "managers/cuisines";
+// @import "managers/foodstuffs";
+// @import "cuisines";
+// @import "favorites";
+// @import "genres";
+// @import "passwords";
+// @import "stocks";
+// @import "subscriptions";
+// @import "tags";
 @import "tops";
-@import "todaysmenus";
-@import "users";
+// @import "todaysmenus";
+// @import "users";
+@import "users/sessions";
 
-.field_with_errors {
-  display: contents;
-}
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
 
-// footer固定用の設定
-.container-fluid {
-  min-height: 100vh;
-}
+footer {
+  margin-bottom: 2rem;
+  margin-top: auto;
 
-.my-button {
-  height: 100px;
-  width: 100px;
 }
 
 main {
   max-width: 980px;
-  margin: 0 auto;
+  min-height: 100vh;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
 
-.alert ol {
-  margin: 0;
+  @include media-breakpoint-down(md) {
+    margin: 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: $lg;
+    margin: 0 auto;
+  }
 }
 
 #index-managers-foodcategories,
@@ -51,7 +56,10 @@ main {
   }
 }
 
-// bootstrap4 parts
+.alert ol {
+  margin: 0;
+}
+
 .card {
   .card-title {
     height: 2rem + 0.75rem;
@@ -80,6 +88,25 @@ main {
       ;
     }
   }
+}
+
+.container-lg {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  @include media-breakpoint-up(lg) {
+    width: $lg;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.my-button {
+  height: 100px;
+  width: 100px;
 }
 
 // navbar
