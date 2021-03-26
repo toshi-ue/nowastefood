@@ -44,7 +44,7 @@ Rails.application.routes.draw do
         get 'restore'
       end
     end
-    get 'dashboard', to: 'tops/dashboard'
+    get 'dashboard', to: 'tops#dashboard'
   end
 
   # ユーザー側

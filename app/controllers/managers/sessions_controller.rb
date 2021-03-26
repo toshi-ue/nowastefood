@@ -37,6 +37,6 @@ class Managers::SessionsController < Devise::SessionsController
   def login_as_guest_manager
     guest_manager = Manager.create_account_as_guest
     sign_in guest_manager
-    redirect_to root_path, notice: "#{guest_manager.name}としてログインしました"
+    redirect_to managers_dashboard_path, notice: "#{guest_manager.name}としてログインしました"
   end
 end
