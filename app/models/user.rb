@@ -30,4 +30,11 @@ class User < ApplicationRecord
     self.subscribed_at = nil
     self.save
   end
+
+  def self.create_account_as_guest
+    faker_user_name = Faker::Name.first_name
+    self.create!(nickname: faker_user_name, email: "#{faker_user_name}@example.com") do |u|
+      u.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
