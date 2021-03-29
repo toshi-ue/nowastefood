@@ -7,9 +7,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'manager', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'manager' %>
   </head>
-  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" class="hold-transition sidebar-mini" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+  <body class="sidebar-mini">
     <div class="wrapper">
       <%= render 'managers/shared/navbar' %>
       <%= render 'managers/shared/sidebar' %>
