@@ -19,7 +19,7 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
     end
 
     context "管理者でログインしていないとき" do
-      it "管理者ログイン画面へリダイレクトされること" do
+      it "ログイン画面へリダイレクトされること" do
         sign_out @manager
         get managers_rawmaterials_path
         expect(response).to redirect_to(new_manager_session_path)
@@ -37,7 +37,7 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
     end
 
     context "管理者でログインしていないとき" do
-      it "管理者ログイン画面へリダイレクトされること" do
+      it "ログイン画面へリダイレクトされること" do
         sign_out @manager
         get new_managers_rawmaterial_path
         expect(response.status).to redirect_to(new_manager_session_path)
@@ -61,7 +61,7 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
     end
 
     context "管理者でログインしていないとき" do
-      it "管理者ログイン画面へリダイレクトされること" do
+      it "ログイン画面へリダイレクトされること" do
         sign_out @manager
         get edit_managers_rawmaterial_path @rawmaterial
         expect(response.status).to redirect_to(new_manager_session_path)
