@@ -27,32 +27,6 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
     end
   end
 
-  # TODO: 使用しなければ削除
-  # describe "GET /show" do
-  #   before do
-  #     @rawmaterial = create(:rawmaterial)
-  #   end
-
-  #   context "管理者でログインしているとき" do
-  #     it "showページが表示されること" do
-  #       manager = create(:manager)
-  #       sign_in manager
-  #       get managers_rawmaterial_path @rawmaterial
-  #       expect(response.status).to eq 200
-  #       expect(response.body).to include @rawmaterial.name
-  #     end
-  #   end
-
-  #   context "管理者でログインしていないとき" do
-  #     it "管理者ログイン画面へリダイレクトされること" do
-  #       get managers_rawmaterial_path @rawmaterial
-  #       expect(response.status).to redirect_to(new_manager_session_path)
-  #       follow_redirect!
-  #       expect(response.body).to include "テスト管理者でログイン"
-  #     end
-  #   end
-  # end
-
   describe "GET /new" do
     context "管理者でログインしているとき" do
       it "newページが表示されること" do
@@ -68,7 +42,7 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
         get new_managers_rawmaterial_path
         expect(response.status).to redirect_to(new_manager_session_path)
         follow_redirect!
-        expect(response.body).to include "テスト管理者でログイン"
+        expect(response.body).to include "ログイン"
       end
     end
   end
@@ -92,7 +66,7 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
         get edit_managers_rawmaterial_path @rawmaterial
         expect(response.status).to redirect_to(new_manager_session_path)
         follow_redirect!
-        expect(response.body).to include "テスト管理者でログイン"
+        expect(response.body).to include "ログイン"
       end
     end
   end
