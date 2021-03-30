@@ -1,8 +1,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
+    <%= link_to managers_dashboard_path, class: "brand-link text-center" do %>
+      <span class="brand-text font-weight-light">Coome 管理者画面</span>
+    <% end %>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -14,7 +13,7 @@
           -->
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">ユーザー名を入れる</a>
         </div>
       </div>
 
@@ -33,13 +32,16 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <%= link_to 'Home', managers_dashboard_path, class: "nav-link" %>
+          </li>
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-database"></i>
               <p>
-                Starter Pages
+                データ一覧
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -48,6 +50,42 @@
                 <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Active Page</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>料理(Cuisine)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>食材分類(Foodcategory)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>食材(Foodstuff)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>手順(Procedure)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>原材料(Rawmaterial)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ユーザー(User)</p>
                 </a>
               </li>
               <li class="nav-item">
