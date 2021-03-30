@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'manager', media: 'all' %>
+    <%= javascript_pack_tag 'manager' %>
+  </head>
+  <body class="sidebar-mini">
+    <div class="wrapper">
+      <%= render 'managers/shared/navbar' %>
+      <%= render 'managers/shared/sidebar' %>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+      <%= render 'managers/shared/footer' %>
+    </div>
+  </body>
+</html>
