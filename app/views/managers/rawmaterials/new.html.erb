@@ -1,20 +1,50 @@
-<%# TODO: デザインを修正 %>
-<%= render 'shared/error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="text-wrap text-xs-center">
-      <h2>原材料を追加</h2>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">原材料追加</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to '原材料一覧', managers_rawmaterials_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item active">原材料追加</li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>
-
-
-<%= form_with(model: @rawmaterial, url: managers_rawmaterials_path, local: true) do |form| %>
-  <%= render 'rawmaterial_form', {form: form , rawmaterial: @rawmaterial} %>
-  <div class="text-center my-2">
-    <%= form.submit class: 'btn btn-secondary' %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <%= form_with(model: @rawmaterial, url: managers_rawmaterials_path, local: true) do |form| %>
+            <div class="card-body">
+              <%= render 'shared/new_error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
+              <div class="form-group">
+                <%= form.label :name, class:'control-label' %>
+                <%= form.text_field :name, id: :rawmaterial_name, autofocus: true, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= form.label :foodcategory_id, class:'control-label' %>
+                <%= form.collection_select(:foodcategory_id, Foodcategory.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+              </div>
+              <div class="form-group">
+                <%= form.label :unit_id, class:'control-label' %>
+                <%= form.collection_select(:unit_id, Unit.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+              </div>
+            </div>
+            <div class="card-footer">
+              <%= form.submit class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render 'shared/back_previous' %>
-<%= render 'managers/shared/back_to_home' %>
+</div>

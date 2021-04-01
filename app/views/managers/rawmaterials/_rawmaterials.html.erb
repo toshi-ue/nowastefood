@@ -1,0 +1,31 @@
+<tbody>
+  <tr>
+    <td><%= rm.id %></td>
+    <td><%= rm.name %></td>
+    <td><%= rm.foodcategory.name %></td>
+    <td><%= rm.foodstuffs.count %></td>
+    <td>
+      <%= link_to edit_managers_rawmaterial_path(rm.id),
+            class: "page-link text-dark d-inline-block",
+            role: "button",
+            local: true do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+    </td>
+    <td>
+      <%= button_to managers_rawmaterial_path(rm.id),
+        class: "page-link text-dark d-inline-block",
+        data: {
+        confirm: "<i class='fas fa-exclamation-circle'></i>
+          本当に「<strong>#{rm.name}</strong>」を削除しますか?",
+          cansel: "キャンセル",
+          commit: "削除",
+          title: "削除確認"
+        },
+        role: "button",
+        method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </td>
+  </tr>
+</tbody>
