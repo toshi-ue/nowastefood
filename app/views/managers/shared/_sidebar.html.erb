@@ -1,3 +1,4 @@
+<% current_page = "#{controller.controller_path}\##{controller.action_name}" %>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <%= link_to managers_dashboard_path, class: "brand-link text-center" do %>
       <span class="brand-text font-weight-light">Coome 管理者画面</span>
@@ -8,12 +9,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <!--
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          -->
         </div>
         <div class="info">
-          <a href="#" class="d-block">ユーザー名を入れる</a>
+          <%# <a href="#" class="d-block">ユーザー名を入れる</a> %>
+          <div class="text-white">
+          <%= current_manager.name %>
+          </div>
         </div>
       </div>
 
@@ -33,12 +34,14 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <%= link_to 'Home', managers_dashboard_path, class: "nav-link" %>
+            <%= link_to managers_dashboard_path, class: add_class_nav_link(current_page, 'managers/tops#dashboard') do %>
+            <p>Home</p>
+            <% end %>
           </li>
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
                 データ一覧
@@ -47,40 +50,34 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <%= link_to managers_cuisines_path, class: "#{add_class_nav_link(current_page, 'foodcategories#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
+                  <p>料理レシピ</p>
+                <% end %>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <%= link_to managers_foodcategories_path, class: "#{add_class_nav_link(current_page, 'foodcategories#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>料理(Cuisine)</p>
-                </a>
+                  <p>食材区分</p>
+                  <% end %>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <%= link_to managers_foodstuffs_path, class: "#{add_class_nav_link(current_page, 'foodstuffs#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>食材分類(Foodcategory)</p>
-                </a>
+                  <p>料理食材</p>
+                <% end %>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>食材(Foodstuff)</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+                <%= link_to managers_procedures_path, class: "#{add_class_nav_link(current_page, 'procedures#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
                   <p>手順(Procedure)</p>
-                </a>
+                <% end %>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <%= link_to managers_rawmaterials_path, class: "#{add_class_nav_link(current_page, 'managers/rawmaterials#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
                   <p>原材料(Rawmaterial)</p>
-                </a>
+                <% end %>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -88,22 +85,7 @@
                   <p>ユーザー(User)</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
           </li>
         </ul>
       </nav>
