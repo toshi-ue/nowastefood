@@ -13,7 +13,7 @@ ja:
       cuisine:
         name: レシピ名
         calories: 摂取カロリー(kcal)
-        difficulty: お手軽度(簡単・それなり・プロ並)
+        difficulty: 難しさ
         cooking_time: 調理時間(分)
         description: レシピの説明
         main_image: 画像
@@ -51,9 +51,9 @@ ja:
   enums:
     cuisine:
       difficulty:
-        easy: 簡単
-        normal: 普通
-        hard: 難しい
+        easy: 低
+        normal: 中
+        hard: 高
   errors:
     models:
       cuisine:
