@@ -1,13 +1,34 @@
 <%= javascript_pack_tag 'managers/cuisines' %>
-<div class="content_wrapper container">
-  <div>
-    <%= form_with(model: @cuisine, url: managers_cuisines_path, local: true) do |form| %>
-    <%= render 'cuisine_form', {form: form ,cuisine: @cuisine} %>
-    <div class="text-center my-2">
-      <%= form.submit class: 'btn btn-secondary' %>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">料理レシピ追加</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to '料理レシピ一覧', managers_cuisines_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item active">料理レシピ追加</li>
+        </ol>
+      </div>
     </div>
-    <% end %>
-    <%=link_to "戻る", managers_cuisines_path, class: 'btn btn-secondary', role: 'button' %>
-    <%= render 'managers/shared/back_to_home' %>
+  </div>
+</div>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <%= form_with(model: @cuisine, url: managers_cuisines_path, local: true) do |form| %>
+            <%= render 'form', {form: form , cuisine: @cuisine} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,59 @@
+<div class="card-body">
+  <%= render 'shared/new_error_messages', {resource: cuisine} if cuisine.errors.any? %>
+  <div class="form-group">
+    <span class="text-danger">※</span><%= form.label :name %>
+    <%= form.text_area :name, id: :cuisine_name, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <span class="text-danger">※</span>ジャンル<br />
+    <%= form.collection_select(:genre_id, Genre.all, :id, :name, {}, {selected: cuisine.genre_id, class: 'form-control'}) %>
+  </div>
+  <div class="form-group">
+    <span class="text-danger">※</span><%= form.label :difficulty %>
+    <%= form.select(:difficulty, Cuisine.difficulties.keys.map{|k| [I18n.t("enums.cuisine.difficulty.#{k}"), k]}, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+  </div>
+  <div class="form-group">
+    <span class="text-danger">※</span><%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time, id: :cuisine_cooking_time, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <span class="text-danger">※</span><%= form.label :description %>
+    <%= form.text_area :description, id: :cuisine_description, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <span class="text-danger">※</span><%= form.label :main_image %>
+    <% if cuisine.main_image.blank? %>
+      <div class="cuisine-main-image">
+        <div>
+          <%= image_tag 'no_image_100x100', id: 'no_cuisine_image', class: "d-block mx-auto my-2 img-fluid" %>
+        </div>
+        <div class="input-group">
+          <input type="text" id="image_name" class="form-control" readonly="">
+          <label class="input-group-btn">
+            <span class="btn btn-default">
+              ファイルを選択
+                  <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display: none;" %>
+            </span>
+          </label>
+        </div>
+      </div>
+    <% else %>
+      <%= image_tag cuisine.main_image.url %>
+      <%= form.hidden_field :main_image_cache %>
+      <span class="btn btn-primary"></span>
+      <%# form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none;" %>
+      <%# form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none" %>
+      <div class="input-group">
+        <label class="input-group-btn">
+          <span>
+            <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none;" %>
+          </span>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="card-footer">
+  <%= form.submit class: 'btn btn-secondary' %>
+</div>

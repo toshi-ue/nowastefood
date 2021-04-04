@@ -2,3 +2,21 @@
 @import 'admin-lte/dist/css/adminlte';
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+
+#new-managers-cuisines {
+  #no_cuisine_image {
+    max-width: 80%;
+  }
+
+  .image_preview {
+    min-width: 100px;
+    max-width: 70%;
+    min-height: 100px;
+    margin: 20px auto;
+    height: auto;
+    background-color: #EEEEEE;
+    background-position: center center;
+    background-size: cover;
+  }
+}
