@@ -8,9 +8,10 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def new
+    @cuisine = Cuisine.find(params[:cuisine_id])
     @foodstuff = Foodstuff.new
     @foodstuff.cuisine_id = params[:cuisine_id]
-    @cuisine = Cuisine.find(@foodstuff.cuisine_id)
+    @rawmaterials = Rawmaterial.limit(10)
     @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
   end
 
@@ -56,7 +57,17 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    respond_to do |format|
+      format.json { render json: @rawmaterials }
+    end
+  end
+
+  def search_unit
+    @unit = Rawmaterial.find_by(id: params[:rm_id])&.unit
+    respond_to do |format|
+      format.json { render json: @unit }
+    end
   end
 
   private
