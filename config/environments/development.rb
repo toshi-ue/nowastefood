@@ -8,18 +8,9 @@ Rails.application.configure do
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end
-  # Settings specified here will take precedence over those in config/application.rb.
-
-  # In the development environment your application's code is reloaded on
-  # every request. This slows down response time but is perfect for development
-  # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.reload_classes_only_on_change = false
-
-  # Do not eager load code on boot.
   config.eager_load = false
-
-  # Show full error reports.
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
@@ -38,34 +29,16 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
-  # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  # 5.2のrails diff[RailsDiff](http://railsdiff.org/5.1.7/5.2.4.4)
-  # config.action_mailer.raise_delivery_errors = false
-
   config.action_mailer.perform_caching = false
-
-  # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
-
-  # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-
-  # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
-
-  # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
   config.assets.debug = true
-
-  # Suppress logger output for asset requests.
   config.assets.quiet = true
-
-  # sassc-rails
+  config.logger = Logger.new(STDOUT)
+  config.log_level = :debug
   config.sass.inline_source_maps = true
 
   # Raises error for missing translations
@@ -75,8 +48,6 @@ Rails.application.configure do
   # letter_opener_web
   config.action_mailer.delivery_method = :letter_opener_web
 
-  config.web_console.whitelisted_ips = '0.0.0.0/0'
-  # Use an evented file watcher to asynchronously detect changes in source code,
-  # routes, locales, etc. This feature depends on the listen gem.
+  config.web_console.whitelisted_ips = %w[0.0.0.0/0 127.0.0.1 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16]
   config.file_watcher = ActiveSupport::FileUpdateChecker
 end
