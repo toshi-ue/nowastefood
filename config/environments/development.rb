@@ -4,7 +4,6 @@ Rails.application.configure do
     Bullet.alert         = true
     Bullet.bullet_logger = true
     Bullet.console       = true
-    # Bullet.growl         = true
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end
@@ -13,8 +12,6 @@ Rails.application.configure do
   config.eager_load = false
   config.consider_all_requests_local = true
 
-  # Enable/disable caching. By default caching is disabled.
-  # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
@@ -37,17 +34,10 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
   config.assets.debug = true
   config.assets.quiet = true
-  config.logger = Logger.new(STDOUT)
-  config.log_level = :debug
   config.sass.inline_source_maps = true
-
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
-  # mailerの設定
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  # letter_opener_web
   config.action_mailer.delivery_method = :letter_opener_web
 
-  config.web_console.whitelisted_ips = %w[0.0.0.0/0 127.0.0.1 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16]
+  config.web_console.allowed_ips = %w[0.0.0.0/0 127.0.0.1 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16]
   config.file_watcher = ActiveSupport::FileUpdateChecker
 end
