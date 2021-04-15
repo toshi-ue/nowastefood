@@ -8,11 +8,13 @@ $(function () {
   let h_value_rawmaterial_id
 
   switch (action_name) {
+    // TODO: あとで削除する
     //   case "index":
     //     break;
     //   case "show":
     //     break;
     case "new":
+    case "create":
       // search rawmaterial
       $(".select_foodstuff").select2({
         ajax: {
@@ -69,7 +71,6 @@ $(function () {
         }
       })
       break;
-    case "create":
     case "edit":
     case "update":
       // check existence of cuisine_id
