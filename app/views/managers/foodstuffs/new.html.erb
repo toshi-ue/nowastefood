@@ -1,4 +1,8 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
+<%# FIXME: ここの無理やり感をなんとかしたい %>
+<%= params[:cuisine_id] %>
+<% @rawmaterials = Rawmaterial.limit(10) %>
+<% @registered_foodstuffs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: params[:cuisine_id]).page(params[:page]) %>
 <%= @cuisine.name %>
 <%= params[:cuisine_id] %>
 
@@ -75,6 +79,3 @@
     </div>
   </div>
 </div>
-
-<%= render 'shared/back_previous' %>
-<%= render 'managers/shared/back_to_home' %>

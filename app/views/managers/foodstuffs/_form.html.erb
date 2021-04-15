@@ -25,5 +25,6 @@
       <input type="radio" name="rough_quantity" id="asyoulike" value="お好みで">お好みで
     </div>
   </div>
+  <%# FIXME: もうちょっとうまく書きたい %>
+  <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control', value: params[:cuisine_id] %>
 </div>
-<%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control' %>
