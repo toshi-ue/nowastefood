@@ -1,48 +1,155 @@
 <%= javascript_pack_tag 'managers/cuisines' %>
-<div class="content_wrapper container">
-  <%= render 'shared/flash_messages' %>
-
-  <div class="col-md-10 offset-md-1">
-    <h1>料理レシピ概要</h1>
-    <div class="cuisine-overview">
-      <div class="col-sm-5">
-        <% if @cuisine.main_image.url.present? %>
-        <%= image_tag @cuisine.main_image.url, class: 'img-fluid' %>
-        <% else %>
-          まだ登録がありません。
-        <% end %>
+<%# FIXME: デザインの修正 %>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">料理レシピ</h1>
       </div>
-      <div class="col-sm-7">
-        <div class="title">
-          料理名:<%= @cuisine.name %>
-        </div>
-        <div>
-          難易度:<%= @cuisine.difficulty_i18n %>
-        </div>
-        <div>
-          調理時間:<%= @cuisine.cooking_time %>分
-        </div>
-        <div>
-          レシピの説明:<%= @cuisine.description %>
-        </div>
-        <div>
-          タグ:
-          <% @cuisine.tag_list.each do |tag| %>
-            <span class="badge badge-light text-muted">
-              <%= tag %>
-            </span>
-          <% end %>
-        </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to '料理レシピ', managers_cuisines_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to "#{@cuisine.name}", managers_cuisine_path(@cuisine.id), {class: "text-muted"} %>
+          </li>
+        </ol>
       </div>
-    </div>
-    <div class="change-buttons-cuisine col-md-12">
-      <!---->
-      <!--<div class="my-3">-->
-
-      <%= link_to 'レシピ概要を変更する', edit_managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button" %>
-      <%= link_to 'レシピを削除する', managers_cuisine_path(@cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete %>
     </div>
   </div>
+</div>
+
+<div class="content">
+  <div class="card card-solid">
+    <div class="card-body">
+      <%= render 'layouts/flash_message' %>
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="col-12">
+            <% if @cuisine.main_image.url.present? %>
+            <%= image_tag @cuisine.main_image.url, class: 'img-fluid' %>
+            <% else %>
+              まだ登録がありません。
+            <% end %>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3 class="d-sm-none d-lg-block"><%= @cuisine.name %></h3>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td style="width: 30%;">レシピ名</td>
+                <td><%= @cuisine.name %></td>
+              </tr>
+              <tr>
+                <td style="width: 30%;">難易度</td>
+                <td><%= @cuisine.difficulty_i18n %></td>
+              </tr>
+              <tr>
+                <td style="width: 30%;">調理時間</td>
+                <td><%= @cuisine.cooking_time %>分</td>
+              </tr>
+              <tr>
+                <td style="width: 30%;">レシピの説明</td>
+                <td><%= @cuisine.description %></td>
+              </tr>
+              <!--PRIMARY: タグ機能を作り直す-->
+              <tr>
+                <td style="width: 30%;">タグ</td>
+                <td>
+                  <%# @cuisine.tag_list.each do |tag| %>
+                    <span class="badge badge-light text-muted">
+                      <%# tag %>
+                    </span>
+                  <%# end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mt-3">
+            <div class="text-center">
+              <%= link_to edit_managers_cuisine_path(@cuisine.id),  class: "btn btn-default btn-lg" do %>
+                <i class="fas fa-pen"></i>&nbsp;変更
+              <% end %>
+              <%= link_to managers_cuisine_path(@cuisine.id),  class: "btn btn-default btn-lg", method: :delete do %>
+                <i class="far fa-trash-alt"></i>&nbsp;削除
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-secondary card-tab mt-4">
+        <div class="card-header p-0 pt-1">
+          <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">食材</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">手順</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content" id="custom-tabs-one-tabContent">
+            <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>材料</th>
+                    <th>数量</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= render partial: 'managers/cuisines/foodstuff', collection: @foodstuffs, as: "foodstuff" %>
+                </tbody>
+              </table>
+              <hr>
+              <div class="float-left">
+                <%= link_to new_managers_foodstuff_path(cuisine_id: @cuisine.id), class: "btn btn-secondary", role: "button" do %>
+                  <i class="fas fa-plus"></i>&nbsp;追加
+                <% end %>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                Mauris tincidunt 2
+                <hr>
+                追加する
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="content_wrapper container">
+
   <div class="col-md-8 offset-md-2 mt-3">
     <%# タブ部分 %>
     <ul id="myTab" class="nav nav-tabs nav-justified" role="tablist">
@@ -141,8 +248,3 @@
     </div>
   </div>
 </div>
-
-
-<%= render 'managers/shared/all_crud_links' %>
-<%= render 'managers/shared/back_to_home' %>
-<%= render 'managers/shared/manager_log_out' %>

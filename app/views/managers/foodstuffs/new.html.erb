@@ -1,10 +1,7 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
 <%# FIXME: ここの無理やり感をなんとかしたい %>
-<%= params[:cuisine_id] %>
 <% @rawmaterials = Rawmaterial.limit(10) %>
 <% @registered_foodstuffs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: params[:cuisine_id]).page(params[:page]) %>
-<%= @cuisine.name %>
-<%= params[:cuisine_id] %>
 
 <div class="content-header">
   <div class="container-fluid">
@@ -37,7 +34,8 @@
         <div class="card">
           <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, method: :post, local: true) do |form| %>
             <div class="card-body">
-              <%= render 'shared/new_error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+              <%= render 'layouts/flash_message' %>
+              <%= render 'layouts/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
               <%= render 'form', {form: form , cuisine: @cuisine} %>
             </div>
             <div class="card-footer">
