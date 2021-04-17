@@ -4,21 +4,19 @@
 
   <td class="align-middle" style="width: 30%">
     <%= link_to edit_managers_foodstuff_path(foodstuff.id),
-          class: "align-middle d-inline-block page-link text-dark",
-          role: "button",
+          class: "btn btn-default btn-lg",
           local: true do %>
       <i class="fas fa-pen"></i>
     <% end %>
     <%= link_to managers_foodstuff_path(foodstuff.id),
-      class: "align-middle d-inline-block page-link text-dark",
+      class: "btn btn-default btn-lg",
       data: {
-      conficuisine: "<i class='fas fa-exclamation-circle'></i>
+      confirm: "<i class='fas fa-exclamation-circle'></i>
         本当に「<strong>#{foodstuff.rawmaterial.name}</strong>」を削除しますか?",
         cancel: "キャンセル",
         commit: "削除",
         title: "削除確認"
       },
-      role: "button",
       method: :delete do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
