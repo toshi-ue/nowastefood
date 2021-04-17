@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     resources :cuisines
     resources :foodcategories, except: [:show]
-    resources :foodstuffs, except: [:show] do
+    resources :foodstuffs, except: [:index, :show] do
       member do
         put :sort
       end

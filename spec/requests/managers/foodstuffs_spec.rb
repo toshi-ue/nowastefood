@@ -8,10 +8,6 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
     @cuisine = create(:cuisine)
   end
 
-  # TODO: 最終的には必要ない
-  describe "GET /index" do
-  end
-
   describe "GET #new" do
     it "リクエストが成功すること" do
       get new_managers_foodstuff_path(cuisine_id: @cuisine.id)
@@ -74,12 +70,6 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
       get edit_managers_foodstuff_path @foodstuff
       expect(response.status).to eq 200
     end
-
-    # TODO: JS:trueを使用したテストが必要
-    # it "editテンプレートで表示されること" do
-    #   get edit_managers_foodstuff_path @foodstuff
-    #   expect(response.body).to include "#{@foodstuff.rawmaterial.name}"
-    # end
   end
 
   describe "PATCH #update" do

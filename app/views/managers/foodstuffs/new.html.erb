@@ -1,6 +1,7 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
-<%# FIXME: ここの無理やり感をなんとかしたい %>
+<%# HACK: ここの無理やり感をなんとかしたい %>
 <% @rawmaterials = Rawmaterial.limit(10) %>
+<%# HACK: unitを使う時と使わないときのN+1問題をどうにかしたい %>
 <% @registered_foodstuffs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: params[:cuisine_id]).page(params[:page]) %>
 
 <div class="content-header">
@@ -18,9 +19,9 @@
             <%= link_to '料理レシピ', managers_cuisines_path, {class: "text-muted"} %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to "#{@cuisine.name}", managers_cuisine_path(@cuisine.id), {class: "text-muted"} %>
+            <%= link_to "#{@cuisine.name}(データ一覧)", managers_cuisine_path(@cuisine.id), {class: "text-muted"} %>
           </li>
-          <li class="breadcrumb-item active">料理レシピ食材の追加</li>
+          <li class="breadcrumb-item active">食材の追加</li>
         </ol>
       </div>
     </div>
@@ -36,12 +37,13 @@
             <div class="card-body">
               <%= render 'layouts/flash_message' %>
               <%= render 'layouts/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+              <%# HACK: 書き方を確認(怪しい) %>
               <%= render 'form', {form: form , cuisine: @cuisine} %>
             </div>
             <div class="card-footer">
               <%= form.submit "追加する", class: 'btn btn-secondary' %>
               <div class="float-right">
-                <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @foodstuff.cuisine_id),  class: "btn btn-secondary" %>
+                <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @cuisine.id),  class: "btn btn-secondary" %>
               </div>
             </div>
           <% end %>
@@ -58,7 +60,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <% if @registered_foodstuffs.present? %>
-                    <table class="table table-bordered table-hover">
+                    <table id="table-sortable-procedure" class="table table-bordered table-hover">
                       <tbody>
                         <%= render partial: "foodstuff", collection: @registered_foodstuffs, as: "foodstuff" %>
                       </tbody>

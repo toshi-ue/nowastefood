@@ -4,12 +4,12 @@
 
   <td class="align-middle" style="width: 30%">
     <%= link_to edit_managers_foodstuff_path(foodstuff.id),
-          class: "btn btn-default btn-lg",
+          class: "btn btn-default",
           local: true do %>
       <i class="fas fa-pen"></i>
     <% end %>
     <%= link_to managers_foodstuff_path(foodstuff.id),
-      class: "btn btn-default btn-lg",
+      class: "btn btn-default",
       data: {
       confirm: "<i class='fas fa-exclamation-circle'></i>
         本当に「<strong>#{foodstuff.rawmaterial.name}</strong>」を削除しますか?",

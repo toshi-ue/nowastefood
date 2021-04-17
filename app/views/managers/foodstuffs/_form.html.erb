@@ -1,3 +1,8 @@
+  <!--
+  HACK: もうちょっとうまく書きたい(書き方がありそう)
+  -->
+<% @rawmaterials = Rawmaterial.limit(5) %>
+
 <div class="form-group col-10 offset-1">
   <label for="rawmaterial_id">食材</label>
   <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, {include_blank: '選択して下さい'}, {autofocus: true, class: "select_foodstuff form-control"} %>
@@ -25,6 +30,8 @@
       <input type="radio" name="rough_quantity" id="asyoulike" value="お好みで">お好みで
     </div>
   </div>
-  <%# FIXME: もうちょっとうまく書きたい %>
+  <!--
+  HACK: もうちょっとうまく書きたい(書き方がありそう)
+  -->
   <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control', value: params[:cuisine_id] %>
 </div>

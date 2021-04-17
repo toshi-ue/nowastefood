@@ -8,7 +8,7 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def new
-    # FIXME: ここの無理やり感をなんとかしたい
+    # HACK: ここの無理やり感をなんとかしたい
     @cuisine = Cuisine.find(params[:cuisine_id])
     @foodstuff = Foodstuff.new
   end
@@ -18,7 +18,7 @@ class Managers::FoodstuffsController < ApplicationController
     if @foodstuff.save
       redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
     else
-      # FIXME: render 'new'を使ってもうちょっと上手く書きたい
+      # HACK: render 'new'を使ってもうちょっと上手く書きたい
       # redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { error: @foodstuff.errors.full_messages.to_s }
       # binding.pry
       @cuisine = Cuisine.find(@foodstuff.cuisine_id)
@@ -28,14 +28,15 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def edit
-    @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+    @cuisine = Cuisine.find(params[:cuisine_id])
   end
 
   def update
     if @foodstuff.update(foodstuff_params)
       redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "変更されました" }
     else
-      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+      # HACK: もうちょっと上手い書き方がありそう
+      params[:cuisine_id] = @foodstuff.cuisine_id
       render 'edit'
     end
   end
