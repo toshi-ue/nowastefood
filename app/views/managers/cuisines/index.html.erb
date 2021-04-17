@@ -1,5 +1,8 @@
 <div class="content-header">
   <div class="container-fluid">
+    <div>
+      <%= render 'layouts/flash_message' %>
+    </div>
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1 class="m-0 d-inline">料理レシピ一覧</h1>
@@ -35,13 +38,12 @@
                     <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th class="align-middle"><%= sort_link(@q, :id, "ID", default_order: :desc) %></th>
                           <th class="align-middle">メイン画像</th>
                           <th class="align-middle"><%= sort_link(@q, :name, '料理レシピ名', default_order: :desc) %></th>
                           <th class="align-middle"><%= sort_link(@q, :difficulty, 'お手軽度', default_order: :desc) %></th>
                           <th class="align-middle"><%= sort_link(@q, :cooking_time, '調理時間(分)', default_order: :desc) %></th>
                           <th class="align-middle"><%= sort_link(@q, :created_at, '登録日', default_order: :desc) %></th>
-                          <th colspan="3"></th>
+                          <th style="width: 15%;"></th>
                         </tr>
                       </thead>
                       <tbody>

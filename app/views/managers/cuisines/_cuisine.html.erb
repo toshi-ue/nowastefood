@@ -1,10 +1,9 @@
 <tr>
-  <td class="align-middle"><%= cuisine.id %></td>
   <td class="align-middle">
     <% if cuisine.main_image.present? %>
       <%= image_tag cuisine.main_image.url, size: '70x70' %>
     <% else %>
-      未登録
+      <%= image_tag 'no_image_100x100', size: '70x70' %>
     <% end %>
   </td>
   <td class="align-middle"><%= cuisine.name %></td>
@@ -12,29 +11,17 @@
   <td class="align-middle"><%= cuisine.cooking_time %></td>
   <td class="align-middle"><%= cuisine.created_at %></td>
   <td class="align-middle">
-    <%= link_to managers_cuisine_path(cuisine.id),  class: "d-inline-block page-link text-dark", role: "button" do %>
+    <%= link_to managers_cuisine_path(cuisine.id),  class: "btn btn-default" do %>
     <i class="far fa-eye"></i>
     <% end %>
-  </td>
-  <td class="align-middle">
-    <%= link_to edit_managers_cuisine_path(cuisine.id),
-          class: "align-middle d-inline-block page-link text-dark",
-          role: "button",
-          local: true do %>
-      <i class="fas fa-pen"></i>
-    <% end %>
-  </td>
-  <td class="align-middle">
-    <%= button_to managers_cuisine_path(cuisine.id),
-      class: "align-middle d-inline-block page-link text-dark",
+    <%= link_to managers_cuisine_path(cuisine.id),
+      class: "btn btn-default",
       data: {
-      conficuisine: "<i class='fas fa-exclamation-circle'></i>
-        本当に「<strong>#{cuisine.name}</strong>」を削除しますか?",
+      confirm: "「#{cuisine.name}」を削除しますか?",
         cansel: "キャンセル",
         commit: "削除",
         title: "削除確認"
       },
-      role: "button",
       method: :delete do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
