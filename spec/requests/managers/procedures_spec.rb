@@ -8,10 +8,7 @@ RSpec.describe "Managers::Procedures", type: :request do
     @cuisine = create(:cuisine)
   end
 
-  # TODO: 最終的には必要なければ削除
-  # describe "GET /index" do
-  # end
-
+  # TODO: テストを追加する
   # describe "GET /show" do
   # end
 
