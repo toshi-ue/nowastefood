@@ -70,6 +70,7 @@ $(function () {
       });
       break;
     case "new":
+    case "edit":
       $(document).on('change', 'input[type="file"]', function(){
         let files = !!this.files ? this.files : [];
         let input_file_upload = $(this);

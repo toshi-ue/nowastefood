@@ -34,20 +34,23 @@
           <label class="input-group-btn">
             <span class="btn btn-default">
               ファイルを選択
-                  <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display: none;" %>
+              <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display: none;" %>
             </span>
           </label>
         </div>
       </div>
     <% else %>
-      <%= image_tag cuisine.main_image.url %>
+      <div class="cuisine-main-image text-center">
+        <div>
+          <%= image_tag cuisine.main_image.url, class: "img-fluid" %>
+        </div>
+      </div>
       <%= form.hidden_field :main_image_cache %>
-      <span class="btn btn-primary"></span>
-      <%# form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none;" %>
-      <%# form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none" %>
-      <div class="input-group">
+      <div class="input-group mt-3">
+        <input type="text" id="image_name" class="form-control" readonly="">
         <label class="input-group-btn">
-          <span>
+          <span class="btn btn-default">
+            ファイルを選択
             <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none;" %>
           </span>
         </label>
