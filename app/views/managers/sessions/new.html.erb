@@ -1,6 +1,6 @@
 <div class="col-10 offset-1  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
   <h3 class="text-center">ログイン</h3>
-  <%= render "shared/flash_messages" %>
+  <%= render "layouts/flash_message" %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email %><br />
