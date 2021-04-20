@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :procedures do
+    resources :procedures, except: [:index] do
       member do
         put :sort
       end
