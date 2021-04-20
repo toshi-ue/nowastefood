@@ -1,0 +1,9 @@
+<div class="card-body">
+  <%= render 'layouts/flash_message' %>
+  <%= render 'layouts/error_messages', {resource: foodcategory} if foodcategory.errors.any? %>
+
+  <div class="form-group">
+    <span class="text-danger">※</span><%= form.label :name %>
+    <%= form.text_field :name, id: :foodcategory_name, class: 'form-control', autofocus: true %>
+  </div>
+</div>

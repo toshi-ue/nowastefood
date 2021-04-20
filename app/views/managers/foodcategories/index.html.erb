@@ -1,24 +1,80 @@
-<h1>食材区分一覧</h1>
-<%= render 'shared/flash_messages' %>
-
-<% if @foodcategories.present? %>
-  <p>
-    <%= link_to new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" do %>
-      <i class="fas fa-plus"></i> 追加する
-    <% end %>
-  </p>
-  <div class="my-2 border border-secondary">
-    <%= render 'foodcategories' %>
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div>
+      <%= render 'layouts/flash_message' %>
+    </div>
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">食材区分(データ一覧)</h1>
+          <%= link_to new_managers_foodcategory_path, class: "btn btn-info ml-2", role: "button" do %>
+            <i class="fas fa-plus"></i> 追加する
+          <% end %>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item active">食料区分一覧</li>
+        </ol>
+      </div>
+    </div>
   </div>
-<% else %>
-  <p>現在登録がありません</p>
-<% end %>
-<p>
-  <%= link_to new_managers_foodcategory_path, class: "btn btn-secondary", role: "button" do %>
-    <i class="fas fa-plus"></i> 追加する
-  <% end %>
-  </p>
+</div>
+<!-- /.content-header -->
 
-<%= render 'managers/shared/all_crud_links' %>
-<%= render 'managers/shared/back_to_home' %>
-<%= render 'managers/shared/manager_log_out' %>
+<!-- Main content -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <% if @foodcategories.present? %>
+                    <table class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <%# TODO: 動作確認 %>
+                          <th><%= sort_link(@q, :id, "ID", default_order: :desc) %></th>
+                          <th><%= sort_link(@q, :name, "食材区分名", default_order: :desc) %></th>
+                          <th><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <%= render partial: "foodcategory", collection: @foodcategories, as: "foodcategory" %>
+                    </table>
+                  <% else %>
+                    <div class="text-center">
+                      <p>まだ登録がありません</p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-5">
+                  <div class="dataTables_info" id="example2_info" role="status" aria-live="polite"><%= page_entries_info @foodcategories %>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                  <%= paginate @foodcategories, theme: 'twitter-bootstrap-4',
+                                        pagination_class: "pagination-sm",
+                                        nav_class: "d-inline-b"
+                  %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.content -->

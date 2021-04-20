@@ -1,11 +1,42 @@
-<h1>Managers::Foodcategories#edit</h1>
-<p>Find me in app/views/managers/foodcategories/edit.html.erb</p>
-<%= form_with(model: @foodcategory, url: managers_foodcategory_path, local: true, method: :patch) do |form| %>
-  <%= render 'foodcategory_form', {form: form , foodcategory: @foodcategory} %>
-  <div class="text-center my-2">
-    <%= form.submit class: 'btn btn-secondary' %>
-  </div>
-<% end %>
+<%= javascript_pack_tag 'managers/foodcategories' %>
 
-<%= render 'shared/back_previous' %>
-<%= render 'managers/shared/back_to_home' %>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">食材区分の変更</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to '食材区分(データ一覧)', managers_foodcategories_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item active">食材区分の変更</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <%= form_with(model: @foodcategory, url: managers_foodcategory_path, method: :patch, local: true) do |form| %>
+            <div class="card-body">
+              <%# HACK: 書き方を確認(怪しい) %>
+              <%= render 'form', {form: form , foodcategory: @foodcategory} %>
+            </div>
+            <div class="card-footer">
+              <%= form.submit "変更する", class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
