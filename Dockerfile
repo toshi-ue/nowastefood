@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=2.7.2
+ARG RUBY_VERSION=2.7.3
 FROM ruby:$RUBY_VERSION
 
 ENV APP_DIR /webapp
@@ -24,13 +24,13 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn
 
+RUN mkdir $APP_DIR
+WORKDIR $APP_DIR
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+
 RUN bundle config --local jobs 4
 RUN bundle config set --local path 'vendor/bundle'
 
 RUN gem install bundler -v ${BUNDLER_VERSION} && \
   bundle install
-
-
-RUN mkdir $APP_DIR
-# ENV APP_DIR /webapp
-WORKDIR $APP_DIR
