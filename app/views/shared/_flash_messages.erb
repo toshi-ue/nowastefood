@@ -3,6 +3,7 @@ FIXME: セッション期限切れの際にvalueのtrueが表示されるのを�
         不要になれば削除する
  %>
 <% flash.each do |key, value| %>
+  <% next if key == "timedout" %>
   <div class="alert alert-<%= bootstrap_alert(key) %>">
     <strong>
       <%= value %>
