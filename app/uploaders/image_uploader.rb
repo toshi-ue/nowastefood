@@ -34,7 +34,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  def extension_whitelist
+  def extension_allowlist
     %w[jpg jpeg gif png]
   end
 
@@ -43,6 +43,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   protected
+
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)

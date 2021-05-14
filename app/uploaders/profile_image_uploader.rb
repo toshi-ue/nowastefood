@@ -16,7 +16,7 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   process convert: 'jpg'
   process resize_to_fit: [100, 100]
 
-  def extension_whitelist
+  def extension_allowlist
     %w[jpg jpeg gif png]
   end
 
