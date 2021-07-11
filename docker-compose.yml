@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   db:
@@ -7,9 +7,9 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
     ports:
-        - "4306:3306"
+      - "4306:3306"
     volumes:
-        - db-data:/var/lib/mysql
+      - db-data:/var/lib/mysql
   web:
     init: true
     tty: true
@@ -25,26 +25,8 @@ services:
       - "3035:3035"
     links:
       - db
-      # - chrome
     environment:
       RAILS_ENV: development
-  nginx:
-    build:
-      context: .
-      dockerfile: ./containers/nginx/Dockerfile
-    volumes:
-      - ./containers/nginx/nginx.conf:/etc/nginx/conf.d/webapp.conf
-      # - public-data:/webapp/public
-      # - tmp-data:/webapp/tmp
-    ports:
-      - 80:80
-    depends_on:
-      - web
-  chrome:
-    image: selenium/standalone-chrome-debug:latest
-    ports:
-      - 4444:4444
-      - 5901:5900
 
 volumes:
   db-data:
