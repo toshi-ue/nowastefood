@@ -1,4 +1,5 @@
 <!-- Content Header (Page header) -->
+
 <div class="content-header">
   <div class="container-fluid">
     <div>
@@ -7,13 +8,9 @@
       </div>
     </div>
     <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0">Starter Page</h1>
-      </div><!-- /.col -->
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Starter Page</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,65 +21,65 @@
 <!-- Main content -->
 <div class="content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
+    <div class="col-md-12">
+      <!-- Widget: user widget style 1 -->
+      <div class="card card-widget widget-user">
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+<!-- TODO: デザインを修正する -->
+        <div class="widget-user-header bg-info">
+          <h3 class="widget-user-username">データ各種</h3>
+<!--
+          <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+        -->
         </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header"><%= @users.size %>(+ <%= @new_users.size %>)</h5>
+                <span class="description-text">Users</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header"><%= @favorites.size %></h5>
+                <span class="description-text">Favorites</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header"><%= @mau.size %></h5>
+                <span class="description-text">MAU(月間使用ユーザー数)</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header"><%= @cuisines.size %></h5>
+                <span class="description-text">Cuisines</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header"><%= @rawmaterials.size %></h5>
+                <span class="description-text">Rawmaterials</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
 
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <!-- /.col -->
           </div>
-        </div><!-- /.card -->
+          <!-- /.row -->
+        </div>
       </div>
-      <!-- /.col-md-6 -->
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h5 class="m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-6 -->
+      <!-- /.widget-user -->
+      <!-- TODO: グラフを追加する -->
     </div>
-    <!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->
