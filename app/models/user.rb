@@ -19,18 +19,6 @@ class User < ApplicationRecord
     self.todaysmenus.exists?(cuisine_id: cuisine_id, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
-  def join_subscription
-    self.subscribed = true
-    self.subscribed_at = Time.zone.now
-    self.save
-  end
-
-  def stop_subscription
-    self.subscribed = false
-    self.subscribed_at = nil
-    self.save
-  end
-
   def self.create_account_as_guest
     faker_user_name = Faker::Name.first_name
     self.create!(nickname: faker_user_name, email: "#{faker_user_name}@example.com") do |u|

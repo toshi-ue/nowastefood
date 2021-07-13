@@ -1,16 +1,5 @@
 <p>Find me in app/views/cookinghistorys/index.html.erb</p>
 
-<% if Rails.env.development? %>
-  現在のプラン
-  <% if current_user.subscribed? %>
-    <p>有料プラン</p>
-    <%= link_to '無料プランに変更', toggle_subscription_path, class: "btn btn-success" %>
-  <% else %>
-    <p>無料プラン</p>
-    <%= link_to '有料プランに変更', toggle_subscription_path, class: "btn btn-success" %>
-  <% end %>
-<% end %>
-
 <% unless @cookinghistorys.blank? %>
 <div class="content_wrapper">
   <div class="row">
