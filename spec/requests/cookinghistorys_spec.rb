@@ -10,12 +10,19 @@ RSpec.describe "Cookinghistorys", type: :request do
   end
 
   describe "GET /index" do
+    before do
+      @user.save!
+      cuisine = create(:cuisine)
+      @todaysmenu_gt_5days1 = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.ago(5.days).to_date)
+    end
+
     it "indexページが表示されること" do
       get cookinghistorys_path
       expect(response.status).to eq 200
       expect(response.body).to include @todaysmenu_yesterday.cuisine.name.to_s
     end
 
+    # TODO: 作成していないレシピを表示させないようにする
     it "当日のtodaysmenuが表示されないこと" do
       cuisine = create(:cuisine)
       @todaysmenu_today = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.to_date)
@@ -24,34 +31,10 @@ RSpec.describe "Cookinghistorys", type: :request do
       expect(response.body).not_to include @todaysmenu_today.cuisine.name.to_s
     end
 
-    context "有料ユーザーのとき" do
-      before do
-        @user.subscribed = true
-        @user.save!
-        cuisine = create(:cuisine)
-        @todaysmenu_gt_5days1 = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.ago(5.days).to_date)
-      end
-
-      it "5日以上前のtodaysmenuが表示されること" do
-        get cookinghistorys_path
-        expect(response.status).to eq 200
-        expect(response.body).to include @todaysmenu_gt_5days1.cuisine.name.to_s
-      end
-    end
-
-    context "無料ユーザーのとき" do
-      before do
-        @user.subscribed = false
-        @user.save!
-        cuisine = create(:cuisine)
-        @todaysmenu_gt_5days = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.ago(5.days).to_date)
-      end
-
-      it "5日以上前のtodaysmenuが表示されないこと" do
-        get cookinghistorys_path
-        expect(response.status).to eq 200
-        expect(response.body).not_to include @todaysmenu_gt_5days.cuisine.name.to_s
-      end
+    it "5日以上前のtodaysmenuが表示されること" do
+      get cookinghistorys_path
+      expect(response.status).to eq 200
+      expect(response.body).to include @todaysmenu_gt_5days1.cuisine.name.to_s
     end
   end
 
