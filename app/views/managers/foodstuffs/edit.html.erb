@@ -1,15 +1,79 @@
 <%= javascript_pack_tag 'managers/foodstuffs' %>
-<div class="col-10 offset-1">
+<%# HACK: unitを使う時と使わないときのN+1問題をどうにかしたい %>
+<% @registered_foodstuffs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: params[:cuisine_id]).page(params[:page]) %>
 
-  <%= render 'shared/flash_messages' %>
-  <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">料理レシピ食材の変更</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to '料理レシピ(データ一覧)', managers_cuisines_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to "#{@foodstuff.cuisine.name}", managers_cuisine_path(@foodstuff.cuisine.id), {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item active">食材の変更</li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= render 'search_form' %>
-
-<%= form_with(model: @foodstuff, url: managers_foodstuff_path, local: true) do |form| %>
-<%= render 'foodstuff_form', {form: form , foodstuff: @foodstuff} %>
-<div class="text-center">
-  <%= form.submit class: 'btn btn-secondary' %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <%= form_with(model: @foodstuff, url: managers_foodstuff_path, method: :patch, local: true) do |form| %>
+            <div class="card-body">
+              <%= render 'layouts/flash_message' %>
+              <%= render 'layouts/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+              <%# HACK: 書き方を確認(怪しい、foodstuffが必要な気がする) %>
+              <%= render 'form', {form: form , cuisine: @cuisine} %>
+            </div>
+            <div class="card-footer">
+              <%= form.submit "変更する", class: 'btn btn-secondary' %>
+              <div class="float-right">
+                <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @foodstuff.cuisine_id),  class: "btn btn-secondary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <% if @registered_foodstuffs.present? %>
+                    <table class="table table-bordered table-hover">
+                      <tbody>
+                        <%= render partial: "foodstuff", collection: @registered_foodstuffs, as: "foodstuff" %>
+                      </tbody>
+                    </table>
+                  <% else %>
+                    <div class="text-center">
+                      <p>まだ登録がありません</p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>

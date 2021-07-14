@@ -7,6 +7,7 @@ class Cuisine < ApplicationRecord
   has_many :rawmaterials, through: :foodstuffs
   has_many :todaysmenus, dependent: :destroy
   has_many :users, through: :todaysmenus
+  validates :cooking_time, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :description, presence: true
   validates :genre_id, presence: { message: "を選択してください" }
   validates :name, presence: true, uniqueness: true

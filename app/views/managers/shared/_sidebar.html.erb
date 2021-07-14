@@ -52,31 +52,19 @@
               <li class="nav-item">
                 <%= link_to managers_cuisines_path, class: "#{add_class_nav_link(current_page, 'foodcategories#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>料理レシピ</p>
+                  <p>料理レシピ(Done!!)</p>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to managers_foodcategories_path, class: "#{add_class_nav_link(current_page, 'foodcategories#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>食材区分</p>
+                  <p>食材区分(Done!!)</p>
                   <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to managers_foodstuffs_path, class: "#{add_class_nav_link(current_page, 'foodstuffs#index')}" do %>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>料理食材</p>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to managers_procedures_path, class: "#{add_class_nav_link(current_page, 'procedures#index')}" do %>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>手順(Procedure)</p>
-                <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to managers_rawmaterials_path, class: "#{add_class_nav_link(current_page, 'managers/rawmaterials#index')}" do %>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>原材料</p>
+                  <p>原材料(Done!!)</p>
                 <% end %>
               </li>
               <li class="nav-item">
@@ -86,6 +74,11 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <p>
+              <%= link_to 'ログアウト', destroy_manager_session_path, method: :delete, class: "nav-link" %>
+            </p>
           </li>
         </ul>
       </nav>

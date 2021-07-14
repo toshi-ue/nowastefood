@@ -8,10 +8,6 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
     @cuisine = create(:cuisine)
   end
 
-  # TODO: 最終的には必要ない
-  describe "GET /index" do
-  end
-
   describe "GET #new" do
     it "リクエストが成功すること" do
       get new_managers_foodstuff_path(cuisine_id: @cuisine.id)
@@ -20,7 +16,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
 
     it "newテンプレートで表示されること" do
       get new_managers_foodstuff_path(cuisine_id: @cuisine.id)
-      expect(response.body).to include "食材を検索"
+      expect(response.body).to include "new-managers-foodstuffs"
     end
   end
 
@@ -66,20 +62,11 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
   end
 
   describe "GET #edit" do
-    before do
-      @foodstuff = create(:foodstuff)
-    end
-
     it "リクエストが成功すること" do
-      get edit_managers_foodstuff_path @foodstuff
+      @foodstuff = create(:foodstuff, cuisine_id: @cuisine.id)
+      get edit_managers_foodstuff_path(@foodstuff, cuisine_id: @cuisine.id)
       expect(response.status).to eq 200
     end
-
-    # TODO: JS:trueを使用したテストが必要
-    # it "editテンプレートで表示されること" do
-    #   get edit_managers_foodstuff_path @foodstuff
-    #   expect(response.body).to include "#{@foodstuff.rawmaterial.name}"
-    # end
   end
 
   describe "PATCH #update" do
@@ -126,9 +113,9 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
       end.to change(Foodstuff, :count).by(-1)
     end
 
-    it "cuisine/showページヘリダイレクトすること" do
+    it "foodstuffs#newページヘリダイレクトすること" do
       delete managers_foodstuff_path @foodstuff
-      expect(response).to redirect_to(managers_cuisine_path(@foodstuff.cuisine_id))
+      expect(response).to redirect_to(new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id))
     end
   end
 end

@@ -1,17 +1,16 @@
 class Managers::FoodstuffsController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_foodstuff, only: [:update, :edit, :destroy, :restore]
-
   layout 'manager'
+
   def index
     @foodstuffs = Foodstuff.includes({ rawmaterial: :unit })
   end
 
   def new
+    # HACK: ここの無理やり感をなんとかしたい
+    @cuisine = Cuisine.find(params[:cuisine_id])
     @foodstuff = Foodstuff.new
-    @foodstuff.cuisine_id = params[:cuisine_id]
-    @cuisine = Cuisine.find(@foodstuff.cuisine_id)
-    @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
   end
 
   def create
@@ -19,29 +18,32 @@ class Managers::FoodstuffsController < ApplicationController
     if @foodstuff.save
       redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が追加されました" }
     else
-      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+      # HACK: render 'new'を使ってもうちょっと上手く書きたい
+      # redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { error: @foodstuff.errors.full_messages.to_s }
+      # binding.pry
       @cuisine = Cuisine.find(@foodstuff.cuisine_id)
-      @registered_fs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: @foodstuff.cuisine_id)
+      params[:cuisine_id] = @foodstuff.cuisine_id
       render 'new'
     end
   end
 
   def edit
-    @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+    @cuisine = Cuisine.find(params[:cuisine_id])
   end
 
   def update
     if @foodstuff.update(foodstuff_params)
       redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "変更されました" }
     else
-      @rawmaterial = Rawmaterial.find_by(id: @foodstuff.rawmaterial_id)
+      # HACK: もうちょっと上手い書き方がありそう
+      params[:cuisine_id] = @foodstuff.cuisine_id
       render 'edit'
     end
   end
 
   def destroy
     @foodstuff.destroy
-    redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
+    redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
   end
 
   def restore
@@ -56,7 +58,17 @@ class Managers::FoodstuffsController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    respond_to do |format|
+      format.json { render json: @rawmaterials }
+    end
+  end
+
+  def search_unit
+    @unit = Rawmaterial.find_by(id: params[:rm_id])&.unit
+    respond_to do |format|
+      format.json { render json: @unit }
+    end
   end
 
   private

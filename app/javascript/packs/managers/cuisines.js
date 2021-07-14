@@ -1,4 +1,3 @@
-// TODO: 後でコメント,console.logを削除
 // import Sortable from 'sortablejs';
 import 'jquery-ui/ui/widgets/sortable';
 
@@ -6,7 +5,6 @@ $(function () {
   let action_name = $('body').data('action')
 
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
-
   switch (action_name) {
     case "index":
       break;
@@ -72,15 +70,22 @@ $(function () {
       });
       break;
     case "new":
-      // TODO: 画像プレビューを実装する
-      // [画像の複数投稿？？プレビュー表示？？え？？ - Qiita](https://qiita.com/gakinchoy7/items/f52577d0c5f6b2edff89)
-      // form.file_fieldを取得
-      let file_field = document.querySelector('input[name="cuisine[main_image]"]')
-      console.log(file_field)
-      console.log($('#img-file'))
-      $('#img-file').change(function () {
-        let file = $('input[type="file').prop('files')[0]
-        console.log(file)
+    case "edit":
+      $(document).on('change', 'input[type="file"]', function(){
+        let files = !!this.files ? this.files : [];
+        let input_file_upload = $(this);
+        let uploaded_file_name = input_file_upload.val().replace(/\\/g, '/').replace(/.*\//, '');
+        $("#image_name").val(uploaded_file_name);
+
+        if(!files.length || !window.FileReader) return;
+        if (/^image/.test(files[0].type)){
+          let reader = new FileReader();
+          reader.onload = function(){
+            $("#no_cuisine_image").attr('src', this.result)
+          }
+          reader.readAsDataURL(files[0]);
+        }
+
       })
       break;
     default:

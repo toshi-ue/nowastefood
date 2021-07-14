@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-# git_source(:github) do |repo_name|
-#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-#   "https://github.com/#{repo_name}.git"
-# end
 
-ruby '2.7.2'
+ruby '2.7.3'
 
 gem 'acts-as-taggable-on'
 gem 'bootsnap', '>= 1.1.0', require: false

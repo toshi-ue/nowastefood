@@ -13,7 +13,7 @@ ja:
       cuisine:
         name: レシピ名
         calories: 摂取カロリー(kcal)
-        difficulty: お手軽度(簡単・それなり・プロ並)
+        difficulty: 難しさ
         cooking_time: 調理時間(分)
         description: レシピの説明
         main_image: 画像
@@ -51,10 +51,19 @@ ja:
   enums:
     cuisine:
       difficulty:
-        easy: 簡単
-        normal: 普通
-        hard: 難しい
+        easy: 低
+        normal: 中
+        hard: 高
   errors:
+    messages:
+      carrierwave_processing_error: 処理できませんでした
+      carrierwave_integrity_error: は許可されていないファイルタイプです
+      carrierwave_download_error: はダウンロードできません
+      extension_white_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
+      extension_black_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできないファイルタイプ: %{prohibited_types}"
+      rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
+      mime_types_processing_error: "MIME::Typesのファイルを処理できませんでした。Content-Typeを確認してください。エラーメッセージ: %{e}"
+      mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
     models:
       cuisine:
         cannot_duplicate_rawmaterial: 1つの料理に同じ材料を登録できません

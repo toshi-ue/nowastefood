@@ -7,11 +7,9 @@
   <% end %>
   <td><%= procedure.cooking_detail %></td>
   <td>
-    <%= link_to edit_managers_procedure_path(procedure.id),  class: "page-link text-dark d-inline-block", role: "button", local: true do %>
+    <%= link_to edit_managers_procedure_path(procedure.id, cuisine_id: @cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", local: true do %>
     <i class="fas fa-pen"></i>
     <% end %>
-  </td>
-  <td>
     <%= link_to managers_procedure_path(procedure.id, action_name: "show", current_procedure_id: procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
     <i class="far fa-trash-alt"></i>
     <% end %>

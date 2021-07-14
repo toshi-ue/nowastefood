@@ -28,6 +28,8 @@ class Foodstuff < ApplicationRecord
   private
 
   def check_quantity
+    return errors.add(:base, "数量は分数、数字または指定の文字で入力してください(例: 1/2, 120など)") if self.quantity.blank?
+
     if %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}.match?(self.quantity)
       true
     elsif /\A(適量|少々|お好みで){1}\z/.match?(self.quantity)

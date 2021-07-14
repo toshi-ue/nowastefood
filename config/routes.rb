@@ -18,12 +18,13 @@ Rails.application.routes.draw do
 
     resources :cuisines
     resources :foodcategories, except: [:show]
-    resources :foodstuffs, except: [:show] do
+    resources :foodstuffs, except: [:index, :show] do
       member do
         put :sort
       end
       collection do
         get 'search_rawmaterial'
+        get 'search_unit'
       end
     end
 
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :procedures do
+    resources :procedures, except: [:index] do
       member do
         put :sort
       end
@@ -86,11 +87,7 @@ Rails.application.routes.draw do
   get 'tops/index'
   get 'tops/login_which'
   get 'user/profile', to: 'users#show'
-  get 'user/subscription', to: 'subscriptions#show'
-  get 'toggle_subscription', to: 'subscriptions#toggle'
   put 'update_profile', to: 'users#update'
-  post 'register_subscription', to: 'subscriptions#create'
-  delete 'cancel_subscription', to: 'subscriptions#destroy'
 
   if Rails.env.development?
     root to: 'home#index'

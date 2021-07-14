@@ -1,71 +1,76 @@
-<div class="content_wrapper">
-  <%= render "shared/flash_messages" %>
-  <%= render 'shared/error_messages', {resource: @procedure} if @procedure.errors.any? %>
-  <h1>レシピの手順</h1>
-  <div class="row cuisine-procedure">
-    <div class="col-10 offset-1 my-2 col-sm-4 col-md-4 offset-md-0">
-      <%= image_tag @cuisine.main_image.url, id: 'cuisine_image', class: 'img-fluid px-3' %>
-    </div>
-    <div class="col-10 offset-1 my-2 col-sm-8 col-md-8 offset-md-0">
-      <strong class="">説明文</strong>
-      <div id="procedure_form">
-        <%= form_with(model: @procedure, url: managers_procedures_path, local: true) do |form| %>
-        <%= render 'procedure_form', {form: form, procedure: @procedure} %>
-        <div class="actions text-center">
-          <%= form.submit "手順を追加する", id: "submit_procedure", class: 'btn btn-secondary' %>
-        </div>
-        <% end %>
+<%= javascript_pack_tag 'managers/procedures' %>
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 d-inline">手順の追加</h1>
       </div>
-      <div class="text-center">
-        <p>
-          <%= link_to new_managers_foodstuff_path(cuisine_id: @procedure.cuisine_id),  class: "page-link text-dark d-inline-block", role: "button" do %>
-          食材を登録する
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to '料理レシピ(データ一覧)', managers_cuisines_path, {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item">
+            <%= link_to "#{@cuisine.name}", managers_cuisine_path(@cuisine.id), {class: "text-muted"} %>
+          </li>
+          <li class="breadcrumb-item active">手順の追加</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <%= form_with(model: @procedure, url: managers_procedures_path, method: :post, local: true) do |form| %>
+            <div class="card-body">
+              <%# HACK: 書き方を確認(怪しい) %>
+              <%= render 'form', {form: form , procedure: @procedure} %>
+            </div>
+            <div class="card-footer">
+              <%= form.submit "追加する", class: 'btn btn-secondary' %>
+              <%# TODO: プレビュー画面を作成する? %>
+              <div class="float-right">
+                <%= link_to "確認する", managers_cuisine_path(params[:cuisine_id]),  class: "btn btn-secondary" %>
+              </div>
+            </div>
           <% end %>
-        </p>
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <% if @registered_procedures.present? %>
+                    <table id="table-sortable-procedure" class="table table-striped">
+                      <tbody>
+                        <%= render partial: "procedure", collection: @registered_procedures, as: "procedure" %>
+                      </tbody>
+                    </table>
+                  <% else %>
+                    <div class="text-center">
+                      <p>まだ登録がありません</p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-
-  <div class="col-10 offset-1">
-    <% if @registered_pds.blank? %>
-    <div class="text-center">
-      <p>登録がまだありません</p>
-    </div>
-    <% else %>
-    <table>
-      <thead>
-        <tr>
-          <td></td>
-          <td>手順</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @registered_pds.each_with_index do |rpd, idx| %>
-        <tr>
-          <td><%= idx + 1 %></td>
-          <td><%= rpd.cooking_detail %></td>
-          <td>
-            <%= link_to edit_managers_procedure_path(rpd.id),  class: "page-link text-dark d-inline-block", role: "button", local: true do %>
-            <i class="fas fa-pen"></i>
-            <% end %>
-            <%= link_to managers_procedure_path(rpd.id, action_name: "new", current_procedure_id: @procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
-            <i class="far fa-trash-alt"></i>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% end %>
-    <div class="text-center">
-      <p>
-        <%= link_to managers_cuisine_path(@procedure.cuisine_id),  class: "page-link text-dark d-inline-block", role: "button" do %>
-        <%= @cuisine.name %>のトップへ
-        <% end %>
-      </p>
-    </div>
-  </div>
-
-  <%= link_to '料理レシピ一覧へ', managers_cuisines_path, class: 'btn btn-secondary' %>
 </div>

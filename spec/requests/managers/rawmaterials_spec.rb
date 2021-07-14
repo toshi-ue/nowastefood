@@ -32,7 +32,7 @@ RSpec.describe "Managers::Rawmaterials", type: :request do
       it "newページが表示されること" do
         get new_managers_rawmaterial_path
         expect(response.status).to eq 200
-        expect(response.body).to include "原材料を追加"
+        expect(response.body).to include "原材料追加"
       end
     end
 

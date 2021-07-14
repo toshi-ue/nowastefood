@@ -1,18 +1,16 @@
 <tr class="foodstuff" data-model_name="<%= foodstuff.class.name.underscore %>" , data-update_url="<%= sort_managers_foodstuff_path(foodstuff) %>">
-  <% if Rails.env.production? %>
+  <% if Rails.env.development? %>
   <td><%= foodstuff.id %></td>
   <td><%= foodstuff.cuisine.name %></td>
   <td><%= foodstuff.row_order %></td>
   <% end %>
   <td><%= foodstuff.rawmaterial.name %></td>
-  <td><%= foodstuff.quantity %><%= foodstuff.rawmaterial.unit.name %></td>
+  <td><%= foodstuff.quantity %><%= foodstuff.rawmaterial.unit.name unless foodstuff.quantity.start_with?("適量", "少々", "お好みで") %></td>
   <td>
-    <%= link_to edit_managers_foodstuff_path(foodstuff.id),  class: "page-link text-dark d-inline-block", role: "button", remote: true do %>
+    <%= link_to edit_managers_foodstuff_path(id: foodstuff.id, cuisine_id: foodstuff.cuisine_id),  class: "btn btn-default btn-lg" do %>
     <i class="fas fa-pen"></i>
     <% end %>
-  </td>
-  <td>
-    <%= link_to managers_foodstuff_path(foodstuff.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
+    <%= link_to managers_foodstuff_path(foodstuff.id),  class: "btn btn-default btn-lg", method: :delete do %>
     <i class="far fa-trash-alt"></i>
     <% end %>
   </td>

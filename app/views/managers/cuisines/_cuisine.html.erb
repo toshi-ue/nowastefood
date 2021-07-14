@@ -1,0 +1,29 @@
+<tr>
+  <td class="align-middle">
+    <% if cuisine.main_image.present? %>
+      <%= image_tag cuisine.main_image.url, size: '70x70' %>
+    <% else %>
+      <%= image_tag 'no_image_100x100', size: '70x70' %>
+    <% end %>
+  </td>
+  <td class="align-middle"><%= cuisine.name %></td>
+  <td class="align-middle"><%= cuisine.difficulty_i18n %></td>
+  <td class="align-middle"><%= cuisine.cooking_time %></td>
+  <td class="align-middle"><%= cuisine.created_at %></td>
+  <td class="align-middle">
+    <%= link_to managers_cuisine_path(cuisine.id),  class: "btn btn-default" do %>
+    <i class="far fa-eye"></i>
+    <% end %>
+    <%= link_to managers_cuisine_path(cuisine.id),
+      class: "btn btn-default",
+      data: {
+      confirm: "「#{cuisine.name}」を削除しますか?",
+        cansel: "キャンセル",
+        commit: "削除",
+        title: "削除確認"
+      },
+      method: :delete do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  </td>
+</tr>

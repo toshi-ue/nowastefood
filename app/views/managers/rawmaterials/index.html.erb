@@ -1,6 +1,9 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
   <div class="container-fluid">
+    <div>
+      <%= render 'layouts/flash_message' %>
+    </div>
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1 class="m-0 d-inline">原材料一覧</h1>
@@ -44,10 +47,11 @@
                           <th><%= sort_link(@q, :foodcategory_id, "食材区分名", default_order: :desc) %></th>
                           <th><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></th>
                           <th></th>
-                          <th></th>
                         </tr>
                       </thead>
-                      <%= render partial: "rawmaterials", collection: @rawmaterials, as: "rm" %>
+                      <tbody>
+                        <%= render partial: "rawmaterial", collection: @rawmaterials, as: "rawmaterial" %>
+                      </tbody>
                     </table>
                   <% else %>
                     <div class="text-center">
@@ -76,10 +80,3 @@
   </div>
 </div>
 <!-- /.content -->
-
-
-
-
-
-<%# render 'managers/shared/all_crud_links' %>
-<%= render 'managers/shared/manager_log_out' %>

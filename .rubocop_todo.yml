@@ -15,8 +15,8 @@
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
-    - 'Gemfile'
-    - 'bin/setup'
+    - "Gemfile"
+    - "bin/setup"
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -24,7 +24,7 @@ Layout/EmptyLines:
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'db/schema.rb'
+    - "db/schema.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -33,39 +33,39 @@ Layout/EmptyLinesAroundBlockBody:
 # SupportedStylesForEmptyBrackets: space, no_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 5
 Style/Documentation:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+    - "spec/**/*"
+    - "test/**/*"
+    - "app/controllers/application_controller.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/mailers/application_mailer.rb"
+    - "app/models/application_record.rb"
+    - "config/application.rb"
 
 # Offense count: 3
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
-    - 'bin/bundle'
-    - 'bin/setup'
-    - 'bin/update'
+    - "bin/bundle"
+    - "bin/setup"
+    - "bin/update"
 
 # Offense count: 2
 Style/MixinUsage:
   Exclude:
-    - 'bin/setup'
-    - 'bin/update'
+    - "bin/setup"
+    - "bin/update"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - 'config/spring.rb'
+    - "config/spring.rb"
 
 # Offense count: 17
 # Cop supports --auto-correct.
@@ -89,16 +89,6 @@ Style/PercentLiteralDelimiters:
 # SupportedStyles: percent, brackets
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-
-# # For rubocop < 1.0.0
-Style/HashEachMethods:
-  Enabled: false
-
-# # # For rubocop < 1.0.0
-Style/HashTransformKeys:
-  Enabled: false
-
 
 Style/HashTransformValues:
   Enabled: false

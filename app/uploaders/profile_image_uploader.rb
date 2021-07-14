@@ -10,13 +10,13 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    1..10.megabytes
+    0..10.megabytes
   end
 
   process convert: 'jpg'
   process resize_to_fit: [100, 100]
 
-  def extension_whitelist
+  def extension_allowlist
     %w[jpg jpeg gif png]
   end
 
