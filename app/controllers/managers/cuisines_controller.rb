@@ -11,7 +11,8 @@ class Managers::CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
-    @foodstuffs = Foodstuff.includes({ rawmaterial: :unit }).where(cuisine_id: @cuisine.id).rank(:row_order)
+    # HACK: unit がいる場合といらない場合のincludesの書き方について
+    @foodstuffs = Foodstuff.includes(:cuisine, [rawmaterial: :unit]).where(cuisine_id: @cuisine.id).rank(:row_order)
     @procedures = Procedure.where(cuisine_id: @cuisine.id).rank(:row_order)
   end
 
@@ -32,7 +33,7 @@ class Managers::CuisinesController < ApplicationController
 
   def update
     if @cuisine.update(cuisine_params)
-      redirect_to managers_cuisines_path, flash: { notice: "変更されました" }
+      redirect_to managers_cuisine_path(@cuisine), flash: { notice: "変更されました" }
     else
       # flash.now[:alert] = "aaa"
       render 'edit'

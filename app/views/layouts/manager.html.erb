@@ -6,28 +6,18 @@
     <title>Webapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_link_tag 'manager', media: 'all' %>
+    <%= javascript_pack_tag 'manager' %>
   </head>
-  <%# TODO: data属性が特定のページで反映されない
-              managers/cuisines/show.html.erb,
-              http://localhost:3000/managers/cuisines/2
-  %>
-  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
-  <div class="container-fluid">
-    <%# navbar %>
-    <%= render 'managers/shared/manager_navbar' %>
-
-    <div class="main-contents d-flex flex-column mb-auto">
-      <% if Rails.env.development? %>
-      <%# if Rails.env.production? %>
-        <%= render 'shared/disp_file_path' %>
-        <%# render 'shared/disp_time' %>
-      <% end %>
-      <%= yield %>
+  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>"  class="sidebar-mini" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+    <div class="wrapper">
+      <%= render 'managers/shared/navbar' %>
+      <%= render 'managers/shared/sidebar' %>
+      <div class="content-wrapper">
+        <%= "#{controller.controller_path}\##{controller.action_name}" %>
+        <%= yield %>
+      </div>
+      <%= render 'managers/shared/footer' %>
     </div>
-  </div>
-    <%# footer %>
-    <%= render 'managers/shared/manager_footer' %>
   </body>
 </html>

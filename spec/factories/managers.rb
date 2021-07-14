@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :manager do
-    name { Gimei.unique.name.kanji }
+    name { Faker::Name.first_name }
     sequence(:email) { |n| "heascook_manager#{n + 2}@ahk.jp" }
     password { 'password' }
     password_confirmation { 'password' }

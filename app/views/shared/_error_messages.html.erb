@@ -1,5 +1,8 @@
+<%#
+  TODO: 不要などで該当する箇所を置き換える
+        不要になったら削除
+%>
 <div class="alert alert-danger" role="alert">
-  <!-- TODO: エラーカウントが1個以上の場合はlist化しない-->
   <ul>
     <% resource.errors.full_messages.each do |message| %>
     <li><%= message %></li>

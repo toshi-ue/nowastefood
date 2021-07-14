@@ -31,4 +31,10 @@ class Users::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def login_as_guest_user
+    guest_user = User.create_account_as_guest
+    sign_in guest_user
+    redirect_to root_path, notice: "#{guest_user.nickname}としてログインしました"
+  end
 end

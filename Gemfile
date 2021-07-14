@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-# git_source(:github) do |repo_name|
-#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-#   "https://github.com/#{repo_name}.git"
-# end
 
-ruby '2.7.2'
+ruby '2.7.3'
 
 gem 'acts-as-taggable-on'
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -19,6 +15,7 @@ gem 'devise-i18n-views'
 gem 'discard'
 gem 'dotenv-rails'
 gem 'enum_help'
+gem 'faker'
 gem 'font-awesome-sass'
 gem 'jbuilder'
 gem 'kaminari'
@@ -39,8 +36,6 @@ group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'gimei'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rails-flog', require: 'flog'

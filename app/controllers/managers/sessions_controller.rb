@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Managers::SessionsController < Devise::SessionsController
-  layout 'manager'
+  layout 'manager_sign_in'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -25,4 +25,18 @@ class Managers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(resource)
+    managers_dashboard_path
+  end
+
+  def after_sign_out_path_for(resource)
+    new_manager_session_path
+  end
+
+  def login_as_guest_manager
+    guest_manager = Manager.create_account_as_guest
+    sign_in guest_manager
+    redirect_to managers_dashboard_path, notice: "#{guest_manager.name}としてログインしました"
+  end
 end

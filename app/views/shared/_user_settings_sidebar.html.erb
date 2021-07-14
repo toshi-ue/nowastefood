@@ -2,7 +2,7 @@
 <div class="col-12 col-sm-4 col-md-3 offset-md-1 offset-lg-2 d-xl-flex align-items-xl-center px-2 mt-2">
   <div id="items">
     <div class="text-center">
-      <% unless @user.profile_image.nil? %>
+      <% unless @user.profile_image.blank? %>
         <%= image_tag @user.profile_image.url, class: "rounded-circle img-fluid" %>
       <% else %>
         <%= image_tag "no_avatar.jpg", class: "rounded-circle img-fluid" %>
@@ -17,10 +17,6 @@
           <span>
             <%= link_to 'ユーザー情報', user_profile_path, class: "#{add_class_to_text(current_page, 'users#show')}" %>
           </span>
-        </li>
-        <li class="list-group-item">
-          <span>
-            <%= link_to 'プラン情報', user_subscription_path, class: "#{add_class_to_text(current_page, 'subscriptions#show')}" %></span>
         </li>
         <li class="list-group-item">
           <span>
