@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         put :sort
       end
       collection do
+        get 'search_foodcategory'
         get 'search_rawmaterial'
         get 'search_unit'
       end
