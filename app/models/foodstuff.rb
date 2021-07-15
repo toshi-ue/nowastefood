@@ -17,6 +17,8 @@ class Foodstuff < ApplicationRecord
   def self.best_cuisine(foodstuffs, todaysmenus, quantity_want_to_consume, user_serving_count)
     cuisines = {}
     foodstuffs.each do |fs|
+      next if fs.rawmaterial.foodcategory_id == 4
+
       result_quantity = Rational(quantity_want_to_consume) - Rational(fs.quantity) * user_serving_count
       cuisines.store(fs.cuisine_id, result_quantity)
     end
