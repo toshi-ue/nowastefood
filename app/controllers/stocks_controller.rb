@@ -58,7 +58,7 @@ class StocksController < ApplicationController
     rawmaterial_want_to_consume = params[:stock_should_consumed][0].to_i
     quantity_want_to_consume = params[:stock_should_consumed][1]
 
-    @foodstuffs = Foodstuff.where(rawmaterial_id: rawmaterial_want_to_consume)
+    @foodstuffs = Foodstuff.includes(:rawmaterial).where(rawmaterial_id: rawmaterial_want_to_consume)
     cuisine_ids = current_user.todaysmenus.pluck(:cuisine_id)
     optimal_cuisine_id = @foodstuffs.best_cuisine(@foodstuffs, cuisine_ids, quantity_want_to_consume, current_user.default_serving_count)
 
