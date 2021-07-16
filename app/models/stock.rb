@@ -20,4 +20,8 @@ class Stock < ApplicationRecord
     end
     stocks_result.delete_if { |_key, value| value <= 0 }
   end
+
+  def store_rotted_at
+    self.rotted_at = Time.zone.now + Rawmaterial.find(self.rawmaterial_id).expiry_period.to_i.days
+  end
 end

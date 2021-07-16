@@ -8,4 +8,16 @@ module StocksHelper
       "will-consume"
     end
   end
+
+  def days_left(rotted_at)
+    left_days = (rotted_at - Time.zone.now.to_date).to_i
+
+    if left_days >= 2
+      "#{left_days}日"
+    elsif left_days == 1
+      "今日まで"
+    elsif left_days < 1
+      "#{left_days - 1}日"
+    end
+  end
 end
