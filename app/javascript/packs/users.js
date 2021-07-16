@@ -4,12 +4,9 @@ $(function () {
 
   switch (action_name) {
     case "show":
-      console.log("show passed")
       const file_field = document.getElementById('user-img')
       const user_avatar_image = document.getElementById('user-avatar')
-      console.log(file_field)
       user_avatar_image.addEventListener('click', function(){
-        console.log("aaa");
         file_field.click();
       });
 
@@ -27,7 +24,6 @@ $(function () {
     case "new":
     case "create":
     default:
-      console.log("not passed");
       break;
   }
 });
