@@ -30,13 +30,15 @@ $(function () {
       $(".selectfa").on('select2:select', function (e) {
         let rawmaterial_id = e.params.data.id
         $(".input-group-text").text("")
+        $("#expiry_period").text("")
         $.ajax({
           type: 'GET',
-          url: '/stocks/unit_search',
-          data: { rm_id: rawmaterial_id },
+          url: '/stocks/search_unit_and_expiry_period',
+          data: { id: rawmaterial_id },
           dataType: 'json'
         }).done(function (data) {
-          $(".input-group-text").text(data.name)
+          $(".input-group-text").text(data.unit_name)
+          $("#expiry_period").text(data.expiry_period + "日")
         }).fail(function () {
           console.log("could not get unit name.")
         })

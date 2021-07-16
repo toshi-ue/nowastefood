@@ -72,16 +72,16 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4)
     respond_to do |format|
       format.json { render json: @rawmaterials }
     end
   end
 
-  def unit_search
-    @unit = Rawmaterial.find_by(id: params[:rm_id])&.unit
+  def search_unit_and_expiry_period
+    @rawmaterial = Rawmaterial.includes(:unit).find_by(id: params[:id])
     respond_to do |format|
-      format.json { render json: @unit }
+      format.json { render json: { expiry_period: @rawmaterial.expiry_period, unit_name: @rawmaterial.unit.name } }
     end
   end
 
