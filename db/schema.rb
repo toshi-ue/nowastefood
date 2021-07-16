@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_094359) do
+ActiveRecord::Schema.define(version: 2021_07_16_050721) do
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "料理名"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_094359) do
     t.string "hiragana"
     t.bigint "unit_id"
     t.bigint "foodcategory_id"
+    t.integer "expiry_period", default: 1, null: false
     t.integer "foodstuffs_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
