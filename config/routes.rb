@@ -58,7 +58,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'login_as_guest_user', to: 'users/sessions#login_as_guest_user'
   end
-  resource :password, only: [:edit, :update]
   resources :cookinghistorys, only: [:index]
   resources :cuisines, only: [:show] do
     delete :remove_favorite
