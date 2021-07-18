@@ -77,16 +77,6 @@ RSpec.describe "Stocks", type: :request do
           expect(response.status).to eq 200
           expect(response.body).to include("食材名")
         end
-
-        context "同一ユーザーでrawmaterial_idが重複しているとき" do
-          it "登録ができないこと" do
-            @stock = create(:stock, user_id: @user.id)
-            expect do
-              post stocks_path, params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: @stock.rawmaterial_id, quantity: "100") }
-            end.not_to change(Foodcategory, :count)
-            expect(response.body).to include("すでにstockされている食材は登録できません")
-          end
-        end
       end
     end
   end

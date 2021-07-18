@@ -73,7 +73,7 @@ Rails.application.routes.draw do
     collection do
       get 'auto_today_create'
       get 'search_rawmaterial'
-      get 'unit_search'
+      get 'search_unit_and_expiry_period'
     end
   end
   resources :todaysmenus, only: [:index, :update, :destroy]

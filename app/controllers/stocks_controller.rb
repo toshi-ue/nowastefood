@@ -3,19 +3,9 @@ class StocksController < ApplicationController
   before_action :set_stock, only: [:update, :edit, :destroy]
 
   def index
-    @stocks_not_plan_to_consume = {}
-    @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: [:foodcategory, :unit] })
-    @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
-
-    # 残るstocksがある場合は@stocks_not_plan_to_consumeに値が格納されている
-    if @todaysmenus.present?
-      stocks = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
-      todaysmenus = @todaysmenus.create_hash_todaysmenus(@todaysmenus)
-      stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
-      @stocks_not_plan_to_consume = stocks_results
-    else
-      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
-    end
+    @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).unused.order(rotted_at: 'ASC')
+    @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).not_cooked.search_in_today
+    @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
   end
 
   def show; end
@@ -27,12 +17,13 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
-    @duplicated_stock = current_user.stocks.find_by(rawmaterial_id: @stock.rawmaterial_id)
-    if @duplicated_stock
-      flash.now[:error] = "すでにstockされている食材は登録できません"
-      @rawmaterials = Rawmaterial.all
-      return render 'new'
-    end
+    @stock.store_rotted_at
+    # @duplicated_stock = current_user.stocks.find_by(rawmaterial_id: @stock.rawmaterial_id)
+    # if @duplicated_stock
+    #   flash.now[:error] = "すでにstockされている食材は登録できません"
+    #   @rawmaterials = Rawmaterial.all
+    #   return render 'new'
+    # end
     if @stock.save
       redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加されました" }
     else
@@ -72,16 +63,16 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4)
     respond_to do |format|
       format.json { render json: @rawmaterials }
     end
   end
 
-  def unit_search
-    @unit = Rawmaterial.find_by(id: params[:rm_id])&.unit
+  def search_unit_and_expiry_period
+    @rawmaterial = Rawmaterial.includes(:unit).find_by(id: params[:id])
     respond_to do |format|
-      format.json { render json: @unit }
+      format.json { render json: { expiry_period: @rawmaterial.expiry_period, unit_name: @rawmaterial.unit.name } }
     end
   end
 
@@ -92,6 +83,6 @@ class StocksController < ApplicationController
   end
 
   def stock_params
-    params.require(:stock).permit(:quantity, :rawmaterial_id).merge(user_id: current_user.id)
+    params.require(:stock).permit(:quantity, :rawmaterial_id, :rotted_at, :consumed_at, :abandoned_at).merge(user_id: current_user.id)
   end
 end

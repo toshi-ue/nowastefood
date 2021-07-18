@@ -15,7 +15,19 @@
   </div>
   <% if @stocks.present? %>
     <div class="col-10 offset-1 col-lg-12 offset-lg-0">
-      <%= render 'stock_list' %>
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="align-middle">食材</th>
+          <th class="align-middle">数</th>
+          <th class="align-middle">のこり日数<br>(購入日)</th>
+          <th class="align-middle"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "stock", collection: @stocks, as: "stock" %>
+      </tbody>
+    </table>
     </div>
   <% else %>
     <p class="text-center">
@@ -23,13 +35,13 @@
     </p>
   <% end %>
   <div class="text-center">
-    <% unless @stocks_not_plan_to_consume.empty? %>
-      <%= link_to 'Todayをエコ昨日で自動生成', auto_today_create_stocks_path(stock_should_consumed: @stocks_not_plan_to_consume.first), class: "btn btn-success" %>
-    <% end %>
+    <%# unless @stocks_not_plan_to_consume.empty? %>
+      <%# link_to 'Todayをエコ機能で自動生成', auto_today_create_stocks_path(stock_should_consumed: @stocks_not_plan_to_consume.first), class: "btn btn-success" %>
+    <%# end %>
   </div>
 
   <br><br>
-  @stocks_not_plan_to_consume:<br>
-  <%= @stocks_not_plan_to_consume %>
+  @rawmaterials_and_quantity_will_be_consumed:<br>
+  <%= @rawmaterials_and_quantity_will_be_consumed %>
   <br><br>
 </div>
