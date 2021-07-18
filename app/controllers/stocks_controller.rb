@@ -3,19 +3,9 @@ class StocksController < ApplicationController
   before_action :set_stock, only: [:update, :edit, :destroy]
 
   def index
-    @stocks_not_plan_to_consume = {}
-    @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: [:foodcategory, :unit] })
-    @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).search_in_today
-
-    # 残るstocksがある場合は@stocks_not_plan_to_consumeに値が格納されている
-    if @todaysmenus.present?
-      stocks = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
-      todaysmenus = @todaysmenus.create_hash_todaysmenus(@todaysmenus)
-      stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
-      @stocks_not_plan_to_consume = stocks_results
-    else
-      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
-    end
+    @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).unused.order(rotted_at: 'ASC')
+    @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).not_cooked.search_in_today
+    @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
   end
 
   def show; end
@@ -93,6 +83,6 @@ class StocksController < ApplicationController
   end
 
   def stock_params
-    params.require(:stock).permit(:quantity, :rawmaterial_id, :rotted_at).merge(user_id: current_user.id)
+    params.require(:stock).permit(:quantity, :rawmaterial_id, :rotted_at, :consumed_at, :abandoned_at).merge(user_id: current_user.id)
   end
 end

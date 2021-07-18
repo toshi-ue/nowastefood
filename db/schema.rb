@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_065734) do
+ActiveRecord::Schema.define(version: 2021_07_18_053233) do
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "料理名"
@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 2021_07_16_065734) do
     t.bigint "rawmaterial_id"
     t.bigint "user_id"
     t.date "rotted_at", default: "2021-07-16", null: false
+    t.datetime "consumed_at"
+    t.boolean "abandoned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rawmaterial_id"], name: "index_stocks_on_rawmaterial_id"
@@ -153,6 +155,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_065734) do
     t.bigint "cuisine_id"
     t.bigint "user_id"
     t.integer "serving_count", default: 1, null: false
+    t.integer "cooked_when"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cuisine_id"], name: "index_todaysmenus_on_cuisine_id"

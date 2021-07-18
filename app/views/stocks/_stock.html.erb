@@ -1,17 +1,17 @@
-<tr class="<%= background_color_consume(st, @stocks_not_plan_to_consume) %>">
-  <td class="align-middle"><%= st.rawmaterial.name %>
+<tr class="<%= change_back_color(stock, @rawmaterials_and_quantity_will_be_consumed, left_days(stock.rotted_at)) %>">
+  <td class="align-middle"><%= stock.rawmaterial.name %>
   <%# TODO: 最後に削除 %>
   <br>
-  <%= st.rawmaterial_id %>
+  <%= stock.rawmaterial_id %>
   </td>
-  <td class="align-middle"><%= st.quantity %><%= st.rawmaterial.unit.name %></td>
+  <td class="align-middle"><%= stock.quantity %><%= stock.rawmaterial.unit.name %></td>
   <td class="align-middle">
-    <%= days_left(st.rotted_at) %><br>
-    <small>(<%= st.created_at.strftime('%m/%d') %>)</small>
+    <%= disp_left_days(left_days(stock.rotted_at)) %><br>
+    <small>(<%= stock.created_at.strftime('%m/%d') %>)</small>
   </td>
   <td class="align-middle text-center">
     <div>
-      <%= link_to stock_path(st.id),  class: "page-link text-dark", role: "button", method: :delete do %>
+      <%= link_to stock_path(stock.id),  class: "page-link text-dark", role: "button", method: :delete do %>
       <i class="far fa-trash-alt"></i>
       <% end %>
     </div>
