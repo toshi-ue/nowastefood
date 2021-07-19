@@ -1,7 +1,7 @@
 class TodaysmenusController < ApplicationController
   before_action :authenticate_user!
   def index
-    @todaysmenus = current_user.todaysmenus.includes(:cuisine).where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    @todaysmenus = current_user.todaysmenus.includes(:cuisine).not_cooked
   end
 
   def update

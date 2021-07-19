@@ -6,13 +6,47 @@ body{
   height: 100%;
 }
 #index-todaysmenus{
+  table{
+    margin-top: 20px;
+  }
   .page-title{
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .no-border-top{
     border-top: 0px none;
   }
-  .no-todaysmenus-description{
-    font-size: 1.3rem;
+
+  input[type=radio]{
+    display: none;
   }
+
+  @include media-breakpoint-down(md) {
+    .btn-serving-count{
+      height: 120%;
+    }
+    .btns-cuisine{
+      padding-top: 0.8rem;
+    }
+    .detail-cuisine{
+      width: 70%;
+    }
+    .img-cuisine{
+      width: 30%;
+      padding: 0;
+    }
+    .page-title {
+      font-size: 1rem;
+    }
+    .search-btn {
+      margin-top: 20vh;
+    }
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    .detail-cuisine{
+      vertical-align: middle;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {}
 }
