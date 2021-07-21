@@ -76,7 +76,11 @@ Rails.application.routes.draw do
       get 'search_unit_and_expiry_period'
     end
   end
-  resources :todaysmenus, only: [:index, :update, :destroy]
+  resources :todaysmenus, only: [:index, :update, :destroy] do
+    collection do
+      post 'cooked_done'
+    end
+  end
 
   get 'genres/search'
   get 'home/index'

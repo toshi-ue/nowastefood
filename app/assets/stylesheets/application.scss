@@ -14,7 +14,7 @@
 @import "stocks";
 // @import "tags";
 @import "tops";
-// @import "todaysmenus";
+@import "todaysmenus";
 // @import "users";
 @import "users/sessions";
 
@@ -25,25 +25,24 @@ $lg: 992px;
 footer {
   margin-bottom: 2rem;
   margin-top: auto;
-
 }
 
 main {
   max-width: 980px;
   min-height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   @include media-breakpoint-down(md) {
-    margin: 0;
+    margin: 20px 5px;
+  }
+
+  @include media-breakpoint-between(md, lg) {
   }
 
   @include media-breakpoint-up(lg) {
-    width: $lg;
-    margin: 0 auto;
+    margin: 20px 5px;
   }
+
+
 }
 
 #index-managers-foodcategories,
