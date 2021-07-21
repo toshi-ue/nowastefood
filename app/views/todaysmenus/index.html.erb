@@ -12,22 +12,20 @@
         </table>
         <!-- TODO: 料理が完了するformを作成する-->
         <div class="btn-cooked-when">
-        <%= form_with url: cooked_done_todaysmenus_path do |f| %>
+        <%= form_with(url: cooked_done_todaysmenus_path, local: true) do |f| %>
         <div class="form-group row">
           <div class="col-sm-12 btn-group" data-toggle="buttons">
             <label class="btn btn-outline-warning active">
-              <%= f.radio_button :cooked_when, 1, {checked: true} %> 朝
+              <%= f.radio_button :cooked_when, 1, {checked: true} %>朝
             </label>
             <label class="btn btn-outline-warning">
-              <%= f.radio_button :cooked_when, 2, {} %> 昼
+              <%= f.radio_button :cooked_when, 2, {} %>昼
             </label>
             <label class="btn btn-outline-warning">
-              <%= f.radio_button :cooked_when, 3, {} %> 夜
+              <%= f.radio_button :cooked_when, 3, {} %>夜
             </label>
           </div>
-          <div>
-            <%= f.submit "Done!!",class: "btn-default__btn-red" %>
-          </div>
+            <%= f.submit "Done!!",class: "btn btn-warning btn-block" %>
         </div>
         <% end %>
         </div>
