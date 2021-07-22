@@ -25,13 +25,14 @@ class CuisinesController < ApplicationController
     @favorite.destroy
   end
 
+  # TODO: create_atを削除する
   def remove_menu
-    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: Time.zone.now.all_day)
     @todaysmenu.destroy
     @cuisine = Cuisine.find_by(id: params[:cuisine_id])
   end
 
   def search
-    @cuisines = @search.result.distinct
+    @cuisines = @search.result.distinct.page(params[:page]).per(5)
   end
 end

@@ -7,14 +7,7 @@ class TopsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
   end
 
-  # TODO: 検索機能を実装
-  def search
+  def about; end
 
-  end
-
-  def about
-  end
-
-  def login_which
-  end
+  def login_which; end
 end
