@@ -30,4 +30,8 @@ class CuisinesController < ApplicationController
     @todaysmenu.destroy
     @cuisine = Cuisine.find_by(id: params[:cuisine_id])
   end
+
+  def search
+    @cuisines = @search.result.distinct
+  end
 end
