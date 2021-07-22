@@ -1,0 +1,56 @@
+<div class="row">
+  <% if @search_word.present? %>
+    <div class="col-10 offset-1">
+      <p>
+        <strong class="search-word"><%= @search_word %></strong>&nbsp;の検索結果&nbsp;(<strong class="result-count"><%= @cuisines.total_count %></strong>レシピ)
+      </p>
+    </div>
+  <% end %>
+  <% if @cuisines.present? %>
+  <% @cuisines.each do |cuisine| %>
+    <div class="col-6 col-sm-6 col-md-3 align-items-xl-center px-2 mt-2">
+      <div class="card">
+        <%= link_to cuisine_path(cuisine) do %>
+          <%= image_tag cuisine.main_image.url, class: "img-fluid card-img-top w-100" %>
+        <% end %>
+        <div class="card-body">
+          <%= link_to cuisine_path(cuisine) do %>
+            <div class="card-text">
+              <p class="name-cuisine text-black-50 d-flex align-items-center"><%= cuisine.name.truncate(14) %></p>
+            </div>
+          <% end %>
+          <div class="btns">
+            <div id="btn-favorite-<%= cuisine.id %>">
+              <%= render partial: 'cuisines/favorite', locals: {cuisine: cuisine} %>
+            </div>
+            <!-- TODO: todaysmenuボタンを追加する-->
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-12 px-2 mt-2">
+    <%= paginate @cuisines, theme: 'twitter-bootstrap-4' %>
+  </div>
+  <div class="col-8 offset-2 text-center mt-2">
+    <%= link_to 'もどる', 'javascript:history.back()', class: 'btn btn-success btn-block' %>
+  </div>
+  <% else %>
+    <div class="col-12 col-md-3 align-items-xl-center px-2 mt-2">
+      <% if @search_word.present? %>
+        <div class="text-center">
+          <p>該当するレシピはありません。</p>
+        </div>
+      <% else %>
+        <div class="text-center">
+          検索キーワードを入力してください
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-8 offset-2 text-center mt-2">
+          <%= link_to 'もどる', 'javascript:history.back()', class: 'btn btn-success btn-block' %>
+        </div>
+      </div>
+    </div>
+  <% end%>
+</div>

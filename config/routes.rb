@@ -67,6 +67,9 @@ Rails.application.routes.draw do
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
     post :add_to_todays_menu, action: :add_to_todays_menu, controller: 'cookinghistorys'
+    collection do
+      get :search
+    end
   end
   resources :favorites, only: [:index, :create, :destroy]
   resources :stocks, only: [:index, :new, :create, :destroy] do
@@ -82,7 +85,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'genres/search'
   get 'home/index'
   # TODO: 原材料から探せるようにする
   # get 'rawmaterials/search'

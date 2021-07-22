@@ -4,10 +4,16 @@
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="nav navbar-nav mx-auto">
           <li class="nav-item">
-            <div class="input-group input-group-lg">
-              <div class="input-group-prepend"></div><input class="form-control" type="text" placeholder="卵、チャンプルー etc...">
-              <div class="input-group-append"><button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button></div>
-            </div>
+            <%= search_form_for @search, url: search_cuisines_path do |f| %>
+              <div class="input-group">
+                <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
+                <span class="input-group-append">
+                  <%= f.button type: 'submit', style: 'border-style: none;' do %>
+                    <i class="fa fa-search"></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           </li>
         </ul>
         <ul class="nav navbar-nav d-md-flex d-xl-flex ml-auto align-items-md-center align-items-xl-center">
