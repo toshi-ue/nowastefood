@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <% if current_user.already_menu_in_today?(cuisine.id) %>
+    <%= link_to cuisine_remove_menu_path(cuisine.id), method: :delete, remote: true do %>
+      <button class="btn btn-warning rounded-circle" type="button">
+        <i class="fas fa-plus"></i>
+      </button>
+    <% end %>
+  <% else %>
+    <%= link_to cuisine_add_menu_path(cuisine.id), method: :post, remote: true do %>
+      <button class="btn btn-outline-secondary rounded-circle" type="button">
+        <i class="fas fa-plus"></i>
+      </button>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path, local: true do %>
+    <button class="btn btn-outline-secondary rounded-circle" type="button">
+      <i class="fas fa-plus"></i>
+    </button>
+  <% end %>
+<% end %>

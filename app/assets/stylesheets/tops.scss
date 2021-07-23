@@ -1,10 +1,8 @@
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+@import "bootstrap/scss/mixins/_breakpoints";
 @import 'swiper/css/swiper';
 
-// HACK: swiperの矢印を変更する
-// $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
-// @import "@fortawesome/fontawesome-free/scss/regular.scss";
-// @import "@fortawesome/fontawesome-free/scss/solid.scss";
-// @import "@fortawesome/fontawesome-free/scss/brands.css";
 #about-tops {
   .text-right.more-cuisine {
     height: 100%;
@@ -101,14 +99,21 @@
 }
 
 #index-tops {
-  .swiper-container {
-    width: 100%;
-    max-width: 980px;
+  .btns-today {
+    margin-left: 0.5rem;
   }
 
-  a {
-    text-decoration: none;
+  .card-body {
+    padding: 0.5rem;
   }
+
+  @include media-breakpoint-between(md, lg) {
+    main {
+      margin: 0 1rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {}
 }
 
 #login_which-tops {
