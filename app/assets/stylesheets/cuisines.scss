@@ -14,6 +14,10 @@
   .btns {
     margin: 0.25rem 0;
     padding: 0 3px;
+
+    .btns-favorite {
+      border-radius: 50%;
+    }
   }
 
   .card-body {
@@ -36,18 +40,10 @@
   .result-count {
     font-size: 1.3rem;
   }
-}
 
-@include media-breakpoint-up(lg) {
-  #search-cuisines {
-    .btns {}
-
-    .card-text {
-      min-height: 3rem;
-
-      .name-cuisine {
-        margin-bottom: 0;
-      }
-    }
+  @include media-breakpoint-up(lg) {
+    border-radius: 0.2rem;
   }
 }
+
+@include media-breakpoint-up(lg) {}

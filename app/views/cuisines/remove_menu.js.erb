@@ -1,1 +1,1 @@
-$('#btn-today').html("<%= j(render partial: 'today', locals: {cuisine: @cuisine}) %>");
+$('#btn-today-<%= @cuisine.id %>').html("<%= j(render partial: 'today', locals: {cuisine: @cuisine}) %>");

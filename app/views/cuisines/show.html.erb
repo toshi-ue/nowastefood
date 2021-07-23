@@ -36,18 +36,12 @@
             <span class="badge badge-primary ml-1">Genre</span>
             <span class="badge badge-info ml-1">tag1</span>
           </div>
-          <div class="row">
-            <div id="btn-favorite-<%= @cuisine.id %>" class="col-12 col-sm-4 mt-2 text-center">
+          <div class="btns row">
+            <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
             <%= render partial: 'favorite', locals: {cuisine: @cuisine} %>
             </div>
-            <div id="btn-today" class="col-12 col-sm-4 mt-2 text-center">
+            <div id="btn-today-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
             <%= render partial: 'today', locals: {cuisine: @cuisine} %>
-            </div>
-            <div class="col-12 col-sm-4 mt-2 text-center">
-              <button class="btn btn-outline-secondary btn-block" type="button">
-                <i class="fas fa-share"></i><br>
-                share
-              </button>
             </div>
           </div>
         </div>
