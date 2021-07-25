@@ -31,24 +31,13 @@ main {
   max-width: 980px;
   min-height: 100vh;
 
-  @include media-breakpoint-down(md) {
-    margin: 20px 5px;
-  }
+  margin: 0 0.4rem;
+
+  @include media-breakpoint-down(md) {}
 
   @include media-breakpoint-between(md, lg) {}
 
-  @include media-breakpoint-up(lg) {
-    margin: 20px 5px;
-  }
-
-  .btns-favorite {
-    border-radius: 50%;
-
-    @include media-breakpoint-up(lg) {
-      border-radius: 0.2rem;
-    }
-  }
-
+  @include media-breakpoint-up(lg) {}
 }
 
 #index-managers-foodcategories,
@@ -97,6 +86,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0;
 
   @include media-breakpoint-up(lg) {
     width: $lg;
