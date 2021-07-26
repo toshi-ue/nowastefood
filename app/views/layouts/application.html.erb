@@ -14,7 +14,6 @@
   </head>
   <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
   <%= render 'shared/user_navbar' %>
-      <%# flash message %>
       <div class="container-lg">
         <main>
           <%= yield %>

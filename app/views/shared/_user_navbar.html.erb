@@ -1,44 +1,80 @@
-    <nav class="navbar navbar-light navbar-expand-md">
-      <%= link_to  "Coome", home_index_path, class: "navbar-brand" %>
-      <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navcol-1">
-        <ul class="nav navbar-nav mx-auto">
-          <li class="nav-item">
-            <%= search_form_for @search, url: search_cuisines_path do |f| %>
-              <div class="input-group">
-                <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
-                <span class="input-group-append">
-                  <%= f.button type: 'submit', style: 'border-style: none;' do %>
-                    <i class="fa fa-search"></i>
-                  <% end %>
-                </div>
-              </div>
+<nav class="navbar navbar-light navbar-expand">
+  <div class="container">
+    <%= link_to  @appname, home_index_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample02">
+      <%= search_form_for @search, url: search_cuisines_path, html: {class: "form-inline ml-auto my-2 my-md-0 d-none d-md-block"} do |f| %>
+        <div class="input-group">
+          <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
+          <span class="input-group-append">
+            <%= f.button type: 'submit', style: 'border-style: none;' do %>
+              <i class="fa fa-search"></i>
             <% end %>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav d-md-flex d-xl-flex ml-auto align-items-md-center align-items-xl-center">
-          <li class="nav-item d-xl-flex align-items-xl-center"><%= link_to 'Stock', stocks_path, class: 'nav-link text-center' %></li>
-          <li class="nav-item d-xl-flex align-items-xl-center"><%= link_to 'History', cookinghistorys_path, class: 'nav-link text-center' %></li>
-          <li class="nav-item d-xl-flex align-items-xl-center"><%= link_to 'Today', todaysmenus_path, class: "nav-link text-center" %></li>
-          <li class="nav-item align-items-xl-center"><%= link_to 'Favorite', favorites_path, class: "nav-link text-center" %></li>
-          <li class="nav-item d-md-none align-items-xl-center">
+        </div>
+      <% end %>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to stocks_path, class: 'nav-link text-center' do %>
+            <i class="fas fa-box"></i><span class="d-none d-lg-inline">&nbsp;Stock</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to cookinghistorys_path, class: 'nav-link text-center' do %>
+            <i class="fas fa-history"></i><span class="d-none d-lg-inline">&nbsp;History</span>
+          <% end %>
+        </li>
+        <li class="nav-item d-xl-flex align-items-xl-center">
+          <%= link_to todaysmenus_path, class: "nav-link text-center" do %>
+            <i class="fas fa-plus"></i><span class="d-none d-lg-inline">&nbsp;TodaysMenu</span>
+          <% end %>
+        </li>
+        <li class="nav-item align-items-xl-center">
+          <%= link_to favorites_path, class: "nav-link text-center" do %>
+          <i class="far fa-bookmark"></i><span class="d-none d-lg-inline">&nbsp;Favorite</span>
+          <% end %>
+        </li>
+        <li class="nav-item dropdown d-none d-md-block"><a class="dropdown-toggle nav-link text-center" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-alt fa-lg user-icon"></i></a>
+          <div class="dropdown-menu dropdown-menu-right">
             <% if user_signed_in? %>
-              <%= link_to '設定', user_profile_path, class: 'nav-link text-center' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link text-center" %>
+              <%= link_to '設定', user_profile_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
             <% else %>
-              <%= link_to 'ログイン',tops_login_which_path, class: 'nav-link text-center' %>
+              <%= link_to 'ログイン',tops_login_which_path, class: 'dropdown-item' %>
             <% end %>
-          </li>
-          <li class="nav-item dropdown d-none d-md-block"><a class="dropdown-toggle nav-link text-center" data-toggle="dropdown" aria-expanded="false" href="#">Menu&nbsp;</a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <% if user_signed_in? %>
-                <%= link_to '設定', user_profile_path, class: 'dropdown-item text-center' %>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
-              <% else %>
-                <%= link_to 'ログイン',tops_login_which_path, class: 'dropdown-item' %>
-              <% end %>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light d-md-none">
+  <%= search_form_for @search, url: search_cuisines_path do |f| %>
+    <div class="input-group">
+      <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
+      <span class="input-group-append">
+        <%= f.button type: 'submit', style: 'border-style: none;' do %>
+          <i class="fa fa-search"></i>
+        <% end %>
       </div>
-    </nav>
+    </div>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-user-alt fa-lg user-icon"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= link_to '設定', user_profile_path, class: 'nav-link text-center' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link text-center" %>
+          <% else %>
+            <%= link_to 'ログイン', tops_login_which_path, class: 'nav-link text-center' %>
+            <%= link_to '新規登録', tops_login_which_path, class: 'nav-link text-center' %>
+          <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

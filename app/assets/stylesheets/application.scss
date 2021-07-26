@@ -82,6 +82,10 @@ main {
   }
 }
 
+// #cuisine_search {
+//   width: 100%;
+// }
+
 .container-lg {
   display: flex;
   flex-direction: column;
@@ -100,6 +104,15 @@ main {
 .my-button {
   height: 100px;
   width: 100px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.user-icon {
+  color: #EFEFEF;
+  padding: 0 auto;
 }
 
 // navbar
