@@ -9,6 +9,10 @@ class Todaysmenu < ApplicationRecord
     where(cooked_when: nil)
   }
 
+  scope :cooked, lambda {
+    where.not(cooked_when: nil)
+  }
+
   include CommonScope
 
   def uniqueness_cuisine_id_per_user_on_the_day
