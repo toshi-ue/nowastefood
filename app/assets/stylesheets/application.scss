@@ -8,6 +8,7 @@
 @import "app_variables";
 // @import "managers/cuisines";
 // @import "managers/foodstuffs";
+@import "cookinghistorys";
 @import "cuisines";
 // @import "favorites";
 // @import "genres";
@@ -82,10 +83,6 @@ main {
   }
 }
 
-// #cuisine_search {
-//   width: 100%;
-// }
-
 .container-lg {
   display: flex;
   flex-direction: column;
@@ -110,10 +107,18 @@ main {
   border: none;
 }
 
+.page-title {
+  font-size: 1.5rem;
+}
+
 .user-icon {
   color: #EFEFEF;
   padding: 0 auto;
 }
+
+@include media-breakpoint-between(md, lg) {}
+
+@include media-breakpoint-up(lg) {}
 
 // navbar
 $bgDefault : #00AA00;
