@@ -17,15 +17,9 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
-    @stock.store_rotted_at
-    # @duplicated_stock = current_user.stocks.find_by(rawmaterial_id: @stock.rawmaterial_id)
-    # if @duplicated_stock
-    #   flash.now[:error] = "すでにstockされている食材は登録できません"
-    #   @rawmaterials = Rawmaterial.all
-    #   return render 'new'
-    # end
+    @stock.store_default_values if params[:rawmaterial_id].present?
     if @stock.save
-      redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加されました" }
+      redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加しました" }
     else
       @rawmaterials = Rawmaterial.all
       render 'new'
