@@ -6,8 +6,23 @@ $(function () {
   let action_name = $('body').data('action')
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
 
+  if ($('#stock_rawmaterial_id option:selected').val()) {
+    $.ajax({
+      type: 'GET',
+      url: '/stocks/search_unit_and_expiry_period',
+      data: { id: $('#stock_rawmaterial_id option:selected').val() },
+      dataType: 'json'
+    }).done(function (data) {
+      $(".input-group-text").text(data.unit_name)
+      $("#expiry_period").text(data.expiry_period + "日")
+    }).fail(function () {
+      console.log("could not get unit name.")
+    })
+  }
+
   switch (action_name) {
     case "new":
+    case "create":
       $(".selectfa").select2({
         ajax: {
           url: '/stocks/search_rawmaterial',
