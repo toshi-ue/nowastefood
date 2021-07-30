@@ -32,7 +32,33 @@ class Stock < ApplicationRecord
     stocks_result.delete_if { |_key, value| value <= 0 }
   end
 
-  def store_rotted_at
+  def self.store_consumed_at(stocks, stocks_will_be_consumed)
+    stocks.each do |stock|
+      next if stocks_will_be_consumed[stock.rawmaterial_id].nil?
+
+      result = Rational(stock.quantity) - stocks_will_be_consumed[stock.rawmaterial_id]
+      if result.positive?
+        stock.update_attribute(quantity: result)
+      else
+        stock.delete
+      end
+    end
+  end
+
+  def get_remaining_stocks(stocks, todaysmenus)
+    stocks_remainings = {}
+    if todaysmenus.present?
+      stocks = Hash[stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
+      todaysmenus = @todaysmenus.create_hash_todaysmenus(@todaysmenus)
+      stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
+      @stocks_not_plan_to_consume = stocks_results
+    else
+      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
+    end
+  end
+
+  def store_default_values
     self.rotted_at = Time.zone.now + Rawmaterial.find(self.rawmaterial_id).expiry_period.to_i.days
+    self.abandoned_at = nil
   end
 end
