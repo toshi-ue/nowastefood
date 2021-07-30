@@ -41,11 +41,11 @@ class StocksController < ApplicationController
 
   # 賞味期限間近の食材を使い切ることができるCuisineを取得、Todayに追加する
   def auto_today_create
-    rawmaterial_want_to_consume = params[:stock_should_consumed][0].to_i
-    quantity_want_to_consume = params[:stock_should_consumed][1]
+    rawmaterial_want_to_consume = params[:rawmaterial_id]
+    quantity_want_to_consume = params[:quantity]
 
     @foodstuffs = Foodstuff.includes(:rawmaterial).where(rawmaterial_id: rawmaterial_want_to_consume)
-    cuisine_ids = current_user.todaysmenus.pluck(:cuisine_id)
+    cuisine_ids = current_user.todaysmenus.not_cooked.pluck(:cuisine_id)
     optimal_cuisine_id = @foodstuffs.best_cuisine(@foodstuffs, cuisine_ids, quantity_want_to_consume, current_user.default_serving_count)
 
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: optimal_cuisine_id, serving_count: current_user.default_serving_count)
@@ -53,7 +53,7 @@ class StocksController < ApplicationController
     if @todaysmenu.save
       redirect_to todaysmenus_path, flash: { notice: "エコ機能で#{@todaysmenu.cuisine.name}が追加されました" }
     else
-      redirect_to todaysmenus_path, flash: { notice: "変更されました" }
+      redirect_to stocks_path, flash: { notice: "エコ機能を利用できるレシピがありませんでした" }
     end
   end
 
