@@ -22,8 +22,12 @@ class Foodstuff < ApplicationRecord
       result_quantity = Rational(quantity_want_to_consume) - Rational(fs.quantity) * user_serving_count
       cuisines.store(fs.cuisine_id, result_quantity)
     end
-    candidates = cuisines.delete_if { |key, _| todaysmenus.include?(key) }
-    optimal_value = candidates.values.partition { |v| v <= 0 }[0].first
+    arr_branched_zero = cuisines.values.partition { |v| v <= 0 }
+    optimal_value = if arr_branched_zero.first.present?
+                      arr_branched_zero.first.max
+                    elsif arr_branched_zero.second.present?
+                      arr_branched_zero.second.min
+                    end
     cuisines.key(optimal_value)
   end
 
