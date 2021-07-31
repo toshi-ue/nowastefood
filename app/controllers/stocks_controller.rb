@@ -1,6 +1,5 @@
 class StocksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_stock, only: [:update, :edit, :destroy]
 
   def index
     @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).unused.order(rotted_at: 'ASC')
@@ -9,8 +8,6 @@ class StocksController < ApplicationController
     @css_name = ""
   end
 
-  def show; end
-
   def new
     @stock = Stock.new
     @rawmaterials = Rawmaterial.all
@@ -18,7 +15,7 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
-    @stock.store_default_values if params[:rawmaterial_id].present?
+    @stock.store_default_values if @stock.rawmaterial_id.present?
     if @stock.save
       redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加しました" }
     else
@@ -27,14 +24,8 @@ class StocksController < ApplicationController
     end
   end
 
-  def edit; end
-
-  def update
-    if @stock.update(stock_params)
-    end
-  end
-
   def destroy
+    @stock = Stock.find(params[:id])
     @stock.destroy
     redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name}を削除しました" }
   end
@@ -58,7 +49,7 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4)
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4).limit(10)
     respond_to do |format|
       format.json { render json: @rawmaterials }
     end
@@ -72,10 +63,6 @@ class StocksController < ApplicationController
   end
 
   private
-
-  def set_stock
-    @stock = Stock.find(params[:id])
-  end
 
   def stock_params
     params.require(:stock).permit(:quantity, :rawmaterial_id, :rotted_at, :consumed_at, :abandoned_at).merge(user_id: current_user.id)
