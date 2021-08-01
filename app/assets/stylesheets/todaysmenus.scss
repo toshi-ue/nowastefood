@@ -2,25 +2,24 @@
 @import "bootstrap/scss/_variables";
 @import "bootstrap/scss/mixins/_breakpoints";
 
-html{
+html {
   height: 100%;
 }
 
-body{
+body {
   height: 100%;
 }
-#index-todaysmenus{
-  table{
+
+#index-todaysmenus {
+  table {
     margin-top: 20px;
   }
-  .page-title{
-    font-size: 1.5rem;
-  }
-  .no-border-top{
+
+  .no-border-top {
     border-top: 0px none;
   }
 
-  input[type=radio]{
+  input[type=radio] {
     display: none;
   }
 
@@ -31,29 +30,30 @@ body{
   }
 
   @include media-breakpoint-down(md) {
-    .btn-serving-count{
+    .btn-serving-count {
       height: 120%;
     }
-    .btns-cuisine{
+
+    .btns-cuisine {
       padding-top: 0.8rem;
     }
-    .detail-cuisine{
+
+    .detail-cuisine {
       width: 70%;
     }
-    .img-cuisine{
+
+    .img-cuisine {
       width: 30%;
       padding: 0;
     }
-    .page-title {
-      font-size: 1rem;
-    }
+
     .search-btn {
       margin-top: 20vh;
     }
   }
 
   @include media-breakpoint-between(md, lg) {
-    .detail-cuisine{
+    .detail-cuisine {
       vertical-align: middle;
     }
   }
