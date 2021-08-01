@@ -2,9 +2,9 @@ class CookinghistorysController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    now = Time.zone.now
     @cuisine_ids_already_in = current_user.todaysmenus.search_in_today.pluck(:cuisine_id)
-    @cookinghistorys = current_user.todaysmenus.includes(:cuisine).where("created_at < ?", now.to_date).order(created_at: "DESC")
+    @cookinghistorys = current_user.todaysmenus.includes(:cuisine).cooked.order(created_at: "DESC")
+    @cookinghistorys = @cookinghistorys.page(params[:page]).per(20)
   end
 
   def add_to_todays_menu
@@ -20,6 +20,6 @@ class CookinghistorysController < ApplicationController
     now = Time.zone.now
     @todaysmenu = current_user.todaysmenus.find_by(cuisine_id: params[:cuisine_id], created_at: now.all_day)
     @todaysmenu.destroy
-    redirect_to cookinghistorys_path, flash: { notice: "#{@todaysmenu.cuisine.name} deleted." }
+    redirect_to cookinghistorys_path, flash: { notice: "#{@todaysmenu.cuisine.name} を削除しました" }
   end
 end
