@@ -13,28 +13,14 @@ RSpec.describe "Cookinghistorys", type: :request do
     before do
       @user.save!
       cuisine = create(:cuisine)
-      @todaysmenu_gt_5days1 = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.ago(5.days).to_date)
+      @todaysmenu = create(:todaysmenu, cuisine_id: cuisine.id, cooked_when: 1, user_id: @user.id, created_at: Time.zone.now)
     end
 
     it "indexページが表示されること" do
+      binding.pry
       get cookinghistorys_path
       expect(response.status).to eq 200
-      expect(response.body).to include @todaysmenu_yesterday.cuisine.name.to_s
-    end
-
-    # TODO: 作成していないレシピを表示させないようにする
-    # it "当日のtodaysmenuが表示されないこと" do
-    #   cuisine = create(:cuisine)
-    #   @todaysmenu_today = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.to_date)
-    #   get cookinghistorys_path
-    #   expect(response.status).to eq 200
-    #   expect(response.body).not_to include @todaysmenu_today.cuisine.name.to_s
-    # end
-
-    it "5日以上前のtodaysmenuが表示されること" do
-      get cookinghistorys_path
-      expect(response.status).to eq 200
-      expect(response.body).to include @todaysmenu_gt_5days1.cuisine.name.to_s
+      expect(response.body).to include @todaysmenu.cuisine.name.to_s
     end
   end
 

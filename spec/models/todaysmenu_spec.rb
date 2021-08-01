@@ -7,15 +7,6 @@ RSpec.describe Todaysmenu, type: :model do
     expect(todaysmenu).to be_valid
   end
 
-  it '同一のcuisine_id, user_idであれば登録できないこと' do
-    cuisine = create(:cuisine)
-    user = create(:user)
-    menu = create(:todaysmenu, cuisine_id: cuisine.id, user_id: user.id)
-    other_menu = build(:todaysmenu, cuisine_id: cuisine.id, user_id: user.id)
-    other_menu.valid?
-    expect(other_menu).to be_invalid
-  end
-
   describe "#create_hash_todaysmenus" do
     let(:user)        { create(:user) }
     let(:todaysmenu)  { create(:todaysmenu, cuisine_id: cuisine.id, serving_count: serving_count, user_id: user.id) }
