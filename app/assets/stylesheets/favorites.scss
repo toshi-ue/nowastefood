@@ -1,18 +1,17 @@
-html{
+html {
   height: 100%;
 }
 
-body{
+body {
   height: 100%;
 }
-#index-favorites{
-  .page-title{
-    font-size: 2rem;
-  }
-  .no-border-top{
+
+#index-favorites {
+  .no-border-top {
     border-top: 0px none;
   }
-  .no-favorites-description{
+
+  .no-favorites-description {
     font-size: 1.3rem;
   }
 }
