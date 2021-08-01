@@ -17,7 +17,6 @@ RSpec.describe "Cookinghistorys", type: :request do
     end
 
     it "indexページが表示されること" do
-      binding.pry
       get cookinghistorys_path
       expect(response.status).to eq 200
       expect(response.body).to include @todaysmenu.cuisine.name.to_s
