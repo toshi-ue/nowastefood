@@ -2,7 +2,7 @@ class Todaysmenu < ApplicationRecord
   enum cooked_when: { morning: 1, lunch: 2, dinner: 3 }
   belongs_to :cuisine
   belongs_to :user
-  validate :uniqueness_cuisine_id_per_user_on_the_day, on: :create
+  # validate :uniqueness_cuisine_id_per_user_on_the_day, on: :create
   validates :serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   scope :not_cooked, lambda {
@@ -15,16 +15,15 @@ class Todaysmenu < ApplicationRecord
 
   include CommonScope
 
-  def uniqueness_cuisine_id_per_user_on_the_day
-    todaysmenu = Todaysmenu.where(cuisine_id: self.cuisine_id, user_id: self.user_id).not_cooked
-    errors.add(:base, "すでに同じ料理が登録されています") if todaysmenu.exists?
-  end
+  # def uniqueness_cuisine_id_per_user_on_the_day
+  #   todaysmenu = Todaysmenu.where(cuisine_id: self.cuisine_id, user_id: self.user_id).not_cooked
+  #   errors.add(:base, "すでに同じ料理が登録されています") if todaysmenu.exists?
+  # end
 
   def self.create_hash_todaysmenus(todaysmenus)
     quantities = []
     todaysmenus.each do |tm|
       c = tm.cuisine
-      # binding.pry
       c.foodstuffs.each do |fs|
         quantities.push([fs.rawmaterial_id, Rational(fs.quantity) * tm.serving_count])
       end
