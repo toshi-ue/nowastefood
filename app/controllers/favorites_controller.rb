@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
   end
 
   def add_menu_on_the_day
-    @todaysmenus_ids = current_user.todaysmenus.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).pluck(:cuisine_id)
+    @todaysmenus_ids = current_user.todaysmenus.not_cooked.pluck(:cuisine_id)
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: params[:cuisine_id])
     if @todaysmenus_ids.include?(@todaysmenu.cuisine_id)
       redirect_to favorites_path, flash: { notice: "すでにTodayに追加されています" }
