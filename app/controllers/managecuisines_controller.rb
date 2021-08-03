@@ -6,6 +6,12 @@ class ManagecuisinesController < ApplicationController
     @cuisines = current_user.owner_cuisines
   end
 
+  def show
+    @cuisine = Cuisine.find(params[:id])
+    @foodstuffs = Foodstuff.includes(:rawmaterial, { rawmaterial: :unit }).where(cuisine_id: @cuisine.id)
+    @procedures = Procedure.where(cuisine_id: @cuisine.id)
+  end
+
   def new
     @cuisine = Cuisine.new
   end
