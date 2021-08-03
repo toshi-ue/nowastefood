@@ -23,6 +23,7 @@ class ManagecuisinesController < ApplicationController
     if @cuisine.save
       # TODO: managefoodstuffs#newへ遷移するようにする
       # redirect managecuisine_path(@cuisine),
+      redirect_to managecuisine_path(@cuisine), flash: { notice: "#{@cuisine.name}が作成されました" }
     else
       render 'new'
     end
@@ -34,6 +35,11 @@ class ManagecuisinesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @cuisine.destroy
+    redirect_to managecuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
   end
 
   private
