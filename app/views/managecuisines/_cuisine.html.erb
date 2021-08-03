@@ -11,9 +11,9 @@
     <div class="text-break align-middle d-none d-md-inline"><%= link_to cuisine.name, managecuisine_path(cuisine.id), class: 'text-reset' %></div>
     <div class="btns-cuisine mt-1 d-flex flex-row justify-content-end">
       <span>
-        <%= link_to edit_managecuisine_path(cuisine) do %>
+        <%= link_to managecuisine_path(cuisine.id) do %>
           <button class="btn-todaysmenu-delete btn btn-outline-secondary btn-delete-from-today" type="button">
-            <i class="fas fa-pen"></i>
+            <i class="far fa-eye"></i>
           </button>
         <% end %>
       </span>
