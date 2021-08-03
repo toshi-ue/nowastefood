@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_065917) do
+ActiveRecord::Schema.define(version: 2021_08_01_111512) do
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false, comment: "料理名"
     t.bigint "genre_id"
     t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
-    t.string "calories", comment: "摂取カロリー"
     t.integer "cooking_time", null: false, comment: "調理時間"
     t.string "description"
     t.string "main_image", null: false, comment: "メイン画像"
