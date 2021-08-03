@@ -1,16 +1,14 @@
 <%= javascript_pack_tag 'cuisines' %>
 <div class="content_wrapper container-fluid">
-  <%# by bss %>
   <div id="overview" class="mt-2">
     <div class="row">
       <div class="col">
-        <h2><%= @cuisine.name %></h2>
+        <div class="page-title"><%= @cuisine.name %></div>
       </div>
     </div>
     <div class="row no-gutters">
       <div class="col-12 col-md-6 d-xl-flex align-items-xl-center px-2 mt-2">
         <div class="justify-content-center align-items-center">
-          <%# <img src="" alt="" class="img-fluid"> %>
           <%= image_tag @cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid w-100', alt: "#{@cuisine.name}" %>
         </div>
       </div>

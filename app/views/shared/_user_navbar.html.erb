@@ -39,6 +39,8 @@
           <div class="dropdown-menu dropdown-menu-right">
             <% if user_signed_in? %>
               <%= link_to '設定', user_profile_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'あなたのレシピ', managecuisines_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'レシピを登録', new_managecuisine_path, class: 'dropdown-item text-center' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
             <% else %>
               <%= link_to 'ログイン',tops_login_which_path, class: 'dropdown-item' %>
@@ -69,6 +71,8 @@
       <li class="nav-item">
           <% if user_signed_in? %>
             <%= link_to '設定', user_profile_path, class: 'nav-link text-center' %>
+            <%= link_to 'あなたのレシピ', managecuisines_path, class: 'nav-link text-center' %>
+            <%= link_to 'レシピを登録', new_managecuisine_path, class: 'nav-link text-center' %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link text-center" %>
           <% else %>
             <%= link_to 'ログイン', tops_login_which_path, class: 'nav-link text-center' %>
