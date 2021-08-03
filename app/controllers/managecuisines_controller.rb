@@ -15,6 +15,9 @@ class ManagecuisinesController < ApplicationController
   def new
     @cuisine = Cuisine.new
   end
+
+  def edit; end
+
   def create
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
@@ -24,6 +27,15 @@ class ManagecuisinesController < ApplicationController
       render 'new'
     end
   end
+
+  def update
+    if @cuisine.update(cuisine_params)
+      redirect_to managecuisine_path(@cuisine), flash: { notice: "更新されました" }
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def set_cuisine
