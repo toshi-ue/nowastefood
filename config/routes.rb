@@ -90,6 +90,9 @@ Rails.application.routes.draw do
   # TODO: 原材料から探せるようにする
   # get 'rawmaterials/search'
   get 'tag_search', action: :search, controller: 'tags'
+  get 'search/foodcategory_search', to: 'search#foodcategory_search'
+  get 'search/rawmaterial_search', to: 'search#rawmaterial_search'
+  get 'search/unit_search', to: 'search#unit_search'
   get 'tops/about'
   get 'tops/index'
   get 'tops/login_which'
