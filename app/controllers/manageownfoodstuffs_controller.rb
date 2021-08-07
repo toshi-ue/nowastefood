@@ -20,6 +20,13 @@ class ManageownfoodstuffsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @foodstuff = Foodstuff.find(params[:id])
+    @foodstuff.destroy
+    redirect_to new_manageownfoodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "#{@foodstuff.rawmaterial.name} が削除されました" }
+  end
+
   private
 
   def foodstuff_params
