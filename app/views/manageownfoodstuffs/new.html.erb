@@ -1,0 +1,80 @@
+<%= javascript_pack_tag 'manageownfoodstuffs' %>
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2 text-center mt-3">
+        <div class="page-title m-0 d-inline">食材の追加</div>
+        <div>(<%= @cuisine.name %>)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= form_with(model: @foodstuff, url: manageownfoodstuffs_path, method: :post, local: true) do |form| %>
+            <%= render 'layouts/flash_message' %>
+            <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+            <%= render 'form', {form: form , cuisine: @cuisine} %>
+            <div class="col-10 offset-1">
+            <%= form.submit "追加する", class: 'btn btn-success btn-block' %>
+            </div>
+            <div class="col-10 offset-1 mt-2">
+            <%# TODO: リンクを変更する %>
+              <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @cuisine.id),  class: "btn btn-outline-secondary btn-block" %>
+            </div>
+        <% end %>
+        <!-- foodstuffs and procedure list -->
+        <div class="mt-2">
+          <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" role="tabpanel" id="tab1">
+            <% if @foodstuffs.present? %>
+              <table id="table-sortable-procedure" class="table table-bordered table-hover mt-3">
+                <tbody>
+                  <%= render partial: "foodstuff", collection: @foodstuffs, as: "foodstuff" %>
+                </tbody>
+              </table>
+            <% else %>
+              <div class="text-center mt-3">
+                <p>まだ登録がありません</p>
+              </div>
+            <% end %>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="tab2">
+              <div class="procedure-list">
+                <% @procedures.each_with_index do |pd, idx| %>
+                  <div class="row mt-3">
+                    <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
+                      <div class="foodstuff-number">
+                          <p><%= idx + 1 %>.</p>
+                      </div>
+                    </div>
+                    <div class="col-8 d-flex justify-content-start align-items-center">
+                      <div class="foodstuff-name">
+                          <p><%= pd.cooking_detail %></p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8 offset-2 col-md-4 offset-4 mt-3">
+         <%= link_to '戻る', 'javascript:history.back()', class: 'btn btn-outline-secondary btn-block' %>
+      </div>
+    </div>
+  </div>
+</div>
