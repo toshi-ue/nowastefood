@@ -51,81 +51,50 @@
         </div>
       </div>
     </div>
-    <div id="foodstuff-and-procedure" class="mt-2">
-      <div class="row">
-        <div class="col-md-10 offset-md-1">
-          <div class="mt-2">
-            <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
-              <li class="nav-item" role="presentation">
-                <a class="nav-link active" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" role="tabpanel" id="tab1">
-                <div class="foodstuff-list">
-                  <% if @foodstuffs.present? %>
-                    <% @foodstuffs.each_with_index do |fs, idx| %>
-                      <div class="row mt-3">
-                        <div class="col-2 offset-1 d-flex justify-content-center align-items-center">
-                          <div class="foodstuff-number">
-                              <p><%= idx + 1 %>.</p>
-                          </div>
-                        </div>
-                        <div class="col-4">
-                          <div class="foodstuff-name">
-                              <p><%= fs.rawmaterial.name %></p>
-                          </div>
-                        </div>
-                        <div class="col-4">
-                          <div class="foodstuff-quantity">
-                            <p><%= fs.quantity %><%= fs.rawmaterial.unit.name %></p>
-                          </div>
-                        </div>
-                      </div>
-                    <% end %>
-                  <% else %>
-                    <div class="row mt-3">
-                      <div class="col-12">
-                        <div class="text-center">登録がありません</div>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <!-- foodstuffs and procedure list -->
+        <div class="mt-2">
+          <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane" role="tabpanel" id="tab1">
+            <% if @foodstuffs.present? %>
+              <table id="table-sortable-foodstuff" class="table table-bordered table-hover mt-3">
+                <tbody>
+                  <%= render partial: "foodstuff", collection: @foodstuffs, as: "foodstuff" %>
+                </tbody>
+              </table>
+            <% else %>
+              <div class="text-center mt-3">
+                <p>まだ登録がありません</p>
               </div>
-              <div class="tab-pane" role="tabpanel" id="tab2">
-                <div class="procedure-list">
-                  <% if @procedures.present? %>
-                    <% @procedures.each_with_index do |pd, idx| %>
-                      <div class="row mt-3">
-                        <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
-                          <div class="foodstuff-number">
-                              <p><%= idx + 1 %>.</p>
-                          </div>
-                        </div>
-                        <div class="col-8 d-flex justify-content-start align-items-center">
-                          <div class="foodstuff-name">
-                              <p><%= pd.cooking_detail %></p>
-                          </div>
-                        </div>
-                      </div>
-                    <% end %>
-                  <% else %>
-                    <div class="row mt-3">
-                      <div class="col-12">
-                        <div class="text-center">登録がありません</div>
-                      </div>
-                    </div>
-                  <% end %>
+            <% end %>
+            </div>
+            <div class="tab-pane active" role="tabpanel" id="tab2">
+              <% if @procedures.present? %>
+              <table id="table-sortable-procedure" class="table table-bordered table-hover mt-3">
+                <tbody>
+                  <%= render partial: "procedure", collection: @procedures, as: "procedure" %>
+                </tbody>
+              </table>
+              <% else %>
+                <div class="text-center mt-3">
+                  <p>まだ登録がありません</p>
                 </div>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
-      </div>
     </div>
+    </div>
+
     <div class="row mt-3">
       <div class="col-12 col-md-4 offset-md-4">
         <%= link_to edit_managecuisine_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
