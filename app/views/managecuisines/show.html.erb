@@ -136,12 +136,9 @@
         <%= link_to new_manageownfoodstuff_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
           <i class="fas fa-pen"></i>&nbsp;食材を変更する
         <% end %>
-      <% if false %>
-          TODO: 手順変更へのリンクを作成する
-            <%= link_to edit_managecuisine_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
-              <i class="fas fa-pen"></i>&nbsp;手順を変更する
-            <% end %>
-      <% end %>
+        <%= link_to new_manageownprocedure_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+          <i class="fas fa-pen"></i>&nbsp;手順を変更する
+        <% end %>
       </div>
     </div>
   </div>
