@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index, :create, :destroy]
   resources :managecuisines
   resources :manageownfoodstuffs
+  resources :manageownprocedures
   resources :stocks, only: [:index, :new, :create, :destroy] do
     collection do
       get 'auto_today_create'
