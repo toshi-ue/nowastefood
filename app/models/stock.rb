@@ -38,7 +38,7 @@ class Stock < ApplicationRecord
 
       result = Rational(stock.quantity) - stocks_will_be_consumed[stock.rawmaterial_id]
       if result.positive?
-        stock.update_attribute(quantity: result)
+        stock.update_attribute(:quantity, result)
       else
         stock.delete
       end
