@@ -25,5 +25,5 @@
       <input type="radio" name="rough_quantity" id="asyoulike" value="お好みで">お好みで
     </div>
   </div>
-  <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, value: params[:cuisine_id] %>
+  <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, value: @cuisine.id %>
 </div>
