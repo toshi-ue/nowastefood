@@ -88,7 +88,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'home/index'
   # TODO: 原材料から探せるようにする
   # get 'rawmaterials/search'
   get 'tag_search', action: :search, controller: 'tags'
