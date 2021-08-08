@@ -1,5 +1,5 @@
 <div class="card-body">
-  <%= render 'shared/new_error_messages', {resource: cuisine} if cuisine.errors.any? %>
+  <%= render 'shared/error_messages', {resource: cuisine} if cuisine.errors.any? %>
   <div class="form-group">
     <span class="text-danger">※</span><%= form.label :name %>
     <%= form.text_area :name, id: :cuisine_name, autofocus: true, class: 'form-control' %>

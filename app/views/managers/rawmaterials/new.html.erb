@@ -25,7 +25,7 @@
         <div class="card">
           <%= form_with(model: @rawmaterial, url: managers_rawmaterials_path, local: true) do |form| %>
             <div class="card-body">
-              <%= render 'shared/new_error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
+              <%= render 'shared/error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
               <div class="form-group">
                 <%= form.label :name, class:'control-label' %>
                 <%= form.text_field :name, id: :rawmaterial_name, autofocus: true, class: 'form-control' %>
