@@ -88,7 +88,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'home/index'
   # TODO: 原材料から探せるようにする
   # get 'rawmaterials/search'
   get 'tag_search', action: :search, controller: 'tags'
@@ -97,15 +96,10 @@ Rails.application.routes.draw do
   get 'search/unit_search', to: 'search#unit_search'
   get 'tops/about'
   get 'tops/index'
-  get 'tops/login_which'
   get 'user/profile', to: 'users#show'
   put 'update_profile', to: 'users#update'
 
-  if Rails.env.development?
-    root to: 'home#index'
-  else
-    root to: 'tops#about'
-  end
+  root to: 'tops#about'
 
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

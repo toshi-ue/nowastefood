@@ -31,12 +31,12 @@
       <p>消費期限: <span id="expiry_period"></span></p>
       <small><strong>※ 消費期限の目安は冷蔵保存した場合の日数になります</strong></small>
     </div>
-    <%# user_id-ユーザーid %>
-    <%# form.hidden_field :user_id, value: current_user.id %>
     <div class="text-center mt-2">
       <%= form.submit class: 'btn btn-secondary' %>
     </div>
   <% end %>
   </div>
-  <%= render 'shared/back_previous' %>
+  <div class="my-2 border border-secondary">
+    <p><%= link_to "戻る", 'javascript:history.back()', class: 'btn btn-secondary' %></p>
+  </div>
 </div>
