@@ -107,17 +107,54 @@
     padding: 0.5rem;
   }
 
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: grey;
+    margin-top: 2rem;
+  }
+
+  .swiper-button-next:after {
+    margin-right: -2rem;
+  }
+
+  .swiper-button-prev:after {
+    margin-left: -2rem;
+  }
+
   @include media-breakpoint-between(md, lg) {
     main {
       margin: 0 1rem;
     }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      margin-top: 5rem;
+    }
+
+    .swiper-button-next:after {
+      margin-right: -2rem;
+    }
+
+    .swiper-button-prev:after {
+      margin-left: -2rem;
+    }
   }
 
-  @include media-breakpoint-up(lg) {}
-}
+  @include media-breakpoint-up(lg) {
 
-#login_which-tops {
-  .nav-link {
-    color: #495057;
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      margin-top: 7rem;
+    }
+
+    .swiper-button-next:after {
+      margin-right: -2rem;
+    }
+
+    .swiper-button-prev:after {
+      margin-left: -2rem;
+    }
   }
 }
