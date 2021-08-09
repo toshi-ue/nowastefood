@@ -94,12 +94,12 @@ Rails.application.routes.draw do
   get 'search/foodcategory_search', to: 'search#foodcategory_search'
   get 'search/rawmaterial_search', to: 'search#rawmaterial_search'
   get 'search/unit_search', to: 'search#unit_search'
-  get 'tops/about'
-  get 'tops/index'
+  get '/about', to: 'tops#about'
+  # get 'tops/index'
   get 'user/profile', to: 'users#show'
   put 'update_profile', to: 'users#update'
 
-  root to: 'tops#about'
+  root to: 'tops#index'
 
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
