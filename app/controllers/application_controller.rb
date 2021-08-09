@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   before_action :set_app_name
   before_action :set_search_query
+  before_action :store_user_location!, if: :storable_location?
 
   def set_app_name
     @appname = "Coome"
@@ -21,5 +22,13 @@ class ApplicationController < ActionController::Base
       @search = Cuisine.none.ransack(search_params)
       @search_word = nil
     end
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
   end
 end
