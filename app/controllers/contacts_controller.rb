@@ -1,6 +1,10 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    @contact = Contact.find(params[:id])
+  end
+
   def new
     @contact = Contact.new
   end
@@ -8,7 +12,8 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      redirect_to new_contact_path, flash: { notice: "お問い合わせ内容が送信されました" }
+      ContactMailer.send_mail(@contact).deliver
+      redirect_to contact_path(@contact.id), flash: { notice: "お問い合わせ内容が送信されました" }
     else
       render 'new'
     end
