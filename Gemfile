@@ -29,7 +29,7 @@ gem 'ransack'
 gem 'sassc-rails'
 gem 'seed-fu'
 gem 'uglifier'
-gem 'webpacker'
+gem 'webpacker', '< 6.0.0'
 
 group :development, :test do
   gem 'awesome_print'
