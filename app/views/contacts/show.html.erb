@@ -1,0 +1,26 @@
+<%= javascript_pack_tag 'contacts' %>
+<div class="row">
+  <div class="col-10 offset-1 col-md-6 offset-md-3 mt-2">
+    <div>
+      <%= render "shared/flash_messages" %>
+      <%= render 'shared/error_messages', {resource: @contact} if @contact.errors.any? %>
+    </div>
+    <div class="page-title">送信内容</div>
+    <hr />
+    <p>
+      【種別】<br/>
+      <%= @contact.category_i18n %><br/>
+    </p>
+    <hr />
+    <p>
+      【用件】<br/>
+      <%= @contact.subject %><br/>
+    </p>
+    <hr />
+    <p>
+      【お問い合わせ内容】<br/>
+      <%= @contact.message %>
+    </p>
+    <hr />
+  </div>
+</div>

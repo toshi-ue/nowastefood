@@ -71,6 +71,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :contacts, only: [:show, :new, :create]
   resources :favorites, only: [:index, :create, :destroy]
   resources :managecuisines
   resources :manageownfoodstuffs
