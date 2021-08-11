@@ -1,8 +1,8 @@
 <div class="jumbotron d-flex justify-content-center align-items-center" id="promotion">
   <div>
-    <h1 class="text-center text-white">Coome</h1>
+    <h1 class="text-center text-white"><%= @appname %></h1>
     <p class="text-center text-white app-description">make Cooking Menu Easier</p>
-    <p class="text-center text-white app-description">今日は4人分だから...?<br>冷蔵庫の中に何が入ってたっけ?<br>何を買わなきゃいけないの?<br>そんな悩みがなくなるアプリです<br>
+    <p class="text-center text-white app-description">買った食材を余らせていつもダメにしてしまう...<br>そんな悩みがなくなるアプリです<br>
     <p class="text-center">
       <%= link_to  "試してみる", root_path, class: "btn btn-success btn-lg mb-5", role: "button" %>
   </div>
@@ -10,21 +10,21 @@
 <div class="features-clean">
   <div class="container">
     <div class="intro">
-      <h2 class="text-center">あなたは作りたいものを<br>選ぶだけ</h2>
+      <h2 class="text-center">アプリがレシピを使い切るレシピを選んでくれます</h2>
       <p class="text-center">手順はたったの 3 ステップ</p>
     </div>
     <div class="row features">
-      <div class="col-sm-6 col-lg-4 item"><i class="fa fa-search icon"></i>
-        <h3 class="name">レシピを画像で、材料で探す</h3>
-        <p class="description">今日作りたい料理を探します。<br>最小単位の1人前でレシピがさくせいしてあり、量の変更もボタン1つで簡単です。</p>
+      <div class="col-sm-6 col-lg-4 item"><i class="fa fa-plus icon"></i>
+        <h3 class="name">買ってきた食材を登録する</h3>
+        <p class="description">買ってきた食材をStockページ(<i class="fas fa-box"></i>)で登録します。<br/>登録した日をもとに消費期限を表示してくれます。<br/>(デフォルトの人数変更は、設定 → ユーザー情報の 「提供人数」で変更できます)</p>
       </div>
       <div class="col-sm-6 col-lg-4 item"><i class="fa fa-plus icon"></i>
-        <h3 class="name">レシピをTodayに追加する</h3>
-        <p class="description">料理は1品だけでは足りない場合があります。<br>作りたいレシピがあればどんどんTodayに追加しましょう。</p>
+        <h3 class="name">エコ機能ボタンをクリックする</h3>
+        <p class="description">消費したい食材の項目のエコ機能ボタン(<%= image_tag 'leaf_16_png', size: '16x16' %>)をクリックしましょう。<br>自動で消費してくれるレシピを今日の献立(<i class="fa fa-plus"></i>Todaysmenu)に追加してくれます。</p>
       </div>
-      <div class="col-sm-6 col-lg-4 item"><i class="fa fa-list-ol icon"></i>
-        <h3 class="name">Todayから買い物リストを追加する</h3>
-        <p class="description">Todayに追加された料理をもとに食材の買い物リストを自動生成してくれます。<br>すでにあるものと合算して作成してくれるためロスが少なくなります。</p>
+      <div class="col-sm-6 col-lg-4 item"><i class="fa fa-thumbs-up icon"></i>
+        <h3 class="name">完了!!</h3>
+        <p class="description">Todaysmenuの完了ボタンをクリックすると、消費した食材が削除もしくは減少します。使用したレシピはCookinghistory(<i class="fas fa-history"></i>)から確認できます。</p>
       </div>
     </div>
   </div>
@@ -35,10 +35,6 @@
       <h2 class="text-center">その他の機能</h2>
     </div>
     <div class="row features">
-      <div class="col-sm-6 col-lg-4 item"><i class="fa fa-search icon"></i>
-        <h3 class="name"><strong>すでにあるものも登録できます</strong></h3>
-        <p class="description">もちろんすでに家にある食材も登録できます。</p>
-      </div>
       <div class="col-sm-6 col-lg-4 item"><i class="fas fa-egg icon"></i>
         <h3 class="name">あなたの料理レシピも登録できます</h3>
         <p class="description">あなただけのオリジナルの料理も登録、投稿することができます。<br>ぜひ試してみてください</p>

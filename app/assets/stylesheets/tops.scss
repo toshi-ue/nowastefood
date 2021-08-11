@@ -4,14 +4,11 @@
 @import 'swiper/css/swiper';
 
 #about-tops {
-  .text-right.more-cuisine {
-    height: 100%;
-  }
+
 
   #promotion {
     background-image: image-url("about_top_image.jpg");
     background-size: cover;
-    height: 100vh;
   }
 
   h1 {
@@ -26,6 +23,14 @@
     color: #313437;
     background-color: #fff;
     padding-bottom: 30px;
+  }
+
+  .jumbotron {
+    border-radius: 0rem;
+  }
+
+  .text-right.more-cuisine {
+    height: 100%;
   }
 
   @media (max-width:767px) {
