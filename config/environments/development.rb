@@ -36,17 +36,17 @@ Rails.application.configure do
   config.assets.quiet = true
   config.sass.inline_source_maps = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :letter_opener_web
+  # config.action_mailer.delivery_method = :letter_opener_web
   # TODO: gmailで確認する
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #     port: 587,
-  #     address: 'smtp.gmail.com',
-  #     domain: 'smtp.gmail.com',
-  #     user_name: ENV['SMTP_USERNAME'],
-  #     password: ENV['SMTP_PASSWORD'],
-  #     enable_starttls_auto: true
-  # }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      port: 587,
+      address: 'smtp.gmail.com',
+      domain: 'smtp.gmail.com',
+      user_name: ENV['SMTP_USERNAME'],
+      password: ENV['SMTP_PASSWORD'],
+      enable_starttls_auto: true
+  }
 
 
   config.web_console.allowed_ips = %w[0.0.0.0/0 127.0.0.1 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16]
