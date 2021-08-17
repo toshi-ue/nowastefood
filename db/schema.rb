@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_213946) do
+ActiveRecord::Schema.define(version: 2021_08_17_052206) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_213946) do
   create_table "rawmaterials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "原材料名"
     t.string "hiragana"
+    t.bigint "user_id"
     t.bigint "unit_id"
     t.bigint "foodcategory_id"
     t.integer "expiry_period", default: 1, null: false
@@ -119,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_213946) do
     t.index ["foodcategory_id"], name: "index_rawmaterials_on_foodcategory_id"
     t.index ["name"], name: "index_rawmaterials_on_name", unique: true
     t.index ["unit_id"], name: "index_rawmaterials_on_unit_id"
+    t.index ["user_id"], name: "index_rawmaterials_on_user_id"
   end
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -215,6 +217,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_213946) do
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
   add_foreign_key "rawmaterials", "units"
+  add_foreign_key "rawmaterials", "users"
   add_foreign_key "stocks", "rawmaterials"
   add_foreign_key "stocks", "users"
   add_foreign_key "todaysmenus", "cuisines"
