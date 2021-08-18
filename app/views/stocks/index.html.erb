@@ -1,35 +1,53 @@
 <div class="content_wrapper">
-  <%= render 'shared/flash_messages' %>
-  <div id="heading" class="row my-2 mx-2">
-    <div class="col-10 offset-1 col-lg-6">
-      <h1 class="text-center text-lg-left">家にある食材</h1>
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3 mt-2">
+      <%= render "shared/flash_messages" %>
     </div>
-    <div id="newStockBtn" class="col-10 offset-1 col-lg-3 offset-lg-3">
-      <div class="text-center text-lg-right">
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-3">
+      <div class="page-title text-center">家にある食材</div>
+    </div>
+    <div class="col-10 offset-1 col-lg-6 offset-lg-3 mt-2">
+      <div class="text-center">
         <%= link_to new_stock_path do %>
           <button class="btn btn-success" type="button">食材を追加する</button>
         <% end %>
       </div>
-
     </div>
   </div>
+
   <% if @stocks.present? %>
-    <div class="col-10 offset-1 col-lg-12 offset-lg-0">
-      <%= render 'stock_list' %>
+  <div class="row">
+    <div class="col-12 offset-0 col-md-10 offset-md-1 col-lg-6 offset-lg-3 mt-2">
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="align-middle text-center">食材<br/>(数量)</th>
+          <th class="align-middle text-center">消費期限<br>(購入日)</th>
+          <th class="align-middle"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "stock", collection: @stocks, as: "stock" %>
+      </tbody>
+    </table>
     </div>
+  </div>
   <% else %>
-    <p class="text-center">
+    <p class="text-center mt-2">
       まだ登録がありません
     </p>
   <% end %>
-  <div class="text-center">
-    <% unless @stocks_not_plan_to_consume.empty? %>
-      <%= link_to 'Todayをエコ昨日で自動生成', auto_today_create_stocks_path(stock_should_consumed: @stocks_not_plan_to_consume.first), class: "btn btn-success" %>
-    <% end %>
-  </div>
 
-  <br><br>
-  @stocks_not_plan_to_consume:<br>
-  <%= @stocks_not_plan_to_consume %>
-  <br><br>
+  <div class="row">
+    <div class="col-12">
+      <div>
+        <p>
+        rawmaterials_and_quantity_will_be_consumed:
+        </p>
+        <%= @rawmaterials_and_quantity_will_be_consumed %>
+      </div>
+    </div>
+  </div>
 </div>

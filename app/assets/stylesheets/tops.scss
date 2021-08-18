@@ -1,19 +1,14 @@
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+@import "bootstrap/scss/mixins/_breakpoints";
 @import 'swiper/css/swiper';
 
-// HACK: swiperの矢印を変更する
-// $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
-// @import "@fortawesome/fontawesome-free/scss/regular.scss";
-// @import "@fortawesome/fontawesome-free/scss/solid.scss";
-// @import "@fortawesome/fontawesome-free/scss/brands.css";
 #about-tops {
-  .text-right.more-cuisine {
-    height: 100%;
-  }
+
 
   #promotion {
     background-image: image-url("about_top_image.jpg");
     background-size: cover;
-    height: 100vh;
   }
 
   h1 {
@@ -28,6 +23,14 @@
     color: #313437;
     background-color: #fff;
     padding-bottom: 30px;
+  }
+
+  .jumbotron {
+    border-radius: 0rem;
+  }
+
+  .text-right.more-cuisine {
+    height: 100%;
   }
 
   @media (max-width:767px) {
@@ -101,18 +104,62 @@
 }
 
 #index-tops {
-  .swiper-container {
-    width: 100%;
-    max-width: 980px;
+  .btns-today {
+    margin-left: 0.5rem;
   }
 
-  a {
-    text-decoration: none;
+  .card-body {
+    padding: 0.5rem;
   }
-}
 
-#login_which-tops {
-  .nav-link {
-    color: #495057;
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: grey;
+    margin-top: 2rem;
+  }
+
+  .swiper-button-next:after {
+    margin-right: -2rem;
+  }
+
+  .swiper-button-prev:after {
+    margin-left: -2rem;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    main {
+      margin: 0 1rem;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      margin-top: 5rem;
+    }
+
+    .swiper-button-next:after {
+      margin-right: -2rem;
+    }
+
+    .swiper-button-prev:after {
+      margin-left: -2rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      margin-top: 7rem;
+    }
+
+    .swiper-button-next:after {
+      margin-right: -2rem;
+    }
+
+    .swiper-button-prev:after {
+      margin-left: -2rem;
+    }
   }
 }

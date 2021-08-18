@@ -71,6 +71,13 @@ class Managers::FoodstuffsController < ApplicationController
     end
   end
 
+  def search_foodcategory
+    foodcategory_id = Rawmaterial.find_by(id: params[:rm_id]).foodcategory_id
+    respond_to do |format|
+      format.json { render json: foodcategory_id }
+    end
+  end
+
   private
 
   def set_foodstuff

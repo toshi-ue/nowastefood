@@ -10,13 +10,6 @@
     <% end %>
     <%= link_to managers_foodstuff_path(foodstuff.id),
       class: "btn btn-default",
-      data: {
-      confirm: "<i class='fas fa-exclamation-circle'></i>
-        本当に「<strong>#{foodstuff.rawmaterial.name}</strong>」を削除しますか?",
-        cancel: "キャンセル",
-        commit: "削除",
-        title: "削除確認"
-      },
       method: :delete do %>
       <i class="far fa-trash-alt"></i>
     <% end %>

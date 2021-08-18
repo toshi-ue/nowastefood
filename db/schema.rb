@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_094359) do
+ActiveRecord::Schema.define(version: 2021_08_17_052206) do
+
+  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "category", default: 0, null: false
+    t.string "user_name"
+    t.string "subject"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name", null: false, comment: "料理名"
     t.bigint "genre_id"
     t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
-    t.string "calories", comment: "摂取カロリー"
     t.integer "cooking_time", null: false, comment: "調理時間"
     t.string "description"
     t.string "main_image", null: false, comment: "メイン画像"
@@ -24,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_094359) do
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_cuisines_on_genre_id"
     t.index ["name"], name: "index_cuisines_on_name", unique: true
+    t.index ["user_id"], name: "index_cuisines_on_user_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -100,20 +110,26 @@ ActiveRecord::Schema.define(version: 2021_02_10_094359) do
   create_table "rawmaterials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false, comment: "原材料名"
     t.string "hiragana"
+    t.bigint "user_id"
     t.bigint "unit_id"
     t.bigint "foodcategory_id"
+    t.integer "expiry_period", default: 1, null: false
     t.integer "foodstuffs_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["foodcategory_id"], name: "index_rawmaterials_on_foodcategory_id"
     t.index ["name"], name: "index_rawmaterials_on_name", unique: true
     t.index ["unit_id"], name: "index_rawmaterials_on_unit_id"
+    t.index ["user_id"], name: "index_rawmaterials_on_user_id"
   end
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "quantity", null: false
     t.bigint "rawmaterial_id"
     t.bigint "user_id"
+    t.date "rotted_at", default: "2021-07-16", null: false
+    t.datetime "consumed_at"
+    t.boolean "abandoned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rawmaterial_id"], name: "index_stocks_on_rawmaterial_id"
@@ -151,6 +167,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_094359) do
     t.bigint "cuisine_id"
     t.bigint "user_id"
     t.integer "serving_count", default: 1, null: false
+    t.integer "cooked_when"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cuisine_id"], name: "index_todaysmenus_on_cuisine_id"
@@ -196,9 +213,11 @@ ActiveRecord::Schema.define(version: 2021_02_10_094359) do
   end
 
   add_foreign_key "cuisines", "genres"
+  add_foreign_key "cuisines", "users"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
   add_foreign_key "rawmaterials", "units"
+  add_foreign_key "rawmaterials", "users"
   add_foreign_key "stocks", "rawmaterials"
   add_foreign_key "stocks", "users"
   add_foreign_key "todaysmenus", "cuisines"

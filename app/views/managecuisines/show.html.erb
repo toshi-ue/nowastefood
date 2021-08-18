@@ -1,0 +1,116 @@
+<%= javascript_pack_tag 'managecuisines' %>
+<div class="content_wrapper container-fluid">
+  <div id="overview" class="mt-2">
+    <div class="row">
+      <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <%= render "shared/flash_messages" %>
+        <div class="page-title text-center">レシピプレビュー</div>
+        <div class="page-title pl-2"><%= @cuisine.name %></div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-12 col-md-5 offset-md-1  col-lg-4 offset-lg-2 px-2 mt-2">
+        <div class="justify-content-center align-items-center">
+          <%= image_tag @cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid w-100', alt: "#{@cuisine.name}" %>
+        </div>
+      </div>
+      <div class="col-12 col-md-5 col-lg-4 px-2 mt-2">
+        <div>
+          <div class="row">
+            <div class="col">
+              <div id="cooking_time">
+                <p>料理時間: 約<%= @cuisine.cooking_time %>分</p>
+              </div>
+            </div>
+            <div class="col">
+              <div id="difficulty">
+                <p>難しさ:&nbsp;<span class="badge badge-light"><%= @cuisine.difficulty_i18n %></span></p>
+              </div>
+            </div>
+          </div>
+          <div id="cuisine-description">
+            <p><%= @cuisine.description %></p>
+          </div>
+          <%# TODO: ジャンル、タグ機能ができたら修正する %>
+          <div id="genre-and-tags">
+            <span class="badge badge-primary ml-1"><%= @cuisine.genre.name %></span>
+            <span class="badge badge-info ml-1">tag1</span>
+          </div>
+          <div class="btns row">
+            <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
+              <%= link_to cuisine_add_favorite_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block disabled', method: :post, remote: true, aria: {disabled: true} do %>
+                <i class="far fa-bookmark"></i>&nbsp;Favorite
+              <% end %>
+            </div>
+            <div id="btn-today-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
+              <%= link_to cuisine_add_menu_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block disabled', method: :post, remote: true, aria: {disabled: true} do %>
+                  <i class="fas fa-plus"></i>&nbsp;Today
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <!-- foodstuffs and procedure list -->
+        <div class="mt-2">
+          <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane" role="tabpanel" id="tab1">
+            <% if @foodstuffs.present? %>
+              <table id="table-sortable-foodstuff" class="table table-bordered table-hover mt-3">
+                <tbody>
+                  <%= render partial: "foodstuff", collection: @foodstuffs, as: "foodstuff" %>
+                </tbody>
+              </table>
+            <% else %>
+              <div class="text-center mt-3">
+                <p>まだ登録がありません</p>
+              </div>
+            <% end %>
+            </div>
+            <div class="tab-pane active" role="tabpanel" id="tab2">
+              <% if @procedures.present? %>
+              <table id="table-sortable-procedure" class="table table-bordered table-hover mt-3">
+                <tbody>
+                  <%= render partial: "procedure", collection: @procedures, as: "procedure" %>
+                </tbody>
+              </table>
+              <% else %>
+                <div class="text-center mt-3">
+                  <p>まだ登録がありません</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-4 offset-md-4">
+        <%= link_to edit_managecuisine_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+          <i class="fas fa-pen"></i>&nbsp;レシピを変更する
+        <% end %>
+      </div>
+      <div class="col-12 col-md-4 offset-md-4 mt-2">
+        <%= link_to new_manageownfoodstuff_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+          <i class="fas fa-pen"></i>&nbsp;食材を変更する
+        <% end %>
+        <%= link_to new_manageownprocedure_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+          <i class="fas fa-pen"></i>&nbsp;手順を変更する
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -36,8 +36,7 @@
           <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, method: :post, local: true) do |form| %>
             <div class="card-body">
               <%= render 'layouts/flash_message' %>
-              <%= render 'layouts/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
-              <%# HACK: 書き方を確認(怪しい) %>
+              <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
               <%= render 'form', {form: form , cuisine: @cuisine} %>
             </div>
             <div class="card-footer">

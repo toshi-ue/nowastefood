@@ -1,16 +1,15 @@
 <%= javascript_pack_tag 'cuisines' %>
 <div class="content_wrapper container-fluid">
-  <%# by bss %>
   <div id="overview" class="mt-2">
     <div class="row">
       <div class="col">
-        <h2><%= @cuisine.name %></h2>
+        <%= render "shared/flash_messages" %>
+        <div class="page-title"><%= @cuisine.name %></div>
       </div>
     </div>
     <div class="row no-gutters">
       <div class="col-12 col-md-6 d-xl-flex align-items-xl-center px-2 mt-2">
         <div class="justify-content-center align-items-center">
-          <%# <img src="" alt="" class="img-fluid"> %>
           <%= image_tag @cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid w-100', alt: "#{@cuisine.name}" %>
         </div>
       </div>
@@ -36,18 +35,12 @@
             <span class="badge badge-primary ml-1">Genre</span>
             <span class="badge badge-info ml-1">tag1</span>
           </div>
-          <div class="row">
-            <div id="btn-favorite-<%= @cuisine.id %>" class="col-12 col-sm-4 mt-2 text-center">
+          <div class="btns row">
+            <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
             <%= render partial: 'favorite', locals: {cuisine: @cuisine} %>
             </div>
-            <div id="btn-today" class="col-12 col-sm-4 mt-2 text-center">
+            <div id="btn-today-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
             <%= render partial: 'today', locals: {cuisine: @cuisine} %>
-            </div>
-            <div class="col-12 col-sm-4 mt-2 text-center">
-              <button class="btn btn-outline-secondary btn-block" type="button">
-                <i class="fas fa-share"></i><br>
-                share
-              </button>
             </div>
           </div>
         </div>

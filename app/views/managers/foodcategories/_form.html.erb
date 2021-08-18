@@ -1,6 +1,6 @@
 <div class="card-body">
   <%= render 'layouts/flash_message' %>
-  <%= render 'layouts/error_messages', {resource: foodcategory} if foodcategory.errors.any? %>
+  <%= render 'shared/error_messages', {resource: foodcategory} if foodcategory.errors.any? %>
 
   <div class="form-group">
     <span class="text-danger">※</span><%= form.label :name %>

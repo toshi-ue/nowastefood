@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         put :sort
       end
       collection do
+        get 'search_foodcategory'
         get 'search_rawmaterial'
         get 'search_unit'
       end
@@ -57,7 +58,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'login_as_guest_user', to: 'users/sessions#login_as_guest_user'
   end
-  resource :password, only: [:edit, :update]
   resources :cookinghistorys, only: [:index]
   resources :cuisines, only: [:show] do
     delete :remove_favorite
@@ -67,33 +67,41 @@ Rails.application.routes.draw do
     post :add_menu
     post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
     post :add_to_todays_menu, action: :add_to_todays_menu, controller: 'cookinghistorys'
+    collection do
+      get :search
+    end
   end
+  resources :contacts, only: [:show, :new, :create]
   resources :favorites, only: [:index, :create, :destroy]
+  resources :managecuisines
+  resources :manageownfoodstuffs
+  resources :manageownprocedures
+  resources :userrawmaterials, only: [:index, :new, :create]
   resources :stocks, only: [:index, :new, :create, :destroy] do
     collection do
       get 'auto_today_create'
       get 'search_rawmaterial'
-      get 'unit_search'
+      get 'search_unit_and_expiry_period'
     end
   end
-  resources :todaysmenus, only: [:index, :update, :destroy]
+  resources :todaysmenus, only: [:index, :update, :destroy] do
+    collection do
+      post 'cooked_done'
+    end
+  end
 
-  get 'genres/search'
-  get 'home/index'
   # TODO: 原材料から探せるようにする
   # get 'rawmaterials/search'
   get 'tag_search', action: :search, controller: 'tags'
-  get 'tops/about'
-  get 'tops/index'
-  get 'tops/login_which'
+  get 'search/foodcategory_search', to: 'search#foodcategory_search'
+  get 'search/rawmaterial_search', to: 'search#rawmaterial_search'
+  get 'search/unit_search', to: 'search#unit_search'
+  get '/about', to: 'tops#about'
+  # get 'tops/index'
   get 'user/profile', to: 'users#show'
   put 'update_profile', to: 'users#update'
 
-  if Rails.env.development?
-    root to: 'home#index'
-  else
-    root to: 'tops#about'
-  end
+  root to: 'tops#index'
 
   # letter_opener_web
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

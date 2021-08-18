@@ -24,8 +24,8 @@ $(function () {
     theme: 'bootstrap4',
   })
 
-  //   search unit_name
   $(".select_foodstuff").on('select2:select', function (e) {
+    //   search unit_name
     let rawmaterial_id = e.params.data.id
     $(".input-group-text").text("")
     $.ajax({
@@ -39,6 +39,27 @@ $(function () {
       console.log("could not get unit name.")
       console.log(error)
     })
+
+    const toggleTargetDom = $(".ambiguous-value")
+    console.log(toggleTargetDom)
+    $.ajax({
+      type: 'GET',
+      url: '/managers/foodstuffs/search_foodcategory',
+      data: { rm_id: rawmaterial_id },
+      dataType: 'json'
+    }).done(function (data) {
+      console.log(data)
+      console.log(typeof(data))
+      if (data == 4) {
+        toggleTargetDom.css('visibility', 'hidden')
+      }else{
+        toggleTargetDom.css('visibility', 'visible')
+      }
+    }).fail(function (error) {
+      console.log("could not get unit name.")
+      console.log(error)
+    })
+
   })
 
   let radio_buttons_rough_quantities = $('input[name="rough_quantity"]')

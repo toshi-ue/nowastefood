@@ -1,20 +1,14 @@
 class TopsController < ApplicationController
   def index
     @japanese_style_cuisines = Cuisine.where(genre_id: 1).limit(5)
-    @western_style_cuisines = Cuisine.where(genre_id: 2).limit(4)
-    @chinese_style_cuisines = Cuisine.where(genre_id: 3).limit(4)
+    @western_style_cuisines = Cuisine.where(genre_id: 2).limit(5)
+    @chinese_style_cuisines = Cuisine.where(genre_id: 3).limit(5)
     @genres = Genre.all
     @tags = ActsAsTaggableOn::Tag.all
+    # binding.pry
   end
 
-  # TODO: 検索機能を実装
-  def search
+  def about; end
 
-  end
-
-  def about
-  end
-
-  def login_which
-  end
+  def login_which; end
 end

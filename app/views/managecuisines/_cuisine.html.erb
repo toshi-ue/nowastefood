@@ -1,0 +1,29 @@
+<tr>
+  <td class="img-cuisine text-center align-middle">
+    <%= link_to managecuisine_path(cuisine.id) do %>
+    <%= image_tag cuisine.main_image.url, class: 'cuisine-img',alt: "#{cuisine.name}" %>
+    <% end %>
+  </td>
+  <td class="detail-cuisine">
+    <div class="text-break d-md-none">
+    <%= link_to cuisine.name, managecuisine_path(cuisine.id), class: 'text-reset' %>
+    </div>
+    <div class="text-break align-middle d-none d-md-inline"><%= link_to cuisine.name, managecuisine_path(cuisine.id), class: 'text-reset' %></div>
+    <div class="btns-cuisine mt-1 d-flex flex-row justify-content-end">
+      <span>
+        <%= link_to managecuisine_path(cuisine.id) do %>
+          <button class="btn-todaysmenu-delete btn btn-outline-secondary btn-delete-from-today" type="button">
+            <i class="far fa-eye"></i>
+          </button>
+        <% end %>
+      </span>
+      <span class="ml-2">
+        <%= link_to managecuisine_path(cuisine), method: :delete do %>
+          <button class="btn-todaysmenu-delete btn btn-outline-secondary btn-delete-from-today" type="button">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        <% end %>
+      </span>
+    </div>
+  </td>
+</tr>

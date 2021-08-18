@@ -7,6 +7,10 @@ ja:
       manager:
         email: メールアドレス
         password: パスワード
+      contact:
+        category: 種別
+        subject: 用件
+        message: お問い合わせ内容
       cookedstate:
         name: 加工された状態の名前
         foodcategory_id: 食材区分
@@ -36,9 +40,9 @@ ja:
         name: 原材料名
         hiragana: ひらがな
         foodcategory: 食材区分
-        foodcategory_id: 食材区分id
+        foodcategory_id: 食材区分
         unit: 単位
-        unit_id: 単位id
+        unit_id: 単位
       rawmaterial/nutrient:
         lipid: 脂質
       stock:
@@ -49,6 +53,10 @@ ja:
         nickname: ニックネーム
         default_serving_count: 提供人数
   enums:
+    contact:
+      category:
+        error: エラー報告
+        request: 機能追加、改善リクエスト
     cuisine:
       difficulty:
         easy: 低

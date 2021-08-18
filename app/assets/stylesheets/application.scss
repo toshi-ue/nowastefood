@@ -2,21 +2,23 @@
 @import "bootstrap/scss/_functions";
 @import "bootstrap/scss/_variables";
 @import "bootstrap/scss/mixins/_breakpoints";
-@import "font-awesome-sprockets";
-@import "font-awesome";
 @import "jquery-ui/themes/base/sortable";
 @import "app_variables";
 // @import "managers/cuisines";
 // @import "managers/foodstuffs";
-// @import "cuisines";
+@import "cookinghistorys";
+@import "cuisines";
 // @import "favorites";
 // @import "genres";
-// @import "passwords";
-// @import "stocks";
+@import "managecuisines";
+@import "manageownprocedures";
+@import "stocks";
 // @import "tags";
 @import "tops";
-// @import "todaysmenus";
+@import "todaysmenus";
 // @import "users";
+// @import "userrawmaterials";
+@import "users/registrations";
 @import "users/sessions";
 
 $sm: 576px;
@@ -26,25 +28,25 @@ $lg: 992px;
 footer {
   margin-bottom: 2rem;
   margin-top: auto;
-
 }
 
 main {
   max-width: 980px;
   min-height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
-  @include media-breakpoint-down(md) {
-    margin: 0;
+  .alert {
+    ul {
+      list-style: none;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
   }
 
-  @include media-breakpoint-up(lg) {
-    width: $lg;
-    margin: 0 auto;
-  }
+  @include media-breakpoint-down(md) {}
+
+  @include media-breakpoint-between(md, lg) {}
+
+  @include media-breakpoint-up(lg) {}
 }
 
 #index-managers-foodcategories,
@@ -93,6 +95,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0;
 
   @include media-breakpoint-up(lg) {
     width: $lg;
@@ -107,6 +110,23 @@ main {
   height: 100px;
   width: 100px;
 }
+
+.navbar-toggler {
+  border: none;
+}
+
+.page-title {
+  font-size: 1.5rem;
+}
+
+.user-icon {
+  color: #EFEFEF;
+  padding: 0 auto;
+}
+
+@include media-breakpoint-between(md, lg) {}
+
+@include media-breakpoint-up(lg) {}
 
 // navbar
 $bgDefault : #00AA00;

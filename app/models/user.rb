@@ -4,11 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
   has_many :favorites, dependent: :destroy, inverse_of: :user
+  has_many :rawmaterials, dependent: :nullify
+  has_many :owner_cuisines, class_name: "Cuisine", dependent: :nullify
   has_many :todaysmenus, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :cuisines, through: :todaysmenus
   validates :nickname, length: { in: 1..30 }, if: -> { validation_context == :update_profile }
-  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: -> { validation_context == :update_profile }
+  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: lambda {
+                                                                                                                                          validation_context == :update_profile
+                                                                                                                                        }
   mount_uploader :profile_image, ProfileImageUploader
 
   def already_favorite?(cuisine)

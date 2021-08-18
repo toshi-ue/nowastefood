@@ -1,5 +1,49 @@
-#foodstuff-and-procedure{
-  #tab-foodstuff, #tab-procedure{
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+@import "bootstrap/scss/mixins/_breakpoints";
+
+#foodstuff-and-procedure {
+
+  #tab-foodstuff,
+  #tab-procedure {
     color: #495057;
   }
 }
+
+#search-cuisines {
+  .btns {
+    margin: 0.25rem 0;
+    padding: 0 3px;
+
+    .btns-favorite {
+      border-radius: 50%;
+    }
+  }
+
+  .card-body {
+    padding: 0.5rem;
+  }
+
+  .card-text {
+    min-height: 3rem;
+
+    .name-cuisine {
+      margin-bottom: 0;
+    }
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+
+  .search-word,
+  .result-count {
+    font-size: 1.3rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    border-radius: 0.2rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {}

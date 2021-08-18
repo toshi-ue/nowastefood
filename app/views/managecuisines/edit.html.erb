@@ -1,0 +1,18 @@
+<%= javascript_pack_tag 'managecuisines' %>
+<div class="row">
+  <div class="col-10 offset-1 mt-2">
+    <div class="page-title text-center">レシピ編集</div>
+  </div>
+  <div class="col-10 offset-1 col-md-6 offset-md-3">
+    <%= render "shared/flash_messages" %>
+    <%= render 'shared/error_messages', {resource: @cuisine} if @cuisine.errors.any? %>
+  </div>
+  <div class="col-10 offset-1 col-md-6 offset-md-3">
+    <%= form_with(model: @cuisine, url: managecuisine_path, local: true, method: :patch) do |form| %>
+      <%= render 'form', { form: form, cuisine: @cuisine } %>
+      <div class="text-center">
+        <%= form.submit class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<tr id="procedure_<%= procedure.id %>">
+  <td class="idx-procedure align-middle"><%= procedure_counter + 1 %></td>
+  <td class="cooking-details">
+    <div class="text-break"><%= procedure.cooking_detail %></div>
+    <div class="btns float-right">
+      <%= link_to edit_manageownprocedure_path(procedure.id),
+            class: "btn btn-default btn-outline-secondary",
+            local: true do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+      <%= link_to manageownprocedure_path(id: procedure.id),
+        class: "btn btn-default btn-outline-secondary mt-1 mt-md-0",
+        method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

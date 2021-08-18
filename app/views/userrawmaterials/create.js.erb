@@ -1,0 +1,7 @@
+<% if @rawmaterial.errors.any? %>
+$("#flash_messages").html("<%= j(render 'shared/error_messages', resource: @rawmaterial) %>")
+<% else %>
+$(".modal-body").html("<div class='alert alert-success' role='alert'><%= j(@rawmaterial.name) %>が登録されました</div>");
+$(".modal-footer").html("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>")
+$(".modal-footer").html("<div class='text-center'><button type='button' class='btn btn-outline-secondary' data-dismiss='modal'>閉じる</button></div>")
+<% end %>

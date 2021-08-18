@@ -15,7 +15,6 @@ $(function () {
       url: "/todaysmenus/" + updateID,
       type: "put",
       headers: {
-        // 'Content-Type': 'application/json',
         'X-CSRF-Token': csrfToken
       },
       data: {
@@ -31,5 +30,12 @@ $(function () {
     }).fail(function () {
       console.log("error")
     })
+  })
+
+  $('#cooked_when_1').parent("label").css("color", "#FFFFFF")
+  $('[name="cooked_when"]').change(function(){
+    console.log($('#cooked_when_' + this.value).parent("label").text())
+    $('[name="cooked_when"]').parent("label").css("color", "#E0A800")
+    $('#cooked_when_' + this.value).parent("label").css("color", "#FFFFFF")
   })
 });

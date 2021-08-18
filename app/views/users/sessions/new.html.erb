@@ -1,19 +1,21 @@
 <div class="d-flex align-items-center justify-content-center">
   <div class="col-sm-10 col-md-8 col-lg-8">
     <div id="user_login_form">
-      <h2 class="my-3 text-center">ログイン<br />(ユーザー)</h2>
+      <div class="page-title text-center">ログイン</div>
+      <p class="text-muted text-center mt-2">
+        <%= link_to 'ゲストユーザーでログイン', login_as_guest_user_path, method: :post, class: "btn btn-warning btn-block text-white" %>
+      </p>
+      <hr>
       <%= render "shared/flash_messages" %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
         </div>
-
         <div class="form-group">
           <%= f.label :password %><br />
           <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
         </div>
-
         <% if devise_mapping.rememberable? %>
           <div class="form-group">
             <%= f.check_box :remember_me %>
@@ -27,10 +29,6 @@
       <% end %>
       <p class="text-center mt-3">
         <%= link_to'アカウントを作成する', new_user_registration_path, class: "text-muted link_to_sign_up_user" %>
-      </p>
-      <hr>
-      <p class="text-muted text-center">
-        <%= link_to 'ゲストユーザーでログイン', login_as_guest_user_path, method: :post, class: "btn btn-warning btn-block text-white" %>
       </p>
     </div>
   </div>
