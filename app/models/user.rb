@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
   has_many :favorites, dependent: :destroy, inverse_of: :user
+  has_many :rawmaterials, dependent: :nullify
   has_many :owner_cuisines, class_name: "Cuisine", dependent: :nullify
   has_many :todaysmenus, dependent: :destroy
   has_many :stocks, dependent: :destroy

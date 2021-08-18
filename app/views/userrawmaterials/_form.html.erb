@@ -1,0 +1,36 @@
+
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="rawmaterialModalLabel">原材料の追加</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <%= form_with(model: @rawmaterial, url: userrawmaterials_path, remote: true, method: :post) do |form| %>
+    <div class="modal-body">
+        <div id="flash_messages"></div>
+        <%= render 'shared/error_messages', {resource: @rawmaterial} if @rawmaterial.errors.any? %>
+          <div class="form-group">
+            <%= form.label :name, class:'control-label' %>
+            <%= form.text_field :name, id: :rawmaterial_name, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :hiragana, class:'control-label' %>
+            <%= form.text_field :hiragana, id: :rawmaterial_hiragana, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :foodcategory_id, class:'control-label' %>
+            <%= form.collection_select(:foodcategory_id, Foodcategory.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+          </div>
+          <div class="form-group">
+            <%= form.label :unit_id, class:'control-label' %>
+            <%= form.collection_select(:unit_id, Unit.all, :id, :name, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
+          </div>
+    </div>
+    <div class="modal-footer">
+      <%= form.submit "登録する", class: 'btn btn-secondary' %>
+    </div>
+    <% end %>
+  </div>
+</div>
