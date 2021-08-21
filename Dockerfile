@@ -28,7 +28,7 @@ RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
-COPY . /$APP_DIR
+COPY . $APP_DIR
 
 RUN bundle config --local jobs 4
 RUN bundle config set --local path 'vendor/bundle'
