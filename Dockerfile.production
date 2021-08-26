@@ -5,6 +5,7 @@ FROM ruby:${RUBY_VERSION}
 
 ENV APP_DIR /webapp
 ENV BUNDLER_VERSION 2.1.4
+ENV DEBCONF_NOWARNINGS yes
 ENV LANG C.UTF-8
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
 EXPOSE 3000
@@ -31,4 +32,4 @@ COPY . $APP_DIR
 RUN bundle config --local jobs 4
 RUN bundle config set --local path 'vendor/bundle'
 
-RUN gem install bundler -v 2.1.4 && bundle install
+RUN gem install bundler -v ${BUNDLER_VERSION} && bundle install
