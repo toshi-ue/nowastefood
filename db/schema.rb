@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_052206) do
+ActiveRecord::Schema.define(version: 2021_08_26_133943) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -184,8 +184,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
     t.string "nickname"
     t.string "email", default: "", null: false
     t.integer "default_serving_count", default: 1
-    t.boolean "subscribed"
-    t.datetime "subscribed_at"
     t.string "profile_image"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
