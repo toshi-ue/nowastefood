@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_133943) do
+ActiveRecord::Schema.define(version: 2021_08_26_134949) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -129,7 +129,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_133943) do
     t.bigint "user_id"
     t.date "rotted_at", default: "2021-07-16", null: false
     t.datetime "consumed_at"
-    t.boolean "abandoned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rawmaterial_id"], name: "index_stocks_on_rawmaterial_id"
