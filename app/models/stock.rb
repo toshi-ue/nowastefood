@@ -5,9 +5,9 @@ class Stock < ApplicationRecord
   validates :quantity, presence: true, format: { with: %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}, message: "は数字(整数)で入力してください" }
   validates :user_id, presence: true
 
-  scope :unused, lambda {
-    not_abandoned.not_consumed
-  }
+  # scope :unused, lambda {
+  #   not_abandoned.not_consumed
+  # }
 
   scope :not_abandoned, lambda {
     where(abandoned_at: nil)
@@ -59,6 +59,5 @@ class Stock < ApplicationRecord
 
   def store_default_values
     self.rotted_at = Time.zone.now + Rawmaterial.find(self.rawmaterial_id).expiry_period.to_i.days
-    self.abandoned_at = nil
   end
 end
