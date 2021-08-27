@@ -59,6 +59,5 @@ class Stock < ApplicationRecord
 
   def store_default_values
     self.rotted_at = Time.zone.now + Rawmaterial.find(self.rawmaterial_id).expiry_period.to_i.days
-    self.abandoned_at = nil
   end
 end
