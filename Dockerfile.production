@@ -31,3 +31,5 @@ RUN bundle config --local jobs 4
 RUN bundle config set --local path 'vendor/bundle'
 
 RUN gem install bundler -v 2.1.4 && bundle install
+
+RUN mkdir -p /webapp/tmp/sockets
