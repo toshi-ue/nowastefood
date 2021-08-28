@@ -67,6 +67,10 @@ module.exports = function(api) {
           async: false
         }
       ],
+<<<<<<< HEAD
+=======
+      ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+>>>>>>> c366f4a488df4a8526f785c7d213a56b884d4e85
       ['@babel/plugin-proposal-private-methods', { loose: true }],
     ].filter(Boolean)
   }
