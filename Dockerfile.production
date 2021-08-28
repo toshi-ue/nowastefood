@@ -33,3 +33,4 @@ RUN bundle config set --local path 'vendor/bundle'
 RUN gem install bundler -v 2.1.4 && bundle install
 
 RUN mkdir -p /webapp/tmp/sockets
+RUN touch /webapp/tmp/sockets/puma.sock
