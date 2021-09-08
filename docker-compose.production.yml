@@ -43,8 +43,6 @@ services:
 volumes:
   bundle:
     driver: local
-  db-data:
-    driver: local
   node-modules:
     driver: local
   public-data:
