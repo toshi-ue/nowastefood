@@ -2,6 +2,7 @@ FROM ruby:2.7.3
 
 ENV DEBCONF_NOWARNINGS yes
 ENV LANG C.UTF-8
+ENV BUNDLE_WITHOUT development:test
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
 EXPOSE 3000
 
@@ -23,14 +24,16 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 
 RUN mkdir /webapp
 WORKDIR /webapp
-ADD Gemfile /webapp/Gemfile
-ADD Gemfile.lock /webapp/Gemfile.lock
+COPY Gemfile /webapp/Gemfile
+COPY Gemfile.lock /webapp/Gemfile.lock
+COPY package.json /webapp/package.json
+COPY yarn.lock /webapp/yarn.lock
 # COPY . /webapp
 
 RUN bundle config --local jobs 4
 # RUN bundle config set --local path 'vendor/bundle'
 
-RUN gem install bundler -v 2.1.4 && bundle install
+RUN gem install bundler --no-document -v 2.1.4 && bundle install && yarn install
 
 COPY . /webapp
 
