@@ -37,9 +37,10 @@ RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile \
 
 FROM base as main
 COPY . /webapp
-COPY --from=builder /webapp/vendor/bundle /webapp/vendor/bundle
+COPY --from=builder /webapp/node_modules /webapp/node_modules
 COPY --from=builder /webapp/public/assets /webapp/public/assets
 COPY --from=builder /webapp/public/packs /webapp/public/packs
+COPY --from=builder /webapp/vendor/bundle /webapp/vendor/bundle
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
