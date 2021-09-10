@@ -1,12 +1,16 @@
 FROM ruby:2.7.3 as base
 
+ENV APP_DIR /webapp
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
 ENV DEBCONF_NOWARNINGS yes
-ENV LANG C.UTF-8
 ENV BUNDLE_DEPLOYMENT true
+ENV BUNDLE_JOBS 4
 ENV BUNDLE_PATH vendor/bundle
 ENV BUNDLE_WITHOUT development:test
+ENV LANG C.UTF-8
+ENV MY_BUNDLER_VERSION 2.1.4
 ENV RAILS_ENV production
+WORKDIR /webapp
 
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -18,17 +22,15 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   vim \
   nodejs\
   yarn
-RUN gem install bundler --no-document -v 2.1.4
+RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION
 RUN mkdir /webapp
 WORKDIR /webapp
 
 
 FROM base as bundle
 
-RUN bundle config --local jobs 4
 COPY Gemfile Gemfile.lock /webapp/
-RUN bundle install --clean \
-  && rm -rf $BUNDLE_PATH/ruby/2.7.3/cache/*
+RUN bundle install --clean
 
 
 FROM base as npm

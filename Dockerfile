@@ -1,12 +1,19 @@
+
 ARG RUBY_VERSION=2.7.3
 FROM ruby:$RUBY_VERSION
 
 ENV APP_DIR /webapp
-ENV BUNDLER_VERSION 2.1.4
-ENV LANG C.UTF-8
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
+ENV BUNDLE_JOBS 4
+ENV BUNDLE_PATH vendor/bundle
+ENV LANG C.UTF-8
+ENV MY_BUNDLER_VERSION=2.1.4
+
+
 ENV DEBCONF_NOWARNINGS yes
-EXPOSE 3000
+
+RUN mkdir $APP_DIR
+WORKDIR $APP_DIR
 
 # Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
@@ -24,14 +31,15 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn
 
-RUN mkdir $APP_DIR
-WORKDIR $APP_DIR
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
+
+# COPY Gemfile Gemfile.lock /webapp/
+COPY Gemfile /webapp
+COPY package.json yarn.lock /webapp/
+RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION && \
+  bundle install
+RUN yarn install --production --frozen-lockfile && yarn cache clean
+
 COPY . $APP_DIR
 
-RUN bundle config --local jobs 4
-RUN bundle config set --local path 'vendor/bundle'
-
-RUN gem install bundler -v ${BUNDLER_VERSION} && \
-  bundle install
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
