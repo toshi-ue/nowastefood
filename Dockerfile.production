@@ -49,8 +49,9 @@ RUN yarn install --production --frozen-lockfile
 # COPY --from=npm /webapp/node_modules /webapp/node_modules
 # COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
 # RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile \
-#   && rm -rf tmp/cache/*
-CMD ["SECRET_KEY_BASE=dummy", "bin/rails", "assets:precompile"]
+# && rm -rf tmp/cache/*
+RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile
+# CMD ["SECRET_KEY_BASE=dummy", "bin/rails", "assets:precompile"]
 
 # FROM base as main
 
