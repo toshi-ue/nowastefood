@@ -23,24 +23,35 @@ RUN mkdir /webapp
 WORKDIR /webapp
 
 
-FROM base as builder
+FROM base as bundle
 
-COPY . /webapp
 RUN bundle config --local jobs 4
-RUN yarn install --production --frozen-lockfile \
-  && yarn cache clean \
-  && bundle install --clean \
+COPY Gemfile Gemfile.lock /webapp/
+RUN bundle install --clean \
   && rm -rf $BUNDLE_PATH/ruby/2.7.3/cache/*
+
+
+FROM base as npm
+
+COPY package.json yarn.lock /webapp/
+RUN yarn install --production --frozen-lockfile && yarn cache clean
+
+
+FROM base as assets
+COPY . /webapp
+COPY --from=npm /webapp/node_modules /webapp/node_modules
+COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
 RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile \
   && rm -rf tmp/cache/*
 
 
 FROM base as main
 COPY . /webapp
-COPY --from=builder /webapp/node_modules /webapp/node_modules
-COPY --from=builder /webapp/public/assets /webapp/public/assets
-COPY --from=builder /webapp/public/packs /webapp/public/packs
-COPY --from=builder /webapp/vendor/bundle /webapp/vendor/bundle
+COPY --from=npm /webapp/node_modules /webapp/node_modules
+COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
+COPY --from=assets /webapp/public/assets /webapp/public/assets
+COPY --from=assets /webapp/public/packs /webapp/public/packs
+
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
