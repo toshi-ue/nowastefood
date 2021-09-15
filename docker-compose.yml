@@ -15,11 +15,13 @@ services:
     tty: true
     stdin_open: true
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/webapp
-      - bundle:/usr/local/bundle
-      - node-modules:/webapp/node_modules
+      - bundle:/usr/local/bundle:cached
+      - node-modules:/webapp/node_modules:cached
+      - yarn-cache://usr/local/share/.cache/yarn/v6:cached
+
     ports:
       - "3000:3000"
       - "3035:3035"
@@ -34,4 +36,6 @@ volumes:
   bundle:
     driver: local
   node-modules:
+    driver: local
+  yarn-cache:
     driver: local

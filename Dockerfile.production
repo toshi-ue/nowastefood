@@ -10,8 +10,8 @@ ENV BUNDLE_WITHOUT development:test
 ENV LANG C.UTF-8
 ENV MY_BUNDLER_VERSION 2.1.4
 ENV RAILS_ENV production
-RUN mkdir $APP_DIR
-WORKDIR $APP_DIR
+RUN mkdir /webapp
+WORKDIR /webapp
 
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -25,8 +25,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   yarn
 
 # RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION
-COPY Gemfile Gemfile.lock $APP_DIR/
-COPY package.json yarn.lock $APP_DIR/
+COPY Gemfile Gemfile.lock /webapp/
+COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v 2.1.4 \
   && bundle install && yarn install --production --frozen-lockfile \
   && yarn cache clean
@@ -35,21 +35,21 @@ RUN gem install bundler --no-document -v 2.1.4 \
 # RUN rails assets:precompile
 # FROM base as bundle
 
-# COPY Gemfile Gemfile.lock $APP_DIR/
+# COPY Gemfile Gemfile.lock /webapp/
 # RUN bundle install
 
 
 # FROM base as npm
 
-# COPY package.json yarn.lock $APP_DIR
+# COPY package.json yarn.lock /webapp
 # RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 
 # FROM base as assets
 
-# COPY . $APP_DIR
-# COPY --from=npm $APP_DIR/node_modules $APP_DIR/node_modules
-# COPY --from=bundle $APP_DIR/vendor/bundle $APP_DIR/vendor/bundle
+# COPY . /webapp
+# COPY --from=npm /webapp/node_modules /webapp/node_modules
+# COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
 # RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile \
 # && rm -rf tmp/cache/*
 # RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile
@@ -57,11 +57,11 @@ RUN gem install bundler --no-document -v 2.1.4 \
 
 # FROM base as main
 
-COPY . $APP_DIR
-# COPY --from=npm $APP_DIR/node_modules $APP_DIR/node_modules
-# # COPY --from=bundle $APP_DIR/vendor/bundle $APP_DIR/vendor/bundle
-# COPY --from=assets $APP_DIR/public/assets $APP_DIR/public/assets
-# COPY --from=assets $APP_DIR/public/packs $APP_DIR/public/packs
+COPY . /webapp
+# COPY --from=npm /webapp/node_modules /webapp/node_modules
+# # COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
+# COPY --from=assets /webapp/public/assets /webapp/public/assets
+# COPY --from=assets /webapp/public/packs /webapp/public/packs
 
 
 EXPOSE 3000
