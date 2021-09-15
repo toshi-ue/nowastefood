@@ -23,6 +23,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   vim \
   nodejs\
   yarn
+
 # RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION
 COPY Gemfile Gemfile.lock $APP_DIR/
 COPY package.json yarn.lock $APP_DIR/
