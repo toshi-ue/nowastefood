@@ -10,5 +10,5 @@
     "editor.formatOnSave": true
   },
   "ruby.format": "rubocop",
-  "editor.formatOnSaveTimeout": 5000
+  "solargraph.commandPath": "/Users/yr/.rbenv/shims/solargraph",
 }

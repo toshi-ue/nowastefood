@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.production
-    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb -e production"
+    command: bundle exec puma -C config/puma.rb -e production
     environment:
       RAILS_ENV: production
       # [【Rails】assets:precompileは成功しているのにpumaを起動してもimageもjsもcssもNotFound（RAILS_SERVE_STATIC_FILESの話） - Qiita](https://qiita.com/at-946/items/b7d467bf25c40fcfca44)
@@ -21,7 +21,7 @@ services:
       - public-data:/webapp/public
       - tmp-data:/webapp/tmp
       - log-data:/webapp/log
-      - bundle:/usr/local/bundle
+      - bundle:/webapp/vendor/bundle
       - node-modules:/webapp/node_modules
     ports:
       - "3000:3000"
