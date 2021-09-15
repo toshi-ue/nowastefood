@@ -14,7 +14,13 @@ public/uploads
 vendor/bundle/
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+# /tmp/*
+/tmp/cache
+/tmp/letter_opener
+/tmp/pids
+/tmp/Gemfile.lock
+/tmp/restart.txt
+
 !/log/.keep
 !/tmp/.keep
 !/tmp/sockets/
