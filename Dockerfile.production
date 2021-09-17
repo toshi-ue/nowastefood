@@ -29,7 +29,10 @@ COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v 2.1.4 \
   && bundle install --clean && yarn install --production --frozen-lockfile \
   && yarn cache clean
+
+RUN chmod 755 ./mkdir_tmp.sh
 ENTRYPOINT [ "mkdir_tmp.sh" ]
+
 COPY . /webapp
 
 
