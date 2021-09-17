@@ -56,9 +56,9 @@ RUN gem install bundler --no-document -v 2.1.4 \
 # CMD ["SECRET_KEY_BASE=dummy", "bin/rails", "assets:precompile"]
 
 # FROM base as main
-ENTRYPOINT [ "mkdir_tmp.sh" ]
-COPY . /webapp
 
+COPY . /webapp
+ENTRYPOINT [ "mkdir_tmp.sh" ]
 # RUN mkdir /webapp/tmp && mkdir /webapp/tmp/sockets
 # COPY --from=npm /webapp/node_modules /webapp/node_modules
 # # COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
