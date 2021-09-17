@@ -24,46 +24,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   nodejs\
   yarn
 
-# RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION
 COPY Gemfile Gemfile.lock /webapp/
 COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v 2.1.4 \
   && bundle install --clean && yarn install --production --frozen-lockfile \
   && yarn cache clean
-# RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile \
-# && rm -rf tmp/cache/*
-# RUN rails assets:precompile
-# FROM base as bundle
-
-# COPY Gemfile Gemfile.lock /webapp/
-# RUN bundle install
-
-
-# FROM base as npm
-
-# COPY package.json yarn.lock /webapp
-# RUN yarn install --production --frozen-lockfile && yarn cache clean
-
-
-# FROM base as assets
-
-# COPY . /webapp
-# COPY --from=npm /webapp/node_modules /webapp/node_modules
-# COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
-# RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile \
-# && rm -rf tmp/cache/*
-# RUN SECRET_KEY_BASE=dummy bin/rails assets:precompile
-# CMD ["SECRET_KEY_BASE=dummy", "bin/rails", "assets:precompile"]
-
-# FROM base as main
-
-COPY . /webapp
 ENTRYPOINT [ "mkdir_tmp.sh" ]
-# RUN mkdir /webapp/tmp && mkdir /webapp/tmp/sockets
-# COPY --from=npm /webapp/node_modules /webapp/node_modules
-# # COPY --from=bundle /webapp/vendor/bundle /webapp/vendor/bundle
-# COPY --from=assets /webapp/public/assets /webapp/public/assets
-# COPY --from=assets /webapp/public/packs /webapp/public/packs
+COPY . /webapp
+
 
 
 EXPOSE 3000
