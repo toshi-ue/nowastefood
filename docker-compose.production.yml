@@ -42,9 +42,7 @@ services:
 
 volumes:
   bundle:
-    driver: local
   node-modules:
-    driver: local
   public-data:
   tmp-data:
   log-data:
