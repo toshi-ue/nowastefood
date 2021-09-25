@@ -30,8 +30,8 @@ RUN gem install bundler --no-document -v 2.1.4 \
   && bundle install && yarn install --production --frozen-lockfile \
   && yarn cache clean
 
-COPY entrypoint.sh /webapp
-RUN chmod 755 /webapp/entrypoint.sh
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin//entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
 
 COPY . /webapp
