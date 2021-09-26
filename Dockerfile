@@ -16,24 +16,26 @@ RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 
 # Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
-
-RUN apt-get update -qq && \
-  apt-get install -y --no-install-recommends \
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  && apt-get update -qq \
+  && apt-get install -y --no-install-recommends \
   build-essential \
   libpq-dev \
   vim \
-  nodejs
+  nodejs \
+  yarn
 
 # yarn
-RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-  apt-get update && apt-get install -y yarn
+# RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
+#   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+#   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+#   apt-get update && apt-get install -y yarn
 
 
-# COPY Gemfile Gemfile.lock /webapp/
-COPY Gemfile /webapp
+COPY Gemfile Gemfile.lock /webapp/
+# COPY Gemfile /webapp
 COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION && \
   bundle install

@@ -21,7 +21,7 @@ services:
       - public-data:/webapp/public
       - tmp-data:/webapp/tmp
       - log-data:/webapp/log
-      - bundle:/webapp/vendor/bundle
+      - bundle:/usr/local/bundle
       - node-modules:/webapp/node_modules
     ports:
       - "3000:3000"
