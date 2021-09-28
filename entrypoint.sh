@@ -8,6 +8,10 @@ if [ ! -e "/webapp/tmp" ]; then
   mkdir /webapp/tmp
 fi
 
+if [ ! -e "/webapp/tmp/pids" ]; then
+  mkdir /webapp/tmp/pids
+fi
+
 if [ ! -e "/webapp/tmp/sockets" ]; then
   mkdir /webapp/tmp/sockets
 fi
