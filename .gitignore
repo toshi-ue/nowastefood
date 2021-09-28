@@ -17,13 +17,13 @@ vendor/bundle/
 # /tmp/*
 /tmp/cache
 /tmp/letter_opener
-/tmp/pids
+!/tmp/.keep
+!/tmp/pids
+!/tmp/sockets
 /tmp/Gemfile.lock
 /tmp/restart.txt
 
 !/log/.keep
-!/tmp/.keep
-!/tmp/sockets/
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 config/master.key
