@@ -14,16 +14,16 @@ public/uploads
 vendor/bundle/
 # Ignore all logfiles and tempfiles.
 /log/*
-# /tmp/*
-/tmp/cache
-/tmp/letter_opener
+/tmp/*
+!/log/.keep
+# /tmp/cache
+# /tmp/letter_opener
 !/tmp/.keep
 !/tmp/pids
 !/tmp/sockets
 /tmp/Gemfile.lock
 /tmp/restart.txt
 
-!/log/.keep
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 config/master.key
