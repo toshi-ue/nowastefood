@@ -13,10 +13,7 @@ module Webapp
 
     # locale
     config.i18n.available_locales = [ :en, :ja ]
-    # default locale
-    config.i18n.default_locale = :ja if Rails.env.development?
-    # config.i18n.default_locale = :en if Rails.env.test?
-    config.i18n.default_locale = :ja if Rails.env.test?
+    config.i18n.default_locale = :ja
 
     config.time_zone = 'Tokyo'
     # change db time_zone
