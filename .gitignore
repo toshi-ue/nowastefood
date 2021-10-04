@@ -19,8 +19,8 @@ vendor/bundle/
 # /tmp/cache
 # /tmp/letter_opener
 !/tmp/.keep
-!/tmp/pids
-!/tmp/sockets
+# !/tmp/pids
+# !/tmp/sockets
 /tmp/Gemfile.lock
 /tmp/restart.txt
 
