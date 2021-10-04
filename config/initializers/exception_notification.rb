@@ -41,10 +41,9 @@ if Rails.env.production?
     #   url: 'http://example.com:5555/hubot/path',
     #   http_method: :post
     # }
-    config.add_notifier :slack, {
+    config.add_notifier :slack,
       url: ENV['SLACK_WEBHOOK_URL'],
       channel: "##{ENV['SLACK_CHANNEL']}",
       username: 'エラー通知'
-    }
   end
 end
