@@ -10,6 +10,17 @@ services:
       - "4306:3306"
     volumes:
       - db-data:/var/lib/mysql
+  nginx:
+    build:
+      context: .
+      dockerfile: ./containers/nginx/Dockerfile
+    volumes:
+      - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
   web:
     init: true
     tty: true
@@ -21,21 +32,24 @@ services:
       - bundle:/usr/local/bundle:cached
       - node-modules:/webapp/node_modules:cached
       - yarn-cache:/usr/local/share/.cache/yarn/v6:cached
-
     ports:
       - "3000:3000"
-      - "3035:3035"
-    links:
+      # - "3035:3035"
+    depends_on:
       - db
     environment:
       RAILS_ENV: development
 
 volumes:
-  db-data:
-    driver: local
   bundle:
     driver: local
+  db-data:
+    driver: local
   node-modules:
+    driver: local
+  public-data:
+    driver: local
+  tmp-data:
     driver: local
   yarn-cache:
     driver: local
