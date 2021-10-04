@@ -43,7 +43,7 @@ if Rails.env.production?
     # }
     config.add_notifier :slack, {
       url: ENV['SLACK_WEBHOOK_URL'],
-      channel: '#' + ENV['SLACK_CHANNEL'],
+      channel: "##{ENV['SLACK_CHANNEL']}",
       username: 'エラー通知'
     }
   end
