@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <span class="text-danger">※</span><%= form.label :cooking_time %>
-    <%= form.text_field :cooking_time, id: :cuisine_cooking_time, autofocus: true, class: 'form-control' %>
+    <%= form.select(:cooking_time, Cuisine.cooking_times.keys.map{|k| [I18n.t("enums.cuisine.cooking_time.#{k}"), k]}, {required: true}, {class: 'form-control'}) %>
   </div>
   <div class="form-group">
     <span class="text-danger">※</span><%= form.label :description %>
