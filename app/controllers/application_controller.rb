@@ -19,8 +19,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # TODO: 完成したらアプリ名を入れる
   def set_app_name
-    @appname = "Coome"
+    @appname = "サービス名"
   end
 
   def set_search_query
