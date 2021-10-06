@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
     def render_404
-      render file: Rails.root.join('public/404.html'), status: :not_found
+      render file: Rails.root.join('public/404.html'), status: :not_found, layout: false, content_type: 'text/html'
     end
 
     def render_500(e)
       logger.error(e.message)
       logger.error(e.backtrace.join("\n"))
-      render file: Rails.root.join('public/500.html'), status: :internal_server_error
+      render file: Rails.root.join('public/500.html'), status: :internal_server_error, layout: false, content_type: 'text/html'
     end
   end
 
