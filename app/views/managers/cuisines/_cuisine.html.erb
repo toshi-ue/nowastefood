@@ -8,7 +8,7 @@
   </td>
   <td class="align-middle"><%= cuisine.name %></td>
   <td class="align-middle"><%= cuisine.difficulty_i18n %></td>
-  <td class="align-middle"><%= cuisine.cooking_time %></td>
+  <td class="align-middle"><%= @cuisine.cooking_time_i18n %></td>
   <td class="align-middle"><%= cuisine.created_at %></td>
   <td class="align-middle">
     <%= link_to managers_cuisine_path(cuisine.id),  class: "btn btn-default" do %>

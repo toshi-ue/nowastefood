@@ -1,5 +1,6 @@
 class Cuisine < ApplicationRecord
   enum difficulty: { easy: 0, normal: 1, hard: 2 }
+  enum cooking_time: { lt_minutes5: 5, lt_minutes10: 10, lt_minutes15: 15, lt_minutes20: 20, gt_minites21: 21 }
   belongs_to :genre
   has_many :favorites, dependent: :destroy
   has_many :foodstuffs, dependent: :destroy
@@ -7,7 +8,6 @@ class Cuisine < ApplicationRecord
   has_many :rawmaterials, through: :foodstuffs
   has_many :todaysmenus, dependent: :destroy
   has_many :users, through: :todaysmenus
-  validates :cooking_time, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :description, presence: true
   validates :genre_id, presence: { message: "を選択してください" }
   validates :name, presence: true, uniqueness: true

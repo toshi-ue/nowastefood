@@ -58,6 +58,12 @@ ja:
         error: エラー報告
         request: 機能追加、改善リクエスト
     cuisine:
+      cooking_time:
+        lt_minutes5: ~5分以内
+        lt_minutes10: ~10分以内
+        lt_minutes15: ~15分以内
+        lt_minutes20: ~20分以内
+        gt_minites21: 21分以上~
       difficulty:
         easy: 低
         normal: 中
