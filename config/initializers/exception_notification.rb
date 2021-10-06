@@ -1,4 +1,4 @@
-if Rails.env.production?
+# if Rails.env.production?
   require 'exception_notification/rails'
   ExceptionNotification.configure do |config|
     # Ignore additional exception types.
@@ -41,9 +41,6 @@ if Rails.env.production?
     #   url: 'http://example.com:5555/hubot/path',
     #   http_method: :post
     # }
-    config.add_notifier :slack,
-      url: ENV['SLACK_WEBHOOK_URL'],
-      channel: "##{ENV['SLACK_CHANNEL']}",
-      username: 'エラー通知'
+    config.add_notifier :slack, webhook_url: ENV['SLACK_WEBHOOK_URL'],channel: "##{ENV['SLACK_CHANNEL']}"
   end
-end
+# end
