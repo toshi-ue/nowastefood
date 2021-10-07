@@ -50,7 +50,7 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4).limit(10)
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4).limit(5)
     respond_to do |format|
       format.json { render json: @rawmaterials }
     end
