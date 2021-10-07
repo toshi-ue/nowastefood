@@ -23,6 +23,8 @@ $(function () {
   switch (action_name) {
     case "new":
     case "create":
+      console.log(action_name)
+      $("#stock_rawmaterial_id").select2();
       $("#stock_rawmaterial_id").select2({
         ajax: {
           url: '/stocks/search_rawmaterial',
@@ -39,6 +41,7 @@ $(function () {
             };
           }
         },
+        placeholder: "入力してください",
         theme: 'bootstrap4',
       })
 

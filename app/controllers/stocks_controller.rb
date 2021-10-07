@@ -11,7 +11,7 @@ class StocksController < ApplicationController
 
   def new
     @stock = Stock.new
-    @rawmaterials = Rawmaterial.all
+    @rawmaterials = Rawmaterial.limit(5)
   end
 
   def create
