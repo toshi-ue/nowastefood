@@ -23,7 +23,7 @@ $(function () {
   switch (action_name) {
     case "new":
     case "create":
-      $(".selectfa").select2({
+      $("#stock_rawmaterial_id").select2({
         ajax: {
           url: '/stocks/search_rawmaterial',
           datatype: 'json',
@@ -42,7 +42,7 @@ $(function () {
         theme: 'bootstrap4',
       })
 
-      $(".selectfa").on('select2:select', function (e) {
+      $("#stock_rawmaterial_id").on('select2:select', function (e) {
         let rawmaterial_id = e.params.data.id
         $(".input-group-text").text("")
         $("#expiry_period").text("")
