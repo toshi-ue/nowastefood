@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     end
 
     def render_500(e)
+      ExceptionNotifier.notify_exception(e, env: request.env, data: { message: 'error' })
       logger.error(e.message)
       logger.error(e.backtrace.join("\n"))
       render file: Rails.root.join('public/500.html'), status: :internal_server_error, layout: false, content_type: 'text/html'
