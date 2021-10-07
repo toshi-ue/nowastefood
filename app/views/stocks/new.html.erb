@@ -13,7 +13,7 @@
     <div class="form-group row">
       <label for="keyword" id="label_keyword" class="col-12 text-center">食材名</label>
       <div class="col-12 col-md-6 offset-md-3">
-        <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, class: "form-control" %>
+        <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, {}, class: "form-control" %>
       </div>
     </div>
     <%# quantity-数量 %>
