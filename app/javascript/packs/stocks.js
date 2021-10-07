@@ -5,7 +5,7 @@ import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css'
 $(function () {
   let action_name = $('body').data('action')
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
-
+  console.log(action_name)
   if ($('#stock_rawmaterial_id option:selected').val()) {
     $.ajax({
       type: 'GET',
