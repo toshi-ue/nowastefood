@@ -41,6 +41,9 @@
     #   url: 'http://example.com:5555/hubot/path',
     #   http_method: :post
     # }
-    config.add_notifier :slack, webhook_url: ENV['SLACK_WEBHOOK_URL'],channel: "##{ENV['SLACK_CHANNEL']}"
+    config.add_notifier :slack, {
+      webhook_url: ENV['SLACK_WEBHOOK_URL'],
+      channel: "##{ENV['SLACK_CHANNEL']}"
+    }
   end
 # end
