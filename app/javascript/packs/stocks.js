@@ -1,6 +1,6 @@
 import 'select2'
-import 'select2/dist/css/select2.min'
-import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min'
+// import 'select2/dist/css/select2.min'
+// import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min'
 
 $(function () {
   let action_name = $('body').data('action');
@@ -18,7 +18,9 @@ $(function () {
   //     console.log("could not get unit name.");
   //   })
   // }
-
+  if ($('.stock-rawmaterial-search').hasClass("select2-hidden-accessible")) {
+    console.log('select2 is initialized');
+  }
   // switch (action_name) {
   //   case "new":
   //   case "create":
