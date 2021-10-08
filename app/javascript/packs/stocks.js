@@ -40,6 +40,7 @@ $(function () {
         },
         placeholder: "入力してください",
         theme: 'bootstrap4',
+        width: 'auto',
       })
 
       $('#stock_rawmaterial_id').on('select2:select', function (e) {
