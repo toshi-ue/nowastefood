@@ -1,6 +1,6 @@
 import 'select2'
-import 'select2/dist/css/select2.min.css'
-import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css'
+import 'select2/dist/css/select2.min'
+import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min'
 
 $(function () {
   let action_name = $('body').data('action');
@@ -23,6 +23,10 @@ $(function () {
   //   case "new":
   //   case "create":
   $('.stock-rawmaterial-search').select2({
+        allowClear: true,
+        placeholder: "入力してください",
+        theme: 'bootstrap4',
+        width: 'auto',
         ajax: {
           url: '/stocks/search_rawmaterial',
           datatype: 'json',
@@ -38,10 +42,6 @@ $(function () {
             };
           }
         },
-        allowClear: true,
-        placeholder: "入力してください",
-        theme: 'bootstrap4',
-        width: 'auto',
       });
 
   $('.stock-rawmaterial-search').on('select2:select', function (e) {
