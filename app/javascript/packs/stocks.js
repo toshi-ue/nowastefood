@@ -3,7 +3,7 @@ import 'select2/dist/css/select2.min.css'
 import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css'
 
 $(function () {
-  let action_name = $('body').data('action')
+  let action_name = $('body').data('action');
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
   if ($('#stock_rawmaterial_id option:selected').val()) {
     $.ajax({
@@ -12,16 +12,16 @@ $(function () {
       data: { id: $('#stock_rawmaterial_id option:selected').val() },
       dataType: 'json'
     }).done(function (data) {
-      $(".input-group-text").text(data.unit_name)
-      $("#expiry_period").text(data.expiry_period + "日")
+      $(".input-group-text").text(data.unit_name);
+      $("#expiry_period").text(data.expiry_period + "日");
     }).fail(function () {
-      console.log("could not get unit name.")
+      console.log("could not get unit name.");
     })
   }
 
-  switch (action_name) {
-    case "new":
-    case "create":
+  // switch (action_name) {
+  //   case "new":
+  //   case "create":
       $('#stock_rawmaterial_id').select2({
         ajax: {
           url: '/stocks/search_rawmaterial',
@@ -41,26 +41,26 @@ $(function () {
         placeholder: "入力してください",
         theme: 'bootstrap4',
         width: 'auto',
-      })
+      });
 
       $('#stock_rawmaterial_id').on('select2:select', function (e) {
-        let rawmaterial_id = e.params.data.id
-        $(".input-group-text").text("")
-        $("#expiry_period").text("")
+        let rawmaterial_id = e.params.data.id;
+        $(".input-group-text").text("");
+        $("#expiry_period").text("");
         $.ajax({
           type: 'GET',
           url: '/stocks/search_unit_and_expiry_period',
           data: { id: rawmaterial_id },
           dataType: 'json'
         }).done(function (data) {
-          $(".input-group-text").text(data.unit_name)
-          $("#expiry_period").text(data.expiry_period + "日")
+          $(".input-group-text").text(data.unit_name);
+          $("#expiry_period").text(data.expiry_period + "日");
         }).fail(function () {
-          console.log("could not get unit name.")
+          console.log("could not get unit name.");
         })
-      })
-      break;
-    default:
-      break;
-  }
+      });
+    //   break;
+    // default:
+    //   break;
+//   }
 });
