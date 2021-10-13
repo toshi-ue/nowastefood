@@ -1,22 +1,25 @@
 <div class="col-6 col-md-3 align-items-xl-center px-2 mt-2 swiper-slide">
+  <%= link_to cuisine_path(cuisine) do %>
   <div class="card">
-    <%= link_to cuisine_path(cuisine) do %>
-      <div class="img-filter">
-        <%= image_tag cuisine.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
-      </div>
-    <% end %>
+    <div class="img-filter">
+      <%= image_tag cuisine.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+    </div>
     <div class="card-body">
-      <%= link_to cuisine_path(cuisine) do %>
-        <p class="card-title text-black-50 d-flex align-items-center"><%= cuisine.name.truncate(14) %></p>
-      <% end %>
-      <div class="btns d-flex justify-content-end">
-        <div id="btn-favorite-<%= cuisine.id %>" class="btns-favorite">
-          <%= render partial: 'favorite', locals: {cuisine: cuisine} %>
+      <p class="card-title text-black-50 d-flex align-items-center"><%= cuisine.name.truncate(14) %></p>
+      <div class="d-flex justify-content-between">
+        <div>
+          <% if cuisine.user.present? %>
+            <span class="text-black-50"><%= cuisine.user.nickname %></span>
+          <% else %>
+            <span class="text-black-50">退会user</span>
+          <% end %>
         </div>
-        <div id="btn-today-<%= cuisine.id %>" class="btns-today">
-          <%= render partial: 'today', locals: {cuisine: cuisine} %>
+        <div>
+          <i class="far fa-bookmark text-black-50"></i>
+          <span class="ml-1 text-black-50"><%= cuisine.favorites_count %></span>
         </div>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
