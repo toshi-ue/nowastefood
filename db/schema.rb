@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_053203) do
+ActiveRecord::Schema.define(version: 2021_10_13_084423) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2021_10_11_053203) do
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
+    t.integer "genre"
     t.string "name", null: false, comment: "料理名"
-    t.bigint "genre_id"
     t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
     t.integer "cooking_time", null: false, comment: "調理時間"
     t.string "description"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_10_11_053203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "favorites_count", default: 0, null: false
-    t.index ["genre_id"], name: "index_cuisines_on_genre_id"
+    t.index ["genre"], name: "index_cuisines_on_genre"
     t.index ["name"], name: "index_cuisines_on_name", unique: true
     t.index ["user_id"], name: "index_cuisines_on_user_id"
   end
@@ -62,13 +62,6 @@ ActiveRecord::Schema.define(version: 2021_10_11_053203) do
     t.datetime "updated_at", null: false
     t.index ["cuisine_id"], name: "index_foodstuffs_on_cuisine_id"
     t.index ["rawmaterial_id"], name: "index_foodstuffs_on_rawmaterial_id"
-  end
-
-  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "cuisines_count", default: 0, null: false
   end
 
   create_table "managers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -210,7 +203,6 @@ ActiveRecord::Schema.define(version: 2021_10_11_053203) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "cuisines", "genres"
   add_foreign_key "cuisines", "users"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"
