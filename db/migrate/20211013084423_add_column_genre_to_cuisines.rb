@@ -1,11 +1,9 @@
 class AddColumnGenreToCuisines < ActiveRecord::Migration[6.0]
   def up
-    add_column :cuisines, :genre, :integer, after: :user_id
-    add_index :cuisines, :genre
+    add_column :cuisines, :genre, :integer, after: :user_id, null: false, default: 1
   end
 
   def down
-    remove_index :cuisines, :genre
     remove_column :cuisines, :genre, :integer
   end
 end
