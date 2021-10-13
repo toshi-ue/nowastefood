@@ -68,6 +68,11 @@ ja:
         easy: 低
         normal: 中
         hard: 高
+      genre:
+        chinese: 中華
+        japanese: 和風
+        other: その他
+        western: 洋風
   errors:
     messages:
       carrierwave_processing_error: 処理できませんでした
