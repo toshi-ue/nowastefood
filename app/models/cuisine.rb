@@ -1,17 +1,20 @@
 class Cuisine < ApplicationRecord
-  enum difficulty: { easy: 0, normal: 1, hard: 2 }
   enum cooking_time: { lt_minutes5: 5, lt_minutes10: 10, lt_minutes15: 15, lt_minutes20: 20, gt_minites21: 21 }
+  enum difficulty: { easy: 0, normal: 1, hard: 2 }
+
   belongs_to :genre
+  belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :foodstuffs, dependent: :destroy
   has_many :procedures, dependent: :destroy
   has_many :rawmaterials, through: :foodstuffs
   has_many :todaysmenus, dependent: :destroy
-  has_many :users, through: :todaysmenus
   validates :description, presence: true
   validates :genre_id, presence: { message: "を選択してください" }
   validates :name, presence: true, uniqueness: true
   validates :main_image, presence: { message: "を追加してください" }
+
+  scope :five_contents, -> { includes(:user).limit(5) }
 
   include CommonScope
   acts_as_taggable
