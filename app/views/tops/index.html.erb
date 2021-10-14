@@ -4,14 +4,17 @@
     <%= render "shared/flash_messages" %>
   </div>
 </div>
+<div class="keyword row mt-2">
+  <div class="col-12">
+    <%= render "keywords" %>
+  </div>
+</div>
 <div class="row mt-3">
   <div class="col">
-    <h2 class="text-muted mb-0">和風</h2>
+    <div class="h2 text-muted mb-0">和風</div>
   </div>
-  <div class="col">
-    <div class="text-right d-flex justify-content-end align-items-center more-cuisine pr-2">
-      <%# link_to "もっと見る", genres_search_path(id: 1), class: "text-black-50" %>
-    </div>
+  <div class="col text-right d-flex justify-content-end align-items-center pr-2">
+    <%= link_to 'もっと見る', keywords_path(enum_key: 'japanese'), class: 'text-black-50' %>
   </div>
 </div>
 <div class="swiper-container js-swiper">
@@ -26,10 +29,8 @@
   <div class="col">
     <h2 class="text-muted mb-0">洋風</h2>
   </div>
-  <div class="col">
-    <div class="text-right d-flex justify-content-end align-items-center more-cuisine pr-2">
-      <%# link_to "もっと見る", genres_search_path(id: 2), class: "text-black-50" %>
-    </div>
+  <div class="col text-right d-flex justify-content-end align-items-center pr-2">
+    <%= link_to 'もっと見る', keywords_path(enum_key: 'western'), class: 'text-black-50' %>
   </div>
 </div>
 <div class="swiper-container js-swiper">
@@ -44,10 +45,8 @@
   <div class="col">
     <h2 class="text-muted mb-0">中華</h2>
   </div>
-  <div class="col">
-    <div class="text-right d-flex justify-content-end align-items-center more-cuisine pr-2">
-      <%# link_to "もっと見る", genres_search_path(id: 3), class: "text-black-50" %>
-    </div>
+  <div class="col text-right d-flex justify-content-end align-items-center pr-2">
+    <%= link_to 'もっと見る', keywords_path(enum_key: 'chinese'), class: 'text-black-50' %>
   </div>
 </div>
 <div class="swiper-container js-swiper">
@@ -61,11 +60,11 @@
 <div id="ranking" class="mt-2">
   <div class="row">
     <div class="col">
-      <h2 class="text-muted">ランキング</h2>
+      <h2 class="text-muted">お気に入りレシピ</h2>
     </div>
-    <div class="col">
-      <p class="text-right text-black-50 d-flex justify-content-end align-items-center more-cuisine pr-2">もっと見る</p>
-    </div>
+  <div class="col text-right d-flex justify-content-end align-items-center pr-2">
+    <%= link_to 'もっと見る', keywords_path(enum_key: 'not-enum-ranking'), class: 'text-black-50' %>
+  </div>
   </div>
   <div class="swiper-container js-swiper">
     <div class="no-gutters swiper-wrapper">
@@ -101,15 +100,6 @@
   </div>
   <div class="row mb-5 px-4">
     <div>
-      <% @genres.each do |g| %>
-        <% unless g.cuisines_count == 0%>
-          <%# link_to genres_search_path(id: g.id) do %>
-            <button type="button" class="btn btn-outline-secondary btn-sm mt-2">
-              <%= g.name %><span class="badge badge-light text-muted"><%= g.cuisines_count %></span>
-            </button>
-          <%# end %>
-        <% end %>
-      <% end %>
       <% @tags.each do |tag| %>
         <% unless tag.taggings_count == 0 %>
           <%= link_to tag_search_path(tag_name: tag.name) do %>

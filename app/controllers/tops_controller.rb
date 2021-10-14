@@ -1,11 +1,11 @@
 class TopsController < ApplicationController
   def index
-    @japanese_style_cuisines = Cuisine.where(genre_id: 1).limit(5)
-    @western_style_cuisines = Cuisine.where(genre_id: 2).limit(5)
-    @chinese_style_cuisines = Cuisine.where(genre_id: 3).limit(5)
-    @genres = Genre.all
-    @tags = ActsAsTaggableOn::Tag.all
-    # binding.pry
+    @japanese_style_cuisines = Cuisine.japanese.five_contents
+    @western_style_cuisines = Cuisine.western.five_contents
+    @chinese_style_cuisines = Cuisine.chinese.five_contents
+    @other_style_cuisines = Cuisine.other.five_contents
+
+    # @tags = ActsAsTaggableOn::Tag.all
   end
 
   def about; end
