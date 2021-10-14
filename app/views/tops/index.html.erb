@@ -92,23 +92,3 @@
     <div class="swiper-button-next js-swiper-button-next"></div>
   </div>
 </div>
-<div id="genre-and-tags" class="mt-2">
-  <div class="row">
-    <div class="col">
-      <h2 class="text-muted">キーワード</h2>
-    </div>
-  </div>
-  <div class="row mb-5 px-4">
-    <div>
-      <% @tags.each do |tag| %>
-        <% unless tag.taggings_count == 0 %>
-          <%= link_to tag_search_path(tag_name: tag.name) do %>
-            <button type="button" class="btn btn-outline-secondary btn-sm mt-2">
-              <%= tag.name %><span class="badge badge-light text-muted"><%= tag.taggings_count %></span>
-            </button>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
