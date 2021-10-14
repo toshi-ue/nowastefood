@@ -33,6 +33,6 @@ class CuisinesController < ApplicationController
   end
 
   def search
-    @cuisines = @search.result.distinct.page(params[:page]).per(5)
+    @cuisines = @search.result.includes(:user).distinct.page(params[:page]).per(5)
   end
 end

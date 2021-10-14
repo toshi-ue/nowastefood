@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :owner_cuisines, class_name: "Cuisine", dependent: :nullify
   has_many :todaysmenus, dependent: :destroy
   has_many :stocks, dependent: :destroy
-  has_many :cuisines
+  has_many :cuisines, dependent: :nullify
   has_many :todaysmenu_cuisines, through: :todaysmenus, class_name: "Cuisine"
 
   validates :nickname, length: { in: 1..30 }, if: -> { validation_context == :update_profile }
