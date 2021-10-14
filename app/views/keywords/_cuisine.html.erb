@@ -1,0 +1,29 @@
+<div class="col-6 col-md-3 align-items-xl-center px-2 mt-2">
+  <%= link_to cuisine_path(cuisine) do %>
+  <div class="card">
+    <div class="img-filter">
+      <%= image_tag cuisine.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+    </div>
+    <div class="card-body">
+      <span class="card-title text-black-50 d-flex align-items-center"><%= cuisine.name.truncate(14) %></span>
+      <div>
+        <small class="text-black-50"><%= cuisine.genre_i18n %>, </small>
+        <small class="text-black-50"><%= cuisine.cooking_time_i18n %></small>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <% if cuisine.user.present? %>
+            <span class="text-black-50"><%= cuisine.user.nickname %></span>
+          <% else %>
+            <span class="text-black-50">退会user</span>
+          <% end %>
+        </div>
+        <div>
+          <i class="far fa-bookmark text-black-50"></i>
+          <span class="ml-1 text-black-50"><%= cuisine.favorites_count %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
