@@ -14,7 +14,7 @@ class Cuisine < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :main_image, presence: { message: "を追加してください" }
 
-  scope :five_contents, -> { includes(:user).limit(5) }
+  scope :eight_contents, -> { includes(:user).limit(8) }
 
   include CommonScope
   acts_as_taggable
