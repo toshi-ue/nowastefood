@@ -10,8 +10,7 @@ class KeywordsController < ApplicationController
     when "lt_minutes5", "lt_minutes10", "lt_minutes20", "gt_minutes"
       @cuisines = Cuisine.where(cooking_time: @enum_key).includes(:user).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
     when "not-enum-ranking"
-      @cuisines = Cuisine.includes(:user).where('favorites_count > ?',
-                                                0).order(favorites_count: :desc).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
+      @cuisines = Cuisine.includes(:user).where('favorites_count > ?', 0).order(favorites_count: :desc).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
     end
   end
 end
