@@ -10,6 +10,7 @@
 // @import "managers/foodstuffs";
 @import "cookinghistorys";
 @import "cuisines";
+// @import "keywords";
 // @import "favorites";
 // @import "genres";
 @import "managecuisines";
@@ -36,6 +37,7 @@ main {
   max-width: 980px;
   min-height: 100vh;
 
+  margin: 0 1rem;
   .alert {
     ul {
       list-style: none;
@@ -51,6 +53,14 @@ main {
   @include media-breakpoint-up(lg) {}
 }
 
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 #index-managers-foodcategories,
 #index-managers-cuisines,
 #index-managers-rawmaterials {
@@ -64,16 +74,12 @@ main {
 }
 
 .card {
-  .card-title {
-    height: 2rem + 0.75rem;
+  .card-body{
+    padding: 0 0.5rem 0.5rem 0.5rem;
   }
 
-  a {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: none;
-    }
+  .card-title {
+    height: 2rem + 0.75rem;
   }
 
   .img-filter {

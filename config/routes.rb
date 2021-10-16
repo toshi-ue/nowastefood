@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   end
   resources :contacts, only: [:show, :new, :create]
   resources :favorites, only: [:index, :create, :destroy]
+  resources :keywords, only: [:index]
   resources :managecuisines
   resources :manageownfoodstuffs
   resources :manageownprocedures

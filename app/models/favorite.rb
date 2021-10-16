@@ -1,5 +1,7 @@
 class Favorite < ApplicationRecord
   belongs_to :cuisine
   belongs_to :user
-  validates_uniqueness_of :cuisine_id, scope: :user_id
+  validates :cuisine_id, uniqueness: { scope: :user_id }
+
+  counter_culture :cuisine
 end
