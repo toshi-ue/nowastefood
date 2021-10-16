@@ -22,7 +22,7 @@ AllCops:
 
 # 1行が長すぎる
 Layout/LineLength:
-  Max: 150
+  Max: 200
 
 # 未使用の引数チェック
 Lint/UnusedMethodArgument:
@@ -109,3 +109,6 @@ Style/RedundantSelf:
 
 Style/StringLiterals:
   Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
