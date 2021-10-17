@@ -77,10 +77,14 @@ RSpec/EmptyLineAfterExample:
 RSpec/EmptyLineAfterSubject:
   Enabled: false
 
+RSpec/InstanceVariable:
+  Enabled: false
+  # Exclude:
+  #   - spec/requests/*.rb
+  #   - spec/requests/*/*.rb
+
 RSpec/MultipleExpectations:
-  Exclude:
-    - spec/requests/*.rb
-    - spec/requests/*/*.rb
+  Enabled: false
 
 RSpec/NamedSubject:
   Enabled: false
