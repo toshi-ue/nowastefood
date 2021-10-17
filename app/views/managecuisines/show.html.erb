@@ -31,9 +31,8 @@
           <div id="cuisine-description">
             <p><%= @cuisine.description %></p>
           </div>
-          <%# TODO: ジャンル、タグ機能ができたら修正する %>
           <div id="genre-and-tags">
-            <span class="badge badge-primary ml-1"><%= @cuisine.genre.name %></span>
+            <span class="badge badge-primary ml-1"><%= @cuisine.genre %></span>
             <span class="badge badge-info ml-1">tag1</span>
           </div>
           <div class="btns row">
