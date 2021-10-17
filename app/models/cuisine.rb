@@ -10,7 +10,7 @@ class Cuisine < ApplicationRecord
   has_many :rawmaterials, through: :foodstuffs
   has_many :todaysmenus, dependent: :destroy
   validates :description, presence: true
-  validates :genre_id, presence: { message: "を選択してください" }
+  validates :genre, presence: true
   validates :name, presence: true, uniqueness: true
   validates :main_image, presence: { message: "を追加してください" }
 
@@ -18,7 +18,6 @@ class Cuisine < ApplicationRecord
 
   include CommonScope
   acts_as_taggable
-  counter_culture :genre
   mount_uploader :main_image, ImageUploader
 
   TAGS = [

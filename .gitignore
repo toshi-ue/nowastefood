@@ -52,7 +52,7 @@ node_modules/
 # .rubocop.yml
 # .rubocop_todo.yml
 RSpecメモ.md
-
+sample_upload_image.html.erb
 new_user_credentials_app_for_job_change.csv
 .DS_Store
 /db/afixtures/
