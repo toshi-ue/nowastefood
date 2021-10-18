@@ -17,7 +17,6 @@ class Cuisine < ApplicationRecord
   scope :eight_contents, -> { includes(:user).limit(8) }
 
   include CommonScope
-  acts_as_taggable
   mount_uploader :main_image, ImageUploader
 
   TAGS = [
