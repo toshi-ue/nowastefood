@@ -4,6 +4,7 @@ class StocksController < ApplicationController
   def index
     @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).not_consumed.order(rotted_at: 'ASC')
     @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).not_cooked
+    @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
     @css_name = ""
   end
 

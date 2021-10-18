@@ -1,6 +1,7 @@
 class DropTablesTaggingsTags < ActiveRecord::Migration[6.0]
   def up
     drop_table :taggings
+    drop_table :tags
   end
 
   def down
@@ -21,6 +22,14 @@ class DropTablesTaggingsTags < ActiveRecord::Migration[6.0]
       t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
       t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
       t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+    end
+
+    create_table :tags do |t|
+      t.string "name", collation: "utf8_bin"
+      t.datetime "created_at"
+      t.datetime "updated_at"
+      t.integer "taggings_count", default: 0
+      t.index ["name"], name: "index_tags_on_name", unique: true
     end
   end
 end
