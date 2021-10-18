@@ -2,10 +2,8 @@ class StocksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).unused.order(rotted_at: 'ASC')
     @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).not_consumed.order(rotted_at: 'ASC')
     @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).not_cooked
-    @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
     @css_name = ""
   end
 
@@ -20,7 +18,7 @@ class StocksController < ApplicationController
     if @stock.save
       redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加しました" }
     else
-      @rawmaterials = Rawmaterial.all
+      @rawmaterials = Rawmaterial.limit(5)
       render 'new'
     end
   end
