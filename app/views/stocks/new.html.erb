@@ -1,9 +1,7 @@
 <%= javascript_pack_tag 'stocks' %>
-<%# js側で'select2/dist/css/select2.min'を指定しても動作しないのでここに書く %>
-<%# stylesheet_pack_tag 'select2/dist/css/select2.min' %>
 <div class="content_wrapper">
-  <div class="col-10 offset-1 mt-2">
-    <div class="page-title text-center">購入食材を追加</div>
+  <div class="col-10 offset-1 mt-3">
+    <div class="page-title text-center">(購入)食材を追加</div>
   </div>
   <div class="col-10 offset-1 col-md-6 offset-md-3">
     <%= render "shared/flash_messages" %>
@@ -11,15 +9,12 @@
   </div>
   <div class="col-10 offset-1 col-md-6 offset-md-3">
   <%= form_with(model: @stock, url: stocks_path, local: true) do |form| %>
-    <%# 検索部分 %>
     <div class="form-group row">
       <label for="keyword" id="label_keyword" class="col-12 text-center">食材名</label>
-      <%# 開発環境用 %>
       <div class="col-12 col-md-6 offset-md-3">
         <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, {include_blank: ''}, {class: "form-control stock-rawmaterial-search"} %>
       </div>
     </div>
-    <%# quantity-数量 %>
     <div class="form-group row">
       <%= form.label :quantity, class: 'col-12 text-center' %>
       <div class="input-group col-12 col-md-6 offset-md-3">
@@ -29,17 +24,16 @@
         </div>
       </div>
     </div>
-    <%# 賞味期限 %>
     <div class="text-center">
       <p>消費期限: <span id="expiry_period"></span></p>
-      <small><strong>※ 消費期限の目安は冷蔵保存した場合の日数になります</strong></small>
+      <small>※ 消費期限の目安は冷蔵保存した場合の日数になります</small>
     </div>
     <div class="text-center mt-2">
-      <%= form.submit class: 'btn btn-secondary' %>
+      <%= form.submit class: 'btn btn-success' %>
     </div>
   <% end %>
   </div>
-  <div class="my-2 border border-secondary">
-    <p><%= link_to "戻る", 'javascript:history.back()', class: 'btn btn-secondary' %></p>
+  <div class="my-2 text-center">
+    <p><%= link_to "戻る", 'javascript:history.back()', class: 'text-black-50' %></p>
   </div>
 </div>
