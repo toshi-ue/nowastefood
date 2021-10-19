@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :timeoutable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :timeoutable, :trackable
+
+  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: -> { validation_context == :update_profile }
+  validates :nickname, length: { in: 1..30 }, if: -> { validation_context == :update_profile }
+
   has_many :favorites, dependent: :destroy, inverse_of: :user
   has_many :rawmaterials, dependent: :nullify
   has_many :owner_cuisines, class_name: "Cuisine", dependent: :nullify
@@ -11,10 +14,6 @@ class User < ApplicationRecord
   has_many :cuisines, dependent: :nullify
   has_many :todaysmenu_cuisines, through: :todaysmenus, class_name: "Cuisine"
 
-  validates :nickname, length: { in: 1..30 }, if: -> { validation_context == :update_profile }
-  validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: lambda {
-                                                                                                                                          validation_context == :update_profile
-                                                                                                                                        }
   mount_uploader :profile_image, ProfileImageUploader
 
   def already_favorite?(cuisine)

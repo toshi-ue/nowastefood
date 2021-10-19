@@ -10,6 +10,28 @@
         <%= link_to edit_managecuisine_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
           <i class="fas fa-pen"></i>&nbsp;レシピを変更する
         <% end %>
+        <%= link_to managecuisine_path(@cuisine.id),
+          class: 'btn btn-outline-secondary btn-block',
+          data: {
+            confirm: "「#{@cuisine.name}」を削除しますか?",
+            cansel: "キャンセル",
+            commit: "削除",
+            title: "削除確認"
+          },
+          method: :delete do %>
+          <i class="fas fa-trash"></i>&nbsp;レシピを削除する
+        <% end %>
+        <% if @cuisine.draft? %>
+          <%= link_to managecuisine_toggle_status_path(@cuisine.id), method: :patch, class: 'btn btn-outline-secondary btn-block', remote: false do %>
+            公開する<br />
+            <small>(現在:&nbsp;<%= @cuisine.status_i18n %>)</small>
+          <% end %>
+        <% else %>
+          <%= link_to managecuisine_toggle_status_path(@cuisine.id), method: :patch, class: 'btn btn-outline-secondary btn-block', remote: false do %>
+            非公開にする<br />
+            <small>(現在:&nbsp;<%= @cuisine.status_i18n %>)</small>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="row no-gutters">

@@ -35,7 +35,6 @@ class Managers::CuisinesController < ApplicationController
     if @cuisine.update(cuisine_params)
       redirect_to managers_cuisine_path(@cuisine), flash: { notice: "変更されました" }
     else
-      # flash.now[:alert] = "aaa"
       render 'edit'
     end
   end
@@ -52,6 +51,6 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :tag_list)
+    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :status)
   end
 end

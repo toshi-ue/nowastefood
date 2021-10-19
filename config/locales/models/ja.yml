@@ -68,6 +68,9 @@ ja:
         japanese: 和風
         other: その他
         western: 洋風
+      status:
+        draft: 非公開
+        published: 公開中
   errors:
     messages:
       carrierwave_processing_error: 処理できませんでした
