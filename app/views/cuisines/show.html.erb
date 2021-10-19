@@ -1,105 +1,114 @@
 <%= javascript_pack_tag 'cuisines' %>
-<div class="content_wrapper container-fluid">
-  <div id="overview" class="mt-2">
-    <div class="row">
-      <div class="col">
-        <%= render "shared/flash_messages" %>
-        <div class="page-title"><%= @cuisine.name %></div>
-      </div>
-    </div>
-    <div class="row no-gutters">
-      <div class="col-12 col-md-6 d-xl-flex align-items-xl-center px-2 mt-2">
-        <div class="justify-content-center align-items-center">
-          <%= image_tag @cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid w-100', alt: "#{@cuisine.name}" %>
+<% if @cuisine.published? %>
+  <div class="content_wrapper container-fluid">
+    <div id="overview" class="mt-2">
+      <div class="row">
+        <div class="col">
+          <%= render "shared/flash_messages" %>
+          <div class="page-title"><%= @cuisine.name %></div>
         </div>
       </div>
-      <div class="col-12 col-md-6 px-2 mt-2">
-        <div>
-          <div class="row">
-            <div class="col">
-              <small class="text-black-50"><%= @cuisine.cooking_time_i18n %></small>
-              <small class="text-black-50"><%= @cuisine.genre_i18n %></small>
-            </div>
-            <div class="col text-right">
-              <% if @cuisine.user.present?%>
-                <span class="text-black-50">by&nbsp;<%= @cuisine.user.nickname %>さん</span>
-              <% else %>
-                <span>退会済ユーザー</span>
-              <% end %>
-            </div>
-          </div>
-          <div id="cuisine-description">
-            <p><%= @cuisine.description %></p>
-          </div>
-          <div class="btns row">
-            <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
-            <%= render partial: 'favorite', locals: {cuisine: @cuisine} %>
-            </div>
-            <div id="btn-today-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
-            <%= render partial: 'today', locals: {cuisine: @cuisine} %>
-            </div>
+      <div class="row no-gutters">
+        <div class="col-12 col-md-6 d-xl-flex align-items-xl-center px-2 mt-2">
+          <div class="justify-content-center align-items-center">
+            <%= image_tag @cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid w-100', alt: "#{@cuisine.name}" %>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div id="foodstuff-and-procedure" class="mt-2">
-    <div class="row">
-      <div class="col-md-10 offset-md-1">
-        <div class="mt-2">
-          <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link active" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" role="tabpanel" id="tab1">
-              <div class="foodstuff-list">
-                <% @foodstuffs.each_with_index do |fs, idx| %>
-                  <div class="row mt-3">
-                    <div class="col-2 offset-1 d-flex justify-content-center align-items-center">
-                      <div class="foodstuff-number">
-                          <p><%= idx + 1 %>.</p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="foodstuff-name">
-                          <p><%= fs.rawmaterial.name %></p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="foodstuff-quantity">
-                        <p><%= fs.quantity %><%= fs.rawmaterial.unit.name %></p>
-                      </div>
-                    </div>
-                  </div>
+        <div class="col-12 col-md-6 px-2 mt-2">
+          <div>
+            <div class="row">
+              <div class="col">
+                <small class="text-black-50"><%= @cuisine.cooking_time_i18n %></small>
+                <small class="text-black-50"><%= @cuisine.genre_i18n %></small>
+              </div>
+              <div class="col text-right">
+                <% if @cuisine.user.present?%>
+                  <span class="text-black-50">by&nbsp;<%= @cuisine.user.nickname %>さん</span>
+                <% else %>
+                  <span>退会済ユーザー</span>
                 <% end %>
               </div>
             </div>
-            <div class="tab-pane" role="tabpanel" id="tab2">
-              <div class="procedure-list">
-                <% @procedures.each_with_index do |pd, idx| %>
-                  <div class="row mt-3">
-                    <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
-                      <div class="foodstuff-number">
-                          <p><%= idx + 1 %>.</p>
-                      </div>
-                    </div>
-                    <div class="col-8 d-flex justify-content-start align-items-center">
-                      <div class="foodstuff-name">
-                          <p><%= pd.cooking_detail %></p>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+            <div id="cuisine-description">
+              <p><%= @cuisine.description %></p>
+            </div>
+            <div class="btns row">
+              <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
+              <%= render partial: 'favorite', locals: {cuisine: @cuisine} %>
+              </div>
+              <div id="btn-today-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
+              <%= render partial: 'today', locals: {cuisine: @cuisine} %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div id="foodstuff-and-procedure" class="mt-2">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="mt-2">
+            <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" role="tabpanel" id="tab1">
+                <div class="foodstuff-list">
+                  <% @foodstuffs.each_with_index do |fs, idx| %>
+                    <div class="row mt-3">
+                      <div class="col-2 offset-1 d-flex justify-content-center align-items-center">
+                        <div class="foodstuff-number">
+                            <p><%= idx + 1 %>.</p>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="foodstuff-name">
+                            <p><%= fs.rawmaterial.name %></p>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="foodstuff-quantity">
+                          <p><%= fs.quantity %><%= fs.rawmaterial.unit.name %></p>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="tab-pane" role="tabpanel" id="tab2">
+                <div class="procedure-list">
+                  <% @procedures.each_with_index do |pd, idx| %>
+                    <div class="row mt-3">
+                      <div class="col-2 offset-1 d-flex justify-content-end align-items-center">
+                        <div class="foodstuff-number">
+                            <p><%= idx + 1 %>.</p>
+                        </div>
+                      </div>
+                      <div class="col-8 d-flex justify-content-start align-items-center">
+                        <div class="foodstuff-name">
+                            <p><%= pd.cooking_detail %></p>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="no-content d-flex justify-content-center align-items-center">
+    <div class="text-center">
+      <i class="fas fa-exclamation fa-5x text-muted"></i>
+      <p class="h5 mt-2">レシピ作成者が非公開にしたので詳細を表示できなくなりました</p>
+    </div>
+  </div>
+<% end %>
