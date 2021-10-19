@@ -18,9 +18,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get update -qq \
   && apt-get install -y --no-install-recommends \
   build-essential \
+  graphviz \
   libpq-dev \
-  vim \
   nodejs \
+  vim \
   yarn
 
 COPY Gemfile Gemfile.lock /webapp/
