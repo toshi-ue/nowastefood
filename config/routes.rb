@@ -74,7 +74,9 @@ Rails.application.routes.draw do
   resources :contacts, only: [:show, :new, :create]
   resources :favorites, only: [:index, :create, :destroy]
   resources :keywords, only: [:index]
-  resources :managecuisines
+  resources :managecuisines do
+    patch :toggle_status
+  end
   resources :manageownfoodstuffs
   resources :manageownprocedures
   resources :userrawmaterials, only: [:index, :new, :create]

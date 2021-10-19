@@ -20,4 +20,8 @@ class Cuisine < ApplicationRecord
 
   include CommonScope
   mount_uploader :main_image, ImageUploader
+
+  def toggle_status!
+    draft? ? published! : draft!
+  end
 end

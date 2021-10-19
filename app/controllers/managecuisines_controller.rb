@@ -1,6 +1,8 @@
 class ManagecuisinesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cuisine, only: [:update, :edit, :destroy]
+  # TODO: 他のユーザーからのアクセスを拒否するようにする
+  # before_action :specified_user
 
   def index
     @cuisines = current_user.owner_cuisines
@@ -40,13 +42,24 @@ class ManagecuisinesController < ApplicationController
     redirect_to managecuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
   end
 
+  def toggle_status
+    @cuisine = Cuisine.find(params[:managecuisine_id])
+    @cuisine.toggle_status!
+    redirect_to managecuisine_path(@cuisine), flash: { notice: "#{@cuisine.name}が #{@cuisine.status_i18n} になりました" }
+  end
+
   private
 
   def set_cuisine
     @cuisine = Cuisine.find(params[:id])
   end
 
+  def specified_user
+    flash[:notice] = "該当するurlは現在レシピのオーナーしかアクセスできない状態です"
+    redirect_back(fallback_location: root_path) unless @cuisine.user_id == current_user.id
+  end
+
   def cuisine_params
-    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :tag_list).merge(user_id: current_user.id)
+    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :status).merge(user_id: current_user.id)
   end
 end
