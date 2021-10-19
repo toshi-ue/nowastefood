@@ -1,6 +1,5 @@
 class Cuisine < ApplicationRecord
   enum cooking_time: { lt_minutes5: 5, lt_minutes10: 10, lt_minutes20: 20, gt_minutes21: 21 }
-  enum difficulty: { easy: 0, normal: 1, hard: 2 }
   enum genre: { japanese: 1, western: 2, chinese: 3, other: 99 }
 
   belongs_to :user
