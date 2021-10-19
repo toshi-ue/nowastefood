@@ -4,8 +4,12 @@
     <div class="row">
       <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <%= render "shared/flash_messages" %>
-        <div class="page-title text-center">レシピプレビュー</div>
-        <div class="page-title pl-2"><%= @cuisine.name %></div>
+        <div class="page-title text-center">レシピプレビュー(<%= @cuisine.name %>)</div>
+      </div>
+      <div class="col-12 col-md-4 offset-md-4">
+        <%= link_to edit_managecuisine_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+          <i class="fas fa-pen"></i>&nbsp;レシピを変更する
+        <% end %>
       </div>
     </div>
     <div class="row no-gutters">
@@ -18,17 +22,12 @@
         <div>
           <div class="row">
             <div class="col">
-              <div id="cooking_time">
-                <p>調理時間: <%= @cuisine.cooking_time_i18n %></p>
-              </div>
+              <small class="text-black-50"><%= @cuisine.cooking_time_i18n %></small>,
+              <small class="text-black-50"><%= @cuisine.genre_i18n %></small>
             </div>
           </div>
-          <div id="cuisine-description">
+          <div id="cuisine-description" class="mt-2">
             <p><%= @cuisine.description %></p>
-          </div>
-          <div id="genre-and-tags">
-            <span class="badge badge-primary ml-1"><%= @cuisine.genre %></span>
-            <span class="badge badge-info ml-1">tag1</span>
           </div>
           <div class="btns row">
             <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
@@ -90,17 +89,12 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-12 col-md-4 offset-md-4">
-        <%= link_to edit_managecuisine_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
-          <i class="fas fa-pen"></i>&nbsp;レシピを変更する
-        <% end %>
-      </div>
       <div class="col-12 col-md-4 offset-md-4 mt-2">
         <%= link_to new_manageownfoodstuff_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
-          <i class="fas fa-pen"></i>&nbsp;食材を変更する
+          <i class="fas fa-pen"></i>&nbsp;食材を登録(変更)する
         <% end %>
         <%= link_to new_manageownprocedure_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
-          <i class="fas fa-pen"></i>&nbsp;手順を変更する
+          <i class="fas fa-pen"></i>&nbsp;手順を登録(変更)する
         <% end %>
       </div>
     </div>

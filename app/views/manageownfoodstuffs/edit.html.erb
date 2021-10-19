@@ -23,8 +23,7 @@
             <%= form.submit "更新する", class: 'btn btn-success btn-block' %>
             </div>
             <div class="col-10 offset-1 mt-2">
-              <%# TODO: リンクを変更する %>
-              <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @cuisine.id),  class: "btn btn-outline-secondary btn-block" %>
+              <%= link_to "手順登録へ", new_manageownprocedure_path(cuisine_id: @cuisine.id),  class: "btn btn-outline-secondary btn-block" %>
             </div>
         <% end %>
         <!-- foodstuffs and procedure list -->
