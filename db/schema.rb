@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_022013) do
+ActiveRecord::Schema.define(version: 2021_10_19_033334) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_10_18_022013) do
     t.bigint "user_id"
     t.integer "genre", default: 1, null: false
     t.string "name", null: false, comment: "料理名"
-    t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
     t.integer "cooking_time", null: false, comment: "調理時間"
     t.string "description"
     t.string "main_image", null: false, comment: "メイン画像"
