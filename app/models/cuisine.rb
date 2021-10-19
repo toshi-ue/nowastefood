@@ -17,22 +17,4 @@ class Cuisine < ApplicationRecord
 
   include CommonScope
   mount_uploader :main_image, ImageUploader
-
-  TAGS = [
-    "定番",
-    "子供OK",
-    "下準備だけ!!",
-    "ヘルシー",
-    "一人でパパッと",
-    "コスパ◎",
-    "ボリューム満点",
-    "やさしい味",
-    "野菜たっぷり",
-    "お手軽",
-    "家庭の味",
-    "10分でできる!!",
-    "あと1品",
-    "大人数で",
-    "汁物"
-  ].freeze
 end
