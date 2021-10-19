@@ -17,7 +17,6 @@ ja:
       cuisine:
         name: レシピ名
         calories: 摂取カロリー(kcal)
-        difficulty: 難しさ
         cooking_time: 調理時間(分)
         description: レシピの説明
         main_image: 画像
@@ -64,10 +63,6 @@ ja:
         lt_minutes15: ~15分以内
         lt_minutes20: ~20分以内
         gt_minutes21: 21分以上~
-      difficulty:
-        easy: 低
-        normal: 中
-        hard: 高
       genre:
         chinese: 中華
         japanese: 和風
