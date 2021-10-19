@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_033334) do
+ActiveRecord::Schema.define(version: 2021_10_19_064319) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_033334) do
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
+    t.integer "status", default: 0, null: false
     t.integer "genre", default: 1, null: false
     t.string "name", null: false, comment: "料理名"
     t.integer "cooking_time", null: false, comment: "調理時間"
