@@ -52,6 +52,7 @@ group :development do
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'
+  gem 'rails-erd'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
