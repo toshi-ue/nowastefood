@@ -47,6 +47,6 @@ class ManagecuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :genre, :difficulty, :calories, :cooking_time, :description, :main_image, :tag_list).merge(user_id: current_user.id)
+    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :tag_list).merge(user_id: current_user.id)
   end
 end

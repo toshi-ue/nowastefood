@@ -10,10 +10,6 @@
     <%= form.select(:genre, Cuisine.genres.keys.map{|k| [I18n.t("enums.cuisine.genre.#{k}"), k]}, {required: true}, { class: 'form-control'}) %>
   </div>
   <div class="form-group">
-    <span class="text-danger">※</span><%= form.label :difficulty %>
-    <%= form.select(:difficulty, Cuisine.difficulties.keys.map{|k| [I18n.t("enums.cuisine.difficulty.#{k}"), k]}, {prompt: "選択してください", required: true}, {class: 'form-control'}) %>
-  </div>
-  <div class="form-group">
     <span class="text-danger">※</span><%= form.label :cooking_time %>
     <%= form.select(:cooking_time, Cuisine.cooking_times.keys.map{|k| [I18n.t("enums.cuisine.cooking_time.#{k}"), k]}, {required: true}, {class: 'form-control'}) %>
   </div>
