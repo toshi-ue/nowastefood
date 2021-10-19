@@ -8,6 +8,9 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
+  process convert: 'jpg'
+  process resize_to_fit: [100, 100]
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}"
   end
@@ -16,11 +19,8 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
     0..10.megabytes
   end
 
-  process convert: 'jpg'
-  process resize_to_fit: [100, 100]
-
-  def extension_allowlist
-    %w[jpg jpeg gif png]
+  def content_type_allowlist
+    /image\//
   end
 
   def filename
