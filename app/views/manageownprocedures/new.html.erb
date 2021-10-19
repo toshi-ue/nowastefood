@@ -1,6 +1,6 @@
 <%= javascript_pack_tag 'manageownprocedures' %>
 
-<div class="content-header">
+<div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 text-center mt-3">
@@ -8,11 +8,6 @@
         <div>(<%= link_to "#{@cuisine.name}", managecuisine_path(@cuisine.id) %>)</div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="content">
-  <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <%= form_with(model: @procedure, url: manageownprocedures_path, method: :post, local: true) do |form| %>
@@ -23,7 +18,10 @@
             <%= form.submit "追加する", class: 'btn btn-success btn-block' %>
             </div>
             <div class="col-10 offset-1 mt-2">
-              <%= link_to "確認画面へ", managecuisine_path(@cuisine.id),  class: "btn btn-outline-secondary btn-block" %>
+              <%= link_to "食材登録へ", new_manageownfoodstuff_path(cuisine_id: @cuisine.id),  class: "btn btn-outline-secondary btn-block" %>
+            </div>
+            <div class="col-10 offset-1 mt-2">
+              <%= link_to "確認画面へ", managecuisine_path(@cuisine.id),  class: "btn btn-success btn-block" %>
             </div>
         <% end %>
         <!-- foodstuffs and procedure list -->
@@ -66,8 +64,8 @@
           </div>
         </div>
       </div>
-      <div class="col-10 offset-1 col-md-4 offset-md-4 mt-3">
-         <%= link_to '戻る', 'javascript:history.back()', class: 'btn btn-outline-secondary btn-block' %>
+      <div class="col-10 offset-1 col-md-4 offset-md-4 mt-3 text-center">
+         <%= link_to 'もどる', 'javascript:history.back()', class: 'text-black-50' %>
       </div>
     </div>
   </div>

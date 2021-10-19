@@ -17,18 +17,19 @@
         <div>
           <div class="row">
             <div class="col">
-              <div id="cooking_time">
-                <p>調理時間: <%= @cuisine.cooking_time_i18n %></p>
-              </div>
+              <small class="text-black-50"><%= @cuisine.cooking_time_i18n %></small>
+              <small class="text-black-50"><%= @cuisine.genre_i18n %></small>
+            </div>
+            <div class="col text-right">
+              <% if @cuisine.user.present?%>
+                <span class="text-black-50">by&nbsp;<%= @cuisine.user.nickname %>さん</span>
+              <% else %>
+                <span>退会済ユーザー</span>
+              <% end %>
             </div>
           </div>
           <div id="cuisine-description">
             <p><%= @cuisine.description %></p>
-          </div>
-          <%# TODO: ジャンル、タグ機能ができたら修正する %>
-          <div id="genre-and-tags">
-            <span class="badge badge-primary ml-1">Genre</span>
-            <span class="badge badge-info ml-1">tag1</span>
           </div>
           <div class="btns row">
             <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
