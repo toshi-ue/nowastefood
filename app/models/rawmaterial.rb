@@ -4,6 +4,7 @@ class Rawmaterial < ApplicationRecord
   belongs_to :foodcategory
   belongs_to :unit
   belongs_to :user
-  has_many :foodstuffs, dependent: :destroy
   has_many :cuisines, through: :foodstuffs
+  has_many :foodstuffs, dependent: :destroy
+  has_many :stocks, dependent: :destroy
 end
