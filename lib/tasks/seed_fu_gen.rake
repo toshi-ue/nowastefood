@@ -38,8 +38,6 @@ namespace :seed_fu_gen do
     users = User.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/02_user.rb", class_name: "User", seed_type: :seed_once) do |writer|
       users.each do |user|
-        # binding.pry
-        # user.created_at = Time.zone.now.prev_month
         writer << user.attributes.except("current_sign_in_at", "last_sign_in_at", "created_at", "updated_at")
       end
     end
@@ -60,14 +58,6 @@ namespace :seed_fu_gen do
       end
     end
 
-    # 05_genre.rb
-    genres = Genre.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/05_genre.rb", class_name: "Genre", seed_type: :seed_once) do |writer|
-      genres.each do |gr|
-        writer << gr.attributes.except("created_at", "updated_at")
-      end
-    end
-
     # 06_rawmaterial.rb
     rawmaterials = Rawmaterial.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/06_rawmaterial.rb", class_name: "Rawmaterial", seed_type: :seed_once) do |writer|
@@ -75,22 +65,6 @@ namespace :seed_fu_gen do
         writer << rm.attributes.except("created_at", "updated_at")
       end
     end
-
-    # # 08_tagging.rb
-    # taggings = ActsAsTaggableOn::Tagging.all
-    # SeedFu::Writer.write("db/afixtures/#{t_folder_name}/08_tagging.rb", class_name: "Tagging", seed_type: :seed_once) do |writer|
-    #   taggings.each do |tgg|
-    #     writer << tgg.attributes.except("created_at", "updated_at")
-    #   end
-    # end
-
-    # # 09_tag.rb
-    # tags = ActsAsTaggableOn::Tag.all
-    # SeedFu::Writer.write("db/afixtures/#{t_folder_name}/09_tag.rb", class_name: "Tag", seed_type: :seed_once) do |writer|
-    #   tags.each do |tg|
-    #     writer << tg.attributes.except("created_at", "updated_at")
-    #   end
-    # end
 
     # 21_cuisine.rb
     cuisines = Cuisine.all
@@ -115,14 +89,6 @@ namespace :seed_fu_gen do
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/23_procedure.rb", class_name: "Procedure", seed_type: :seed_once) do |writer|
       procedures.each do |pd|
         writer << pd.attributes.except("created_at", "updated_at")
-      end
-    end
-
-    # 24_stock.rb
-    stocks = Stock.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/24_stock.rb", class_name: "Stock", seed_type: :seed_once) do |writer|
-      stocks.each do |st|
-        writer << st.attributes.except("created_at", "updated_at")
       end
     end
   end
@@ -166,13 +132,20 @@ namespace :seed_fu_all_datas do
   end
 end
 
-namespace :change_main_image_properties do
-  desc 'change main_image properties'
+namespace :properties_of_profile_image_and_main_image do
+  desc 'change properties of profile_image and main_image'
   task all: :environment do |_t|
+    # usersテーブル用
+    target_file = Rails.root.join("db/fixtures/02_user.rb")
+    buffer = File.open(target_file, "r") { |f| f.read }
+    buffer.gsub!(/\"profile_image\"=>\"/, "\"profile_image\"=>Rails.root.join(\"db\/fixtures\/uploads\/user\/")
+    buffer.gsub!(/\.jpg\"/, "\.jpg\")\.open")
+    File.open(target_file, "w") { |f| f.write(buffer) }
+
+    # cuisinesテーブル用
     target_file = Rails.root.join("db/fixtures/21_cuisine.rb")
 
     buffer = File.open(target_file, "r") { |f| f.read }
-    # File.open("#{targetFile}.bak" , "w") { |f| f.write(buffer) }
     buffer.gsub!(/\"main_image\"=>\"/, "\"main_image\"=>Rails.root.join(\"db\/fixtures\/uploads\/cuisine\/")
     buffer.gsub!(/\.jpg\"/, "\.jpg\")\.open")
     File.open(target_file, "w") { |f| f.write(buffer) }
