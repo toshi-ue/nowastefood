@@ -31,7 +31,7 @@ docker-compose run --rm web rails seed_fu_gen:all;
 # 投入用のseedデータを作成
 docker-compose run --rm web rails seed_fu_all_datas:all;
 # seedデータの main_imageカラムの設定を変更
-docw rails change_main_image_properties:all;
+docw rails change_properties_to_adapt_seed_data:all;
 # データをseedする
 docker-compose run --rm web rails db:seed_fu;
 ```

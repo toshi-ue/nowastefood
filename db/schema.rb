@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_064319) do
     t.string "quantity", null: false
     t.bigint "rawmaterial_id"
     t.bigint "user_id"
-    t.date "rotted_at", default: "2021-10-04", null: false
+    t.date "rotted_at", default: "2021-10-20", null: false
     t.datetime "consumed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
