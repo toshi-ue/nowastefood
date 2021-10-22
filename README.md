@@ -113,16 +113,16 @@ Things you may want to cover:
 
 ## サービス概要
 
-自宅にある食材のフードロスを減らすことを目的としたレシピサイトサービス
+食材のフードロスを減らすことを目的としたレシピサイトサービス
 
 ## サイトURL
-[サービス名未定？](https://nowastefood.tk/)
-
+[サービス名未定？](https://nowastefood.tk/about)
 
 ## ターゲット層
 
+料理をする方
 - 主婦
-- 一人暮らし、単身赴任中の自炊をしている方
+- 一人暮らし、単身赴任中
 
 ## ユーザーが抱える問題
 
@@ -135,22 +135,75 @@ Things you may want to cover:
 ## 解決方法
 考えられる解決方法は以下になります
 
-- 食材を登録すれば消費期限が確認できるようにするサイトを作る
-- 登録されている食材をもとに
+- 食材を登録すれば消費期限が確認できるようにする
+- 登録されている食材をもとにレシピを自動抽出してくれるようにすること
 
+## 機能
+ユーザー側
+- ゲストユーザーログイン機能
+- ユーザー情報の修正機能
+    - ニックネーム
+    - プロフィール画像
+    - デフォルトの料理提供人数の設定
+- レシピの検索機能
+- お気に入り機能
+- レシピ登録機能
+- 食材(全ユーザー共通)の追加機能
+- 家にある食材の登録機能
+- 当日のメニュー登録機能
+    - ※ エコ機能ボタンを使用したレシピ自動抽出機能
+    - 人数を指定できるようにしてあります
+- 食材の消費期限による色表示の切り替え
+
+
+管理者側(更新・削除機能は後々自分のみ使えるように修正する予定)
+- ゲスト管理者ログイン機能
+- 各モデルのCRUD
+- 各モデルの一覧画面での各項目によるソート機能
+
+
+## 反省点
+- Foodcategoryモデルは必要なかった
 ## 現状の問題点
+
 ### 技術的側面
+- お問い合わせ機能の実装ができていない
+    - userとの紐付けができていない
+    - 本番環境では動作しない
 
 - 404, 500エラーが発生した時にNginxの404、500ページが表示される(Railsの`public`配下の404,500ページが参照されない)
-- associationがうまくいっていない
+- associationがうまくいっていない(うまく関連づけできない)
+    <!-- - Favoriteもでるに対する -->
+    - gem `rails-erd` を導入して pdf を発行する際に以下のログが表示される
+        - (`Warning: Ignoring invalid association :todaysmenu_cuisines on User (Could not find the source association(s) "todaysmenu_cuisine" or :todaysmenu_cuisines in model Todaysmenu. Try 'has_many :todaysmenu_cuisines, :through => :todaysmenus, :source => <name>'. Is it one of cuisine or user?)`)
+        - (`Warning: Ignoring invalid association :cuisines on Rawmaterial (Cannot have a has_many :through association 'Rawmaterial#cuisines' which goes through 'Rawmaterial#foodstuffs' before the through association is defined.)`)
 
-## 今後やっていきたいこと
+## 使用技術
+### バックエンド
+- Ruby(2.7.3), Ruby on Rails(6.0.4.1)
+- RSpec(5.0.2)
 
-- vueを導入する
-- エラーの撲滅
-- メール送受信をSendGridを使用して動作させる
-- contactにuserを紐づける
+### フロントエンド
 
+- HTML
+- SCSS
+- JavaScript(jQuery)
+- BootStrap4
+
+
+### インフラストラクチャー
+
+- AWS
+    - ACM
+    - ALB(SSL化するために使用)
+    - Certificate Manager
+    - EC2(Amazon Linux2(t2.micro))
+    - RDS
+        - MySQL: 5.7
+    - Route53
+    - S3
+- Nginx
+- Docker, docker-compose
 ## ER図
 ![10_46_25](https://user-images.githubusercontent.com/46378023/138380342-abc2fb89-fd3c-4068-b4de-3dcdf42dad0b.jpg)
 
@@ -169,3 +222,10 @@ Things you may want to cover:
 [naka-no-mura/best_gifter](https://github.com/naka-no-mura/best_gifter)
 [kazu-2020/arrangy](https://github.com/kazu-2020/arrangy)
 -->
+
+## 今後やっていきたいこと
+
+- webpackerを使用してvueを導入する
+- エラーの撲滅
+- メール送受信をSendGridを使用して動作させる
+- contactにuserを紐づける
