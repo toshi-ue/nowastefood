@@ -1,7 +1,8 @@
+<!--
 # README
 
 ## 初期動作環境構築
-<!--
+
 git clone後に下記コマンドを実行すれば動作確認できると思います。<br />
 
 yarn・jQueryなどのfrontendはほぼ初心者ですのでコマンドの抜け等がありましたら申し訳ありません。<br>
@@ -15,7 +16,7 @@ docker-compose run web rails db:seed_fu;
 docker-compose run web rails db:seed_fu;
 docker-compose up -d && docker attach app_for_job_change_web_1;
 ```
--->
+
 ```bash
 git clone ;
 docker-compose build;
@@ -35,17 +36,6 @@ docw rails change_properties_to_adapt_seed_data:all;
 # データをseedする
 docker-compose run --rm web rails db:seed_fu;
 ```
-<!--
-docker-compose run --rm web rails seed_fu_gen:all;
-docker-compose run --rm web rails seed_fu_all_datas:all;
-docw rails change_main_image_properties:all;
-docker-compose run --rm web rails db:seed_fu;
- -->
-<!--
-docker-compose run --rm --service-ports web bundle exec foreman start -f Procfile;
--->
-
-
 
 ## 問題点
 - 問題点リスト
@@ -57,7 +47,7 @@ docker-compose run --rm --service-ports web bundle exec foreman start -f Procfil
 
 現状としては以上になります。
 よろしくお願いいたします。
-<!--
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -81,7 +71,7 @@ Things you may want to cover:
 
 * ...
 
--->
+
 ## 参考にしたサイト
 ### HTML・CSS
 - カード画像を中央の位置でトリミング
@@ -104,3 +94,64 @@ Things you may want to cover:
   - [erb - How to count the amount of times a tag has been used with ActsAsTaggableOn rails - Stack Overflow](https://stackoverflow.com/questions/38530218/how-to-count-the-amount-of-times-a-tag-has-been-used-with-actsastaggableon-rails)
 - 補完機能
   - [【JavaScript】Select2でプルダウンをおしゃれにする【ライブラリ】 - Qiita](https://qiita.com/mtanabe/items/c324a2d4a8de8d1595e4)
+-->
+ポートフォリオの内容
+
+ポートフォリオを作った経緯
+
+機能を画面共有しながら紹介する
+
+
+苦労した点
+技術的な側面
+
+サービス的な側面
+
+現在の問題点
+
+
+
+## サービス概要
+
+自宅にある食材のフードロスを減らすことを目的としたレシピサイトサービス
+
+## サイトURL
+[サービス名未定？](https://nowastefood.tk/)
+
+
+## ターゲット層
+
+- 主婦
+- 一人暮らし、単身赴任中の自炊をしている方
+
+## ユーザーが抱える問題
+
+昨今のコロナの影響により、外食を控えて自宅で食べることが多くなりました。<br>
+<!-- 料理をする際にはまず自宅にある食材を消費することを前提に考えますが、 -->
+自炊・料理をされている方には問題があります。
+- 自宅の食材の消費期限はいつなのかを把握しておかなければいけない
+- 消費期限間近の食材からメニューを探すのに時間がかかる
+
+## 解決方法
+考えられる解決方法は以下になります
+
+- 食材を登録すれば消費期限が確認できるようにするサイトを作る
+- 登録されている食材をもとに
+
+## 現状の問題点
+### 技術的側面
+
+- 404, 500エラーが発生した時にNginxの404、500ページが表示される(Railsの`public`配下の404,500ページが参照されない)
+- associationがうまくいっていない
+
+## 今後やっていきたいこと
+
+- vueを導入する
+- エラーの撲滅
+- メール送受信をSendGridを使用して動作させる
+- contactにuserを紐づける
+
+## ER図
+![10_46_25](https://user-images.githubusercontent.com/46378023/138380342-abc2fb89-fd3c-4068-b4de-3dcdf42dad0b.jpg)
+
+## インフラ図
