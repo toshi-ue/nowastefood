@@ -155,5 +155,17 @@ Things you may want to cover:
 ![10_46_25](https://user-images.githubusercontent.com/46378023/138380342-abc2fb89-fd3c-4068-b4de-3dcdf42dad0b.jpg)
 
 ## インフラ図
+![infra](https://user-images.githubusercontent.com/46378023/138411974-f3179342-f183-4e47-90b4-47c2f92fe892.png)
+<!--
+参考URL
 
-作成中
+[無料！かつ最短？で Ruby on Rails on Docker on AWS のアプリを公開するぞ。 - Qiita](https://qiita.com/at-946/items/1e8acea19cc0b9f31b98#5-1-acm%E3%81%A7ssl%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E7%99%BA%E8%A1%8C%E3%81%99%E3%82%8B)
+[ryota1116/zero_calorie: 全ての食べ物を0kcalにするカロリー管理アプリ](https://github.com/ryota1116/zero_calorie)
+[30代未経験からRails, AWS, Docker, CircleCIを使って減量アプリを作りました - Qiita](https://qiita.com/naota7118/items/d641eae70dd65412a00b)
+[Rails+PostgreSQL+Docker+AWSで作成したポートフォリオの概要 - いわりょのBlog](https://ryo10leo.hatenablog.com/entry/2020/02/02/204150)
+[daichi5/kotonoha: Rails+Docker+AWS](https://github.com/daichi5/kotonoha)
+[開発環境インフラを ECS 移行している話 - Akatsuki Hackers Lab | 株式会社アカツキ（Akatsuki Inc.)](https://hackerslab.aktsk.jp/migrating-infrastructure-to-ecs)
+[【個人開発】性格診断でお酒と出会う新サービス、「さけぐらむ🍶」リリースしました！🎉🎉 - Qiita](https://qiita.com/watsumi_/items/cd77a0f2ec3630d550f8)
+[naka-no-mura/best_gifter](https://github.com/naka-no-mura/best_gifter)
+[kazu-2020/arrangy](https://github.com/kazu-2020/arrangy)
+-->
