@@ -94,7 +94,7 @@ Things you may want to cover:
   - [erb - How to count the amount of times a tag has been used with ActsAsTaggableOn rails - Stack Overflow](https://stackoverflow.com/questions/38530218/how-to-count-the-amount-of-times-a-tag-has-been-used-with-actsastaggableon-rails)
 - 補完機能
   - [【JavaScript】Select2でプルダウンをおしゃれにする【ライブラリ】 - Qiita](https://qiita.com/mtanabe/items/c324a2d4a8de8d1595e4)
--->
+
 ポートフォリオの内容
 
 ポートフォリオを作った経緯
@@ -108,7 +108,7 @@ Things you may want to cover:
 サービス的な側面
 
 現在の問題点
-
+-->
 
 
 ## サービス概要
@@ -155,3 +155,5 @@ Things you may want to cover:
 ![10_46_25](https://user-images.githubusercontent.com/46378023/138380342-abc2fb89-fd3c-4068-b4de-3dcdf42dad0b.jpg)
 
 ## インフラ図
+
+作成中
