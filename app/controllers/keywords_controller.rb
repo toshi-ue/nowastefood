@@ -9,6 +9,8 @@ class KeywordsController < ApplicationController
       @cuisines = Cuisine.where(cooking_time: @enum_key).includes(:user).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
     when "not-enum-ranking"
       @cuisines = Cuisine.includes(:user).where('favorites_count > ?', 0).order(favorites_count: :desc).page(params[:page]).per(KAMINARI_PAGINATION_COUNT)
+    else
+      redirect_to root_path, flash: { alert: "検索された値はありませんでした" }
     end
   end
 end
