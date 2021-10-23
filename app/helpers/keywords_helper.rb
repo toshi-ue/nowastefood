@@ -15,7 +15,7 @@ module KeywordsHelper
       "10分以下"
     when "lt_minutes20"
       "20分以下"
-    when "gt_minutes"
+    when "gt_minutes21"
       "20分以上"
     when "not-enum-ranking"
       "お気に入り"
