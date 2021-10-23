@@ -55,6 +55,9 @@ Metrics/ParameterLists:
 Rails/BulkChangeTable:
   Enabled: false
 
+Rails/FilePath:
+  Enabled: false
+
 RSpec/AlignLeftLetBrace:
   Enabled: true
 
@@ -62,9 +65,6 @@ RSpec/ContextWording:
   Enabled: false
 
 RSpec/ExampleLength:
-  Enabled: false
-
-Rails/FilePath:
   Enabled: false
 
 #  capybara固有のメソッドを有効にする
@@ -87,6 +87,9 @@ RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false
 
 RSpec/ReturnFromStub:
