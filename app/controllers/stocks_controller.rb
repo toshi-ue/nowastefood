@@ -10,7 +10,7 @@ class StocksController < ApplicationController
 
   def new
     @stock = Stock.new
-    @rawmaterials = Rawmaterial.limit(5)
+    @rawmaterials = Rawmaterial.all
   end
 
   def create
@@ -19,7 +19,7 @@ class StocksController < ApplicationController
     if @stock.save
       redirect_to stocks_path, flash: { notice: "#{@stock.rawmaterial.name} を追加しました" }
     else
-      @rawmaterials = Rawmaterial.limit(5)
+      @rawmaterials = Rawmaterial.all
       render 'new'
     end
   end
@@ -49,7 +49,7 @@ class StocksController < ApplicationController
   end
 
   def search_rawmaterial
-    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4).limit(5)
+    @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").where.not(foodcategory_id: 4)
     respond_to do |format|
       format.json { render json: @rawmaterials }
     end
