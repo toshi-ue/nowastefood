@@ -1,15 +1,12 @@
 class Foodstuff < ApplicationRecord
-  before_validation :convert_specific_format
+  include ConvertSpecificFormatModule
+  include RankedModel
+
   belongs_to :cuisine
   belongs_to :rawmaterial
   counter_culture :rawmaterial
   validate :check_quantity
-  include RankedModel
   ranks :row_order, with_same: :cuisine_id
-
-  def convert_specific_format
-    self.quantity = quantity.gsub(/ |　/, "").tr("／", "/").strip.tr('０-９', '0-9')
-  end
 
   def self.best_cuisine(foodstuffs, todaysmenus, quantity_want_to_consume, user_serving_count)
     cuisines = {}
