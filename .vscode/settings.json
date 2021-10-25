@@ -3,12 +3,14 @@
   "ruby.rubocop.executePath": "/Users/yr/.rbenv/shims/",
   "ruby.rubocop.onSave": true,
   "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
   "ruby.lint": {
     "rubocop": true
   },
-  "[ruby]": {
-    "editor.formatOnSave": true
-  },
-  "ruby.format": "rubocop",
-  "solargraph.commandPath": "/Users/yr/.rbenv/shims/solargraph",
+  // "[ruby]": {
+  //   "editor.formatOnSave": true
+  // },
+  // "ruby.format": "rubocop",
+  "solargraph.bundlerPath": "/Users/yr/.rbenv/versions/2.7.0/bin/bundler",
+  // "solargraph.commandPath": "/Users/yr/.rbenv/shims/solargraph",
 }

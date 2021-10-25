@@ -1,5 +1,7 @@
 {
   "recommendations": [
-    "cweijan.vscode-mysql-client2"
+    "cweijan.vscode-mysql-client2",
+    "tomoki1207.pdf",
+    "hediet.vscode-drawio"
   ]
 }
