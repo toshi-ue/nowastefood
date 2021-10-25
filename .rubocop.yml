@@ -81,6 +81,9 @@ RSpec/EmptyLineAfterExample:
 RSpec/EmptyLineAfterSubject:
   Enabled: false
 
+RSpec/FilePath:
+  Enabled: false
+
 RSpec/InstanceVariable:
   Enabled: false
   # Exclude:

@@ -6,7 +6,7 @@ RSpec.describe Foodstuff, type: :model do
   describe "#convert_specific_format" do
     subject { foodstuff.convert_specific_format }
 
-    let(:foodstuff) { Foodstuff.new(quantity: quantity) }
+    let(:foodstuff) { described_class.new(quantity: quantity) }
 
     context "OK" do
       context "半角数字のみの場合" do
