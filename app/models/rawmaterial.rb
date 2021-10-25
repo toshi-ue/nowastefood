@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class Rawmaterial < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :hiragana, presence: true, uniqueness: true
+
   belongs_to :foodcategory
   belongs_to :unit
   belongs_to :user
