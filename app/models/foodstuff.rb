@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 class Foodstuff < ApplicationRecord
   include ConvertSpecificFormatModule
   include RankedModel
+
+  before_validation :convert_specific_format
 
   belongs_to :cuisine
   belongs_to :rawmaterial

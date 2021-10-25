@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 class Stock < ApplicationRecord
   include ConvertSpecificFormatModule
+
+  before_validation :convert_specific_format
 
   validates :quantity, presence: true, format: { with: %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}, message: "は数字(整数)で入力してください" }
   validates :user_id, presence: true
