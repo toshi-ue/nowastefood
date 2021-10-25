@@ -39,7 +39,7 @@ class ManagecuisinesController < ApplicationController
 
   def destroy
     @cuisine.destroy
-    redirect_to managecuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
+    redirect_to managecuisines_path, flash: { notice: "#{@cuisine.name} のレシピが削除されました" }
   end
 
   def toggle_status
