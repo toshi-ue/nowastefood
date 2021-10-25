@@ -50,6 +50,10 @@ Metrics/MethodLength:
 Metrics/ParameterLists:
   Max: 12
 
+# 引数の文字数が少ない
+Naming/MethodParameterName:
+  Enabled: false
+
 # migration高速化のための設定
 # テーブル作成、テーブルカラム編集
 Rails/BulkChangeTable:
