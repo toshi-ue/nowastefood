@@ -81,6 +81,9 @@ RSpec/EmptyLineAfterExample:
 RSpec/EmptyLineAfterSubject:
   Enabled: false
 
+RSpec/FilePath:
+  Enabled: false
+
 RSpec/InstanceVariable:
   Enabled: false
   # Exclude:
@@ -113,7 +116,7 @@ Style/Documentation:
 
 # 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/RedundantSelf:
   Enabled: false
