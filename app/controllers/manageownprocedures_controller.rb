@@ -1,6 +1,6 @@
 class ManageownproceduresController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_procedure, only: [:edit, :update]
+  before_action :set_procedure, only: [:edit, :update, :destroy]
 
   def new
     @cuisine = Cuisine.find(params[:cuisine_id])
@@ -39,7 +39,6 @@ class ManageownproceduresController < ApplicationController
   end
 
   def destroy
-    @procedure = Procedure.find(params[:id])
     @procedure.destroy
     redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "手順が1つ削除されました" }
   end
