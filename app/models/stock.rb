@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Stock < ApplicationRecord
-  include ConvertSpecificFormatModule
-
   before_validation :convert_specific_format
 
   validates :quantity, presence: true, format: { with: %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}, message: "は数字(整数)で入力してください" }
@@ -52,6 +50,12 @@ class Stock < ApplicationRecord
     else
       @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
     end
+  end
+
+  # ユーザーが数字、空白、スラッシュを全角で入力しても許容するため
+  # 空白を削除、 全角があれば半角に、文字列はそのまま
+  def convert_specific_format
+    self.quantity = quantity.gsub(/[[:space:]]/, '').tr("／", "/").strip.tr('０-９', '0-9')
   end
 
   def store_default_values

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Foodstuff < ApplicationRecord
-  include ConvertSpecificFormatModule
   include RankedModel
 
   before_validation :convert_specific_format
@@ -29,14 +28,19 @@ class Foodstuff < ApplicationRecord
     cuisines.key(optimal_value)
   end
 
+  # ユーザーが数字、空白、スラッシュを全角で入力しても許容するため
+  # 空白を削除、 全角があれば半角に、文字列はそのまま
+  def convert_specific_format
+    self.quantity = quantity.gsub(/[[:space:]]/, '').tr("／", "/").strip.tr('０-９', '0-9')
+  end
+
   private
 
   def check_quantity
     return errors.add(:base, "数量は分数、数字または指定の文字で入力してください(例: 1/2, 120など)") if self.quantity.blank?
 
-    if %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}.match?(self.quantity)
-      true
-    elsif /\A(適量|少々|お好みで){1}\z/.match?(self.quantity)
+    case quantity
+    when %r{\A[1-9１-９]*[/／]*[0-9０-９]*\z}, /\A(適量|少々|お好みで){1}\z/
       true
     else
       errors.add(:base, "数量は分数、数字または指定の文字で入力してください(例: 1/2, 120など)")
