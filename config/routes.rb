@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # 管理者側
   devise_for :managers, controllers: {
