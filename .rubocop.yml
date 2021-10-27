@@ -8,17 +8,22 @@ require:
   - rubocop-performance
 
 AllCops:
+  TargetRubyVersion: 2.7.3
   Exclude:
     - "config.ru"
     - "bin/**"
     - "lib/**"
-    - "db/**/*"
     - "db/schema.rb"
+    # - "db/**/*"
     - "config/**/*"
     - "script/**/*"
     - !ruby/regexp /old_and_unused\.rb$/
     - "vendor/**/*"
     - "Gemfile.lock"
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - "db/schema.rb"
 
 # 1行が長すぎる
 Layout/LineLength:

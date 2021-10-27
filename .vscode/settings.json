@@ -2,7 +2,7 @@
   "ruby.rubocop.configFilePath": "/Users/yr/progs/ruby/rails/app_for_job_change/.rubocop.yml",
   "ruby.rubocop.executePath": "/Users/yr/.rbenv/shims/",
   "ruby.rubocop.onSave": true,
-  "ruby.useBundler": true,
+  "ruby.useBundler": false,
   "ruby.useLanguageServer": true,
   "ruby.lint": {
     "rubocop": true

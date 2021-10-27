@@ -20,14 +20,6 @@ Layout/EmptyLines:
     - "Gemfile"
     - "bin/setup"
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - "db/schema.rb"
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBrackets.
@@ -68,22 +60,6 @@ Style/MixinUsage:
 Style/PercentLiteralDelimiters:
   Exclude:
     - "config/spring.rb"
-
-# Offense count: 17
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-
-# Style/StringLiterals:
-#   Exclude:
-#     - 'Gemfile'
-#     - 'config/application.rb'
-#     - 'config/environments/production.rb'
-#     - 'config/puma.rb'
-#     - 'db/schema.rb'
-#     - 'db/*/*.rb'
-#     - 'spec/*/*.rb'
-#     - 'spec/*/*/*.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
