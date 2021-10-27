@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    h2 {
+      color: #e7454a;
+    }
+    p hr {
+      color: #2d2a24;
+    }
+  </style>
+</head>
+<body>
+  <p><%= @contact.user_name %> 様<br/></p>
+  <p>以下のお問い合わせ内容を管理者へ送信しました。</p>
+  <p>管理者から回答があるまでしばらくお待ちください</p>
+  <p>
+    【種別】<br/>
+    <%= @contact.category_i18n %><br/>
+  </p>
+  <p>
+    【用件】<br/>
+    <%= @contact.subject %><br/>
+  </p>
+  <hr />
+  <p>
+    【お問い合わせ内容】<br/>
+    <%= @contact.message %>
+  </p>
+  <hr />
+</body>
+</html>

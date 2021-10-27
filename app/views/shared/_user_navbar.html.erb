@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light navbar-expand">
   <div class="container">
-    <%= link_to @appname, root_path, class: "navbar-brand" %>
+    <%= link_to @app_name, root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -41,9 +41,12 @@
               <%= link_to '設定', user_profile_path, class: 'dropdown-item text-center' %>
               <%= link_to 'あなたのレシピ', managecuisines_path, class: 'dropdown-item text-center' %>
               <%= link_to 'レシピを登録', new_managecuisine_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'お問い合わせ', new_contact_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'このサイトについて', about_path, class: 'dropdown-item text-center' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
             <% else %>
-              <%= link_to 'ログイン',new_user_session_path, class: 'dropdown-item' %>
+              <%= link_to 'このサイトについて', about_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'ログイン',new_user_session_path, class: 'dropdown-item text-center' %>
             <% end %>
           </div>
         </li>
