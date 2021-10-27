@@ -41,6 +41,7 @@
               <%= link_to '設定', user_profile_path, class: 'dropdown-item text-center' %>
               <%= link_to 'あなたのレシピ', managecuisines_path, class: 'dropdown-item text-center' %>
               <%= link_to 'レシピを登録', new_managecuisine_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'お問い合わせ', new_contact_path, class: 'dropdown-item text-center' %>
               <%= link_to 'このサイトについて', about_path, class: 'dropdown-item text-center' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
             <% else %>
