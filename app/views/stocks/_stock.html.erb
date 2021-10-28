@@ -1,27 +1,27 @@
-<tr class="<%= change_back_color(stock, @rawmaterials_and_quantity_will_be_consumed, left_days(stock.rotted_at)) %>">
-  <td class="align-middle text-center">
+<tr class='<%= change_back_color(stock, @rawmaterials_and_quantity_will_be_consumed, left_days(stock.rotted_at)) %>'>
+  <td class='align-middle text-center'>
     <%= stock.rawmaterial.name %><br/>
     (<%= stock.quantity %><%= stock.rawmaterial.unit.name %>)
   <%# TODO: 最後に削除 %>
-  <br>
-  <%= stock.rawmaterial_id %>
+  <%# <br> %>
+  <%# stock.rawmaterial_id %>
   </td>
 
-  <td class="align-middle text-center">
+  <td class='align-middle text-center'>
     <%= disp_left_days(left_days(stock.rotted_at)) %><br>
     <small>(<%= stock.created_at.strftime('%m/%d') %>)</small>
   </td>
-  <td class="align-middle text-center">
-    <% if @css_name != "will-consume" %>
+  <td class='align-middle text-center'>
+    <% if @css_name != 'will-consume' %>
     <div>
-      <%= link_to auto_today_create_stocks_path(rawmaterial_id: stock.rawmaterial_id, quantity: stock.quantity) , class: "page-link text-dark", role: "button" do %>
+      <%= link_to auto_today_create_stocks_path(rawmaterial_id: stock.rawmaterial_id, quantity: stock.quantity) , class: 'page-link text-dark autotoday-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '食材から消費するレシピを追加する', role: 'button' do %>
         <%= image_tag 'leaf_16_png' %>
       <% end %>
     </div>
     <% end %>
-    <div class="mt-2">
-      <%= link_to stock_path(stock.id),  class: "page-link text-dark", role: "button", method: :delete do %>
-      <i class="far fa-trash-alt"></i>
+    <div class='mt-2'>
+      <%= link_to stock_path(stock.id),  class: 'page-link text-dark', role: 'button', method: :delete do %>
+      <i class='far fa-trash-alt'></i>
       <% end %>
     </div>
   </td>
