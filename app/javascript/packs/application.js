@@ -10,9 +10,12 @@ require('data-confirm-modal')
 
 // tooltips
 $(function () {
+  $('.add-todaysmenu-tooltip').tooltip();
+  $('.autotoday-tooltip').tooltip();
+  $('.delete-favorite-tooltip').tooltip();
+  $('.favorites-tooltip').tooltip();
   $('.histories-tooltip').tooltip();
+  $('.remove-todaysmenus-tooltip').tooltip();
   $('.stocks-tooltip').tooltip();
   $('.todaysmenus-tooltip').tooltip();
-  $('.favorites-tooltip').tooltip();
-  $('.autotoday-tooltip').tooltip();
 });
