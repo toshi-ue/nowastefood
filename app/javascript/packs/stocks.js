@@ -1,6 +1,7 @@
 import 'select2'
 
 $(function () {
+
   let action_name = $('body').data('action');
   const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
   if ($('.stock-rawmaterial-search option:selected').val()) {
@@ -20,29 +21,29 @@ $(function () {
   switch (action_name) {
     case "new":
     case "create":
-  $('.stock-rawmaterial-search').select2({
-    allowClear: true,
-    placeholder: "入力してください",
-    theme: 'bootstrap4',
-    width: 'auto',
-    ajax: {
-      url: '/stocks/search_rawmaterial',
-      datatype: 'json',
-      delay: 500,
-      data: function (params) {
-        return { q: params.term }
-      },
-      processResults: function (data, params) {
-        return {
-          results: $.map(data, function (obj) {
-            return { id: obj.id, text: obj.name };
-          })
-        };
-      }
-    },
-  });
+      $('.stock-rawmaterial-search').select2({
+        allowClear: true,
+        placeholder: "入力してください",
+        theme: 'bootstrap4',
+        width: 'auto',
+        ajax: {
+          url: '/stocks/search_rawmaterial',
+          datatype: 'json',
+          delay: 500,
+          data: function (params) {
+            return { q: params.term }
+          },
+          processResults: function (data, params) {
+            return {
+              results: $.map(data, function (obj) {
+                return { id: obj.id, text: obj.name };
+              })
+            };
+          }
+        },
+      });
 
-  $('.stock-rawmaterial-search').on('select2:select', function (e) {
+      $('.stock-rawmaterial-search').on('select2:select', function (e) {
         let rawmaterial_id = e.params.data.id;
         $(".input-group-text").text("");
         $("#expiry_period").text("");

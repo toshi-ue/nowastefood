@@ -14,4 +14,5 @@ $(function () {
   $('.stocks-tooltip').tooltip();
   $('.todaysmenus-tooltip').tooltip();
   $('.favorites-tooltip').tooltip();
+  $('.autotoday-tooltip').tooltip();
 });
