@@ -1,27 +1,37 @@
-<% if user_signed_in? %>
-  <% if current_user.already_favorite?(cuisine) %>
-    <%= link_to cuisine_favorite_path(cuisine.id), method: :delete, remote: true do %>
-      <button class="btn btn-warning btn-block" type="button">
-        <i class="far fa-bookmark"></i><br>
-        add
-        Favorite
-      </button>
+<tr class=<%= 'table-success' if (@cuisines.ids).include?(favorite.cuisine.id) %>>
+  <td class="text-center align-middle">
+    <%= link_to cuisine_path(favorite.cuisine) do %>
+      <%= image_tag favorite.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{favorite.cuisine.name}" %>
     <% end %>
-  <% else %>
-    <%= link_to cuisine_favorite_path(cuisine.id), method: :post, remote: true do %>
-      <button class="btn btn-outline-primary btn-block" type="button">
-        <i class="far fa-bookmark"></i><br>
-        remove
-        Favorite
+  </td>
+  <td class="text-break align-middle">
+    <%= link_to favorite.cuisine.name, cuisine_path(favorite.cuisine), class: 'text-black-50' %>
+  </td>
+  <td class="text-center align-middle">
+    <div>
+      <% if (@cuisines.ids).include?(favorite.cuisine.id) %>
+        <%= link_to remove_todaysmenu_from_favorite_path(favorite.cuisine), class: 'remove-todaysmenus-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '今日の献立から削除する', method: :delete, local: true do %>
+          <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
+            <i class="fas fa-eraser"></i>
+          </button>
+        <% end %>
+      <% else %>
+        <%= link_to add_todaysmenu_from_favorite_path(favorite.cuisine), class: 'add-todaysmenu-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '今日の献立に追加する', method: :post, local: true do %>
+          <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
+            <i class="fas fa-concierge-bell"></i>
+          </button>
+        <% end %>
+
+      <% end %>
+    </div>
+  </td>
+  <td class="text-center align-middle">
+    <div class="text-center">
+      <%= link_to favorite_path(favorite.id), class: 'delete-favorite-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: 'お気に入りから削除する', method: :delete, local: true do %>
+      <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
+        <i class="far fa-trash-alt"></i>
       </button>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= link_to new_user_session_path, local: true do %>
-    <button class="btn btn-outline-primary btn-block" type="button">
-      <i class="far fa-bookmark"></i><br>
-      not login
-      Favorite
-    </button>
-  <% end %>
-<% end %>
+      <% end %>
+    </div>
+  </td>
+</tr>
