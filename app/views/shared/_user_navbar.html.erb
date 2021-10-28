@@ -1,49 +1,49 @@
-<nav class="navbar navbar-light navbar-expand">
-  <div class="container">
-    <%= link_to @app_name, root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<nav class='navbar navbar-light navbar-expand'>
+  <div class='container'>
+    <%= link_to @app_name, root_path, class: 'navbar-brand' %>
+    <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarsExample02' aria-controls='navbarsExample02' aria-expanded='false' aria-label='Toggle navigation'>
+      <span class='navbar-toggler-icon'></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarsExample02">
-      <%= search_form_for @search, url: search_cuisines_path, html: {class: "form-inline ml-auto my-2 my-md-0 d-none d-md-block"} do |f| %>
-        <div class="input-group">
+    <div class='collapse navbar-collapse' id='navbarsExample02'>
+      <%= search_form_for @search, url: search_cuisines_path, html: {class: 'form-inline ml-auto my-2 my-md-0 d-none d-md-block'} do |f| %>
+        <div class='input-group'>
           <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
-          <span class="input-group-append">
+          <span class='input-group-append'>
             <%= f.button type: 'submit', style: 'border-style: none;' do %>
-              <i class="fa fa-search"></i>
+              <i class='fa fa-search'></i>
             <% end %>
         </div>
       <% end %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to stocks_path, class: 'nav-link text-center' do %>
-            <i class="fas fa-box"></i><span class="d-none d-lg-inline">&nbsp;Stock</span>
+      <ul class='navbar-nav ml-auto'>
+        <li class='nav-item'>
+          <%= link_to stocks_path, class: 'nav-link text-center stocks-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: '家にある食材' do %>
+            <i class='fas fa-box'></i><span class='d-none d-lg-inline'>&nbsp;家の食材</span>
           <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to cookinghistorys_path, class: 'nav-link text-center' do %>
-            <i class="fas fa-history"></i><span class="d-none d-lg-inline">&nbsp;History</span>
+        <li class='nav-item'>
+          <%= link_to cookinghistorys_path, class: 'nav-link text-center histories-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: '料理履歴' do %>
+            <i class='fas fa-history'></i><span class='d-none d-lg-inline'>&nbsp;料理履歴</span>
           <% end %>
         </li>
-        <li class="nav-item d-xl-flex align-items-xl-center">
-          <%= link_to todaysmenus_path, class: "nav-link text-center" do %>
-            <i class="fas fa-plus"></i><span class="d-none d-lg-inline">&nbsp;TodaysMenu</span>
+        <li class='nav-item d-xl-flex align-items-xl-center'>
+          <%= link_to todaysmenus_path, class: 'nav-link text-center todaysmenus-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: '今日の献立' do %>
+            <i class='fas fa-plus'></i><span class='d-none d-lg-inline'>&nbsp;今日の献立</span>
           <% end %>
         </li>
-        <li class="nav-item align-items-xl-center">
-          <%= link_to favorites_path, class: "nav-link text-center" do %>
-          <i class="far fa-bookmark"></i><span class="d-none d-lg-inline">&nbsp;Favorite</span>
+        <li class='nav-item align-items-xl-center'>
+          <%= link_to favorites_path, class: 'nav-link text-center favorites-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'お気に入り' do %>
+          <i class='far fa-bookmark'></i><span class='d-none d-lg-inline'>&nbsp;お気に入り</span>
           <% end %>
         </li>
-        <li class="nav-item dropdown d-none d-md-block"><a class="dropdown-toggle nav-link text-center" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-alt fa-lg user-icon"></i></a>
-          <div class="dropdown-menu dropdown-menu-right">
+        <li class='nav-item dropdown d-none d-md-block'><a class='dropdown-toggle nav-link text-center' data-toggle='dropdown' aria-expanded='false' href='#'><i class='fas fa-user-alt fa-lg user-icon'></i></a>
+          <div class='dropdown-menu dropdown-menu-right'>
             <% if user_signed_in? %>
               <%= link_to '設定', user_profile_path, class: 'dropdown-item text-center' %>
               <%= link_to 'あなたのレシピ', managecuisines_path, class: 'dropdown-item text-center' %>
               <%= link_to 'レシピを登録', new_managecuisine_path, class: 'dropdown-item text-center' %>
               <%= link_to 'お問い合わせ', new_contact_path, class: 'dropdown-item text-center' %>
               <%= link_to 'このサイトについて', about_path, class: 'dropdown-item text-center' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item text-center' %>
             <% else %>
               <%= link_to 'このサイトについて', about_path, class: 'dropdown-item text-center' %>
               <%= link_to 'ログイン',new_user_session_path, class: 'dropdown-item text-center' %>
@@ -55,28 +55,28 @@
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light d-md-none">
+<nav class='navbar navbar-expand-lg navbar-light d-md-none'>
   <%= search_form_for @search, url: search_cuisines_path do |f| %>
-    <div class="input-group">
+    <div class='input-group'>
       <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
-      <span class="input-group-append">
+      <span class='input-group-append'>
         <%= f.button type: 'submit', style: 'border-style: none;' do %>
-          <i class="fa fa-search"></i>
+          <i class='fa fa-search'></i>
         <% end %>
       </div>
     </div>
   <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <i class="fas fa-user-alt fa-lg user-icon"></i>
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'>
+    <i class='fas fa-user-alt fa-lg user-icon'></i>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
+  <div class='collapse navbar-collapse' id='navbarNavDropdown'>
+    <ul class='navbar-nav'>
+      <li class='nav-item'>
           <% if user_signed_in? %>
             <%= link_to '設定', user_profile_path, class: 'nav-link text-center' %>
             <%= link_to 'あなたのレシピ', managecuisines_path, class: 'nav-link text-center' %>
             <%= link_to 'レシピを登録', new_managecuisine_path, class: 'nav-link text-center' %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link text-center" %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-center' %>
           <% else %>
             <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-center' %>
             <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-center' %>
