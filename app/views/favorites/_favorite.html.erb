@@ -1,4 +1,4 @@
-<tr class=<%= 'table-success' if (@cuisines.ids).include?(favorite.cuisine.id) %>>
+<tr class=<%= 'table-success' if @cuisines.present? && (@cuisines.ids).include?(favorite.cuisine.id) %>>
   <td class="text-center align-middle">
     <%= link_to cuisine_path(favorite.cuisine) do %>
       <%= image_tag favorite.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{favorite.cuisine.name}" %>

@@ -8,12 +8,6 @@ class FavoritesController < ApplicationController
     @cuisines = Cuisine.where(id: current_user.todaysmenus.not_cooked.map(&:cuisine_id))
   end
 
-  def create
-    @favorite = current_user.favorites.build(cuisine_id: params[:cuisine_id])
-    @favorite&.save!
-    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
-  end
-
   def destroy
     @favorite = Favorite.find_by(id: params[:id])
     @favorite&.destroy!

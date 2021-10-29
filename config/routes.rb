@@ -73,7 +73,7 @@ Rails.application.routes.draw do
     end
   end
   resources :contacts, only: [:show, :new, :create]
-  resources :favorites, only: [:index, :create, :destroy]
+  resources :favorites, only: [:index, :destroy]
   post '/add_todaysmenu/:cuisine_id', to: 'favorites#add_todaysmenu_from_favorite', as: 'add_todaysmenu_from_favorite'
   delete '/remove_todaysmenu/:cuisine_id', to: 'favorites#remove_todaysmenu_from_favorite', as: 'remove_todaysmenu_from_favorite'
   resources :keywords, only: [:index]
