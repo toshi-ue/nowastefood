@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Todaysmenu < ApplicationRecord
   enum cooked_when: { morning: 1, lunch: 2, dinner: 3 }
   belongs_to :cuisine
