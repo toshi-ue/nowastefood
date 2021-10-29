@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :favorite do
-    association :cuisine
+    association :cuisine, :published
     association :user
-    # cuisine { nil }
-    # user { nil }
   end
 end
