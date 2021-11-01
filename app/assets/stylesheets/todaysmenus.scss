@@ -30,9 +30,6 @@ body {
   }
 
   @include media-breakpoint-down(md) {
-    .btn-serving-count {
-      height: 120%;
-    }
 
     .btns-cuisine {
       padding-top: 0.8rem;
@@ -41,21 +38,12 @@ body {
     .detail-cuisine {
       width: 70%;
     }
-
-    .img-cuisine {
-      width: 30%;
-      padding: 0;
-    }
-
     .search-btn {
       margin-top: 20vh;
     }
   }
 
   @include media-breakpoint-between(md, lg) {
-    .detail-cuisine {
-      vertical-align: middle;
-    }
   }
 
   @include media-breakpoint-up(lg) {}
