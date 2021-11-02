@@ -22,9 +22,16 @@
           <i class="fas fa-trash"></i>&nbsp;レシピを削除する
         <% end %>
         <% if @cuisine.draft? %>
-          <%= link_to managecuisine_toggle_status_path(@cuisine.id), method: :patch, class: 'btn btn-outline-secondary btn-block', remote: false do %>
-            公開する<br />
-            <small>(現在:&nbsp;<%= @cuisine.status_i18n %>)</small>
+          <% if @foodstuffs.present? && @procedures.present? %>
+            <%= link_to managecuisine_toggle_status_path(@cuisine.id), method: :patch, class: 'btn btn-outline-secondary btn-block', remote: false do %>
+              公開する<br />
+              <small>(現在:&nbsp;<%= @cuisine.status_i18n %>)</small>
+            <% end %>
+          <% else %>
+            <button type="button" class="btn btn-outline-secondary btn-block preview-tooltip" data-toggle='tooltip' data-placement='top' title="食材と手順が追加されると登録できます!!" disabled>
+              公開する<br />
+              <small>(現在:&nbsp;<%= @cuisine.status_i18n %>)</small>
+            </button>
           <% end %>
         <% else %>
           <%= link_to managecuisine_toggle_status_path(@cuisine.id), method: :patch, class: 'btn btn-outline-secondary btn-block', remote: false do %>
@@ -54,12 +61,12 @@
           <div class="btns row">
             <div id="btn-favorite-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
               <%= link_to cuisine_add_favorite_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block disabled', method: :post, remote: true, aria: {disabled: true} do %>
-                <i class="far fa-bookmark"></i>&nbsp;Favorite
+                <i class="far fa-bookmark"></i>&nbsp;お気に入り
               <% end %>
             </div>
             <div id="btn-today-<%= @cuisine.id %>" class="col-6 mt-2 text-center">
               <%= link_to cuisine_add_menu_path(@cuisine.id), class: 'btn btn-outline-secondary btn-block disabled', method: :post, remote: true, aria: {disabled: true} do %>
-                  <i class="fas fa-plus"></i>&nbsp;Today
+                  <i class="fas fa-plus"></i>&nbsp;今日の献立
               <% end %>
             </div>
           </div>

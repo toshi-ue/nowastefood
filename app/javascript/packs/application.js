@@ -15,6 +15,7 @@ $(function () {
   $('.delete-favorite-tooltip').tooltip();
   $('.favorites-tooltip').tooltip();
   $('.histories-tooltip').tooltip();
+  $('.preview-tooltip').tooltip();
   $('.remove-todaysmenus-tooltip').tooltip();
   $('.stocks-tooltip').tooltip();
   $('.todaysmenus-tooltip').tooltip();
