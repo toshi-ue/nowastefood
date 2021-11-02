@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: 完成したらアプリ名を入れる
   def set_app_name
-    @app_name = "サービス名"
+    @app_name = "NoWasteFood"
   end
 
   def set_search_query
