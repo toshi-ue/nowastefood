@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 text-center mt-3">
         <div class="page-title m-0 d-inline">手順の追加</div>
-        <div>(<%= link_to "#{@cuisine.name}", managecuisine_path(@cuisine.id) %>)</div>
+        <div>(<%= link_to @cuisine.name, managecuisine_path(@cuisine.id) %>)</div>
       </div>
     </div>
     <div class="row">

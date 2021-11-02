@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 text-center mt-3">
         <div class="page-title m-0 d-inline">食材の追加</div>
-        <div>(<%= @cuisine.name %>)</div>
+        <div>(<%= link_to @cuisine.name, managecuisine_path(@cuisine) %>)</div>
       </div>
     </div>
     <div class="row mt-2">
