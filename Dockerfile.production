@@ -5,12 +5,10 @@ ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
 ENV DEBCONF_NOWARNINGS yes
 ENV BUNDLE_DEPLOYMENT true
 ENV BUNDLE_JOBS 1
-# ENV BUNDLE_PATH /webapp/vendor/bundle
 ENV BUNDLE_WITHOUT development:test
 ENV LANG C.UTF-8
 ENV MY_BUNDLER_VERSION 2.1.4
 ENV RAILS_ENV production
-RUN mkdir /webapp
 WORKDIR /webapp
 
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
