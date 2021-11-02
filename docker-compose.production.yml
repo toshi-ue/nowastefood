@@ -33,7 +33,7 @@ services:
     volumes:
       - public-data:/webapp/public
       - tmp-data:/webapp/tmp
-      - ./containers/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      # - ./containers/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - webapp-network
     ports:
