@@ -30,18 +30,6 @@ class Stock < ApplicationRecord
     end
   end
 
-  def get_remaining_stocks(stocks, todaysmenus)
-    stocks_remainings = {}
-    if todaysmenus.present?
-      stocks = Hash[stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
-      todaysmenus = @todaysmenus.create_hash_todaysmenus(@todaysmenus)
-      stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
-      @stocks_not_plan_to_consume = stocks_results
-    else
-      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
-    end
-  end
-
   # ユーザーが数字、空白、スラッシュを全角で入力しても許容するため
   # 空白を削除、 全角があれば半角に、文字列はそのまま
   def convert_specific_format
