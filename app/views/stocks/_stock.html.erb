@@ -14,7 +14,7 @@
   <td class='align-middle text-center'>
     <% if @css_name != 'will-consume' %>
     <div>
-      <%= link_to auto_today_create_stocks_path(rawmaterial_id: stock.rawmaterial_id, quantity: stock.quantity) , class: 'page-link text-dark tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '食材から消費するレシピを追加する', role: 'button' do %>
+      <%= link_to auto_today_create_stocks_path(rawmaterial_id: stock.rawmaterial_id, quantity: stock.quantity) , class: 'page-link text-dark stocks-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '食材から消費するレシピを追加する', role: 'button' do %>
         <%= image_tag 'leaf_16_png' %>
       <% end %>
     </div>
