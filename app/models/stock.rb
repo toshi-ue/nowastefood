@@ -16,14 +16,13 @@ class Stock < ApplicationRecord
     where(consumed_at: nil)
   }
 
-
   def self.store_consumed_at(stocks, stocks_will_be_consumed)
     stocks.each do |stock|
       next if stocks_will_be_consumed[stock.rawmaterial_id].nil?
 
       result = Rational(stock.quantity) - stocks_will_be_consumed[stock.rawmaterial_id]
       if result.positive?
-        stock.update_attribute(:quantity, result)
+        stock.update!(quantity: result)
       else
         stock.delete
       end

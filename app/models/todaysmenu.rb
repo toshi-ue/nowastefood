@@ -6,13 +6,9 @@ class Todaysmenu < ApplicationRecord
   belongs_to :user
   validates :serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
-  scope :not_cooked, lambda {
-    where(cooked_when: nil)
-  }
+  scope :not_cooked, -> { where(cooked_when: nil) }
 
-  scope :cooked, lambda {
-    where.not(cooked_when: nil)
-  }
+  scope :cooked, -> { where.not(cooked_when: nil) }
 
   include CommonScope
 
@@ -24,13 +20,13 @@ class Todaysmenu < ApplicationRecord
         quantities.push([foodstuff.rawmaterial_id, Rational(foodstuff.quantity) * todaysmenu.serving_count])
       end
     end
-    tmp_grouped_todaysmenus = quantities.group_by(&:first)
-    tmp_grouped_todaysmenus.each do |k, v|
-      tmp_grouped_todaysmenus[k] = v.inject(0) do |sum, arr|
+    grouped_todaysmenus = quantities.group_by(&:first)
+    grouped_todaysmenus.each do |k, v|
+      grouped_todaysmenus[k] = v.inject(0) do |sum, arr|
         sum += Rational(arr.last)
       end
     end
-    grouped_todaysmenus = tmp_grouped_todaysmenus
+    grouped_todaysmenus
   end
 
   def self.get_quantities_grouped_by_rawmaterial(todaysmenus:)

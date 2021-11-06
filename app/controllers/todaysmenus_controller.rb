@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TodaysmenusController < ApplicationController
   before_action :authenticate_user!
   def index
@@ -18,11 +20,10 @@ class TodaysmenusController < ApplicationController
 
   def cooked_done
     @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).not_cooked
-    # @stocks = current_user.stocks.includes(:rawmaterial).unused.order(rotted_at: 'ASC')
     @stocks = current_user.stocks.includes(:rawmaterial).not_consumed.order(rotted_at: 'ASC')
     @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
     @stocks.store_consumed_at(@stocks, @rawmaterials_and_quantity_will_be_consumed)
-    @todaysmenus.update_all(cooked_when: params[:cooked_when].to_i)
+    @todaysmenus.update_all(cooked_when: params[:cooked_when].to_i) # rubocop:disable Rails/SkipsModelValidations
     redirect_to todaysmenus_path, flash: { notice: "#{@todaysmenus.map { |t| t.cuisine.name }.join(' と ')}を料理しました。お疲れ様です!!" }
   end
 
