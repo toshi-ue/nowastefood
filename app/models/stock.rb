@@ -16,39 +16,16 @@ class Stock < ApplicationRecord
     where(consumed_at: nil)
   }
 
-  def self.remaining_amount(stocks, todaysmenus)
-    stocks_result = {}
-    stocks.each do |st|
-      todaysmenus.each do |tm|
-        stocks_result.store(st[0].to_s, st[1] - tm[1]) if st[0] == tm[0]
-      end
-      stocks_result.store(st[0].to_s, st[1]) unless stocks_result.key?(st[0].to_s)
-    end
-    stocks_result.delete_if { |_key, value| value <= 0 }
-  end
-
   def self.store_consumed_at(stocks, stocks_will_be_consumed)
     stocks.each do |stock|
       next if stocks_will_be_consumed[stock.rawmaterial_id].nil?
 
       result = Rational(stock.quantity) - stocks_will_be_consumed[stock.rawmaterial_id]
       if result.positive?
-        stock.update_attribute(:quantity, result)
+        stock.update!(quantity: result)
       else
         stock.delete
       end
-    end
-  end
-
-  def get_remaining_stocks(stocks, todaysmenus)
-    stocks_remainings = {}
-    if todaysmenus.present?
-      stocks = Hash[stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key, Rational(val)] }]
-      todaysmenus = @todaysmenus.create_hash_todaysmenus(@todaysmenus)
-      stocks_results = @stocks.remaining_amount(stocks, todaysmenus)
-      @stocks_not_plan_to_consume = stocks_results
-    else
-      @stocks_not_plan_to_consume = Hash[@stocks.pluck(:rawmaterial_id, :quantity).to_h.map { |key, val| [key.to_s, Rational(val)] }]
     end
   end
 
