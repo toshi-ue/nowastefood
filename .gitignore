@@ -59,3 +59,9 @@ new_user_credentials_app_for_job_change.csv
 .myaws
 /infra.drawio
 /infra.png
+# terraform
+init.tf
+.terraform-version
+.terraform.lock.hcl
+generated/
+.terraform/
