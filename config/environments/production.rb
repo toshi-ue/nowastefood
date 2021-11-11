@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -111,12 +113,22 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  #   port: 587,
+  #   address: 'smtp.gmail.com',
+  #   domain: 'smtp.gmail.com',
+  #   user_name: ENV['SMTP_USERNAME'],
+  #   password: ENV['SMTP_PASSWORD'],
+  #   enable_starttls_auto: true
+  # }
+  # sendgridに変更
   ActionMailer::Base.smtp_settings = {
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
+    domain: 'nowastefood.tk',
+    address: 'smtp.sendgrid.net',
     port: 587,
-    address: 'smtp.gmail.com',
-    domain: 'smtp.gmail.com',
-    user_name: ENV['SMTP_USERNAME'],
-    password: ENV['SMTP_PASSWORD'],
+    authentication: :plain,
     enable_starttls_auto: true
   }
 
