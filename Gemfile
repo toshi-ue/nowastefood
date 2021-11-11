@@ -31,7 +31,6 @@ gem 'ransack'
 gem 'sassc', '2.1.0'
 gem 'sassc-rails'
 gem 'seed-fu'
-gem 'sendgrid-ruby'
 gem "slack-notifier"
 gem 'uglifier'
 gem 'webpacker', '< 6.0.0'
