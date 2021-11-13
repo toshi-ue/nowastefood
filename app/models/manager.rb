@@ -14,6 +14,10 @@ class Manager < ApplicationRecord
     end
   end
 
+  def editable?
+    editable ? true : false
+  end
+
   def toggle_editable!
     update!(editable: !editable)
   end

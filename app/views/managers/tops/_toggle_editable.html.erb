@@ -1,6 +1,6 @@
 <% if current_manager.email == ENV['TOMAIL'] %>
   <div class="bg-light d-flex justify-content-between align-items-center">
-    <div><%= current_manager.email %>の編集権限: <%= current_manager.editable %></div>
+    <div><%= current_manager.email %>の編集権限: <%= current_manager.editable? %></div>
     <div>
       <%= link_to '切り替える', managers_toggle_editable_path, method: :put, class: 'btn btn-defalut' %>
     </div>

@@ -5,24 +5,29 @@
     <%# TODO: 使われている原材料の数をカウントする %>
     <td><%# foodcategory.foodstuffs.count %></td>
     <td>
-      <%= link_to edit_managers_foodcategory_path(foodcategory.id),
-            class: "btn btn-default",
-            role: "button",
-            local: true do %>
-        <i class="fas fa-pen"></i>
-      <% end %>
-      <%= link_to managers_foodcategory_path(foodcategory.id),
-        class: "btn btn-default",
-        data: {
-        confirm: "
-          「#{foodcategory.name}」を削除しますか?",
-          cansel: "キャンセル",
-          commit: "削除",
-          title: "削除確認"
-        },
-        role: "button",
-        method: :delete do %>
-        <i class="far fa-trash-alt"></i>
+      <% if current_manager.editable? %>
+        <%= link_to edit_managers_foodcategory_path(foodcategory.id),
+              class: "btn btn-default",
+              role: "button",
+              local: true do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+        <%= link_to managers_foodcategory_path(foodcategory.id),
+          class: "btn btn-default",
+          data: {
+          confirm: "
+            「#{foodcategory.name}」を削除しますか?",
+            cansel: "キャンセル",
+            commit: "削除",
+            title: "削除確認"
+          },
+          role: "button",
+          method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      <% else %>
+      <button type='button' class='btn btn-default manager-foodcategories-tooltip' data-toggle='tooltip' data-placement='top' title='サイト運営者以外は変更できません' disabled><i class="fas fa-pen"></i></button>
+      <button type='button' class='btn btn-default manager-foodcategories-tooltip' data-toggle='tooltip' data-placement='top' title='サイト運営者以外は削除できません' disabled><i class='far fa-trash-alt'></i></button>
       <% end %>
     </td>
   </tr>
