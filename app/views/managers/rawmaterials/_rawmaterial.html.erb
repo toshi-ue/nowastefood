@@ -4,24 +4,29 @@
   <td><%= rawmaterial.foodcategory.name %></td>
   <td><%= rawmaterial.foodstuffs.count %></td>
   <td>
-    <%= link_to edit_managers_rawmaterial_path(rawmaterial.id),
-          class: "btn btn-default",
-          role: "button",
-          local: true do %>
-      <i class="fas fa-pen"></i>
+    <% if current_manager.editable? %>
+      <%= link_to edit_managers_rawmaterial_path(rawmaterial.id),
+            class: "btn btn-default",
+            role: "button",
+            local: true do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+      <%= link_to managers_rawmaterial_path(rawmaterial.id),
+        class: "btn btn-default",
+        data: {
+        confirm: "<i class='fas fa-exclamation-circle'></i>
+          本当に「<strong>#{rawmaterial.name}</strong>」を削除しますか?",
+          cansel: "キャンセル",
+          commit: "削除",
+          title: "削除確認"
+        },
+        role: "button",
+        method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    <% else %>
+
     <% end %>
-    <%= link_to managers_rawmaterial_path(rawmaterial.id),
-      class: "btn btn-default",
-      data: {
-      confirm: "<i class='fas fa-exclamation-circle'></i>
-        本当に「<strong>#{rawmaterial.name}</strong>」を削除しますか?",
-        cansel: "キャンセル",
-        commit: "削除",
-        title: "削除確認"
-      },
-      role: "button",
-      method: :delete do %>
-      <i class="far fa-trash-alt"></i>
-    <% end %>
+
   </td>
 </tr>

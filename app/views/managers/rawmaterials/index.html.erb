@@ -7,8 +7,10 @@
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1 class="m-0 d-inline">原材料一覧</h1>
-          <%= link_to new_managers_rawmaterial_path, class: "btn btn-info ml-2", role: "button" do %>
-            <i class="fas fa-plus"></i> 追加する
+          <% if current_manager.editable? %>
+            <%= link_to new_managers_rawmaterial_path, class: "btn btn-info ml-2", role: "button" do %>
+              <i class="fas fa-plus"></i> 追加する
+            <% end %>
           <% end %>
       </div>
       <div class="col-sm-6">

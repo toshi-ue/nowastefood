@@ -9,12 +9,16 @@ window.$ = window.jQuery = require('jquery');
 require('data-confirm-modal')
 
 // tooltips
+// 各ページに独自のtooltipクラスを指定しないとデザインが崩れる
 $(function () {
   $('.add-todaysmenu-tooltip').tooltip();
   $('.autotoday-tooltip').tooltip();
   $('.delete-favorite-tooltip').tooltip();
   $('.favorites-tooltip').tooltip();
   $('.histories-tooltip').tooltip();
+  $('.manager-cuisine-tooltip').tooltip();
+  $('.manager-cuisines-tooltip').tooltip();
+  $('.manager-foodcategories-tooltip').tooltip();
   $('.preview-tooltip').tooltip();
   $('.remove-todaysmenus-tooltip').tooltip();
   $('.stocks-tooltip').tooltip();

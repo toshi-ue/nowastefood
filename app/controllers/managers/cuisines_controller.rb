@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Managers::CuisinesController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_cuisine, only: [:update, :edit, :destroy]
@@ -11,8 +13,7 @@ class Managers::CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
-    # HACK: unit がいる場合といらない場合のincludesの書き方について
-    @foodstuffs = Foodstuff.includes(:cuisine, [rawmaterial: :unit]).where(cuisine_id: @cuisine.id).rank(:row_order)
+    @foodstuffs = Foodstuff.includes(rawmaterial: :unit).where(cuisine_id: @cuisine.id).rank(:row_order)
     @procedures = Procedure.where(cuisine_id: @cuisine.id).rank(:row_order)
   end
 
