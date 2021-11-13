@@ -12,7 +12,7 @@
   <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>"  class="sidebar-mini" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
     <div class="wrapper">
       <%= render 'managers/shared/navbar' %>
-      <%= render 'managers/shared/sidebar' %>
+      <%= render 'managers/shared/sidebar' unless controller_path == 'managers/registrations' %>
       <div class="content-wrapper">
         <%= "#{controller.controller_path}\##{controller.action_name}" %>
         <%= yield %>

@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       end
     end
     get 'dashboard', to: 'tops#dashboard'
+    put 'toggle_editable', to: 'tops#toggle_editable', as: 'toggle_editable'
   end
 
   # ユーザー側
