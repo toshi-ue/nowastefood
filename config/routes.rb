@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :managers, controllers: {
     sessions: 'managers/sessions',
     passwords: 'managers/passwords',
+    # TODO: 後で登録できないようにする
     registrations: 'managers/registrations'
   }
 
