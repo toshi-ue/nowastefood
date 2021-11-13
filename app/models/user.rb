@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :timeoutable, :trackable
 
   validates :default_serving_count, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }, if: -> { validation_context == :update_profile }
-  validates :nickname, length: { in: 1..30 }, if: -> { validation_context == :update_profile }
+  validates :nickname, length: { in: 1..30 }
 
   has_many :favorites, dependent: :destroy, inverse_of: :user
   has_many :rawmaterials, dependent: :nullify
@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   def self.create_account_as_guest
     require "open-uri"
-    user_name = Faker::Name.first_name
+    user_name = Faker::Name.unique.first_name
     # FIXME: openを使用するとセキュリティリスクがある？
     #   rubocopで The use of `Kernel#open` is a serious security risk. と表示される(Security/Open)
     avatar = open(Faker::Avatar.image(slug: user_name, size: "150x150", format: "jpg"))
