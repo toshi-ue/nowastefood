@@ -1,0 +1,10 @@
+<%= @rawmaterial.name %> が追加されました。
+
+【データの詳細】
+
+【ユーザー(user_id)】<%= @rawmaterial.user.nickname %>(<%= @rawmaterial.user.id %>)
+【原材料名】<%= @rawmaterial.name %>
+【原材料名(ひらがな)】<%= @rawmaterial.hiragana %>
+【食材分類】<%= @rawmaterial.foodcategory.name %>
+【単位】<%= @rawmaterial.unit.name %>
+【消費期限】<%= @rawmaterial.expiry_period %>日
