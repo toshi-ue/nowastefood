@@ -36,12 +36,14 @@ ja:
       procedure:
         cooking_detail: 手順
       rawmaterial:
+        expiry_period: 消費期限
         name: 原材料名
         hiragana: ひらがな
         foodcategory: 食材区分
         foodcategory_id: 食材区分
         unit: 単位
         unit_id: 単位
+        user_id: ユーザーid
       rawmaterial/nutrient:
         lipid: 脂質
       stock:
