@@ -2,7 +2,8 @@
   <td><%= rawmaterial.id %></td>
   <td><%= rawmaterial.name %></td>
   <td><%= rawmaterial.foodcategory.name %></td>
-  <td><%= rawmaterial.foodstuffs.count %></td>
+  <td><%= rawmaterial.foodstuffs.size %></td>
+  <td><%= rawmaterial.expiry_period %>日</td>
   <td>
     <% if current_manager.editable? %>
       <%= link_to edit_managers_rawmaterial_path(rawmaterial.id),
@@ -24,9 +25,6 @@
         method: :delete do %>
         <i class="far fa-trash-alt"></i>
       <% end %>
-    <% else %>
-
     <% end %>
-
   </td>
 </tr>

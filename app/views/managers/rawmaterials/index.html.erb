@@ -48,6 +48,7 @@
                           <th><%= sort_link(@q, :name, "原材料名", default_order: :desc) %></th>
                           <th><%= sort_link(@q, :foodcategory_id, "食材区分名", default_order: :desc) %></th>
                           <th><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></th>
+                          <th><%= sort_link(@q, :expiry_period, "消費期限") %></th>
                           <th></th>
                         </tr>
                       </thead>
