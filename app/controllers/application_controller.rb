@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   before_action :set_app_name
@@ -5,14 +7,14 @@ class ApplicationController < ActionController::Base
   before_action :store_user_location!, if: :storable_location?
 
   if Rails.env.production?
-    rescue_from StandardError, with: :render_500
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+    rescue_from StandardError, with: :render500
+    rescue_from ActiveRecord::RecordNotFound, with: :render404
 
-    def render_404
+    def render404
       render file: Rails.root.join('public/404.html'), status: :not_found, layout: false, content_type: 'text/html'
     end
 
-    def render_500(e)
+    def render500(e)
       ExceptionNotifier.notify_exception(e, env: request.env, data: { message: 'error' })
       logger.error(e.message)
       logger.error(e.backtrace.join("\n"))
@@ -20,7 +22,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # TODO: 完成したらアプリ名を入れる
+  def check_owner(owner, login_user)
+    if owner.id != login_user.id
+      flash[:alert] = "該当するレシピはオーナーのみ変更できます"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def set_app_name
     @app_name = "NoWasteFood"
   end
