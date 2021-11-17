@@ -1,17 +1,18 @@
+# frozen_string_literal: true
+
 class ManagecuisinesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cuisine, only: [:update, :edit, :destroy]
-  # TODO: 他のユーザーからのアクセスを拒否するようにする
-  # before_action :specified_user
+  before_action :set_cuisine, only: [:show, :edit, :update, :destroy]
+  before_action :check_cuisine_owner, only: [:show, :edit, :update, :destroy]
 
   def index
     @cuisines = current_user.owner_cuisines
+    check_owner(@cuisines.first.user, current_user)
   end
 
   def show
-    @cuisine = Cuisine.find(params[:id])
-    @foodstuffs = Foodstuff.includes(:rawmaterial, { rawmaterial: :unit }).where(cuisine_id: @cuisine.id)
-    @procedures = Procedure.where(cuisine_id: @cuisine.id)
+    @foodstuffs = @cuisine.foodstuffs.includes(:rawmaterial, { rawmaterial: :unit })
+    @procedures = @cuisine.procedures
   end
 
   def new
@@ -54,9 +55,8 @@ class ManagecuisinesController < ApplicationController
     @cuisine = Cuisine.find(params[:id])
   end
 
-  def specified_user
-    flash[:notice] = "該当するurlは現在レシピのオーナーしかアクセスできない状態です"
-    redirect_back(fallback_location: root_path) unless @cuisine.user_id == current_user.id
+  def check_cuisine_owner
+    check_owner(@cuisine.user, current_user)
   end
 
   def cuisine_params
