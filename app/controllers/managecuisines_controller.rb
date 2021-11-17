@@ -7,7 +7,6 @@ class ManagecuisinesController < ApplicationController
 
   def index
     @cuisines = current_user.owner_cuisines
-    check_owner(@cuisines.first.user, current_user)
   end
 
   def show
