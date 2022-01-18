@@ -64,6 +64,7 @@ GEM
     anbt-sql-formatter (0.1.0)
     ast (2.4.2)
     awesome_print (1.9.2)
+    aws_cf_signer (0.1.3)
     backport (1.2.0)
     bcrypt (3.1.16)
     benchmark (0.2.0)
@@ -103,6 +104,9 @@ GEM
       ssrf_filter (~> 1.0)
     childprocess (4.1.0)
     choice (0.2.0)
+    cloudinary (1.21.0)
+      aws_cf_signer
+      rest-client (>= 2.0.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     counter_culture (3.0.0)
@@ -125,6 +129,8 @@ GEM
     discard (1.2.0)
       activerecord (>= 4.2, < 7)
     docile (1.4.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -171,6 +177,9 @@ GEM
     globalid (0.5.2)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
+    http-accept (1.7.0)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -226,6 +235,7 @@ GEM
     msgpack (1.4.2)
     multi_json (1.15.0)
     mysql2 (0.5.3)
+    netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
@@ -305,6 +315,11 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
@@ -417,6 +432,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8)
     unicode-display_width (2.1.0)
     uniform_notifier (1.14.2)
     vcr (6.0.0)
@@ -462,6 +480,7 @@ DEPENDENCIES
   byebug
   capybara
   carrierwave
+  cloudinary
   counter_culture
   devise
   devise-i18n
