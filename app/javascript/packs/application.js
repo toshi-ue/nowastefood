@@ -1,4 +1,4 @@
-import 'stylesheets/application'
+// import 'stylesheets/application'
 import 'jquery/dist/jquery'
 import Rails from 'rails-ujs/lib/assets/compiled/rails-ujs'
 import 'popper.js/dist/umd/popper.min'
