@@ -32,12 +32,11 @@ test:
 production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>
-  charset: utf8mb4
-  collation: utf8mb4_general_ci
   encoding: utf8mb4
   host: <%= ENV['DB_HOST_ENDPOINT'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  url: <%= ENV['JAWSDB_URL'] %>
 
 # production:
 #   <<: *default
