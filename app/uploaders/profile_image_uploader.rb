@@ -1,10 +1,13 @@
-class ProfileImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+# frozen_string_literal: true
 
-  # Choose what kind of storage to use for this uploader:
+class ProfileImageUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
-    storage :fog
+    include Cloudinary::CarrierWave
+    CarrierWave.configure do |config|
+      config.cache_storage = :file
+    end
   else
+    include CarrierWave::MiniMagick
     storage :file
   end
 
