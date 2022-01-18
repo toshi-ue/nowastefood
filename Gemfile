@@ -8,6 +8,7 @@ gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'counter_culture'
 gem 'devise'
 gem 'devise-i18n'
