@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserrawmaterialsController < ApplicationController
   before_action :authenticate_user!
 
@@ -9,6 +11,7 @@ class UserrawmaterialsController < ApplicationController
     @rawmaterial = Rawmaterial.new(rawmaterial_params)
     respond_to do |format|
       if @rawmaterial.save
+        RawmaterialMailer.notify_new_rawmaterial(@rawmaterial).deliver_now
         format.js
         format.json { render json: @rawmaterial, status: :created }
       else

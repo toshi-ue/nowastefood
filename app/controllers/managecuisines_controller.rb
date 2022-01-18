@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class ManagecuisinesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cuisine, only: [:update, :edit, :destroy]
+  before_action :set_cuisine, only: [:show, :edit, :update, :destroy]
+  before_action :check_cuisine_owner, only: [:show, :edit, :update, :destroy]
 
   def index
     @cuisines = current_user.owner_cuisines
   end
 
   def show
-    @cuisine = Cuisine.find(params[:id])
-    @foodstuffs = Foodstuff.includes(:rawmaterial, { rawmaterial: :unit }).where(cuisine_id: @cuisine.id)
-    @procedures = Procedure.where(cuisine_id: @cuisine.id)
+    @foodstuffs = @cuisine.foodstuffs.includes(:rawmaterial, { rawmaterial: :unit })
+    @procedures = @cuisine.procedures
   end
 
   def new
@@ -21,8 +23,6 @@ class ManagecuisinesController < ApplicationController
   def create
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
-      # TODO: managefoodstuffs#newへ遷移するようにする
-      # redirect managecuisine_path(@cuisine),
       redirect_to managecuisine_path(@cuisine), flash: { notice: "#{@cuisine.name}が作成されました" }
     else
       render 'new'
@@ -39,7 +39,13 @@ class ManagecuisinesController < ApplicationController
 
   def destroy
     @cuisine.destroy
-    redirect_to managecuisines_path, flash: { notice: "#{@cuisine.name} が削除されました" }
+    redirect_to managecuisines_path, flash: { notice: "#{@cuisine.name} のレシピが削除されました" }
+  end
+
+  def toggle_status
+    @cuisine = Cuisine.find(params[:managecuisine_id])
+    @cuisine.toggle_status!
+    redirect_to managecuisine_path(@cuisine), flash: { notice: "#{@cuisine.name}が #{@cuisine.status_i18n} になりました" }
   end
 
   private
@@ -48,8 +54,11 @@ class ManagecuisinesController < ApplicationController
     @cuisine = Cuisine.find(params[:id])
   end
 
+  def check_cuisine_owner
+    check_owner(@cuisine.user, current_user)
+  end
+
   def cuisine_params
-    params.require(:cuisine).permit(:name, :genre_id, :difficulty, :calories, :cooking_time, :description, :main_image,
-                                    :tag_list).merge(user_id: current_user.id)
+    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :status).merge(user_id: current_user.id)
   end
 end

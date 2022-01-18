@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Managers::CuisinesController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_cuisine, only: [:update, :edit, :destroy]
@@ -11,8 +13,7 @@ class Managers::CuisinesController < ApplicationController
 
   def show
     @cuisine = Cuisine.find(params[:id])
-    # HACK: unit がいる場合といらない場合のincludesの書き方について
-    @foodstuffs = Foodstuff.includes(:cuisine, [rawmaterial: :unit]).where(cuisine_id: @cuisine.id).rank(:row_order)
+    @foodstuffs = Foodstuff.includes(rawmaterial: :unit).where(cuisine_id: @cuisine.id).rank(:row_order)
     @procedures = Procedure.where(cuisine_id: @cuisine.id).rank(:row_order)
   end
 
@@ -35,7 +36,6 @@ class Managers::CuisinesController < ApplicationController
     if @cuisine.update(cuisine_params)
       redirect_to managers_cuisine_path(@cuisine), flash: { notice: "変更されました" }
     else
-      # flash.now[:alert] = "aaa"
       render 'edit'
     end
   end
@@ -52,6 +52,6 @@ class Managers::CuisinesController < ApplicationController
   end
 
   def cuisine_params
-    params.require(:cuisine).permit(:name, :genre_id, :difficulty, :calories, :cooking_time, :description, :main_image, :tag_list)
+    params.require(:cuisine).permit(:name, :genre, :calories, :cooking_time, :description, :main_image, :status)
   end
 end

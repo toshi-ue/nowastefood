@@ -17,7 +17,6 @@ ja:
       cuisine:
         name: レシピ名
         calories: 摂取カロリー(kcal)
-        difficulty: 難しさ
         cooking_time: 調理時間(分)
         description: レシピの説明
         main_image: 画像
@@ -37,12 +36,14 @@ ja:
       procedure:
         cooking_detail: 手順
       rawmaterial:
+        expiry_period: 消費期限
         name: 原材料名
         hiragana: ひらがな
         foodcategory: 食材区分
         foodcategory_id: 食材区分
         unit: 単位
         unit_id: 単位
+        user_id: ユーザーid
       rawmaterial/nutrient:
         lipid: 脂質
       stock:
@@ -52,22 +53,35 @@ ja:
       user:
         nickname: ニックネーム
         default_serving_count: 提供人数
+        profile_image: プロフィール画像
   enums:
     contact:
       category:
         error: エラー報告
         request: 機能追加、改善リクエスト
+        other: その他
     cuisine:
-      difficulty:
-        easy: 低
-        normal: 中
-        hard: 高
+      cooking_time:
+        lt_minutes5: ~5分以内
+        lt_minutes10: ~10分以内
+        lt_minutes15: ~15分以内
+        lt_minutes20: ~20分以内
+        gt_minutes21: 21分以上~
+      genre:
+        chinese: 中華
+        japanese: 和風
+        other: その他
+        western: 洋風
+      status:
+        draft: 非公開
+        published: 公開中
   errors:
     messages:
+      content_type_whitelist_error: は許可されていない種類のファイルです
       carrierwave_processing_error: 処理できませんでした
-      carrierwave_integrity_error: は許可されていないファイルタイプです
+      carrierwave_integrity_error: は許可されていない種類のファイルです
       carrierwave_download_error: はダウンロードできません
-      extension_white_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
+      extension_whitelist_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
       extension_black_list_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできないファイルタイプ: %{prohibited_types}"
       rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
       mime_types_processing_error: "MIME::Typesのファイルを処理できませんでした。Content-Typeを確認してください。エラーメッセージ: %{e}"

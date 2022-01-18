@@ -1,9 +1,18 @@
-class ProfileImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+# frozen_string_literal: true
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+class ProfileImageUploader < CarrierWave::Uploader::Base
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+    CarrierWave.configure do |config|
+      config.cache_storage = :file
+    end
+  else
+    include CarrierWave::MiniMagick
+    storage :file
+  end
+
+  process convert: 'jpg'
+  process resize_to_fit: [100, 100]
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}"
@@ -13,11 +22,8 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
     0..10.megabytes
   end
 
-  process convert: 'jpg'
-  process resize_to_fit: [100, 100]
-
-  def extension_allowlist
-    %w[jpg jpeg gif png]
+  def content_type_allowlist
+    /image\//
   end
 
   def filename

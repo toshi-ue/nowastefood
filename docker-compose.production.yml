@@ -1,18 +1,6 @@
-# [Rails On DockerでのAWSデプロイができたので，中身を整理します。 - Qiita](https://qiita.com/aaabb6211/items/982a151f614d2fcb3f9a)
-# [EC2上でRailsアプリケーションにDockerを導入する(Rails、Nginx、RDS) - Qiita](https://qiita.com/Yusuke_Hoirta/items/959f91a61ac1e607c0b1)
 version: '3.7'
 
 services:
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: root
-    ports:
-        - "4306:3306"
-    volumes:
-        - db-data:/var/lib/mysql
-
   web:
     build:
       context: .
@@ -20,31 +8,28 @@ services:
     command: bundle exec puma -C config/puma.rb -e production
     environment:
       RAILS_ENV: production
-      # [【Rails】assets:precompileは成功しているのにpumaを起動してもimageもjsもcssもNotFound（RAILS_SERVE_STATIC_FILESの話） - Qiita](https://qiita.com/at-946/items/b7d467bf25c40fcfca44)
-      # [Rails に静的ファイルの配信をお願いする - Qiita](https://qiita.com/gouf/items/01d608d3ec46ba65f3c2)
-      # [Deploying Rails 6 Assets with Docker and Kubernetes](https://blog.cloud66.com/deploying-rails-6-assets-with-docker/)
       RAILS_SERVE_STATIC_FILES: 'true'
+    networks:
+      - webapp-network
     volumes:
       - .:/webapp
       # - public-data:/webapp/public
-      # - tmp-data:/webapp/tmp
-      # - log-data:/webapp/log
+      - tmp-data:/webapp/tmp
+      - log-data:/webapp/log
       - bundle:/usr/local/bundle
       - node-modules:/webapp/node_modules
-    # 公開ポートの設定(ホスト(Mac側):コンテナ側)
     ports:
       - "3000:3000"
       - "3035:3035"
-    links:
-      - db
-
   nginx:
     build:
       context: .
       dockerfile: ./containers/nginx/Dockerfile
-    # volumes:
-    #   - public-data:/webapp/public
-    #   - tmp-data:/webapp/tmp
+    volumes:
+      # - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
+    networks:
+      - webapp-network
     ports:
       - 80:80
     depends_on:
@@ -52,11 +37,11 @@ services:
 
 volumes:
   bundle:
-    driver: local
-  db-data:
-    driver: local
   node-modules:
-    driver: local
-#   public-data:
-#   tmp-data:
-#   log-data:
+  # public-data:
+  tmp-data:
+  log-data:
+
+networks:
+  webapp-network:
+    external: true

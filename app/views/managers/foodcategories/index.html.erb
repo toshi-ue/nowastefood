@@ -7,8 +7,10 @@
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1 class="m-0 d-inline">食材区分(データ一覧)</h1>
-          <%= link_to new_managers_foodcategory_path, class: "btn btn-info ml-2", role: "button" do %>
-            <i class="fas fa-plus"></i> 追加する
+          <% if current_manager.editable? %>
+            <%= link_to new_managers_foodcategory_path, class: "btn btn-info ml-2", role: "button" do %>
+              <i class="fas fa-plus"></i> 追加する
+            <% end %>
           <% end %>
       </div>
       <div class="col-sm-6">
@@ -63,7 +65,7 @@
                   <div class="dataTables_info" id="example2_info" role="status" aria-live="polite"><%= page_entries_info @foodcategories %>
                   </div>
                 </div>
-                <div class="col-sm-12 col-md-7">
+                <div class="col-sm-12 col-md-7 d-flex justify-content-center">
                   <%= paginate @foodcategories, theme: 'twitter-bootstrap-4',
                                         pagination_class: "pagination-sm",
                                         nav_class: "d-inline-b"

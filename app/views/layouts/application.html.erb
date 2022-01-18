@@ -2,11 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <!--
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Webapp</title>
+    <%= favicon_link_tag('favicon.ico') %>
+    <title><%= content_for?(:html_title) ? yield(:html_title) + '  |  ' + @app_name : @app_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -20,7 +18,7 @@
         </main>
         <footer class="page-footer font-small">
           <div class="footer-copyright text-center py-2">
-            <%= link_to("© 2021 #{@appname}", root_path, { class: "text-secondary"}) %>
+            <%= link_to("© 2021 #{@app_name}", root_path, { class: "text-secondary"}) %>
           </div>
         </footer>
       </div>

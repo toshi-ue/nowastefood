@@ -1,9 +1,12 @@
-class Procedure < ApplicationRecord
-  belongs_to :cuisine
-  validates :cooking_detail, presence: true
-  validates :cuisine_id, presence: true
+# frozen_string_literal: true
 
+class Procedure < ApplicationRecord
   # ranked-model
   include RankedModel
   ranks :row_order, with_same: :cuisine_id
+
+  validates :cooking_detail, presence: true
+  validates :cuisine_id, presence: true
+
+  belongs_to :cuisine
 end

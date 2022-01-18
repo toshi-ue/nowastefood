@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
   before_action :authenticate_user!
 
@@ -12,8 +14,9 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      ContactMailer.send_mail(@contact).deliver
-      redirect_to contact_path(@contact.id), flash: { notice: "お問い合わせ内容が送信されました" }
+      ContactMailer.send_mail_master(@contact).deliver_now
+      ContactMailer.send_mail_user(@contact, current_user).deliver_now
+      redirect_to contact_path(@contact.id), flash: { notice: "お問い合わせ内容が送信されました\n管理者から回答があるまでしばらくお待ちください" }
     else
       render 'new'
     end

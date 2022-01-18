@@ -1,29 +1,24 @@
 <tr>
-  <td class="img-cuisine text-center align-middle">
-    <%= image_tag todaysmenu.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{todaysmenu.cuisine.name}" %>
+  <td class="text-center align-middle" style='width: 30%;'>
+    <%= link_to cuisine_path(todaysmenu.cuisine) do %>
+      <%= image_tag todaysmenu.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{todaysmenu.cuisine.name}" %>
+    <% end %>
   </td>
-  <td class="detail-cuisine">
-    <div>
-    </div>
-    <span class="text-break d-md-none"><%= todaysmenu.cuisine.name %></span>
-    <span class="text-break align-middle d-none d-md-inline"><%= todaysmenu.cuisine.name %></span>
-    <div class="btns-cuisine d-flex flex-row justify-content-end justify-content-lg-between  float-md-right">
-      <span>
-        <%= form_with model: todaysmenu, url: todaysmenu_path(todaysmenu.id), method: :put do |f| %>
+  <td class="align-middle">
+    <%= link_to todaysmenu.cuisine.name, cuisine_path(todaysmenu.cuisine), class: 'h-100 text-left text-break align-middle text-black-50' %>
+    <div class="d-flex float-right">
+      <%= form_with model: todaysmenu, url: todaysmenu_path(todaysmenu.id), method: :put do |f| %>
         <%= f.select :serving_count,
               serving_count_num(todaysmenu),
               {selected: todaysmenu.serving_count},
-              { class: "btn-serving-count form-control", "data-id": todaysmenu.id, "data-cuisine-id": todaysmenu.cuisine_id, "data-user-id": current_user.id}
+              { class: "form-control", "data-id": todaysmenu.id, "data-cuisine-id": todaysmenu.cuisine_id, "data-user-id": current_user.id}
         %>
-        <% end %>
-      </span>
-      <span class="pl-3">
-        <%= link_to todaysmenu_path(todaysmenu.id), method: :delete do %>
-          <button class="btn-todaysmenu-delete btn btn-outline-secondary btn-delete-from-today" type="button">
-            <i class="far fa-trash-alt"></i>
-          </button>
-        <% end %>
-      </span>
+      <% end %>
+      <%= link_to todaysmenu_path(todaysmenu.id), method: :delete do %>
+        <button class='ml-3 btn btn-outline-secondary' type="button">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      <% end %>
     </div>
   </td>
 </tr>

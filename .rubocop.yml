@@ -8,21 +8,26 @@ require:
   - rubocop-performance
 
 AllCops:
+  TargetRubyVersion: 2.7.3
   Exclude:
     - "config.ru"
     - "bin/**"
     - "lib/**"
-    - "db/**/*"
     - "db/schema.rb"
+    # - "db/**/*"
     - "config/**/*"
     - "script/**/*"
     - !ruby/regexp /old_and_unused\.rb$/
     - "vendor/**/*"
     - "Gemfile.lock"
 
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - "db/schema.rb"
+
 # 1行が長すぎる
 Layout/LineLength:
-  Max: 150
+  Max: 200
 
 # 未使用の引数チェック
 Lint/UnusedMethodArgument:
@@ -50,9 +55,16 @@ Metrics/MethodLength:
 Metrics/ParameterLists:
   Max: 12
 
+# 引数の文字数が少ない
+Naming/MethodParameterName:
+  Enabled: false
+
 # migration高速化のための設定
 # テーブル作成、テーブルカラム編集
 Rails/BulkChangeTable:
+  Enabled: false
+
+Rails/FilePath:
   Enabled: false
 
 RSpec/AlignLeftLetBrace:
@@ -62,9 +74,6 @@ RSpec/ContextWording:
   Enabled: false
 
 RSpec/ExampleLength:
-  Enabled: false
-
-Rails/FilePath:
   Enabled: false
 
 #  capybara固有のメソッドを有効にする
@@ -77,12 +86,22 @@ RSpec/EmptyLineAfterExample:
 RSpec/EmptyLineAfterSubject:
   Enabled: false
 
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+  # Exclude:
+  #   - spec/requests/*.rb
+  #   - spec/requests/*/*.rb
+
 RSpec/MultipleExpectations:
-  Exclude:
-    - spec/requests/*.rb
-    - spec/requests/*/*.rb
+  Enabled: false
 
 RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false
 
 RSpec/ReturnFromStub:
@@ -102,10 +121,13 @@ Style/Documentation:
 
 # 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/RedundantSelf:
   Enabled: false
 
 Style/StringLiterals:
   Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets

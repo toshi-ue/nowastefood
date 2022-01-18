@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_052206) do
+ActiveRecord::Schema.define(version: 2021_11_12_122419) do
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
 
   create_table "cuisines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
+    t.integer "status", default: 0, null: false
+    t.integer "genre", default: 1, null: false
     t.string "name", null: false, comment: "料理名"
-    t.bigint "genre_id"
-    t.integer "difficulty", limit: 1, default: 0, null: false, comment: "料理の難易度(enumで、低・中・高)"
     t.integer "cooking_time", null: false, comment: "調理時間"
     t.string "description"
     t.string "main_image", null: false, comment: "メイン画像"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_cuisines_on_genre_id"
+    t.integer "favorites_count", default: 0, null: false
     t.index ["name"], name: "index_cuisines_on_name", unique: true
     t.index ["user_id"], name: "index_cuisines_on_user_id"
   end
@@ -63,13 +63,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
     t.index ["rawmaterial_id"], name: "index_foodstuffs_on_rawmaterial_id"
   end
 
-  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "cuisines_count", default: 0, null: false
-  end
-
   create_table "managers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
@@ -92,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.boolean "editable", default: false, null: false
     t.index ["confirmation_token"], name: "index_managers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
@@ -127,40 +121,12 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
     t.string "quantity", null: false
     t.bigint "rawmaterial_id"
     t.bigint "user_id"
-    t.date "rotted_at", default: "2021-07-16", null: false
+    t.date "rotted_at", default: "2021-10-20", null: false
     t.datetime "consumed_at"
-    t.boolean "abandoned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rawmaterial_id"], name: "index_stocks_on_rawmaterial_id"
     t.index ["user_id"], name: "index_stocks_on_user_id"
-  end
-
-  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", collation: "utf8_bin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "todaysmenus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -184,8 +150,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
     t.string "nickname"
     t.string "email", default: "", null: false
     t.integer "default_serving_count", default: 1
-    t.boolean "subscribed"
-    t.datetime "subscribed_at"
     t.string "profile_image"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -212,7 +176,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_052206) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "cuisines", "genres"
   add_foreign_key "cuisines", "users"
   add_foreign_key "favorites", "cuisines"
   add_foreign_key "favorites", "users"

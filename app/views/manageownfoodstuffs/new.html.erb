@@ -1,19 +1,13 @@
 <%= javascript_pack_tag 'manageownfoodstuffs' %>
-
-<div class="content-header">
+<div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 text-center mt-3">
         <div class="page-title m-0 d-inline">食材の追加</div>
-        <div>(<%= @cuisine.name %>)</div>
+        <div>(<%= link_to @cuisine.name, managecuisine_path(@cuisine) %>)</div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
+    <div class="row mt-2">
       <div class="col-md-6 offset-md-3">
         <%= form_with(model: @foodstuff, url: manageownfoodstuffs_path, method: :post, local: true) do |form| %>
             <%= render 'layouts/flash_message' %>
@@ -21,7 +15,7 @@
             <%= render 'form', {form: form , cuisine: @cuisine} %>
             <div class="col-10 offset-1">
               <div class="text-center my-2">
-                <%= link_to 'モーダルを表示する', new_userrawmaterial_path, remote: true, class: 'text-muted', data: {toggle: "modal", target: "#rawmaterialModal"} %>
+                <%= link_to '未登録の材料を登録する', new_userrawmaterial_path, remote: true, class: 'text-muted', data: {toggle: "modal", target: "#rawmaterialModal"} %>
               </div>
             <%= form.submit "追加する", class: 'btn btn-success btn-block' %>
             </div>
@@ -74,8 +68,10 @@
           </div>
         </div>
       </div>
-      <div class="col-8 offset-2 col-md-4 offset-4 mt-3">
-         <%= link_to '戻る', 'javascript:history.back()', class: 'btn btn-outline-secondary btn-block' %>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <%= link_to 'もどる', 'javascript:history.back()', class: 'text-center text-black-50' %>
       </div>
     </div>
   </div>

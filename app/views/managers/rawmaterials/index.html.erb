@@ -7,8 +7,10 @@
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1 class="m-0 d-inline">原材料一覧</h1>
-          <%= link_to new_managers_rawmaterial_path, class: "btn btn-info ml-2", role: "button" do %>
-            <i class="fas fa-plus"></i> 追加する
+          <% if current_manager.editable? %>
+            <%= link_to new_managers_rawmaterial_path, class: "btn btn-info ml-2", role: "button" do %>
+              <i class="fas fa-plus"></i> 追加する
+            <% end %>
           <% end %>
       </div>
       <div class="col-sm-6">
@@ -46,6 +48,7 @@
                           <th><%= sort_link(@q, :name, "原材料名", default_order: :desc) %></th>
                           <th><%= sort_link(@q, :foodcategory_id, "食材区分名", default_order: :desc) %></th>
                           <th><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></th>
+                          <th><%= sort_link(@q, :expiry_period, "消費期限") %></th>
                           <th></th>
                         </tr>
                       </thead>
@@ -65,7 +68,7 @@
                   <div class="dataTables_info" id="example2_info" role="status" aria-live="polite"><%= page_entries_info @rawmaterials %>
                   </div>
                 </div>
-                <div class="col-sm-12 col-md-7">
+                <div class="col-sm-12 col-md-7 d-flex justify-content-center">
                   <%= paginate @rawmaterials, theme: 'twitter-bootstrap-4',
                                         pagination_class: "pagination-sm",
                                         nav_class: "d-inline-b"

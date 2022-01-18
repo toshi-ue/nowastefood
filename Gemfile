@@ -4,10 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
 
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'counter_culture'
 gem 'devise'
 gem 'devise-i18n'
@@ -15,7 +16,9 @@ gem 'devise-i18n-views'
 gem 'discard'
 gem 'dotenv-rails'
 gem 'enum_help'
+gem 'exception_notification'
 gem 'faker'
+gem 'fog-aws'
 gem 'flog'
 gem 'jbuilder'
 gem 'kaminari'
@@ -26,8 +29,10 @@ gem 'rails', '~> 6.0.3'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
+gem 'sassc', '2.1.0'
 gem 'sassc-rails'
 gem 'seed-fu'
+gem "slack-notifier"
 gem 'uglifier'
 gem 'webpacker', '< 6.0.0'
 
@@ -48,6 +53,7 @@ group :development do
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'
+  gem 'rails-erd'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false

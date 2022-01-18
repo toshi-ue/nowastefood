@@ -1,0 +1,30 @@
+<h3 class="text-muted mb-0">キーワード</h3>
+<div class="keywords mt-1">
+  <%= link_to keywords_path(enum_key: 'japanese'), class: 'btn btn-outline-secondary mt-1' do %>
+    和風<span class="badge badge-light"><%= Cuisine.japanese.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'western'), class: 'btn btn-outline-secondary mt-1' do %>
+    洋風<span class="badge badge-light"><%= Cuisine.western.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'chinese'), class: 'btn btn-outline-secondary mt-1' do %>
+    中華<span class="badge badge-light"><%= Cuisine.chinese.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'other'), class: 'btn btn-outline-secondary mt-1' do %>
+    その他<span class="badge badge-light"><%= Cuisine.other.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'lt_minutes5'), class: 'btn btn-outline-secondary mt-1' do %>
+    5分以内<span class="badge badge-light"><%= Cuisine.lt_minutes5.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'lt_minutes10'), class: 'btn btn-outline-secondary mt-1' do %>
+    10分以内<span class="badge badge-light"><%= Cuisine.lt_minutes10.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'lt_minutes20'), class: 'btn btn-outline-secondary mt-1' do %>
+    20分以内<span class="badge badge-light"><%= Cuisine.lt_minutes20.size %></span>
+  <% end %>
+  <%= link_to keywords_path(enum_key: 'gt_minutes21'), class: 'btn btn-outline-secondary mt-1' do %>
+    20分以上<span class="badge badge-light"><%= Cuisine.gt_minutes21.size %></span>
+  <% end %>
+<%= link_to keywords_path(enum_key: 'not-enum-ranking'), class: 'btn btn-outline-secondary mt-1' do %>
+    みんなのお気に入り</span>
+  <% end %>
+</div>

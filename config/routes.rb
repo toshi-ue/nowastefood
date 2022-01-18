@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # 管理者側
   devise_for :managers, controllers: {
     sessions: 'managers/sessions',
     passwords: 'managers/passwords',
+    # TODO: 後で登録できないようにする
     registrations: 'managers/registrations'
   }
 
@@ -47,6 +50,7 @@ Rails.application.routes.draw do
       end
     end
     get 'dashboard', to: 'tops#dashboard'
+    put 'toggle_editable', to: 'tops#toggle_editable', as: 'toggle_editable'
   end
 
   # ユーザー側
@@ -65,15 +69,19 @@ Rails.application.routes.draw do
     delete :remove_from_todays_menus, action: :remove_from_todays_menus, controller: 'cookinghistorys'
     post :add_favorite
     post :add_menu
-    post :favorite, action: :add_menu_on_the_day, controller: 'favorites'
     post :add_to_todays_menu, action: :add_to_todays_menu, controller: 'cookinghistorys'
     collection do
       get :search
     end
   end
   resources :contacts, only: [:show, :new, :create]
-  resources :favorites, only: [:index, :create, :destroy]
-  resources :managecuisines
+  resources :favorites, only: [:index, :destroy]
+  post '/add_todaysmenu/:cuisine_id', to: 'favorites#add_todaysmenu_from_favorite', as: 'add_todaysmenu_from_favorite'
+  delete '/remove_todaysmenu/:cuisine_id', to: 'favorites#remove_todaysmenu_from_favorite', as: 'remove_todaysmenu_from_favorite'
+  resources :keywords, only: [:index]
+  resources :managecuisines do
+    patch :toggle_status
+  end
   resources :manageownfoodstuffs
   resources :manageownprocedures
   resources :userrawmaterials, only: [:index, :new, :create]
@@ -92,7 +100,6 @@ Rails.application.routes.draw do
 
   # TODO: 原材料から探せるようにする
   # get 'rawmaterials/search'
-  get 'tag_search', action: :search, controller: 'tags'
   get 'search/foodcategory_search', to: 'search#foodcategory_search'
   get 'search/rawmaterial_search', to: 'search#rawmaterial_search'
   get 'search/unit_search', to: 'search#unit_search'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Managers::RawmaterialsController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_rawmaterial, only: [:edit, :update, :destroy]
@@ -44,6 +46,6 @@ class Managers::RawmaterialsController < ApplicationController
   end
 
   def rawmaterial_params
-    params.require(:rawmaterial).permit(:name, :hiragana, :unit_id, :foodcategory_id)
+    params.require(:rawmaterial).permit(:name, :hiragana, :unit_id, :foodcategory_id, :expiry_period, :user_id)
   end
 end

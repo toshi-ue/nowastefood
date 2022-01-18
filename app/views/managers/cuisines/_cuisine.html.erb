@@ -7,23 +7,26 @@
     <% end %>
   </td>
   <td class="align-middle"><%= cuisine.name %></td>
-  <td class="align-middle"><%= cuisine.difficulty_i18n %></td>
-  <td class="align-middle"><%= cuisine.cooking_time %></td>
+  <td class="align-middle"><%= cuisine.cooking_time_i18n %></td>
   <td class="align-middle"><%= cuisine.created_at %></td>
   <td class="align-middle">
     <%= link_to managers_cuisine_path(cuisine.id),  class: "btn btn-default" do %>
-    <i class="far fa-eye"></i>
+      <i class="far fa-eye"></i>
     <% end %>
-    <%= link_to managers_cuisine_path(cuisine.id),
-      class: "btn btn-default",
-      data: {
-      confirm: "「#{cuisine.name}」を削除しますか?",
-        cansel: "キャンセル",
-        commit: "削除",
-        title: "削除確認"
-      },
-      method: :delete do %>
-      <i class="far fa-trash-alt"></i>
+    <% if current_manager.editable? %>
+      <%= link_to managers_cuisine_path(cuisine.id),
+        class: "btn btn-default",
+        data: {
+        confirm: "「#{cuisine.name}」を削除しますか?",
+          cansel: "キャンセル",
+          commit: "削除",
+          title: "削除確認"
+        },
+        method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    <% else %>
+      <button type='button' class='btn btn-default manager-cuisines-tooltip' data-toggle='tooltip' data-placement='top' title='サイト運営者以外は削除できません' disabled><i class='far fa-trash-alt'></i></button>
     <% end %>
   </td>
 </tr>

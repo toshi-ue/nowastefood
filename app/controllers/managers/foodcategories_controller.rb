@@ -28,7 +28,6 @@ class Managers::FoodcategoriesController < ApplicationController
     if @foodcategory.update(foodcategory_params)
       redirect_to managers_foodcategories_path, flash: { notice: "変更されました" }
     else
-      # flash.now[:alert] = "aaa"
       render 'edit'
     end
   end

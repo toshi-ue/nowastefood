@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "Cuisines", type: :request do
   before do
     @user = create(:user)
     sign_in @user
-    @cuisine = create(:cuisine)
+    @cuisine = create(:cuisine, :published)
   end
 
   describe "GET /show" do
@@ -15,7 +17,6 @@ RSpec.describe "Cuisines", type: :request do
       get cuisine_path @cuisine
       expect(response.status).to eq 200
       expect(response.body).to include @cuisine.name
-      # expect(response.body).to include @cuisine.genre.name
       expect(response.body).to include @cuisine.foodstuffs.first.quantity
       expect(response.body).to include @cuisine.foodstuffs.first.rawmaterial.name
     end

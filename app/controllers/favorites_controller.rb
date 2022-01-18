@@ -1,32 +1,28 @@
+# frozen_string_literal: true
+
 class FavoritesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
-  # TODO: セレクトボックスでソート機能を実装するか検討
   def index
     @favorites = current_user.favorites.includes(:cuisine)
-  end
-
-  def create
-    @favorite = current_user.favorites.build(cuisine_id: params[:cuisine_id])
-    @favorite.save
-    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
+    @cuisines = Cuisine.where(id: current_user.todaysmenus.not_cooked.map(&:cuisine_id))
   end
 
   def destroy
     @favorite = Favorite.find_by(id: params[:id])
-    @favorite&.destroy
-    redirect_to favorites_path, flash: { notice: "Favoriteから削除されました" }
+    @favorite&.destroy!
+    redirect_to favorites_path, flash: { notice: "#{@favorite.cuisine.name} がお気に入りから削除されました" }
   end
 
-  def add_menu_on_the_day
-    @todaysmenus_ids = current_user.todaysmenus.not_cooked.pluck(:cuisine_id)
-    @todaysmenu = current_user.todaysmenus.build(cuisine_id: params[:cuisine_id])
-    if @todaysmenus_ids.include?(@todaysmenu.cuisine_id)
-      redirect_to favorites_path, flash: { notice: "すでにTodayに追加されています" }
-    else
-      @todaysmenu.serving_count = current_user.default_serving_count == 1 ? 1 : current_user.default_serving_count
-      @todaysmenu.save
-      redirect_to favorites_path, flash: { notice: "#{@todaysmenu.cuisine.name}がTodayに追加されました" }
-    end
+  def add_todaysmenu_from_favorite
+    @todaysmenu = current_user.todaysmenus.build(cuisine_id: params[:cuisine_id], serving_count: current_user.default_serving_count)
+    @todaysmenu.save!
+    redirect_to favorites_path, flash: { notice: "#{@todaysmenu.cuisine.name}が今日の献立に追加されました" }
+  end
+
+  def remove_todaysmenu_from_favorite
+    @todaysmenu = current_user.todaysmenus.not_cooked.find_by(cuisine_id: params[:cuisine_id])
+    @todaysmenu.destroy!
+    redirect_to favorites_path, flash: { notice: "#{@todaysmenu.cuisine.name} が今日の献立から削除されました" }
   end
 end
