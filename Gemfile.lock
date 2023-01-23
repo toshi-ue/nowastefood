@@ -437,6 +437,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.7)
+    stringio (0.1.4)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -541,6 +542,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-watcher-listen
+  stringio (= 0.1.4)
   uglifier
   vcr
   web-console

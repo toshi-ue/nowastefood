@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails'
+  gem 'stringio', '0.1.4'
 end
 
 group :development do
