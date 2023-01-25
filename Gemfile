@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'cloudinary'
