@@ -27,7 +27,7 @@ gem 'mysql2'
 gem "net-http"
 gem 'puma'
 # gem 'rails', '~> 6.0.3'
-gem 'rails', '6.1.0'
+gem 'rails', '~> 6.1.7'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
