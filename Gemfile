@@ -24,7 +24,7 @@ gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2'
-# gem "net-http"
+gem "net-http"
 gem 'puma'
 # gem 'rails', '~> 6.0.3'
 gem 'rails', '6.1.0'
