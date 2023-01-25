@@ -28,8 +28,11 @@ docker/remove-all:
 rails/bundle:
 		docker compose run --rm web bundle install
 
-rails/db-setup-development:
+rails/db-drop:
 		docker compose run --rm web rails db:environment:set RAILS_ENV=development
+		docker compose run --rm web rails db:drop
+
+rails/db-setup-development:
 		docker compose run --rm web rails db:create
 		docker compose run --rm web rails db:migrate
 		docker compose run --rm web rails db:seed_fu
