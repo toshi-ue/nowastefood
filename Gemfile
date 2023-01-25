@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '2.7.7'
 
 gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
 gem 'bootsnap', require: false
