@@ -28,12 +28,13 @@ class User < ApplicationRecord
 
   def self.create_account_as_guest
     require "open-uri"
-    user_name = Faker::Name.unique.first_name
+    user_name = EnFaker::Name.unique.first_name
     # FIXME: openを使用するとセキュリティリスクがある？
     #   rubocopで The use of `Kernel#open` is a serious security risk. と表示される(Security/Open)
     avatar = open(Faker::Avatar.image(slug: user_name, size: "150x150", format: "jpg"))
     avatar.close
-    self.create!(nickname: user_name, profile_image: avatar, email: "#{user_name}@example.com") do |u|
+    binding.pry
+    self.create!(nickname: user_name, avatar: avatar.base_uri, email: "#{user_name.downcase}@example.com") do |u|
       u.password = SecureRandom.urlsafe_base64
     end
   end
