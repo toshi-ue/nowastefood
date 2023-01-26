@@ -1,214 +1,214 @@
 {
-  "Sortable.js": "/packs/js/Sortable-ca5333088c2ba7cd521e.js",
-  "Sortable.js.map": "/packs/js/Sortable-ca5333088c2ba7cd521e.js.map",
-  "application.js": "/packs/js/application-50081193037024cb7894.js",
-  "application.js.map": "/packs/js/application-50081193037024cb7894.js.map",
-  "contacts.js": "/packs/js/contacts-da194148243a1fc4d8b5.js",
-  "contacts.js.map": "/packs/js/contacts-da194148243a1fc4d8b5.js.map",
-  "cuisines.js": "/packs/js/cuisines-9c265ba8cfee85d1bab9.js",
-  "cuisines.js.map": "/packs/js/cuisines-9c265ba8cfee85d1bab9.js.map",
+  "Sortable.js": "/packs/js/Sortable-9a11be86836237bc6a78.js",
+  "Sortable.js.map": "/packs/js/Sortable-9a11be86836237bc6a78.js.map",
+  "application.js": "/packs/js/application-b581270177dd30ba30d8.js",
+  "application.js.map": "/packs/js/application-b581270177dd30ba30d8.js.map",
+  "contacts.js": "/packs/js/contacts-5db98d634835055cda9d.js",
+  "contacts.js.map": "/packs/js/contacts-5db98d634835055cda9d.js.map",
+  "cuisines.js": "/packs/js/cuisines-50be4ac632e0a313f68b.js",
+  "cuisines.js.map": "/packs/js/cuisines-50be4ac632e0a313f68b.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-50081193037024cb7894.js"
+        "/packs/js/application-b581270177dd30ba30d8.js"
       ],
       "js.map": [
-        "/packs/js/application-50081193037024cb7894.js.map"
+        "/packs/js/application-b581270177dd30ba30d8.js.map"
       ]
     },
     "contacts": {
       "js": [
-        "/packs/js/contacts-da194148243a1fc4d8b5.js"
+        "/packs/js/contacts-5db98d634835055cda9d.js"
       ],
       "js.map": [
-        "/packs/js/contacts-da194148243a1fc4d8b5.js.map"
+        "/packs/js/contacts-5db98d634835055cda9d.js.map"
       ]
     },
     "cuisines": {
       "js": [
-        "/packs/js/cuisines-9c265ba8cfee85d1bab9.js"
+        "/packs/js/cuisines-50be4ac632e0a313f68b.js"
       ],
       "js.map": [
-        "/packs/js/cuisines-9c265ba8cfee85d1bab9.js.map"
+        "/packs/js/cuisines-50be4ac632e0a313f68b.js.map"
       ]
     },
     "favorites": {
       "js": [
-        "/packs/js/favorites-408c7a5ab265605a5495.js"
+        "/packs/js/favorites-0738935c410c7edc7600.js"
       ],
       "js.map": [
-        "/packs/js/favorites-408c7a5ab265605a5495.js.map"
+        "/packs/js/favorites-0738935c410c7edc7600.js.map"
       ]
     },
     "managecuisines": {
       "js": [
-        "/packs/js/managecuisines-acca775a68e72b7b691b.js"
+        "/packs/js/managecuisines-4aa4fdcb63516df1936a.js"
       ],
       "js.map": [
-        "/packs/js/managecuisines-acca775a68e72b7b691b.js.map"
+        "/packs/js/managecuisines-4aa4fdcb63516df1936a.js.map"
       ]
     },
     "manageownfoodstuffs": {
       "js": [
-        "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js"
+        "/packs/js/manageownfoodstuffs-e626318ae73fc4e40a95.js"
       ],
       "js.map": [
-        "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js.map"
+        "/packs/js/manageownfoodstuffs-e626318ae73fc4e40a95.js.map"
       ]
     },
     "manageownprocedures": {
       "js": [
-        "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js"
+        "/packs/js/manageownprocedures-8dcc1aaa77b3675697cd.js"
       ],
       "js.map": [
-        "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js.map"
+        "/packs/js/manageownprocedures-8dcc1aaa77b3675697cd.js.map"
       ]
     },
     "manager": {
       "js": [
-        "/packs/js/manager-52f733701754ee71e27e.js"
+        "/packs/js/manager-ad5fce05563816c78ca9.js"
       ],
       "js.map": [
-        "/packs/js/manager-52f733701754ee71e27e.js.map"
+        "/packs/js/manager-ad5fce05563816c78ca9.js.map"
       ]
     },
     "managers/cuisines": {
       "js": [
-        "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js"
+        "/packs/js/managers/cuisines-2551586c349f1d082110.js"
       ],
       "js.map": [
-        "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js.map"
+        "/packs/js/managers/cuisines-2551586c349f1d082110.js.map"
       ]
     },
     "managers/foodcategories": {
       "js": [
-        "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js"
+        "/packs/js/managers/foodcategories-de1a9ef9334a0e3665e8.js"
       ],
       "js.map": [
-        "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js.map"
+        "/packs/js/managers/foodcategories-de1a9ef9334a0e3665e8.js.map"
       ]
     },
     "managers/foodstuffs": {
       "js": [
-        "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js"
+        "/packs/js/managers/foodstuffs-e5bee4cc142a330036a8.js"
       ],
       "js.map": [
-        "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js.map"
+        "/packs/js/managers/foodstuffs-e5bee4cc142a330036a8.js.map"
       ]
     },
     "managers/procedures": {
       "js": [
-        "/packs/js/managers/procedures-e3744afc70adba406f1a.js"
+        "/packs/js/managers/procedures-40b954a4e45d32db0529.js"
       ],
       "js.map": [
-        "/packs/js/managers/procedures-e3744afc70adba406f1a.js.map"
+        "/packs/js/managers/procedures-40b954a4e45d32db0529.js.map"
       ]
     },
     "managers/rawmaterials": {
       "js": [
-        "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js"
+        "/packs/js/managers/rawmaterials-3c50f19420f6c6d81d18.js"
       ],
       "js.map": [
-        "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js.map"
+        "/packs/js/managers/rawmaterials-3c50f19420f6c6d81d18.js.map"
       ]
     },
     "managers/sessions": {
       "js": [
-        "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js"
+        "/packs/js/managers/sessions-af8257218cf4a30473ea.js"
       ],
       "js.map": [
-        "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js.map"
+        "/packs/js/managers/sessions-af8257218cf4a30473ea.js.map"
       ]
     },
     "passwords": {
       "js": [
-        "/packs/js/passwords-9596a9745f5362614200.js"
+        "/packs/js/passwords-83f43e0bffc817bd8194.js"
       ],
       "js.map": [
-        "/packs/js/passwords-9596a9745f5362614200.js.map"
+        "/packs/js/passwords-83f43e0bffc817bd8194.js.map"
       ]
     },
     "Sortable": {
       "js": [
-        "/packs/js/Sortable-ca5333088c2ba7cd521e.js"
+        "/packs/js/Sortable-9a11be86836237bc6a78.js"
       ],
       "js.map": [
-        "/packs/js/Sortable-ca5333088c2ba7cd521e.js.map"
+        "/packs/js/Sortable-9a11be86836237bc6a78.js.map"
       ]
     },
     "stocks": {
       "js": [
-        "/packs/js/stocks-8dba9dfe85f392cdecbe.js"
+        "/packs/js/stocks-f93e1bc1345c7bc16653.js"
       ],
       "js.map": [
-        "/packs/js/stocks-8dba9dfe85f392cdecbe.js.map"
+        "/packs/js/stocks-f93e1bc1345c7bc16653.js.map"
       ]
     },
     "subscriptions": {
       "js": [
-        "/packs/js/subscriptions-9893c14cddbf272d9db5.js"
+        "/packs/js/subscriptions-8ddce588af6146e94158.js"
       ],
       "js.map": [
-        "/packs/js/subscriptions-9893c14cddbf272d9db5.js.map"
+        "/packs/js/subscriptions-8ddce588af6146e94158.js.map"
       ]
     },
     "todaysmenus": {
       "js": [
-        "/packs/js/todaysmenus-19efceea6a4116813a32.js"
+        "/packs/js/todaysmenus-a84d06f9dd239689a5d0.js"
       ],
       "js.map": [
-        "/packs/js/todaysmenus-19efceea6a4116813a32.js.map"
+        "/packs/js/todaysmenus-a84d06f9dd239689a5d0.js.map"
       ]
     },
     "tops": {
       "js": [
-        "/packs/js/tops-795c824169b96e585c71.js"
+        "/packs/js/tops-e8ac6a57bbc89e053667.js"
       ],
       "js.map": [
-        "/packs/js/tops-795c824169b96e585c71.js.map"
+        "/packs/js/tops-e8ac6a57bbc89e053667.js.map"
       ]
     },
     "users": {
       "js": [
-        "/packs/js/users-11c463d088e4d176d80b.js"
+        "/packs/js/users-cab60b5afda9420cde26.js"
       ],
       "js.map": [
-        "/packs/js/users-11c463d088e4d176d80b.js.map"
+        "/packs/js/users-cab60b5afda9420cde26.js.map"
       ]
     }
   },
-  "favorites.js": "/packs/js/favorites-408c7a5ab265605a5495.js",
-  "favorites.js.map": "/packs/js/favorites-408c7a5ab265605a5495.js.map",
-  "managecuisines.js": "/packs/js/managecuisines-acca775a68e72b7b691b.js",
-  "managecuisines.js.map": "/packs/js/managecuisines-acca775a68e72b7b691b.js.map",
-  "manageownfoodstuffs.js": "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js",
-  "manageownfoodstuffs.js.map": "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js.map",
-  "manageownprocedures.js": "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js",
-  "manageownprocedures.js.map": "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js.map",
-  "manager.js": "/packs/js/manager-52f733701754ee71e27e.js",
-  "manager.js.map": "/packs/js/manager-52f733701754ee71e27e.js.map",
-  "managers/cuisines.js": "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js",
-  "managers/cuisines.js.map": "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js.map",
-  "managers/foodcategories.js": "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js",
-  "managers/foodcategories.js.map": "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js.map",
-  "managers/foodstuffs.js": "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js",
-  "managers/foodstuffs.js.map": "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js.map",
-  "managers/procedures.js": "/packs/js/managers/procedures-e3744afc70adba406f1a.js",
-  "managers/procedures.js.map": "/packs/js/managers/procedures-e3744afc70adba406f1a.js.map",
-  "managers/rawmaterials.js": "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js",
-  "managers/rawmaterials.js.map": "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js.map",
-  "managers/sessions.js": "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js",
-  "managers/sessions.js.map": "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js.map",
-  "passwords.js": "/packs/js/passwords-9596a9745f5362614200.js",
-  "passwords.js.map": "/packs/js/passwords-9596a9745f5362614200.js.map",
-  "stocks.js": "/packs/js/stocks-8dba9dfe85f392cdecbe.js",
-  "stocks.js.map": "/packs/js/stocks-8dba9dfe85f392cdecbe.js.map",
-  "subscriptions.js": "/packs/js/subscriptions-9893c14cddbf272d9db5.js",
-  "subscriptions.js.map": "/packs/js/subscriptions-9893c14cddbf272d9db5.js.map",
-  "todaysmenus.js": "/packs/js/todaysmenus-19efceea6a4116813a32.js",
-  "todaysmenus.js.map": "/packs/js/todaysmenus-19efceea6a4116813a32.js.map",
-  "tops.js": "/packs/js/tops-795c824169b96e585c71.js",
-  "tops.js.map": "/packs/js/tops-795c824169b96e585c71.js.map",
-  "users.js": "/packs/js/users-11c463d088e4d176d80b.js",
-  "users.js.map": "/packs/js/users-11c463d088e4d176d80b.js.map"
+  "favorites.js": "/packs/js/favorites-0738935c410c7edc7600.js",
+  "favorites.js.map": "/packs/js/favorites-0738935c410c7edc7600.js.map",
+  "managecuisines.js": "/packs/js/managecuisines-4aa4fdcb63516df1936a.js",
+  "managecuisines.js.map": "/packs/js/managecuisines-4aa4fdcb63516df1936a.js.map",
+  "manageownfoodstuffs.js": "/packs/js/manageownfoodstuffs-e626318ae73fc4e40a95.js",
+  "manageownfoodstuffs.js.map": "/packs/js/manageownfoodstuffs-e626318ae73fc4e40a95.js.map",
+  "manageownprocedures.js": "/packs/js/manageownprocedures-8dcc1aaa77b3675697cd.js",
+  "manageownprocedures.js.map": "/packs/js/manageownprocedures-8dcc1aaa77b3675697cd.js.map",
+  "manager.js": "/packs/js/manager-ad5fce05563816c78ca9.js",
+  "manager.js.map": "/packs/js/manager-ad5fce05563816c78ca9.js.map",
+  "managers/cuisines.js": "/packs/js/managers/cuisines-2551586c349f1d082110.js",
+  "managers/cuisines.js.map": "/packs/js/managers/cuisines-2551586c349f1d082110.js.map",
+  "managers/foodcategories.js": "/packs/js/managers/foodcategories-de1a9ef9334a0e3665e8.js",
+  "managers/foodcategories.js.map": "/packs/js/managers/foodcategories-de1a9ef9334a0e3665e8.js.map",
+  "managers/foodstuffs.js": "/packs/js/managers/foodstuffs-e5bee4cc142a330036a8.js",
+  "managers/foodstuffs.js.map": "/packs/js/managers/foodstuffs-e5bee4cc142a330036a8.js.map",
+  "managers/procedures.js": "/packs/js/managers/procedures-40b954a4e45d32db0529.js",
+  "managers/procedures.js.map": "/packs/js/managers/procedures-40b954a4e45d32db0529.js.map",
+  "managers/rawmaterials.js": "/packs/js/managers/rawmaterials-3c50f19420f6c6d81d18.js",
+  "managers/rawmaterials.js.map": "/packs/js/managers/rawmaterials-3c50f19420f6c6d81d18.js.map",
+  "managers/sessions.js": "/packs/js/managers/sessions-af8257218cf4a30473ea.js",
+  "managers/sessions.js.map": "/packs/js/managers/sessions-af8257218cf4a30473ea.js.map",
+  "passwords.js": "/packs/js/passwords-83f43e0bffc817bd8194.js",
+  "passwords.js.map": "/packs/js/passwords-83f43e0bffc817bd8194.js.map",
+  "stocks.js": "/packs/js/stocks-f93e1bc1345c7bc16653.js",
+  "stocks.js.map": "/packs/js/stocks-f93e1bc1345c7bc16653.js.map",
+  "subscriptions.js": "/packs/js/subscriptions-8ddce588af6146e94158.js",
+  "subscriptions.js.map": "/packs/js/subscriptions-8ddce588af6146e94158.js.map",
+  "todaysmenus.js": "/packs/js/todaysmenus-a84d06f9dd239689a5d0.js",
+  "todaysmenus.js.map": "/packs/js/todaysmenus-a84d06f9dd239689a5d0.js.map",
+  "tops.js": "/packs/js/tops-e8ac6a57bbc89e053667.js",
+  "tops.js.map": "/packs/js/tops-e8ac6a57bbc89e053667.js.map",
+  "users.js": "/packs/js/users-cab60b5afda9420cde26.js",
+  "users.js.map": "/packs/js/users-cab60b5afda9420cde26.js.map"
 }

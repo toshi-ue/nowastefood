@@ -33,7 +33,7 @@ class User < ApplicationRecord
     #   rubocopで The use of `Kernel#open` is a serious security risk. と表示される(Security/Open)
     avatar = open(Faker::Avatar.image(slug: user_name, size: "150x150", format: "jpg"))
     avatar.close
-    binding.pry
+
     self.create!(nickname: user_name, avatar: avatar.base_uri, email: "#{user_name.downcase}@example.com") do |u|
       u.password = SecureRandom.urlsafe_base64
     end

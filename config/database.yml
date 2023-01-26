@@ -21,13 +21,13 @@ default: &default
 
 development:
   <<: *default
-  database: webapp_development
+  database: nowastefood_development
 
 test:
   <<: *default
   # username: test
   # password: password
-  database: webapp_test
+  database: nowastefood_test
 
 production:
   <<: *default
@@ -62,6 +62,6 @@ production:
 #
 # production:
 #   <<: *default
-#   database: webapp_production
-#   # username: webapp
-#   # password: <%= ENV['WEBAPP_DATABASE_PASSWORD'] %>
+#   database: nowastefood_production
+#   # username: nowastefood
+#   # password: <%= ENV['nowastefood_DATABASE_PASSWORD'] %>
