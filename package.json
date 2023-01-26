@@ -16,7 +16,7 @@
     "sortablejs": "1.10.2",
     "swiper": "<6"
   },
-  "name": "webapp",
+  "name":"nowastefood",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/toshi-ue/app_for_job_change.git",

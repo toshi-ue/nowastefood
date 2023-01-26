@@ -18,8 +18,8 @@ db="db" # describe database service name from docker-compose.yml
 app_name=$(pwd | awk -F "/" '{ print $NF }') # get project dir name
 
 # define container name
-app_container="${app_name}_${app}-1"
-db_container="${app_name}_${db}-1"
+app_container="${app_name}-${app}-1"
+db_container="${app_name}-${db}-1"
 
 echoing() {
   echo "========================================================"
