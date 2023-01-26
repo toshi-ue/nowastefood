@@ -1,0 +1,214 @@
+{
+  "Sortable.js": "/packs/js/Sortable-ca5333088c2ba7cd521e.js",
+  "Sortable.js.map": "/packs/js/Sortable-ca5333088c2ba7cd521e.js.map",
+  "application.js": "/packs/js/application-50081193037024cb7894.js",
+  "application.js.map": "/packs/js/application-50081193037024cb7894.js.map",
+  "contacts.js": "/packs/js/contacts-da194148243a1fc4d8b5.js",
+  "contacts.js.map": "/packs/js/contacts-da194148243a1fc4d8b5.js.map",
+  "cuisines.js": "/packs/js/cuisines-9c265ba8cfee85d1bab9.js",
+  "cuisines.js.map": "/packs/js/cuisines-9c265ba8cfee85d1bab9.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-50081193037024cb7894.js"
+      ],
+      "js.map": [
+        "/packs/js/application-50081193037024cb7894.js.map"
+      ]
+    },
+    "contacts": {
+      "js": [
+        "/packs/js/contacts-da194148243a1fc4d8b5.js"
+      ],
+      "js.map": [
+        "/packs/js/contacts-da194148243a1fc4d8b5.js.map"
+      ]
+    },
+    "cuisines": {
+      "js": [
+        "/packs/js/cuisines-9c265ba8cfee85d1bab9.js"
+      ],
+      "js.map": [
+        "/packs/js/cuisines-9c265ba8cfee85d1bab9.js.map"
+      ]
+    },
+    "favorites": {
+      "js": [
+        "/packs/js/favorites-408c7a5ab265605a5495.js"
+      ],
+      "js.map": [
+        "/packs/js/favorites-408c7a5ab265605a5495.js.map"
+      ]
+    },
+    "managecuisines": {
+      "js": [
+        "/packs/js/managecuisines-acca775a68e72b7b691b.js"
+      ],
+      "js.map": [
+        "/packs/js/managecuisines-acca775a68e72b7b691b.js.map"
+      ]
+    },
+    "manageownfoodstuffs": {
+      "js": [
+        "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js"
+      ],
+      "js.map": [
+        "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js.map"
+      ]
+    },
+    "manageownprocedures": {
+      "js": [
+        "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js"
+      ],
+      "js.map": [
+        "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js.map"
+      ]
+    },
+    "manager": {
+      "js": [
+        "/packs/js/manager-52f733701754ee71e27e.js"
+      ],
+      "js.map": [
+        "/packs/js/manager-52f733701754ee71e27e.js.map"
+      ]
+    },
+    "managers/cuisines": {
+      "js": [
+        "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js"
+      ],
+      "js.map": [
+        "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js.map"
+      ]
+    },
+    "managers/foodcategories": {
+      "js": [
+        "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js"
+      ],
+      "js.map": [
+        "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js.map"
+      ]
+    },
+    "managers/foodstuffs": {
+      "js": [
+        "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js"
+      ],
+      "js.map": [
+        "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js.map"
+      ]
+    },
+    "managers/procedures": {
+      "js": [
+        "/packs/js/managers/procedures-e3744afc70adba406f1a.js"
+      ],
+      "js.map": [
+        "/packs/js/managers/procedures-e3744afc70adba406f1a.js.map"
+      ]
+    },
+    "managers/rawmaterials": {
+      "js": [
+        "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js"
+      ],
+      "js.map": [
+        "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js.map"
+      ]
+    },
+    "managers/sessions": {
+      "js": [
+        "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js"
+      ],
+      "js.map": [
+        "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js.map"
+      ]
+    },
+    "passwords": {
+      "js": [
+        "/packs/js/passwords-9596a9745f5362614200.js"
+      ],
+      "js.map": [
+        "/packs/js/passwords-9596a9745f5362614200.js.map"
+      ]
+    },
+    "Sortable": {
+      "js": [
+        "/packs/js/Sortable-ca5333088c2ba7cd521e.js"
+      ],
+      "js.map": [
+        "/packs/js/Sortable-ca5333088c2ba7cd521e.js.map"
+      ]
+    },
+    "stocks": {
+      "js": [
+        "/packs/js/stocks-8dba9dfe85f392cdecbe.js"
+      ],
+      "js.map": [
+        "/packs/js/stocks-8dba9dfe85f392cdecbe.js.map"
+      ]
+    },
+    "subscriptions": {
+      "js": [
+        "/packs/js/subscriptions-9893c14cddbf272d9db5.js"
+      ],
+      "js.map": [
+        "/packs/js/subscriptions-9893c14cddbf272d9db5.js.map"
+      ]
+    },
+    "todaysmenus": {
+      "js": [
+        "/packs/js/todaysmenus-19efceea6a4116813a32.js"
+      ],
+      "js.map": [
+        "/packs/js/todaysmenus-19efceea6a4116813a32.js.map"
+      ]
+    },
+    "tops": {
+      "js": [
+        "/packs/js/tops-795c824169b96e585c71.js"
+      ],
+      "js.map": [
+        "/packs/js/tops-795c824169b96e585c71.js.map"
+      ]
+    },
+    "users": {
+      "js": [
+        "/packs/js/users-11c463d088e4d176d80b.js"
+      ],
+      "js.map": [
+        "/packs/js/users-11c463d088e4d176d80b.js.map"
+      ]
+    }
+  },
+  "favorites.js": "/packs/js/favorites-408c7a5ab265605a5495.js",
+  "favorites.js.map": "/packs/js/favorites-408c7a5ab265605a5495.js.map",
+  "managecuisines.js": "/packs/js/managecuisines-acca775a68e72b7b691b.js",
+  "managecuisines.js.map": "/packs/js/managecuisines-acca775a68e72b7b691b.js.map",
+  "manageownfoodstuffs.js": "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js",
+  "manageownfoodstuffs.js.map": "/packs/js/manageownfoodstuffs-4161a6fd8a2205b72fac.js.map",
+  "manageownprocedures.js": "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js",
+  "manageownprocedures.js.map": "/packs/js/manageownprocedures-b3f2d427e23cd7308145.js.map",
+  "manager.js": "/packs/js/manager-52f733701754ee71e27e.js",
+  "manager.js.map": "/packs/js/manager-52f733701754ee71e27e.js.map",
+  "managers/cuisines.js": "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js",
+  "managers/cuisines.js.map": "/packs/js/managers/cuisines-0a32b9834ebfc79d6e5a.js.map",
+  "managers/foodcategories.js": "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js",
+  "managers/foodcategories.js.map": "/packs/js/managers/foodcategories-f7dafd94adf2a3c65b2e.js.map",
+  "managers/foodstuffs.js": "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js",
+  "managers/foodstuffs.js.map": "/packs/js/managers/foodstuffs-14971d60239ab6d50aca.js.map",
+  "managers/procedures.js": "/packs/js/managers/procedures-e3744afc70adba406f1a.js",
+  "managers/procedures.js.map": "/packs/js/managers/procedures-e3744afc70adba406f1a.js.map",
+  "managers/rawmaterials.js": "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js",
+  "managers/rawmaterials.js.map": "/packs/js/managers/rawmaterials-9433798eeff1b875f475.js.map",
+  "managers/sessions.js": "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js",
+  "managers/sessions.js.map": "/packs/js/managers/sessions-0a1e34d399d9fec093d6.js.map",
+  "passwords.js": "/packs/js/passwords-9596a9745f5362614200.js",
+  "passwords.js.map": "/packs/js/passwords-9596a9745f5362614200.js.map",
+  "stocks.js": "/packs/js/stocks-8dba9dfe85f392cdecbe.js",
+  "stocks.js.map": "/packs/js/stocks-8dba9dfe85f392cdecbe.js.map",
+  "subscriptions.js": "/packs/js/subscriptions-9893c14cddbf272d9db5.js",
+  "subscriptions.js.map": "/packs/js/subscriptions-9893c14cddbf272d9db5.js.map",
+  "todaysmenus.js": "/packs/js/todaysmenus-19efceea6a4116813a32.js",
+  "todaysmenus.js.map": "/packs/js/todaysmenus-19efceea6a4116813a32.js.map",
+  "tops.js": "/packs/js/tops-795c824169b96e585c71.js",
+  "tops.js.map": "/packs/js/tops-795c824169b96e585c71.js.map",
+  "users.js": "/packs/js/users-11c463d088e4d176d80b.js",
+  "users.js.map": "/packs/js/users-11c463d088e4d176d80b.js.map"
+}

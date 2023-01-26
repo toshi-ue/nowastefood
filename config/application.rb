@@ -9,7 +9,10 @@ Bundler.require(*Rails.groups)
 module Webapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 6.1
+
+    # https://qiita.com/azusanakano/items/885fe3236977580b00c9
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # locale
     config.i18n.available_locales = [ :en, :ja ]

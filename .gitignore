@@ -35,9 +35,9 @@ config/master.key
 
 # Ignore folders
 node_modules/
-/public/packs
+# /public/packs
 /public/packs-test
-/public/assets
+# /public/assets
 /public/uploads
 
 # Ignore uploaded files in development

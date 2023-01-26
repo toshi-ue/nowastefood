@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '2.7.7'
 
 gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'cloudinary'
@@ -24,8 +24,10 @@ gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2'
+gem "net-http"
 gem 'puma'
-gem 'rails', '~> 6.0.3'
+# gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.7'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
@@ -44,6 +46,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails'
+  gem 'stringio', '0.1.4'
 end
 
 group :development do
