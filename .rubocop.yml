@@ -1,7 +1,5 @@
 inherit_from: .rubocop_todo.yml
 
-# TODO: 後でコメントを削除
-# 追加した規約ファイル読込
 require:
   - rubocop-rspec
   - rubocop-rails

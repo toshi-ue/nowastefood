@@ -2,3 +2,6 @@
 .env
 docker-compose.*
 Dockerfile
+node_modules/*
+tmp/*
+vendor/*
