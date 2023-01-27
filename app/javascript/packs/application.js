@@ -13,6 +13,7 @@ require('data-confirm-modal')
 // 各ページに独自のtooltipクラスを指定しないとデザインが崩れる
 $(function () {
   $('.add-todaysmenu-tooltip').tooltip();
+  $('.add-recipes-cookinghistorys-tooltip').tooltip();
   $('.autotoday-tooltip').tooltip();
   $('.delete-favorite-tooltip').tooltip();
   $('.favorites-tooltip').tooltip();
@@ -21,6 +22,7 @@ $(function () {
   $('.manager-cuisines-tooltip').tooltip();
   $('.manager-foodcategories-tooltip').tooltip();
   $('.preview-tooltip').tooltip();
+  $('.remove-cookinghistorys-tooltip').tooltip();
   $('.remove-todaysmenus-tooltip').tooltip();
   $('.stocks-tooltip').tooltip();
   $('.todaysmenus-tooltip').tooltip();

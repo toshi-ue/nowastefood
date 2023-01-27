@@ -91,3 +91,9 @@ ja:
         cannot_duplicate_rawmaterial: 1つの料理に同じ材料を登録できません
       foodstuff:
         cannot_duplicate_rawmaterial: 1つの料理に同じ材料を登録できません
+  enums:
+    todaysmenu:
+      cooked_when:
+        morning: 朝食
+        lunch: 昼食
+        dinner: 夕食

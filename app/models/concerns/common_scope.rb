@@ -3,7 +3,8 @@ module CommonScope
 
   included do
     scope :search_in_today, lambda {
-      where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+      now = Time.current
+      where(created_at: now.all_day)
     }
   end
 end

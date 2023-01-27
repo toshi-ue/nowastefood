@@ -24,7 +24,7 @@ class TodaysmenusController < ApplicationController
     @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
     @stocks.store_consumed_at(@stocks, @rawmaterials_and_quantity_will_be_consumed)
     @todaysmenus.update_all(cooked_when: params[:cooked_when].to_i) # rubocop:disable Rails/SkipsModelValidations
-    redirect_to todaysmenus_path, flash: { notice: "#{@todaysmenus.map { |t| t.cuisine.name }.join(' と ')}を料理しました。お疲れ様です!!" }
+    redirect_to todaysmenus_path, flash: { notice: "Good Job!!" }
   end
 
   private

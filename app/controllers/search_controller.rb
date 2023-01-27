@@ -1,7 +1,6 @@
 class SearchController < ApplicationController
   def rawmaterial_search
     @rawmaterials = Rawmaterial.where('name LIKE ? OR hiragana LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")&.limit(5)
-    # binding.pry
     respond_to do |format|
       format.json { render json: @rawmaterials }
     end

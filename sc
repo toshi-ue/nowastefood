@@ -176,7 +176,7 @@ invoke_run() {
     dbenv="-e DISABLE_DATABASE_ENVIRONMENT_CHECK=$DISABLE_DATABASE_ENVIRONMENT_CHECK "
   fi
 
-  # $dc run $rm ${renv}${dbenv}$*
+  $dc run $rm ${renv}${dbenv}$*
 }
 
 rails_cmd() {
@@ -314,89 +314,62 @@ test_cmd() {
 cmd=$1
 shift
 case "$cmd" in
-setup)
-  create_project $* && exit 0
-  ;;
-init)
-  init_services $* && exit 0
-  ;;
-ps)
-  compose_ps && exit 0
-  ;;
-up)
-  compose_up $* && compose_ps && exit 0
+bash)
+  invoke_bash $*
   ;;
 build)
   compose_build $* && exit 0
   ;;
-start)
-  compose_start $* && exit 0
-  ;;
-stop)
-  compose_stop $* && exit 0
-  ;;
-restart)
-  compose_restart $* && exit 0
-  ;;
-down)
-  compose_down $* && exit 0
-  ;;
-logs)
-  logs $*
-  ;;
-bash)
-  invoke_bash $*
-  ;;
-run)
-  invoke_run $*
-  ;;
-server)
-  rails_server $*
-  ;;
-rails)
-  rails_cmd $*
-  ;;
-db)
-  rails_db $*
+bundle)
+  bundle_cmd $*
   ;;
 cons)
   rails_console $*
   ;;
-rake)
-  rake_cmd $*
-  ;;
-rspec)
-  rspec_cmd $*
-  ;;
-test)
-  test_cmd $*
-  ;;
-bundle)
-  bundle_cmd $*
-  ;;
-rubocop)
-  rubocop_cmd $*
-  ;;
-reset-db)
-  rake_reset_db
-  ;;
-psql)
-  db_console $*
+db)
+  rails_db $*
   ;;
 db-dump)
   db_dump $*
   ;;
-yarn)
-  run_yarn $*
+down)
+  compose_down $* && exit 0
+  ;;
+init)
+  init_services $* && exit 0
+  ;;
+logs)
+  logs $*
   ;;
 npm)
   run_npm $*
   ;;
-webpack)
-  run_webpack $*
+ps)
+  compose_ps && exit 0
   ;;
-spring)
-  spring_cmd $*
+psql)
+  db_console $*
+  ;;
+rails)
+  rails_cmd $*
+  ;;
+rake)
+  rake_cmd $*
+  ;;
+reset-db)
+  rake_reset_db
+  ;;
+restart)
+  compose_restart $* && exit 0
+  ;;
+rspec)
+  rspec_cmd $*
+  ;;
+rubocop)
+  rubocop_cmd $*
+  ;;
+run)
+  invoke_run $*
   ;;
 sdb)
   spring_db $*
@@ -404,8 +377,35 @@ sdb)
 sdive)
   spring_dive $*
   ;;
+server)
+  rails_server $*
+  ;;
+setup)
+  create_project $* && exit 0
+  ;;
 solargraph)
   solargraph_cmd $*
+  ;;
+spring)
+  spring_cmd $*
+  ;;
+start)
+  compose_start $* && exit 0
+  ;;
+stop)
+  compose_stop $* && exit 0
+  ;;
+test)
+  test_cmd $*
+  ;;
+up)
+  compose_up $* && compose_ps && exit 0
+  ;;
+webpack)
+  run_webpack $*
+  ;;
+yarn)
+  run_yarn $*
   ;;
 *)
   read -d '' help <<-EOF
@@ -428,8 +428,8 @@ App:
   rails    [args] Run rails command in application container
   rake     [args] Run rake command in application container
   db       [args] Run rails db command you can use set(migrate), up, down, reset, other is status
-           ex: ./qs db set #running rails db:migrate
-               ./qs db up 2019010101 #running rails db:migrate:up VERSION=2019010101
+           ex: ./sc db set #running rails db:migrate
+               ./sc db up 2019010101 #running rails db:migrate:up VERSION=2019010101
   rspec    [args] Run rspec command in application container
   test     [args] Run Minitest command in application container
   bundle   [args] Run bundle command in application container
@@ -443,8 +443,8 @@ Spring
   spring    Exec spring command in Spring container
   sdive     Into spring container
   sdb       [args] Run rails db command you can use set(migrate), up, down, reset, other is status
-             ex: ./qs db set #running rails db:migrate
-                 ./qs db up 2019010101 #running rails db:migrate:up VERSION=2019010101
+             ex: ./sc db set #running rails db:migrate
+                 ./sc db up 2019010101 #running rails db:migrate:up VERSION=2019010101
 
 Solargraph
   solargraph Run solargraph command in Spring container

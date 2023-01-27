@@ -20,7 +20,6 @@ class Managers::FoodstuffsController < ApplicationController
     else
       # HACK: render 'new'を使ってもうちょっと上手く書きたい
       # redirect_to new_managers_foodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { error: @foodstuff.errors.full_messages.to_s }
-      # binding.pry
       @cuisine = Cuisine.find(@foodstuff.cuisine_id)
       params[:cuisine_id] = @foodstuff.cuisine_id
       render 'new'
