@@ -1,11 +1,13 @@
 module CookinghistorysHelper
   def time_ago(time)
-    now = Time.zone.now
-    if now.today?
+    if time.today?
+      puts "a passed"
       "今日"
-    elsif now.yesterday?
+    elsif time.yesterday?
+      puts "b passed"
       "昨日"
     else
+      puts "c passed"
       "#{time_ago_in_words(time.to_date)}前"
     end
   end
