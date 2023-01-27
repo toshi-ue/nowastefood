@@ -30,33 +30,29 @@
                               nav_class: "d-inline-b"
         %>
     </div>
-    <div class="col-12">
-      <p class="text-center">
-        <%= link_to root_path do %>
-        <button class="btn btn-success">トップページへ</button>
-        <% end %>
-      </p>
-      <p class="text-center">
-        <%= link_to todaysmenus_path do %>
-        <button class="btn btn-success">今日の献立へ</button>
-        <% end %>
-      </p>
-    </div>
     <% else %>
     <div class="col-12">
-      <div class="page-title text-center">あなたのFavorite</div>
-      <p class="text-muted text-center no-favorites-description">まだ登録がありません<br>追加しましょう!!</p>
-      <p class="text-center">
-        <%= link_to root_path do %>
-        <button class="btn btn-success">トップページへ</button>
-        <% end %>
-      </p>
-      <p class="text-center">
-        <%= link_to todaysmenus_path do %>
-        <button class="btn btn-success">今日の献立へ</button>
-        <% end %>
-      </p>
-    </div>
+      <div class="page-title text-center"></div>
+      <p class="text-muted text-center no-favorites-description">まだ登録がありません</p>
     <% end %>
   </div>
 </div>
+  <div class="col-12">
+    <p class="text-center">
+      <%= link_to todaysmenus_path do %>
+      <button class="btn btn-success">今日の献立へ</button>
+      <% end %>
+    </p>
+    <p class="text-center">
+      <%= link_to favorites_path do %>
+        <button class="btn btn-success">お気に入りへ</button>
+      <% end %>
+    </p>
+    <p class="text-center">
+      <%= link_to root_path do %>
+      <button class="btn btn-success">トップページへ</button>
+      <% end %>
+    </p>
+  </div>
+
+<% content_for(:html_title) { '料理履歴' } %>
