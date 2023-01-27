@@ -1,7 +1,23 @@
+# https://gist.github.com/yizeng/eeeb48d6823801061791cc5581f7e1fc
+.circleci/*
 .git
-.env
+.gitignore
+.github/*
+.env*
+.rspec
+.rubocop*
+.vscode/*
+
 docker-compose.*
 Dockerfile
+log/*
 node_modules/*
+spec/*
+storage/*
 tmp/*
 vendor/*
+
+!log/.keep
+!storage/.keep
+!tmp/.keep
+!vendor/.keep
