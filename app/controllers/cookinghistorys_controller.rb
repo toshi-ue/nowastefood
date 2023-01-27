@@ -7,6 +7,13 @@ class CookinghistorysController < ApplicationController
     @cookinghistorys = @cookinghistorys.page(params[:page]).per(20)
   end
 
+  def destroy
+    binding.pry
+    @cookinghistory = current_user.todaysmenus.find_by(id: params[:id])
+    @cookinghistory.destroy
+     redirect_to cookinghistorys_path, flash: { notice: "料理履歴から #{@cookinghistory.cuisine.name} を削除しました" }
+  end
+
   def add_to_todays_menu
     @todaysmenu = current_user.todaysmenus.build(cuisine_id: params[:cuisine_id])
     if @todaysmenu.save
