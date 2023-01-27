@@ -21,18 +21,6 @@ app_name=$(pwd | awk -F "/" '{ print $NF }') # get project dir name
 app_container="${app_name}-${app}-1"
 db_container="${app_name}-${db}-1"
 
-echoing() {
-  echo "========================================================"
-  echo "$1"
-  echo "========================================================"
-}
-
-rm_pids() {
-  if [ -f "tmp/pids/server.pid" ]; then
-    rm -f tmp/pids/server.pid
-  fi
-}
-
 create_project() {
   webpack=""
   for arg in $@; do
@@ -87,12 +75,17 @@ init_services() {
   $dc up $app
 }
 
-compose_up() {
-  echoing "Create and start containers $*"
-  rm_pids
-  # $dc up -d "$1"
-  $dc up -d
-  docker attach $app_container
+bundle_cmd() {
+  run_app bundle $*
+}
+
+bundle_exec() {
+  run_app bundle exec $*
+}
+
+compose_build() {
+  echoing "Build containers $*"
+  $dc build $*
 }
 
 compose_down() {
@@ -100,9 +93,14 @@ compose_down() {
   $dc down $*
 }
 
-compose_build() {
-  echoing "Build containers $*"
-  $dc build $*
+compose_ps() {
+  echoing "Showing running containers"
+  $dc ps
+}
+
+compose_restart() {
+  echoing "Restart services $*"
+  $dc restart $*
 }
 
 compose_start() {
@@ -116,14 +114,42 @@ compose_stop() {
   $dc stop $*
 }
 
-compose_restart() {
-  echoing "Restart services $*"
-  $dc restart $*
+compose_up() {
+  echoing "Create and start containers $*"
+  rm_pids
+  # $dc up -d "$1"
+  $dc up -d
+  docker attach $app_container
 }
 
-compose_ps() {
-  echoing "Showing running containers"
-  $dc ps
+db_console() {
+  # from config/database.yml
+  database="development"
+  username="postgres"
+  port="5432"
+
+  run_db psql -h $db_container -p $port -U $username $database
+}
+
+db_dump() {
+  # from config/database.yml
+  database="development"
+  username="postgres"
+  port="5432"
+
+  tm=$(date +\%Y\%m\%d-\%H\%M)
+  dump_file=tmp/dbdump-${dbname}-${tm}.dump
+
+  echoing "Dump database $dbname data to $dump_file"
+
+  run_db pg_dump -h $db_container -p $port -U $username --disable-triggers $database >$dump_file
+  echo "done"
+}
+
+echoing() {
+  echo "========================================================"
+  echo "$1"
+  echo "========================================================"
 }
 
 logs() {
@@ -153,32 +179,12 @@ invoke_run() {
   # $dc run $rm ${renv}${dbenv}$*
 }
 
-run_app() {
-  invoke_run $app $*
+rails_cmd() {
+  bundle_exec rails $*
 }
 
-run_db() {
-  invoke_run $db $*
-}
-
-run_spring() {
-  $dc exec spring $*
-}
-
-run_solargraph() {
-  invoke_run solargraph $*
-}
-
-rails_server() {
-  compose_stop $app
-  rm_pids
-
-  renv=""
-  if [ -n "$RAILS_ENV" ]; then
-    renv="-e RAILS_ENV=$RAILS_ENV "
-  fi
-
-  $dc run $rm ${renv}--service-ports $app rails s -p 3000 -b 0.0.0.0
+rails_console() {
+  bundle_exec rails c $*
 }
 
 rails_db() {
@@ -199,6 +205,78 @@ rails_db() {
     rails_cmd db:migrate:status
     ;;
   esac
+}
+
+rails_server() {
+  compose_stop $app
+  rm_pids
+
+  renv=""
+  if [ -n "$RAILS_ENV" ]; then
+    renv="-e RAILS_ENV=$RAILS_ENV "
+  fi
+
+  $dc run $rm ${renv}--service-ports $app rails s -p 3000 -b 0.0.0.0
+}
+
+rake_cmd() {
+  bundle_exec rake $*
+}
+
+rake_reset_db() {
+  echoing "Running reset db"
+  compose_stop $app
+  DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake_cmd "db:reset"
+  rake_cmd "db:fdw:setup"
+  RAILS_ENV=test rake_cmd "db:fdw:setup"
+  compose_up $app
+}
+
+rm_pids() {
+  if [ -f "tmp/pids/server.pid" ]; then
+    rm -f tmp/pids/server.pid
+  fi
+}
+
+rspec_cmd() {
+  # $dc start chrome
+  bundle_exec rspec $*
+}
+
+rubocop_cmd() {
+  bundle_exec rubocop $*
+}
+
+run_app() {
+  invoke_run $app $*
+}
+
+run_db() {
+  invoke_run $db $*
+}
+
+run_npm() {
+  run_app npm $*
+}
+
+run_solargraph() {
+  invoke_run solargraph $*
+}
+
+run_spring() {
+  $dc exec spring $*
+}
+
+run_webpack() {
+  run_app webpack $*
+}
+
+run_yarn() {
+  run_app bin/yarn $*
+}
+
+spring_cmd() {
+  run_spring spring $*
 }
 
 spring_db() {
@@ -225,90 +303,12 @@ spring_dive() {
   $dc exec spring bash
 }
 
-rails_cmd() {
-  bundle_exec rails $*
-}
-
-rake_cmd() {
-  bundle_exec rake $*
-}
-
-rspec_cmd() {
-  # $dc start chrome
-  bundle_exec rspec $*
-}
-
-test_cmd() {
-  bundle_exec test $*
-}
-
-bundle_cmd() {
-  run_app bundle $*
-}
-
-bundle_exec() {
-  run_app bundle exec $*
-}
-
-rubocop_cmd() {
-  bundle_exec rubocop $*
-}
-
-rails_console() {
-  bundle_exec rails c $*
-}
-
-spring_cmd() {
-  run_spring spring $*
-}
-
 solargraph_cmd() {
   run_solargraph solargraph $*
 }
 
-rake_reset_db() {
-  echoing "Running reset db"
-  compose_stop $app
-  DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rake_cmd "db:reset"
-  rake_cmd "db:fdw:setup"
-  RAILS_ENV=test rake_cmd "db:fdw:setup"
-  compose_up $app
-}
-
-db_console() {
-  # from config/database.yml
-  database="development"
-  username="postgres"
-  port="5432"
-
-  run_db psql -h $db_container -p $port -U $username $database
-}
-
-db_dump() {
-  # from config/database.yml
-  database="development"
-  username="postgres"
-  port="5432"
-
-  tm=$(date +\%Y\%m\%d-\%H\%M)
-  dump_file=tmp/dbdump-${dbname}-${tm}.dump
-
-  echoing "Dump database $dbname data to $dump_file"
-
-  run_db pg_dump -h $db_container -p $port -U $username --disable-triggers $database >$dump_file
-  echo "done"
-}
-
-run_yarn() {
-  run_app bin/yarn $*
-}
-
-run_npm() {
-  run_app npm $*
-}
-
-run_webpack() {
-  run_app webpack $*
+test_cmd() {
+  bundle_exec test $*
 }
 
 cmd=$1
