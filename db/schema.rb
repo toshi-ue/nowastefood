@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_25_081240) do
+ActiveRecord::Schema.define(version: 2023_01_31_081708) do
 
   create_table "contacts", charset: "utf8", force: :cascade do |t|
     t.integer "category", default: 0, null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2023_01_25_081240) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cuisine_id", "user_id"], name: "index_favorites_on_cuisine_id_and_user_id", unique: true
     t.index ["cuisine_id"], name: "index_favorites_on_cuisine_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
