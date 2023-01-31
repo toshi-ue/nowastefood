@@ -1,4 +1,3 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe Cuisine, type: :model do
-end
+require 'rails_helper'

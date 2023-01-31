@@ -21,6 +21,8 @@ class Managers::CuisinesController < ApplicationController
     @cuisine = Cuisine.new
   end
 
+  def edit; end
+
   def create
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
@@ -29,8 +31,6 @@ class Managers::CuisinesController < ApplicationController
       render 'new'
     end
   end
-
-  def edit; end
 
   def update
     if @cuisine.update(cuisine_params)

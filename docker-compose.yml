@@ -39,6 +39,7 @@ services:
       - db
     environment:
       RAILS_ENV: development
+      MYSQL_HOST: db
 
 volumes:
   bundle:

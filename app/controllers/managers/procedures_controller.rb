@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Managers::ProceduresController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_procedure, only: [:edit, :update, :destroy]
@@ -5,6 +7,10 @@ class Managers::ProceduresController < ApplicationController
 
   def new
     @procedure = Procedure.new
+    set_cuisine_and_registerd_pds
+  end
+
+  def edit
     set_cuisine_and_registerd_pds
   end
 
@@ -17,10 +23,6 @@ class Managers::ProceduresController < ApplicationController
       set_cuisine_and_registerd_pds
       render "new"
     end
-  end
-
-  def edit
-    set_cuisine_and_registerd_pds
   end
 
   def update

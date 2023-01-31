@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KeywordsController < ApplicationController
   KAMINARI_PAGINATION_COUNT = 12
   def index

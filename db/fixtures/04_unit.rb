@@ -6,6 +6,8 @@
 #
 #   bin/rails seed_fu_gen:all
 #
+SeedFu.quiet = true if Rails.env.test?
+
 Unit.seed_once(:id,
   {"id"=>1, "name"=>"g"},
   {"id"=>2, "name"=>"ml"},

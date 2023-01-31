@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'vcr'
 
 Capybara.register_driver :remote_chrome do |app|
   url = "http://chrome:4444/wd/hub"
-  caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome(
     "chromeOptions" => {
-      "args": [
+      args: [
         "no-sandbox",
         # ブラウザで動作確認したい場合は"headless"をコメントアウト
         "headless",
@@ -23,7 +25,7 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
-  config.before(:each, type: :system, js: true) do
+  config.before(:each, js: true, type: :system) do
     driven_by :remote_chrome
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
     Capybara.server_port = 3000

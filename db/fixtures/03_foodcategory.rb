@@ -6,6 +6,8 @@
 #
 #   bin/rails seed_fu_gen:all
 #
+SeedFu.quiet = true if Rails.env.test?
+
 Foodcategory.seed_once(:id,
   {"id"=>1, "name"=>"肉"},
   {"id"=>2, "name"=>"野菜"},

@@ -5,7 +5,7 @@ class Manager < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable, :trackable
-  has_many :foodcategories
+  has_many :foodcategories, dependent: :nullify
 
   def self.create_account_as_guest
     faker_manager_name = Faker::Name.first_name

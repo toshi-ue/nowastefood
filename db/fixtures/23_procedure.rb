@@ -6,6 +6,8 @@
 #
 #   bin/rails seed_fu_gen:all
 #
+SeedFu.quiet = true if Rails.env.test?
+
 Procedure.seed_once(:id,
   {"id"=>1, "cooking_detail"=>"玉ねぎを薄切りにスライスする", "cuisine_id"=>1, "row_order"=>-715827883},
   {"id"=>2, "cooking_detail"=>"鶏肉(もも)を一口大にカットする", "cuisine_id"=>1, "row_order"=>715827885},

@@ -15,6 +15,7 @@ init:
 		docker compose build --no-cache
 		@make rails/bundle
 		@make yarn/install
+		@make rails/webpack
 		@make rails/db-setup-development
 
 # https://www.tom08.net/2019-01-17-233258/#:~:text=Pocket-,makefile,-%E3%82%92%E6%9B%B8%E3%81%84
@@ -41,6 +42,9 @@ rails/db-reset:
 		docker compose run --rm web rails db:environment:set RAILS_ENV=development
 		docker compose run --rm web rails db:migrate:reset
 		@make rails/db-setup-development
+
+rails/webpack:
+		docker compose run --rm web bundle exec bin/webpack
 
 rspec:
 		docker compose run --rm web rspec

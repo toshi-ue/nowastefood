@@ -2,7 +2,7 @@
 
 class Rawmaterial < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  validates :hiragana, presence: true, uniqueness: true
+  validates :hiragana, presence: true
   validates :expiry_period, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }
 
   belongs_to :foodcategory

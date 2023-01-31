@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Managers::Tops", type: :request do
+RSpec.describe "Managers::Tops" do
   before do
     @manager = create(:manager)
     sign_in @manager
@@ -10,7 +12,7 @@ RSpec.describe "Managers::Tops", type: :request do
     context "ログインしているとき" do
       it "dashboardページが表示されること" do
         get managers_dashboard_path
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include "Home"
       end
     end
@@ -25,5 +27,4 @@ RSpec.describe "Managers::Tops", type: :request do
       end
     end
   end
-
 end

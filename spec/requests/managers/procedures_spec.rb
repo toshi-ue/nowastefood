@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Managers::Procedures", type: :request do
+RSpec.describe "Managers::Procedures" do
   before do
     manager = create(:manager)
     sign_in manager
@@ -17,7 +19,7 @@ RSpec.describe "Managers::Procedures", type: :request do
             cuisine_id: @cuisine.id
           }
         }
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :found
         follow_redirect!
         expect(response.body).to include "new-managers-procedures"
       end
@@ -42,7 +44,7 @@ RSpec.describe "Managers::Procedures", type: :request do
             cuisine_id: @cuisine.id
           }
         }
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
       end
 
       it "登録されないこと" do
@@ -88,7 +90,7 @@ RSpec.describe "Managers::Procedures", type: :request do
 
     it "リクエストが成功すること" do
       get edit_managers_procedure_path(@procedure, cuisine_id: @cuisine.id)
-      expect(response.status).to eq 200
+      expect(response).to have_http_status :ok
     end
 
     it "editテンプレートが表示されること" do
@@ -110,7 +112,7 @@ RSpec.describe "Managers::Procedures", type: :request do
             cuisine_id: @procedure.cuisine_id
           }
         }
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :found
       end
 
       it "レコードの内容が更新されること" do
@@ -146,7 +148,7 @@ RSpec.describe "Managers::Procedures", type: :request do
             cuisine_id: @procedure.cuisine_id
           }
         }
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
       end
 
       it "更新されないこと" do
@@ -193,7 +195,7 @@ RSpec.describe "Managers::Procedures", type: :request do
     context "newテンプレートからリクエストを受けたとき" do
       it "リクエストが成功すること" do
         delete managers_procedure_path(@procedure, action_name: "new")
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :found
       end
 
       it "既存レコードが削除されること" do
@@ -212,7 +214,7 @@ RSpec.describe "Managers::Procedures", type: :request do
     context "editテンプレートからリクエストを受けたとき" do
       it "リクエストが成功すること" do
         delete managers_procedure_path(@procedure, action_name: "edit")
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :found
       end
 
       it "既存レコードが削除されること" do
@@ -231,7 +233,7 @@ RSpec.describe "Managers::Procedures", type: :request do
     context "cuisine/showページからリクエストを受けたとき" do
       it "リクエストが成功すること" do
         delete managers_procedure_path(@procedure, action_name: "show")
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :found
       end
 
       it "既存レコードが削除されること" do

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User do
   describe 'nickname' do
     context '更新するとき' do
       it '10文字以内のとき更新できること' do

@@ -11,22 +11,22 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, with: :render404
 
     def render404
-      render file: Rails.root.join('public/404.html'), status: :not_found, layout: false, content_type: 'text/html'
+      render file: Rails.public_path.join('404.html'), status: :not_found, layout: false, content_type: 'text/html'
     end
 
     def render500(e)
       ExceptionNotifier.notify_exception(e, env: request.env, data: { message: 'error' })
       logger.error(e.message)
       logger.error(e.backtrace.join("\n"))
-      render file: Rails.root.join('public/500.html'), status: :internal_server_error, layout: false, content_type: 'text/html'
+      render file: Rails.public_path.join('500.html'), status: :internal_server_error, layout: false, content_type: 'text/html'
     end
   end
 
   def check_owner(owner, login_user)
-    if owner.id != login_user.id
-      flash[:alert] = "該当するレシピはオーナーのみ変更できます"
-      redirect_back(fallback_location: root_path)
-    end
+    return unless owner.id != login_user.id
+
+    flash[:alert] = "該当するレシピはオーナーのみ変更できます"
+    redirect_back(fallback_location: root_path)
   end
 
   def set_app_name

@@ -6,6 +6,8 @@
 #
 #   bin/rails seed_fu_gen:all
 #
+SeedFu.quiet = true if Rails.env.test?
+
 Cuisine.seed_once(:id,
   {"id"=>1, "user_id"=>2, "status"=>1, "genre"=>1, "name"=>"親子丼 with めんつゆ", "cooking_time"=>20, "description"=>"味付けで失敗することがない簡単・お手軽な親子丼です!!", "main_image"=>Rails.root.join("db/fixtures/uploads/cuisine/8f8aa5a3-06bd-47ca-b8a9-7f76c6737f10.jpg").open, "favorites_count"=>0},
   {"id"=>2, "user_id"=>1, "status"=>1, "genre"=>1, "name"=>"苦味少なめのゴーヤチャンプルー", "cooking_time"=>20, "description"=>"味付けで失敗することがない簡単・お手軽な親子丼です!!", "main_image"=>Rails.root.join("db/fixtures/uploads/cuisine/37687239-ae7c-40e5-831f-7c818b9216c6.jpg").open, "favorites_count"=>1},

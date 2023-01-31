@@ -1,4 +1,3 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe Unit, type: :model do
-end
+require 'rails_helper'

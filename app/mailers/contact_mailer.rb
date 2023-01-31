@@ -4,7 +4,7 @@ class ContactMailer < ApplicationMailer
   def send_mail_master(contact)
     @contact = contact
     mail(
-      to: ENV['TOMAIL'],
+      to: ENV.fetch('TOMAIL', nil),
       subject: "【#{@contact.category_i18n}】 #{@contact.subject}"
     )
   end

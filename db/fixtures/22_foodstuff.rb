@@ -6,6 +6,8 @@
 #
 #   bin/rails seed_fu_gen:all
 #
+SeedFu.quiet = true if Rails.env.test?
+
 Foodstuff.seed_once(:id,
   {"id"=>1, "quantity"=>"2", "cuisine_id"=>1, "rawmaterial_id"=>5, "row_order"=>-715827883},
   {"id"=>2, "quantity"=>"1/4", "cuisine_id"=>1, "rawmaterial_id"=>4, "row_order"=>715827884},

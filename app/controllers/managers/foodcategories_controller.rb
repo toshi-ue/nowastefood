@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Managers::FoodcategoriesController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_foodcategory, only: [:update, :edit, :destroy]
@@ -13,6 +15,8 @@ class Managers::FoodcategoriesController < ApplicationController
     @foodcategory = Foodcategory.new
   end
 
+  def edit; end
+
   def create
     @foodcategory = Foodcategory.new(foodcategory_params)
     if @foodcategory.save
@@ -21,8 +25,6 @@ class Managers::FoodcategoriesController < ApplicationController
       render 'new'
     end
   end
-
-  def edit; end
 
   def update
     if @foodcategory.update(foodcategory_params)

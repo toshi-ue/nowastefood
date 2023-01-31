@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Todaysmenu, type: :model do
+RSpec.describe Todaysmenu do
   it "登録できること" do
     todaysmenu = build(:todaysmenu)
     todaysmenu.valid?

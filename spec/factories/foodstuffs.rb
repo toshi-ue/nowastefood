@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :foodstuff do
     association :cuisine
     association :rawmaterial
 
-    sequence(:quantity) { |n| n.to_s }
+    sequence(:quantity, &:to_s)
     # sequence(:row_order) {|n| "#{n}" }
 
     trait :full_width_fraction do

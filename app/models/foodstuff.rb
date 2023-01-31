@@ -16,7 +16,7 @@ class Foodstuff < ApplicationRecord
     foodstuffs.each do |fs|
       next if fs.rawmaterial.foodcategory_id == 4
 
-      result_quantity = Rational(quantity_want_to_consume) - Rational(fs.quantity) * user_serving_count
+      result_quantity = Rational(quantity_want_to_consume) - (Rational(fs.quantity) * user_serving_count)
       cuisines.store(fs.cuisine_id, result_quantity)
     end
     arr_branched_zero = cuisines.values.partition { |v| v <= 0 }

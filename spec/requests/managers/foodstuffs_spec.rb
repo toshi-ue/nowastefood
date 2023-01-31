@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Managers::Foodstuffs", type: :request do
+RSpec.describe "Managers::Foodstuffs" do
   before do
     manager = create(:manager)
     sign_in manager
@@ -11,7 +13,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
   describe "GET #new" do
     it "リクエストが成功すること" do
       get new_managers_foodstuff_path(cuisine_id: @cuisine.id)
-      expect(response.status).to eq 200
+      expect(response).to have_http_status :ok
     end
 
     it "newテンプレートで表示されること" do
@@ -33,7 +35,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
           quantity: 1
         }
       }
-      expect(response.status).to eq 302
+      expect(response).to have_http_status :found
     end
 
     it "新規レコードが作成されること" do
@@ -65,7 +67,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
     it "リクエストが成功すること" do
       @foodstuff = create(:foodstuff, cuisine_id: @cuisine.id)
       get edit_managers_foodstuff_path(@foodstuff, cuisine_id: @cuisine.id)
-      expect(response.status).to eq 200
+      expect(response).to have_http_status :ok
     end
   end
 
@@ -104,7 +106,7 @@ RSpec.describe "Managers::Foodstuffs", type: :request do
 
     it "リクエストが成功すること" do
       delete managers_foodstuff_path @foodstuff
-      expect(response.status).to eq 302
+      expect(response).to have_http_status :found
     end
 
     it "既存レコードが削除されること" do

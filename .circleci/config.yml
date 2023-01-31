@@ -1,74 +1,102 @@
-version: 2
+# https://circleci.com/ja/features/ruby/
+# https://circleci.com/developer/ja/orbs/orb/circleci/ruby?version=2.0.0
+# https://blog.vtryo.me/entry/circleci-debug-method
+version: 2.1
+
+orbs:
+  # https://circleci.com/docs/ja/language-javascript/
+  # https://circleci.com/developer/ja/orbs/orb/circleci/node#commands-install-packages
+  node: circleci/node@5.1.0
+  ruby: circleci/ruby@2.0.0
+
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7-node-browsers
+      - image: cimg/ruby:2.7.7-node
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: "test"
-          MYSQL_HOST: "db"
+          MYSQL_ROOT_HOST: "127.0.0.1"
           MYSQL_PASSWORD: "password"
           MYSQL_PORT: 3306
-      - image: circleci/mysql:5.7
+      - image: cimg/mysql:5.7
         environment:
+          MYSQL_ROOT_HOST: "127.0.0.1"
+          MYSQL_USER: "test"
+          MYSQL_ROOT_PASSWORD: "password"
+          MYSQL_PASSWORD: "password"
+    environment:
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install:
+          install-yarn: true
+          node-version: '14'
+      - node/install-packages:
+          pkg-manager: yarn
+  rubocop:
+    docker:
+      - image: cimg/ruby:2.7.7-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rubocop-check:
+          format: progress
+          label: Inspecting with Rubocop
+  rspec:
+    docker:
+      - image: cimg/ruby:2.7.7-browsers
+      - environment:
+          MYSQL_HOST: "127.0.0.1"
           MYSQL_USER: "test"
           MYSQL_ROOT_PASSWORD: "password"
           MYSQL_PASSWORD: "password"
           MYSQL_DATABASE: "webapp_test"
-          MYSQL_HOST: "db"
-        name: db
+        image: cimg/mysql:5.7
+    environment:
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLER_VERSION: 2.1.4
+      RAILS_ENV: test
+      MYSQL_PASSWORD: "password"
+      MYSQL_PORT: 3306
     parallelism: 1
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-
+      - ruby/install-deps
+      - node/install:
+          install-yarn: true
+          node-version: '14'
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          name: install dependencies
-          command: |
-            gem install bundler -v 1.17.3
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-
+          command: 'bundle exec bin/webpack'
+          name: compile webpack1
       - run:
-          name: install yarn
-          command: yarn install --cache-folder ~/.cache/yarn
-
-      - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-
+          command: 'dockerize -wait tcp://127.0.0.1:3306 -timeout 1m'
+          name: Wait for DB
       - run:
-          name: run tests
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              circleci tests split --split-by=timings)"
-            bundle exec rspec \
-              --format progress \
-              --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
-              --format progress \
-              $TEST_FILES
-
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+          name: Database create
+          command: 'bundle exec rails db:create RAILS_ENV=test'
+      - run:
+          name: Database setup
+          command:
+            'bundle exec rails db:schema:load --trace'
+      - run:
+          name: Database seed data by seed_fu
+          command: 'bundle exec rails db:seed_fu RAILS_ENV=test'
+      - ruby/rspec-test:
+          include: spec/**/*_spec.rb
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - rubocop
+      - rspec:
+          requires:
+            - build

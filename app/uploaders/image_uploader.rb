@@ -16,7 +16,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    1..10.megabytes
+    # QUESTION: なぜこれで問題ないのか（こちらの方がよいのか）？
+    # Lint/AmbiguousRange: Wrap complex range boundaries with parentheses to avoid ambiguity.
+    1..(10.megabytes)
+    # 1..10.megabytes
   end
 
   process convert: 'jpg'

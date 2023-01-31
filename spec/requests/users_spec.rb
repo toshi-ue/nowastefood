@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "Users" do
   before do
     @user = create(:user)
     sign_in @user
@@ -9,7 +11,7 @@ RSpec.describe "Users", type: :request do
   describe "GET /show" do
     it "プロフィール画面が表示されること" do
       get user_profile_path
-      expect(response.status).to eq 200
+      expect(response).to have_http_status :ok
       expect(response.body).to include "ユーザー情報"
     end
   end
@@ -28,7 +30,7 @@ RSpec.describe "Users", type: :request do
           }
         }
       end.to change { User.find_by(id: @user.id).nickname }.from("aaa").to("bbb")
-      expect(response.status).to eq 302
+      expect(response).to have_http_status :found
       expect(response).to redirect_to(user_profile_path)
       follow_redirect!
       expect(response.body).to include "bbb"

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Favorites", type: :request do
+RSpec.describe "Favorites" do
   before do
     @user = create(:user)
     sign_in @user
@@ -14,7 +14,7 @@ RSpec.describe "Favorites", type: :request do
         favorite = create(:favorite, user: @user)
         favorite2 = create(:favorite, user: @user)
         get favorites_path
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include favorite.cuisine.name
         expect(response.body).to include favorite2.cuisine.name
       end

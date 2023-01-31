@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   # FactoryBotの呼び出し簡略化
   #   テスト中に、FactoryBot.create(:user) ではなく、create(:user) と書けるようになる。

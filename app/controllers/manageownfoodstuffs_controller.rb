@@ -10,6 +10,10 @@ class ManageownfoodstuffsController < ApplicationController
     @foodstuff = Foodstuff.new
   end
 
+  def edit
+    extract_instances(@cuisine)
+  end
+
   def create
     @foodstuff = Foodstuff.new(foodstuff_params)
     if @foodstuff.save
@@ -20,10 +24,6 @@ class ManageownfoodstuffsController < ApplicationController
       params[:cuisine_id] = @foodstuff.cuisine_id
       render 'new'
     end
-  end
-
-  def edit
-    extract_instances(@cuisine)
   end
 
   def update

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def add_class_to_text(current_page, should_adaptive_action_name)
     if current_page == should_adaptive_action_name
