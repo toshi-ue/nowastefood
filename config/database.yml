@@ -28,6 +28,8 @@ test:
   # username: test
   # password: password
   database: nowastefood_test
+  #
+  host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
 
 production:
   <<: *default
