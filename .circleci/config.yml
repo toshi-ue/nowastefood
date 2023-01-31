@@ -57,7 +57,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: "password"
           MYSQL_PASSWORD: "password"
           MYSQL_DATABASE: "webapp_test"
-        image: circleci/mysql:5.7
+        image: cimg/mysql:5.7
     environment:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
@@ -78,7 +78,7 @@ jobs:
           command: 'bundle exec bin/webpack'
           name: compile webpack1
       - run:
-          command: 'dockerize -wait tcp://127.0.0.1:3306 -timeout 2m'
+          command: 'dockerize -wait tcp://127.0.0.1:3306 -timeout 1m'
           name: Wait for DB
       - run:
           name: Database create
