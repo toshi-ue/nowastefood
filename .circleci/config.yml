@@ -1,9 +1,11 @@
 # https://circleci.com/ja/features/ruby/
 # https://circleci.com/developer/ja/orbs/orb/circleci/ruby?version=2.0.0
-# 25f00d435142a9b96b8d25278d88980907eb6bf5
+# https://blog.vtryo.me/entry/circleci-debug-method
 version: 2.1
 
 orbs:
+  # https://circleci.com/docs/ja/language-javascript/
+  # https://circleci.com/developer/ja/orbs/orb/circleci/node#commands-install-packages
   node: circleci/node@5.1.0
   ruby: circleci/ruby@2.0.0
 
@@ -11,6 +13,21 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:2.7.7-node
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
+          RAILS_ENV: "test"
+          MYSQL_ROOT_HOST: "127.0.0.1"
+          MYSQL_PASSWORD: "password"
+          MYSQL_PORT: 3306
+      - image: cimg/mysql:5.7
+        environment:
+          MYSQL_ROOT_HOST: "127.0.0.1"
+          MYSQL_USER: "test"
+          MYSQL_ROOT_PASSWORD: "password"
+          MYSQL_PASSWORD: "password"
     environment:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
@@ -35,6 +52,7 @@ jobs:
     docker:
       - image: cimg/ruby:2.7.7-browsers
       - environment:
+          MYSQL_HOST: "127.0.0.1"
           MYSQL_USER: "test"
           MYSQL_ROOT_PASSWORD: "password"
           MYSQL_PASSWORD: "password"
@@ -59,24 +77,19 @@ jobs:
       - run:
           command: 'bundle exec bin/webpack'
           name: compile webpack1
-      # - run:
-          # command: 'bundle exec rails webpacker:install && bundle exec rails webpacker:compile'
-          # name: install Webpacker1
       - run:
           command: 'dockerize -wait tcp://127.0.0.1:3306 -timeout 2m'
           name: Wait for DB
       - run:
-          command: 'bundle exec rails db:create RAILS_ENV=test'
           name: Database create
-      # - run:
-      #     command: 'bundle exec rails db:migrate RAILS_ENV=test'
-      #     name: Database migrate
+          command: 'bundle exec rails db:create RAILS_ENV=test'
       - run:
-          command: 'bundle exec rails db:schema:load --trace'
           name: Database setup
+          command:
+            'bundle exec rails db:schema:load --trace'
       - run:
-          command: 'bundle exec rails db:seed_fu RAILS_ENV=test'
           name: Database seed data by seed_fu
+          command: 'bundle exec rails db:seed_fu RAILS_ENV=test'
       - ruby/rspec-test:
           include: spec/**/*_spec.rb
 workflows:
