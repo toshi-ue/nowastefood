@@ -39,7 +39,7 @@ jobs:
           node-version: '14'
       - node/install-packages:
           pkg-manager: yarn
-  checking-rubocop:
+  rubocop:
     docker:
       - image: cimg/ruby:2.7.7-node
     steps:
@@ -48,7 +48,7 @@ jobs:
       - ruby/rubocop-check:
           format: progress
           label: Inspecting with Rubocop
-  test-rspec:
+  rspec:
     docker:
       - image: cimg/ruby:2.7.7-browsers
       - environment:
@@ -96,7 +96,7 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - checking-rubocop
-      - test-rspec:
+      - rubocop
+      - rspec:
           requires:
             - build
