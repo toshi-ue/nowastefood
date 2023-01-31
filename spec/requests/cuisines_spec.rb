@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Cuisines", type: :request do
+RSpec.describe "Cuisines" do
   before do
     @user = create(:user)
     sign_in @user
@@ -15,7 +15,7 @@ RSpec.describe "Cuisines", type: :request do
       @rawmaterial = create(:rawmaterial)
       @foodstuff = create(:foodstuff, cuisine_id: @cuisine.id, rawmaterial_id: @rawmaterial.id)
       get cuisine_path @cuisine
-      expect(response.status).to eq 200
+      expect(response).to have_http_status :ok
       expect(response.body).to include @cuisine.name
       expect(response.body).to include @cuisine.foodstuffs.first.quantity
       expect(response.body).to include @cuisine.foodstuffs.first.rawmaterial.name
@@ -28,7 +28,7 @@ RSpec.describe "Cuisines", type: :request do
         expect do
           post cuisine_add_favorite_path(@cuisine.id), xhr: true
         end.to change(Favorite, :count).by(1)
-        expect(@user.already_favorite?(@cuisine)).to eq(true)
+        expect(@user.already_favorite?(@cuisine)).to be(true)
       end
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe "Cuisines", type: :request do
         expect do
           post cuisine_add_menu_path(@cuisine.id), xhr: true
         end.to change(Todaysmenu, :count).by(1)
-        expect(@user.already_menu_in_today?(@cuisine.id)).to eq(true)
+        expect(@user.already_menu_in_today?(@cuisine.id)).to be(true)
       end
     end
   end
@@ -47,11 +47,11 @@ RSpec.describe "Cuisines", type: :request do
   describe "DELTE /remove_favorite" do
     context "ユーザーでログインしているとき" do
       it "favoriteから削除されること" do
-        favorite = create(:favorite, user_id: @user.id, cuisine_id: @cuisine.id)
+        favorite = create(:favorite, user_id: @user.id, cuisine_id: @cuisine.id) # rubocop:disable Lint/UselessAssignment
         expect do
           delete cuisine_remove_favorite_path(@cuisine.id), xhr: true
         end.to change(Favorite, :count).by(-1)
-        expect(@user.already_favorite?(@cuisine)).to eq(false)
+        expect(@user.already_favorite?(@cuisine)).to be(false)
       end
     end
   end
@@ -59,11 +59,11 @@ RSpec.describe "Cuisines", type: :request do
   describe "DELETE /remove_menu" do
     context "ユーザーでログインしているとき" do
       it "todaysmenuから削除されること" do
-        todaysmenu = create(:todaysmenu, user_id: @user.id, cuisine_id: @cuisine.id)
+        todaysmenu = create(:todaysmenu, user_id: @user.id, cuisine_id: @cuisine.id) # rubocop:disable Lint/UselessAssignment
         expect do
           delete cuisine_remove_menu_path(@cuisine.id), xhr: true
         end.to change(Todaysmenu, :count).by(-1)
-        expect(@user.already_menu_in_today?(@cuisine.id)).to eq(false)
+        expect(@user.already_menu_in_today?(@cuisine.id)).to be(false)
       end
     end
   end

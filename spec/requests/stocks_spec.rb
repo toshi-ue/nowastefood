@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Stocks", type: :request do
+RSpec.describe "Stocks" do
   before do
     @user = create(:user)
     sign_in @user
@@ -16,7 +16,7 @@ RSpec.describe "Stocks", type: :request do
           create(:stock, user_id: @user.id, quantity: (n * 100).to_s)
         end
         get stocks_path
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include("100")
         expect(response.body).to include("200")
       end
@@ -26,7 +26,7 @@ RSpec.describe "Stocks", type: :request do
       it "サインインページへリダイレクトすること" do
         sign_out @user
         get stocks_path
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :found
         expect(response).to redirect_to(new_user_session_path)
         follow_redirect!
         expect(response.body).to include("メールアドレス")
@@ -38,7 +38,7 @@ RSpec.describe "Stocks", type: :request do
     context "ログインしているとき" do
       it "newページを表示すること" do
         get new_stock_path
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include("食材名")
       end
     end
@@ -75,8 +75,8 @@ RSpec.describe "Stocks", type: :request do
           expect do
             post stocks_path,
                  params: { stock: attributes_for(:stock, user_id: @user.id, rawmaterial_id: rawmaterial.id, quantity: "") }
-          end.to change(Stock, :count).by(0)
-          expect(response.status).to eq 200
+          end.not_to change(Stock, :count)
+          expect(response).to have_http_status :ok
           expect(response.body).to include("食材名")
         end
       end

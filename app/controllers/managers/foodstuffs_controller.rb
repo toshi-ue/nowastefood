@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Managers::FoodstuffsController < ApplicationController
   before_action :authenticate_manager!
   before_action :set_foodstuff, only: [:update, :edit, :destroy, :restore]
@@ -13,6 +15,10 @@ class Managers::FoodstuffsController < ApplicationController
     @foodstuff = Foodstuff.new
   end
 
+  def edit
+    @cuisine = Cuisine.find(params[:cuisine_id])
+  end
+
   def create
     @foodstuff = Foodstuff.new(foodstuff_params)
     if @foodstuff.save
@@ -24,10 +30,6 @@ class Managers::FoodstuffsController < ApplicationController
       params[:cuisine_id] = @foodstuff.cuisine_id
       render 'new'
     end
-  end
-
-  def edit
-    @cuisine = Cuisine.find(params[:cuisine_id])
   end
 
   def update

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -18,8 +20,8 @@ gem 'dotenv-rails'
 gem 'enum_help'
 gem 'exception_notification'
 gem 'faker'
-gem 'fog-aws'
 gem 'flog'
+gem 'fog-aws'
 gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'

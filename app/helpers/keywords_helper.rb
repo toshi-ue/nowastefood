@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KeywordsHelper
   def title_name(enum_key)
     case enum_key

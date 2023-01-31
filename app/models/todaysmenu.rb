@@ -23,7 +23,7 @@ class Todaysmenu < ApplicationRecord
     grouped_todaysmenus = quantities.group_by(&:first)
     grouped_todaysmenus.each do |k, v|
       grouped_todaysmenus[k] = v.inject(0) do |sum, arr|
-        sum += Rational(arr.last)
+        sum += Rational(arr.last) # rubocop:disable Lint/UselessAssignment
       end
     end
     grouped_todaysmenus
@@ -42,7 +42,7 @@ class Todaysmenu < ApplicationRecord
     quantities_grouped_rawmaterial = uncalculated_rawmaterials.group_by(&:first)
     quantities_grouped_rawmaterial.each do |k, v|
       quantities_grouped_rawmaterial[k] = v.inject(0) do |sum, arr|
-        sum += Rational(arr.last)
+        sum += Rational(arr.last) # rubocop:disable Lint/UselessAssignment
       end
     end
     quantities_grouped_rawmaterial.sort.to_h

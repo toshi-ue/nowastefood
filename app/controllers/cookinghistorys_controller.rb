@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CookinghistorysController < ApplicationController
   before_action :authenticate_user!
 

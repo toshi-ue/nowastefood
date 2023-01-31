@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CookinghistorysHelper
   def time_ago(time)
     if time.today?

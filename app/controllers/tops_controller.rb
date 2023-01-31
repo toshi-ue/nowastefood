@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TopsController < ApplicationController
   def index
     @japanese_style_cuisines = Cuisine.japanese.published.eight_contents

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module StocksHelper
+  # rubocop:disable Rails/HelperInstanceVariable
   def change_back_color(stock, rawmaterials_and_quantity_will_be_consumed, left_days)
     remaining_quantity = rawmaterials_and_quantity_will_be_consumed.key?(stock.rawmaterial_id) ? @rawmaterials_and_quantity_will_be_consumed[stock.rawmaterial_id] : -1
 
@@ -50,4 +51,5 @@ module StocksHelper
       'something-went-wrong'
     end
   end
+  # rubocop:enable Rails/HelperInstanceVariable
 end

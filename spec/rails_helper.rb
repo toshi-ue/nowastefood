@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -9,7 +11,6 @@ require 'selenium-webdriver'
 require 'factory_bot'
 require 'shoulda-matchers'
 require 'vcr'
-require 'spec_helper'
 require 'rspec/rails'
 
 # spec/support以下に、いろいろファイルを置けるようになる
@@ -24,7 +25,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{Rails.root}/spec/fixtures"
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.use_transactional_fixtures = true

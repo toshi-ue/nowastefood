@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
     # FIXME: rubyのライブラリ open-uri をrequireしてダミー画像を登録できるようにしたい

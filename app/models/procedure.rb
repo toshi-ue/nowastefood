@@ -6,7 +6,6 @@ class Procedure < ApplicationRecord
   ranks :row_order, with_same: :cuisine_id
 
   validates :cooking_detail, presence: true
-  validates :cuisine_id, presence: true
 
   belongs_to :cuisine
 end

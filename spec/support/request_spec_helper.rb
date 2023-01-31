@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # [Rails + RSpec + Capybara で Devise での認証ログインが必要なインテグレーションテスト（RequestSpec）を行う | EasyRamble](https://easyramble.com/request-spec-on-devise-login.html)
 # [RequestSpecでDeviseを使ったユーザーでログインさせる | 自転車で通勤しましょ♪ブログ](http://319ring.net/blog/archives/2052/)
 # [rspec devise sign_in override - Google 検索](https://www.google.com/search?ei=NX7lXviAMaiUr7wPzr6-WA&q=rspec+devise+sign_in+override&oq=rspec+devise+sign_in+override&gs_lcp=CgZwc3ktYWIQAzIFCAAQzQI6BQghEKABOgQIIRAVUPabA1jDsQNgjrMDaABwAHgAgAGQAYgBlwiSAQMxLjiYAQCgAQGqAQdnd3Mtd2l6&sclient=psy-ab&ved=0ahUKEwi478HIlIDqAhUoyosBHU6fDwsQ4dUDCAw&uact=5)

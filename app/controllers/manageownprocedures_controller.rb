@@ -10,6 +10,10 @@ class ManageownproceduresController < ApplicationController
     @procedure = Procedure.new
   end
 
+  def edit
+    extract_instances(@cuisine)
+  end
+
   def create
     @procedure = Procedure.new(procedure_params)
     if @procedure.save
@@ -19,10 +23,6 @@ class ManageownproceduresController < ApplicationController
       extract_instances(@cuisine)
       render 'new'
     end
-  end
-
-  def edit
-    extract_instances(@cuisine)
   end
 
   def update

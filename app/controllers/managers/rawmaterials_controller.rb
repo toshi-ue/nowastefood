@@ -15,6 +15,8 @@ class Managers::RawmaterialsController < ApplicationController
     @rawmaterial = Rawmaterial.new
   end
 
+  def edit; end
+
   def create
     @rawmaterial = Rawmaterial.new(rawmaterial_params)
     if @rawmaterial.save
@@ -23,8 +25,6 @@ class Managers::RawmaterialsController < ApplicationController
       render 'new'
     end
   end
-
-  def edit; end
 
   def update
     if @rawmaterial.update(rawmaterial_params)

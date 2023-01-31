@@ -3,5 +3,5 @@
 class Unit < ApplicationRecord
   validates :name, presence: true
 
-  has_many :rawmaterials
+  has_many :rawmaterials, dependent: :nullify
 end

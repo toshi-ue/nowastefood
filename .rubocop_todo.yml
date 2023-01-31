@@ -85,9 +85,6 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Style/NumericLiterals:
   MinDigits: 20
 
-# Gemspec/DateAssignment: # (new in 1.10)
-#   Enabled: true
-
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true
 
@@ -139,6 +136,10 @@ Lint/UnexpectedBlockArity: # (new in 1.5)
 Lint/UnmodifiedReduceAccumulator: # (new in 1.1)
   Enabled: true
 
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "app/helpers/keywords_helper.rb"
+
 Style/ArgumentsForwarding: # (new in 1.1)
   Enabled: true
 
@@ -156,6 +157,11 @@ Style/HashConversion: # (new in 1.10)
 
 Style/HashExcept: # (new in 1.7)
   Enabled: true
+
+Style/HashLikeCase:
+  Exclude:
+    - "app/helpers/keywords_helper.rb"
+
 
 Style/IfWithBooleanLiteralBranches: # (new in 1.9)
   Enabled: true
@@ -186,6 +192,9 @@ Rails/AttributeDefaultBlockValue: # (new in 2.9)
 
 Rails/FindById: # (new in 2.7)
   Enabled: true
+
+Rails/I18nLocaleTexts:
+  Enabled: false
 
 Rails/Inquiry: # (new in 2.7)
   Enabled: true

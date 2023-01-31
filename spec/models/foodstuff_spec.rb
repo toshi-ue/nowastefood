@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Foodstuff, type: :model do
+RSpec.describe Foodstuff do
   describe "#convert_specific_format" do
     subject { foodstuff.convert_specific_format }
 

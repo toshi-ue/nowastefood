@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def already_menu_in_today?(cuisine_id)
-    todaysmenus.exists?(cuisine_id: cuisine_id, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    todaysmenus.exists?(cuisine_id: cuisine_id, created_at: Time.zone.now.all_day)
   end
 
   def self.create_account_as_guest
@@ -31,8 +31,10 @@ class User < ApplicationRecord
     user_name = EnFaker::Name.unique.first_name
     # FIXME: openを使用するとセキュリティリスクがある？
     #   rubocopで The use of `Kernel#open` is a serious security risk. と表示される(Security/Open)
+    # rubocop:disable Security/Open
     avatar = open(Faker::Avatar.image(slug: user_name, size: "150x150", format: "jpg"))
     avatar.close
+    # rubocop:enable Security/Open
 
     self.create!(nickname: user_name, avatar: avatar.base_uri, email: "#{user_name.downcase}@example.com") do |u|
       u.password = SecureRandom.urlsafe_base64

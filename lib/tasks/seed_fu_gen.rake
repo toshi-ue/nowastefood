@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_record'
 require "fileutils"
 require 'date'
@@ -6,7 +8,7 @@ t = Time.current
 t_folder_name = t.strftime("%y%m%d")
 seed_gen_folder = "#{Rails.root}/db/afixtures"
 
-model_names_image_exists = ["cuisine", "user"]
+model_names_image_exists = %w[cuisine user]
 
 namespace :seed_fu_gen do
   desc "back up datas to folder named \"#{seed_gen_folder}/#{t_folder_name}\"."
@@ -145,18 +147,18 @@ namespace :change_properties_to_adapt_seed_data do
   task all: :environment do |_t|
     # usersテーブル用
     target_file = Rails.root.join("db/fixtures/02_user.rb")
-    buffer = File.open(target_file, "r") { |f| f.read }
+    buffer = File.read(target_file)
 
-    buffer.gsub!(/\"profile_image\"=>\"/, "\"profile_image\"=>Rails.root.join(\"db\/fixtures\/uploads\/user\/")
-    buffer.gsub!(/\.jpg\"/, "\.jpg\")\.open")
-    File.open(target_file, "w") { |f| f.write(buffer) }
+    buffer.gsub!(/"profile_image"=>"/, "\"profile_image\"=>Rails.root.join(\"db/fixtures/uploads/user/")
+    buffer.gsub!(/\.jpg"/, ".jpg\").open")
+    File.write(target_file, buffer)
 
     # cuisinesテーブル用
     target_file = Rails.root.join("db/fixtures/21_cuisine.rb")
-    buffer = File.open(target_file, "r") { |f| f.read }
+    buffer = File.read(target_file)
 
-    buffer.gsub!(/\"main_image\"=>\"/, "\"main_image\"=>Rails.root.join(\"db\/fixtures\/uploads\/cuisine\/")
-    buffer.gsub!(/\.jpg\"/, "\.jpg\")\.open")
+    buffer.gsub!(/"main_image"=>"/, "\"main_image\"=>Rails.root.join(\"db/fixtures/uploads/cuisine/")
+    buffer.gsub!(/\.jpg"/, ".jpg\").open")
 
     # FIXME: 特定の文字列を数値に変換できない
     # enum(cooking_time)
@@ -173,6 +175,6 @@ namespace :change_properties_to_adapt_seed_data do
     # buffer.gsub!(/\"draft\"/, 0)
     # buffer.gsub!(/\"published\"/, 1)
 
-    File.open(target_file, "w") { |f| f.write(buffer) }
+    File.write(target_file, buffer)
   end
 end

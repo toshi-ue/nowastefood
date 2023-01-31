@@ -19,11 +19,11 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    0..10.megabytes
+    0..(10.megabytes)
   end
 
   def content_type_allowlist
-    /image\//
+    %r{image/}
   end
 
   def filename

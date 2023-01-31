@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Procedure, type: :model do
+RSpec.describe Procedure do
   before do
     @cuisine = create(:cuisine)
   end
@@ -41,5 +43,4 @@ RSpec.describe Procedure, type: :model do
   # describe "row_order" do
   #   # ranked_modelを使用している
   # end
-
 end
