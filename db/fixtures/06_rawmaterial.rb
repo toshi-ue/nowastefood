@@ -6,6 +6,8 @@
 #
 #   bin/rails seed_fu_gen:all
 #
+SeedFu.quiet = true if Rails.env.test?
+
 Rawmaterial.seed_once(:id,
   {"id"=>3, "name"=>"鶏もも肉", "hiragana"=>"とりももにく", "user_id"=>1, "unit_id"=>1, "foodcategory_id"=>1, "expiry_period"=>1, "foodstuffs_count"=>12},
   {"id"=>4, "name"=>"玉ねぎ", "hiragana"=>"たまねぎ", "user_id"=>1, "unit_id"=>4, "foodcategory_id"=>2, "expiry_period"=>1, "foodstuffs_count"=>52},
