@@ -4,12 +4,12 @@
   <%= form.text_area :name, id: :cuisine_name, autofocus: true, class: 'form-control' %>
 </div>
 <div class="form-group">
-  <small>※</small>&nbsp;<label for="genre">ジャンル</label>
-  <%= form.select(:genre, Cuisine.genres.keys.map{|k| [I18n.t("enums.cuisine.genre.#{k}"), k]}, {required: true}, { class: 'form-control'}) %>
+  <small>※</small>&nbsp;<%= form.label :genre %>
+  <%= form.select(:genre, Cuisine.genres.map{|k, _v| [t("activerecord.attributes.cuisine.genres.#{k}"), k]}, {required: true}, { class: 'form-control'}) %>
 </div>
 <div class="form-group">
   <small>※</small>&nbsp;<%= form.label :cooking_time %>
-  <%= form.select(:cooking_time, Cuisine.cooking_times.keys.map{|k| [I18n.t("enums.cuisine.cooking_time.#{k}"), k]}, {required: true}, {class: 'form-control'}) %>
+  <%= form.select :cooking_time, options_for_select(Cuisine.cooking_times.map { |k, _v| [t("activerecord.attributes.cuisine.cooking_times.#{k}"), k]}),{required: true}, { class: 'form-control' } %>
 </div>
 <div class="form-group">
   <small>※</small>&nbsp;<%= form.label :description %>

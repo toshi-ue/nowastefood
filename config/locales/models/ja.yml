@@ -15,11 +15,23 @@ ja:
         name: 加工された状態の名前
         foodcategory_id: 食材区分
       cuisine:
-        name: レシピ名
         calories: 摂取カロリー(kcal)
         cooking_time: 調理時間(分)
+        # https://pikawaka.com/rails/i18n#enum
+        cooking_times:
+          lt_minutes5: ~5分
+          lt_minutes10: ~10分
+          lt_minutes20: ~20分
+          gt_minutes21: 21分~
+        genre: ジャンル
+        genres:
+          chinese: 中華
+          japanese: 和風
+          other: その他
+          western: 洋風
         description: レシピの説明
         main_image: 画像
+        name: レシピ名
       foodcategory:
         name: 食品区分名
       foodstuff:
@@ -60,21 +72,6 @@ ja:
         error: エラー報告
         request: 機能追加、改善リクエスト
         other: その他
-    cuisine:
-      cooking_time:
-        lt_minutes5: ~5分以内
-        lt_minutes10: ~10分以内
-        lt_minutes15: ~15分以内
-        lt_minutes20: ~20分以内
-        gt_minutes21: 21分以上~
-      genre:
-        chinese: 中華
-        japanese: 和風
-        other: その他
-        western: 洋風
-      status:
-        draft: 非公開
-        published: 公開中
   errors:
     messages:
       content_type_whitelist_error: は許可されていない種類のファイルです
@@ -97,3 +94,17 @@ ja:
         morning: 朝食
         lunch: 昼食
         dinner: 夕食
+    cuisine:
+      cooking_time:
+        lt_minutes5: ~5分
+        lt_minutes10: ~10分
+        lt_minutes20: ~20分
+        gt_minutes21: 21分~
+      genre:
+        chinese: 中華
+        japanese: 和風
+        other: その他
+        western: 洋風
+      status:
+        draft: 非公開
+        published: 公開中

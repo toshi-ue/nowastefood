@@ -75,30 +75,41 @@
     </div>
     <div class="row">
     <div class="col-md-6 offset-md-3">
-        <!-- foodstuffs and procedure list -->
+
         <div class="mt-2">
           <ul class="nav nav-tabs nav-fill" role="tablist" id="fp-tab">
+            <!-- tab foodstuff -->
             <li class="nav-item" role="presentation">
               <a class="nav-link" role="tab" data-toggle="tab" href="#tab1" id="tab-foodstuff">食材</a>
             </li>
+            <!-- tab procedure  -->
             <li class="nav-item" role="presentation">
               <a class="nav-link active" role="tab" data-toggle="tab" href="#tab2" id="tab-procedure">手順</a>
             </li>
           </ul>
           <div class="tab-content">
+            <!-- list foodstuff -->
             <div class="tab-pane" role="tabpanel" id="tab1">
-            <% if @foodstuffs.present? %>
-              <table id="table-sortable-foodstuff" class="table table-bordered table-hover mt-3">
-                <tbody>
-                  <%= render partial: "foodstuff", collection: @foodstuffs, as: "foodstuff" %>
-                </tbody>
-              </table>
-            <% else %>
-              <div class="text-center mt-3">
-                <p>まだ登録がありません</p>
+              <% if @foodstuffs.present? %>
+                <table id="table-sortable-foodstuff" class="table table-bordered table-hover mt-3">
+                  <tbody>
+                    <%= render partial: "foodstuff", collection: @foodstuffs, as: "foodstuff" %>
+                  </tbody>
+                </table>
+              <% else %>
+                <div class="text-center mt-3">
+                  <p>まだ登録がありません</p>
+                </div>
+              <% end %>
+              <div class="col-12 col-md-6 offset-md-3 mt-2">
+                <%= link_to new_manageownfoodstuff_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+                  <div class="text-center">
+                  <i class="fas fa-pen"></i>&nbsp;食材を追加
+                  </div>
+                <% end %>
               </div>
-            <% end %>
             </div>
+            <!-- list procedure -->
             <div class="tab-pane active" role="tabpanel" id="tab2">
               <% if @procedures.present? %>
               <table id="table-sortable-procedure" class="table table-bordered table-hover mt-3">
@@ -111,21 +122,17 @@
                   <p>まだ登録がありません</p>
                 </div>
               <% end %>
+              <div class="col-12 col-md-6 offset-md-3 mt-2">
+                <%= link_to new_manageownprocedure_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
+                <div class="text-center">
+                  <i class="fas fa-pen"></i>&nbsp;手順を追加
+                </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
     </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-12 col-md-4 offset-md-4 mt-2">
-        <%= link_to new_manageownfoodstuff_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
-          <i class="fas fa-pen"></i>&nbsp;食材を登録(変更)する
-        <% end %>
-        <%= link_to new_manageownprocedure_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block', remote: false do %>
-          <i class="fas fa-pen"></i>&nbsp;手順を登録(変更)する
-        <% end %>
-      </div>
     </div>
   </div>
 
