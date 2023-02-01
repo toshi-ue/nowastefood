@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: password
+  host: db
+  pool: 5
+  timeout: 5000
+
+production:
+  <<: *default
+  database: <%= ENV['DB_HEROKU_DATABASE_NAME'] %>
+  encoding: utf8mb4
+  host: <%= ENV['DB_HOST_ENDPOINT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  url: <%= ENV['JAWSDB_URL'] %>
