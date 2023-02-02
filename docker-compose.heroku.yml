@@ -20,20 +20,20 @@ services:
       - node-modules:/webapp/node_modules
     ports:
       - "3000:3000"
-      - "3035:3035"
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: ./containers/nginx/Dockerfile
-  #   volumes:
-  #     # - public-data:/webapp/public
-  #     - tmp-data:/webapp/tmp
-  #   networks:
-  #     - webapp-network
-  #   ports:
-  #     - 80:80
-  #   depends_on:
-  #     - web
+      # - "3035:3035"
+      # nginx:
+      #   build:
+      #     context: .
+      #     dockerfile: ./containers/nginx/Dockerfile
+      #   volumes:
+      #     # - public-data:/webapp/public
+      #     - tmp-data:/webapp/tmp
+      #   networks:
+      #     - webapp-network
+      #   ports:
+      #     - 80:80
+      #   depends_on:
+      #     - web
 
 volumes:
   bundle:

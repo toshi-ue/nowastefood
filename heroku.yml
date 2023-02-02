@@ -11,10 +11,10 @@ build:
     web: Dockerfile.heroku
 release:
   command:
-    - mv -f confing/environments/production.heroku.rb confing/environments/production.rb
+    - mv -f config/environments/production.heroku.rb confing/environments/production.rb
     - mv -f config/database.heroku.yml config/database.yml
     - mv -f config/puma.heroku.rb config/puma.rb
-    - rm -f tmp/pids/server.pid
+    - mv -f Procfile.heroku Procfile
     # - bundle exec bundle install
     # - bundle exec rake db:create RAILS_ENV=production
     # - bundle exec rake db:migrate RAILS_ENV=production
