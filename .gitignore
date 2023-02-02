@@ -10,19 +10,19 @@
 *.orig
 rerun.txt
 pickle-email-*.html
+public/packs/manifest.json
 public/uploads
 vendor/bundle/
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
-# /tmp/cache
-# /tmp/letter_opener
 !/tmp/.keep
 # !/tmp/pids
 # !/tmp/sockets
-/tmp/Gemfile.lock
-/tmp/restart.txt
+tmp/Gemfile.lock
+tmp/restart.txt
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -35,13 +35,12 @@ config/master.key
 
 # Ignore folders
 node_modules/
-# /public/packs
-/public/packs-test
-# /public/assets
-/public/uploads
+public/packs/js
+public/packs-test
+public/uploads
 
 # Ignore uploaded files in development
-/storage/*
+storage/*
 !/storage/.keep
 
 /.bundle/

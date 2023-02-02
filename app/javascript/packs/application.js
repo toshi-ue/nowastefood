@@ -26,4 +26,5 @@ $(function () {
   $('.remove-todaysmenus-tooltip').tooltip();
   $('.stocks-tooltip').tooltip();
   $('.todaysmenus-tooltip').tooltip();
+  $('.preview-disabled-tooltips').tooltip();
 });
