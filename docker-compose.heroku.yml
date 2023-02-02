@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: ./Dockerfile.heroku.production
+      dockerfile: ./Dockerfile.heroku
     command: bundle exec puma -C config/puma.rb -e production
     environment:
       RAILS_ENV: production
