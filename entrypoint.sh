@@ -5,15 +5,15 @@ set -e
 rm -f /webapp/tmp/pids/server.pid
 
 if [ ! -e "/webapp/tmp" ]; then
-  mkdir /webapp/tmp
+  sudo mkdir /webapp/tmp
 fi
 
 if [ ! -e "/webapp/tmp/pids" ]; then
-  mkdir /webapp/tmp/pids
+  sudo mkdir /webapp/tmp/pids
 fi
 
 if [ ! -e "/webapp/tmp/sockets" ]; then
-  mkdir /webapp/tmp/sockets
+  sudo mkdir /webapp/tmp/sockets
 fi
 
 if [ ! -e "${RAILS_ENV}" = "production" ]; then
