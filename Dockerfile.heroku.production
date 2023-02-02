@@ -32,6 +32,8 @@ COPY . /webapp
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin//entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
-EXPOSE 3000
+# https://stackoverflow.com/questions/52958110/error-r10-boot-timeout-web-process-failed-to-bind-to-port-within-60-secon
+# EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+# CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
