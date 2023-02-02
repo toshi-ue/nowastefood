@@ -19,8 +19,8 @@ vendor/bundle/
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-# !/tmp/pids
-# !/tmp/sockets
+!/tmp/pids
+!/tmp/sockets
 tmp/Gemfile.lock
 tmp/restart.txt
 
