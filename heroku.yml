@@ -21,6 +21,6 @@ release:
     # - bundle exec rake db:seed_fu RAILS_ENV=production
     # - bundle exec rails webpacker:compile
     # - bundle exec rails assets:precompile
-    # - bundle exec bin/webpack
+    # - bundle exec run bin/webpack
 run:
   web: bundle exec puma -C config/puma.rb
