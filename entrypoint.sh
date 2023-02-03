@@ -8,6 +8,7 @@ if [ -f "/webapp/tmp/pids/server.pid" ]; then
 fi
 
 if [ ! -e "${RAILS_ENV}" = "production" ]; then
+  rm -rf node_modules
   bundle exec rails webpacker:clobber
   bundle exec rails webpacker:install
   bundle exec rails webpacker:compile
