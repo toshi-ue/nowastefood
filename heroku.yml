@@ -11,6 +11,7 @@ build:
   docker:
     web: Dockerfile.web
 release:
+  image: web
   command:
     - mv -f config/environments/production.heroku.rb confing/environments/production.rb
     - mv -f config/database.heroku.yml config/database.yml
