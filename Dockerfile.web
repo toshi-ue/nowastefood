@@ -3,8 +3,6 @@ FROM ruby:2.7.7
 ENV APP_DIR /webapp
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
 ENV DEBCONF_NOWARNINGS yes
-# ENV BUNDLE_DEPLOYMENT true
-# ENV BUNDLE_WITHOUT development:test
 ENV LANG C.UTF-8
 ENV MY_BUNDLER_VERSION 2.1.4
 ENV RAILS_ENV production
@@ -25,17 +23,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
 COPY Gemfile Gemfile.lock /webapp/
 COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v 2.1.4 \
-  && bundle install && yarn install --production --frozen-lockfile \
+  && bundle config set without development test \
+  && bundle install \
+  && yarn install --production --frozen-lockfile \
   && yarn cache clean
 COPY . /webapp
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin//entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
-# https://stackoverflow.com/questions/52958110/error-r10-boot-timeout-web-process-failed-to-bind-to-port-within-60-secon
-# EXPOSE 3000
-RUN echo ${PORT}
 
-CMD bundle exec rails server -b 0.0.0.0 -p $PORT
-# CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "$PORT"]
-# CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "${PORT:-3000}"]
