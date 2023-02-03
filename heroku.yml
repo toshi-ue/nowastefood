@@ -14,7 +14,7 @@ release:
   # https://stackoverflow.com/questions/57719701/is-this-the-right-way-to-run-a-release-command-for-a-heroku-review-app
   image: web
   command:
-    - mv -f config/environments/production.heroku.rb confing/environments/production.rb
+    - mv -f config/environments/production.heroku.rb config/environments/production.rb
     - mv -f config/database.heroku.yml config/database.yml
     - mv -f config/puma.heroku.rb config/puma.rb
     - mv -f Procfile.heroku Procfile
@@ -22,6 +22,7 @@ release:
     # - bundle exec rake db:create RAILS_ENV=production
     - bundle exec rake db:migrate RAILS_ENV=production
     - bundle exec rake db:seed_fu RAILS_ENV=production
+    - bundle exec rails webpacker:install
     - bundle exec rails webpacker:compile
     - bundle exec rails assets:precompile
     - bundle exec bin/webpack
