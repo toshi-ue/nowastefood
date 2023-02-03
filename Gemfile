@@ -83,6 +83,10 @@ group :test do
   gem 'webmock'
 end
 
+group :production do
+  # gem 'mini_racer', '0.6.3'
+end
+
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gem 'mini_racer', platforms: :ruby
