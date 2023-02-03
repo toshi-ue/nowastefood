@@ -491,7 +491,6 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    yui-compressor (0.12.0)
     zeitwerk (2.6.6)
 
 PLATFORMS
@@ -563,7 +562,6 @@ DEPENDENCIES
   webdrivers
   webmock
   webpacker (~> 5.0)
-  yui-compressor
 
 RUBY VERSION
    ruby 2.7.7p221

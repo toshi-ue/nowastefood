@@ -32,7 +32,7 @@ Rails.application.configure do
   end
 
   # Compress CSS using a preprocessor.
-  config.assets.css_compressor = :yui
+  # config.assets.css_compressor = :yui
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # https://programmingmemo.com/docker-rails-heroku/#configassetscompiletrue
