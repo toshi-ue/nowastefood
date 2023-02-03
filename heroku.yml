@@ -21,4 +21,4 @@ release:
     - bundle exec rake db:migrate RAILS_ENV=production
     - bundle exec rake db:seed_fu RAILS_ENV=production
 run:
-  web: bundle exec puma -C config/puma.heroku.rb
+  web: bundle exec puma -C config/puma.rb
