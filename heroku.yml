@@ -22,4 +22,4 @@ release:
     - bundle exec rake db:seed_fu RAILS_ENV=production
 run:
   # https://blog.jnito.com/entry/2019/08/19/090308
-  web: mkdir -p tmp/pids && bundle exec puma -C config/puma.heroku.rb
+  web: mkdir -p tmp/pids && bundle exec puma -C config/puma.rb
