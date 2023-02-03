@@ -10,8 +10,8 @@ fi
 if [ ! -e "${RAILS_ENV}" = "production" ]; then
   bundle exec rails webpacker:install
   bundle exec rails webpacker:compile
-  # bundle exec rails assets:precompile
-  # bundle exec run bin/webpack
+  bundle exec rails assets:precompile
+  bundle exec bin/webpack
 fi
 
 exec "$@"
