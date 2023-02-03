@@ -27,4 +27,4 @@ release:
     - bundle exec rails assets:precompile
     - bundle exec bin/webpack
 run:
-  web: bundle exec puma -C config/puma.rb
+  web: bundle exec puma -C config/puma.heroku.rb
