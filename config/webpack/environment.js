@@ -10,6 +10,7 @@ environment.plugins.prepend(
   })
 )
 
+// https://wild-outdoorlife.com/ruby-on-rails/webpack5-error/
 const customConfig = {
   resolve: {
     fallback: {
