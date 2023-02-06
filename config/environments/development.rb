@@ -1,3 +1,5 @@
+require "active_support/core_ext/integer/time"
+
 Rails.application.configure do
   config.after_initialize do
     Bullet.enable        = true
@@ -7,11 +9,14 @@ Rails.application.configure do
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end
+
+  # In the development environment your application's code is reloaded any time
+  # it changes. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.reload_classes_only_on_change = false
   config.eager_load = false
   config.consider_all_requests_local = true
-  # config.consider_all_requests_local = false
 
   # Enable/disable caching. By default caching is disabled.
 	# Run rails dev:cache to toggle caching.
@@ -55,6 +60,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener_web
 
   config.web_console.allowed_ips = %w[0.0.0.0/0 127.0.0.1 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16]
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
   # Uncomment if you wish to allow Action Cable access from any origin.

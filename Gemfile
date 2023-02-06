@@ -12,7 +12,7 @@ gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'counter_culture'
-gem 'cssbundling-rails', '>= 0.2.4'
+# gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
@@ -23,6 +23,7 @@ gem 'exception_notification'
 gem 'faker'
 gem 'flog'
 gem 'fog-aws'
+# gem 'jsbundling-rails'
 gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'
@@ -33,14 +34,13 @@ gem 'rails', '~> 6.1.7'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
-# gem 'sass-rails'
+gem 'sass-rails'
 # gem 'sassc', '2.1.0'
 # gem 'sassc-rails'
 gem 'seed-fu'
 gem "slack-notifier"
 gem 'uglifier'
 gem 'webpacker', '~> 5.0'
-# gem 'yui-compressor'
 
 group :development, :test do
   gem 'awesome_print'
@@ -60,6 +60,7 @@ group :development do
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'
+  gem 'rack-mini-profiler'
   gem 'rails-erd'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
@@ -68,7 +69,6 @@ group :development do
   gem 'solargraph'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen'
   gem 'web-console'
 end
 
@@ -84,9 +84,9 @@ group :test do
   gem 'webmock'
 end
 
-group :production do
-  # gem 'mini_racer', '0.6.3'
-end
+# group :production do
+#   # gem 'mini_racer', '0.6.3'
+# end
 
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

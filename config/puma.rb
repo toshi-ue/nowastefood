@@ -32,7 +32,6 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
-app_root = File.expand_path("../..", __FILE__)
 # https://qiita.com/NaokiIshimura/items/7cb2390243939a34754f#rails-3
 # bind "unix://#{app_root}/tmp/sockets/puma.sock"
 

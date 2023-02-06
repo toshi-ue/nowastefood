@@ -1,11 +1,14 @@
 // import 'stylesheets/application'
 import 'jquery/dist/jquery'
-import Rails from 'rails-ujs/lib/assets/compiled/rails-ujs'
+import Rails from "@rails/ujs"
 import 'popper.js/dist/umd/popper.min'
 import 'bootstrap/dist/js/bootstrap'
 import '@fortawesome/fontawesome-free/js/all'
+import * as ActiveStorage from "@rails/activestorage"
+import "channels"
 
 Rails.start()
+ActiveStorage.start()
 window.$ = window.jQuery = require('jquery');
 require('data-confirm-modal')
 

@@ -24,7 +24,7 @@ COPY Gemfile Gemfile.lock /webapp/
 COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v 2.1.4 \
   && bundle config set without development test \
-  && bundle install \
+  && bundle install -j`getconf _NPROCESSORS_ONLN` \
   && yarn install --production --frozen-lockfile \
   && yarn cache clean
 COPY . /webapp
