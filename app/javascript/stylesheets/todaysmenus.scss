@@ -1,0 +1,50 @@
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+@import "bootstrap/scss/mixins/_breakpoints";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#index-todaysmenus {
+  table {
+    margin-top: 20px;
+  }
+
+  .no-border-top {
+    border-top: 0px none;
+  }
+
+  input[type=radio] {
+    display: none;
+  }
+
+  input[type="submit"] {
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  @include media-breakpoint-down(md) {
+
+    .btns-cuisine {
+      padding-top: 0.8rem;
+    }
+
+    .detail-cuisine {
+      width: 70%;
+    }
+    .search-btn {
+      margin-top: 20vh;
+    }
+  }
+
+  @include media-breakpoint-between(md, lg) {
+  }
+
+  @include media-breakpoint-up(lg) {}
+}

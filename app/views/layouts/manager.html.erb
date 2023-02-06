@@ -6,8 +6,8 @@
     <title>Webapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'manager', media: 'all' %>
-    <%= javascript_pack_tag 'manager' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
   <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>"  class="sidebar-mini" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
     <div class="wrapper">

@@ -39,7 +39,6 @@ gem 'sass-rails'
 # gem 'sassc-rails'
 gem 'seed-fu'
 gem "slack-notifier"
-gem 'uglifier'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do

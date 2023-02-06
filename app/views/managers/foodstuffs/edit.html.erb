@@ -1,4 +1,3 @@
-<%= javascript_pack_tag 'managers/foodstuffs' %>
 <%# HACK: unitを使う時と使わないときのN+1問題をどうにかしたい %>
 <% @registered_foodstuffs = Foodstuff.includes(:rawmaterial, rawmaterial: :unit).where(cuisine_id: params[:cuisine_id]).page(params[:page]) %>
 

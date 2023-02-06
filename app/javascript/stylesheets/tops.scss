@@ -1,0 +1,143 @@
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables";
+@import "bootstrap/scss/mixins/_breakpoints";
+@import 'swiper/css/swiper';
+
+#app-name {
+  font-size: 6rem;
+}
+
+#promotion {
+  background-image: image-url("../images/about_top_image.jpg");
+  background-size: cover;
+}
+
+.features-clean {
+  color: #313437;
+  background-color: #fff;
+  padding-bottom: 30px;
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: 4rem;
+  }
+}
+
+.features-clean h2 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  padding-top: 2.5rem;
+  color: inherit;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.features-clean .intro {
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto 60px;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.features-clean .item {
+  min-height: 100px;
+  padding-left: 80px;
+  margin-bottom: 40px;
+
+  @include media-breakpoint-down(md) {
+    min-height: 0;
+  }
+}
+
+.features-clean .item .description {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.features-clean .item .icon {
+  font-size: 40px;
+  color: #1485ee;
+  float: left;
+  margin-left: -65px;
+}
+
+.features-clean .item .name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: inherit;
+}
+
+.features-clean p {
+  color: #7d8285;
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: 4rem;
+  }
+}
+
+.jumbotron {
+  border-radius: 0rem;
+}
+
+
+#index-tops {
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: grey;
+    margin-top: 2rem;
+  }
+
+  .swiper-button-next:after {
+    margin-right: -2rem;
+  }
+
+  .swiper-button-prev:after {
+    margin-left: -2rem;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    // main {
+    //   margin: 0 1rem;
+    // }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      margin-top: 5rem;
+    }
+
+    .swiper-button-next:after {
+      margin-right: -2rem;
+    }
+
+    .swiper-button-prev:after {
+      margin-left: -2rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      margin-top: 7rem;
+    }
+
+    .swiper-button-next:after {
+      margin-right: -2rem;
+    }
+
+    .swiper-button-prev:after {
+      margin-left: -2rem;
+    }
+  }
+}

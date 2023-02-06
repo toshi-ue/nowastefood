@@ -1,4 +1,3 @@
-// import 'stylesheets/application'
 import 'jquery/dist/jquery'
 import Rails from "@rails/ujs"
 import 'popper.js/dist/umd/popper.min'
@@ -11,6 +10,9 @@ Rails.start()
 ActiveStorage.start()
 window.$ = window.jQuery = require('jquery');
 require('data-confirm-modal')
+
+const images = require.context("../images", true)
+const imagePath = name => images(name, true)
 
 // tooltips
 // 各ページに独自のtooltipクラスを指定しないとデザインが崩れる
