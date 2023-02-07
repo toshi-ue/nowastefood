@@ -46,3 +46,15 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 # stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+# https://patorash.hatenablog.com/entry/2019/07/26/095409
+before_fork do
+  PumaWorkerKiller.config do |config|
+    config.ram           = Integer(ENV.fetch('MEMORY_AVAILABLE', 1024))
+    config.frequency     = 10    # 単位は秒
+    config.percent_usage = 0.90 # ramを90%以上を使用したらワーカー再起動
+    config.rolling_restart_frequency = 6 * 3600 # 6時間
+    # PumaWorkerKiller: Consuming 54.34765625 mb with master and 2 workers.
+  end
+  PumaWorkerKiller.start
+end
