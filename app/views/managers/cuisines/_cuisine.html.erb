@@ -3,7 +3,7 @@
     <% if cuisine.main_image.present? %>
       <%= image_tag cuisine.main_image.url, size: '70x70' %>
     <% else %>
-      <%= image_tag 'no_image_100x100', size: '70x70' %>
+      <%= image_pack_tag 'no_image_100x100.jpg', size: '70x70' %>
     <% end %>
   </td>
   <td class="align-middle"><%= cuisine.name %></td>

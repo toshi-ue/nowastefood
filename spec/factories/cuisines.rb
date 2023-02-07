@@ -8,7 +8,7 @@ FactoryBot.define do
     cooking_time { Cuisine.cooking_times.keys.sample }
     genre { Cuisine.genres.keys.sample }
     sequence(:description) { |n| "料理名#{n}の説明" }
-    sequence(:main_image) { File.new("#{Rails.root}/app/assets/images/test.jpg") }
+    sequence(:main_image) { File.new("#{Rails.root}/app/javascript/images/test.jpg") }
 
     Cuisine.statuses.each_value do |value|
       trait :"#{value}" do
