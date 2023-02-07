@@ -24,7 +24,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   yarn
 
 COPY Gemfile Gemfile.lock /webapp/
-# COPY package.json /webapp/
 COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION && \
   bundle install -j`getconf _NPROCESSORS_ONLN`
