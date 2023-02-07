@@ -30,8 +30,8 @@ RUN gem install bundler --no-document -v ${MY_BUNDLER_VERSION} \
   && yarn cache clean
 COPY . /webapp
 
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin//entrypoint.sh
+COPY deployment-heroku-tasks.sh entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/deployment-heroku-tasks.sh /usr/bin/entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
 
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "${PORT:-3000}"]
