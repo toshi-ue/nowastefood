@@ -54,6 +54,19 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  # # あとで見る
+  # # https://qiita.com/YutoYasunaga/items/a8e56ef3c6a8ade06704#capistrano%E8%A8%AD%E5%AE%9A
+  # gem 'capistrano'
+  # gem 'capistrano3-puma'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-rails-collection' # 例：　rails:rake:db:migrate　など
+  # gem 'capistrano-rails-console' # cap production rails:c でコンソールにアクセスしたい場合
+  # gem 'capistrano-rake' # 例：　cap production invoke:rake TASK=paperclip:refresh
+  # gem 'capistrano-rbenv'
+  # # TODO: あとでredisを使う
+  # #   https://yutojp.com/articles/ruby-on-rails-sidekiq-no-doonyuu-tejun-rookaru-heroku-aws-ec-ni-docker-capistrano
+  # # gem 'capistrano-sidekiq', require: false
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'
