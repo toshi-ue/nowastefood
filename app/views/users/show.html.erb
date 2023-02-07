@@ -1,4 +1,3 @@
-<%= javascript_pack_tag 'users' %>
 <div class="container-fluid" id="wrapper_container">
   <div id="settings" class="mt-2">
     <div class="row">
@@ -22,14 +21,14 @@
                     <% unless @user.profile_image.nil? %>
                       <%= image_tag @user.profile_image.url, id: 'user-avatar', size: '100x100' %>
                     <% else %>
-                      <%= image_tag "no_avatar.jpg", id: 'user-avatar', class: "rounded-circle img-fluid" %>
+                      <%= image_pack_tag "no_avatar.jpg", id: 'user-avatar', class: "rounded-circle img-fluid" %>
                     <% end %>
                   </div>
                 </div>
               <% else %>
                 <div id="user-profile-no-image" class="d-flex  justify-content-center align-items-center">
                   <div id="no-image">
-                    <%= image_tag 'no_image_100x100', id: 'user-avatar', size: '100x100' %>
+                    <%= image_pack_tag 'no_image_100x100.jpg', id: 'user-avatar', size: '100x100' %>
                   </div>
                 </div>
               <% end %>

@@ -1,0 +1,2 @@
+# https://kobacchi.com/heroku-webserver-puma/#index_id3
+web: bundle exec puma -C config/puma.rb

@@ -1,21 +1,26 @@
 {
   "private": true,
   "dependencies": {
-    "@babel/plugin-proposal-private-methods": "^7.14.5",
     "@fortawesome/fontawesome-free": "^5.13.1",
-    "@rails/webpacker": "5.4.3",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^5.4.3",
     "@ttskch/select2-bootstrap4-theme": "1.5.2",
     "admin-lte": "^3.1",
+    "babel-loader": "^8",
     "bootstrap": "^4.5.0",
     "data-confirm-modal": "^1.6.2",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
-    "node-sass": "^8.0.0",
+    "node-sass": "^6",
     "popper.js": "^1.16.1",
-    "rails-ujs": "^5.2.4-3",
+    "sass": "^1.58.0",
     "select2": "4.0.13",
     "sortablejs": "1.10.2",
-    "swiper": "<6"
+    "swiper": "<6",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "name": "nowastefood",
   "version": "1.0.0",
@@ -23,6 +28,8 @@
   "repository": "https://github.com/toshi-ue/app_for_job_change.git",
   "license": "MIT",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.2"
-  }
+    "webpack-dev-server": "^3"
+  },
+  "babel": {},
+  "scripts": {}
 }

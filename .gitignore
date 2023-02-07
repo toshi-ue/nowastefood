@@ -10,6 +10,7 @@
 .terraform-version
 .terraform.lock.hcl
 .terraform/
+app/assets/builds/
 config/initializers/secret_token.rb
 config/master.key
 coverage
@@ -32,6 +33,7 @@ tmp/
 # tmp/Gemfile.lock
 # tmp/restart.txt
 
+!/app/assets/builds/.keep
 !/log/.keep
 !/public/assets/.keep
 !/storage/.keep
@@ -57,3 +59,15 @@ init.tf
 
 # circleci
 process.yml
+
+public/packs-test
+yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

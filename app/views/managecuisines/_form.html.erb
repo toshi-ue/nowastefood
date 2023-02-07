@@ -20,7 +20,7 @@
   <% if cuisine.main_image.blank? %>
     <div class="cuisine-main-image">
       <div>
-        <%= image_tag 'no_image_100x100', id: 'no_cuisine_image', class: "d-block mx-auto my-2 img-fluid" %>
+        <%= image_pack_tag 'no_image_100x100.jpg', id: 'no_cuisine_image', class: "d-block mx-auto my-2 img-fluid" %>
       </div>
       <div class="input-group">
         <input type="text" id="image_name" class="form-control" readonly="">

@@ -3,12 +3,12 @@
 @import "bootstrap/scss/mixins/_breakpoints";
 @import 'swiper/css/swiper';
 
-#app-name{
+#app-name {
   font-size: 6rem;
 }
 
 #promotion {
-  background-image: image-url("about_top_image.jpg");
+  background-image: url("../images/about_top_image.jpg");
   background-size: cover;
 }
 
@@ -89,6 +89,7 @@
 
 
 #index-tops {
+
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-weight: bold;

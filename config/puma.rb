@@ -32,8 +32,8 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
-app_root = File.expand_path("../..", __FILE__)
-bind "unix://#{app_root}/tmp/sockets/puma.sock"
+# https://qiita.com/NaokiIshimura/items/7cb2390243939a34754f#rails-3
+# bind "unix://#{app_root}/tmp/sockets/puma.sock"
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code

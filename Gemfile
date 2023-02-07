@@ -32,12 +32,11 @@ gem 'rails', '~> 6.1.7'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
-gem 'sassc', '2.1.0'
-gem 'sassc-rails'
 gem 'seed-fu'
 gem "slack-notifier"
-gem 'uglifier'
-gem 'webpacker', '< 6.0.0'
+# https://qiita.com/sasakura_870/items/106484f88c857bd9563e#sprockets%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92372%E3%81%AB%E4%B8%8B%E3%81%92%E3%82%8B
+gem 'sprockets', '~> 3.7.2'
+gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'awesome_print'
@@ -57,6 +56,7 @@ group :development do
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'
+  gem 'rack-mini-profiler'
   gem 'rails-erd'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
@@ -65,7 +65,6 @@ group :development do
   gem 'solargraph'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen'
   gem 'web-console'
 end
 
@@ -80,6 +79,10 @@ group :test do
   gem 'webdrivers'
   gem 'webmock'
 end
+
+# group :production do
+#   # gem 'mini_racer', '0.6.3'
+# end
 
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
