@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+#
 # https://stackoverflow.com/questions/55693329/how-to-run-a-rails-app-in-docker-on-heroku
 # Remove a potentially pre-existing server.pid for Rails.
 if [ -f "/webapp/tmp/pids/server.pid" ]; then
