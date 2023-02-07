@@ -13,8 +13,6 @@
 # [意外なところで使えるMakefile - 無気力生活 (ノ ´ω｀)ノ ~゜](https://gdgd-shinoyu.hatenablog.com/entry/2019/10/22/163601)
 init:
 		docker compose build --no-cache
-		@make rails/bundle
-		@make yarn/install
 		@make rails/webpacker
 		@make rails/db-setup-development
 
@@ -45,7 +43,6 @@ rails/db-reset:
 
 rails/webpacker:
 		docker compose run --rm web bundle exec rails tmp:clear
-		docker compose run --rm web bundle exec rails webpacker:install
 		docker compose run --rm web bundle exec rails webpacker:compile
 
 rspec:
