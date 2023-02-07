@@ -31,7 +31,7 @@ RUN gem install bundler --no-document -v ${MY_BUNDLER_VERSION} \
 COPY . /webapp
 
 COPY deployment-heroku-tasks.sh entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/deployment-heroku-tasks.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/deployment-heroku-task.sh /usr/bin/entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
 
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "${PORT:-3000}"]
