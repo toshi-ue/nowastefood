@@ -21,7 +21,8 @@ release:
     - bundle exec rake db:migrate RAILS_ENV=production
     - bundle exec rake db:seed_fu RAILS_ENV=production
     # https://qiita.com/daiki421/items/8d3149e075435e213bfa
-    - bundle exec pumactl restart
+    # - bundle exec pumactl restart
 run:
   # https://blog.jnito.com/entry/2019/08/19/090308
   web: mkdir -p tmp/pids && bundle exec puma -C config/puma.rb
+  # web: mkdir -p tmp/pids && mkdir -p tmp/sockets && bundle exec puma -C config/puma.rb
