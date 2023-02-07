@@ -17,6 +17,9 @@ on_worker_boot do
   ActiveRecord::Base.establish_connection
 end
 
+# https://github.com/seuros/capistrano-example-app/blob/main/config/puma/production.rb
+pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+
 # https://patorash.hatenablog.com/entry/2019/07/26/095409
 # https://github.com/zombocom/puma_worker_killer#configure
 before_fork do
