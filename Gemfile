@@ -28,6 +28,7 @@ gem 'mini_magick'
 gem 'mysql2'
 gem "net-http"
 gem 'puma'
+gem 'puma_worker_killer'
 gem 'rails', '~> 6.1.7'
 gem 'rails-i18n'
 gem 'ranked-model'
