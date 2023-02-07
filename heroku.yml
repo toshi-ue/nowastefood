@@ -20,7 +20,7 @@ release:
     # - bundle exec rake db:create RAILS_ENV=production
     - bundle exec rake db:migrate RAILS_ENV=production
     - bundle exec rake db:seed_fu RAILS_ENV=production
-    - bundle exec rails webpacker:compile
+    # - bundle exec rails webpacker:compile
     # - bundle exec rails assets:precompile
     # - bundle exec bin/webpack
 run:
