@@ -8,7 +8,7 @@ preload_app!
 
 rackup      DefaultRackup if defined?(DefaultRackup)
 port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || 'production'
+environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+
