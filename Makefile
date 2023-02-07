@@ -12,7 +12,7 @@
 
 # [意外なところで使えるMakefile - 無気力生活 (ノ ´ω｀)ノ ~゜](https://gdgd-shinoyu.hatenablog.com/entry/2019/10/22/163601)
 init:
-		docker compose build --no-cache
+		docker/build-no-cache
 		@make rails/webpacker
 		@make rails/db-setup-development
 
@@ -20,6 +20,9 @@ init:
 docker/attach-web:
 		docker compose up -d
 		docker attach (docker compose ps -q web)
+
+docker/build-no-cache:
+		docker compose build --no-cache
 
 docker/remove-all:
 		docker compose down --rmi all --volumes --remove-orphans
