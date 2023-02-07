@@ -14,15 +14,20 @@ release:
   # https://stackoverflow.com/questions/57719701/is-this-the-right-way-to-run-a-release-command-for-a-heroku-review-app
   image: web
   command:
-    - mv config/environments/production.heroku.rb config/environments/production.rb
-    - mv config/database.heroku.yml config/database.yml
-    - mv config/puma.heroku.rb config/puma.rb
-    # - bundle exec rake db:create RAILS_ENV=production
-    - bundle exec rake db:migrate RAILS_ENV=production
-    - bundle exec rake db:seed_fu RAILS_ENV=production
-    # https://qiita.com/daiki421/items/8d3149e075435e213bfa
-    # - bundle exec pumactl restart
+    - ./deployment-heroku-tasks.sh
+    # - mkdir -p tmp/pids
+    # - mkdir -p tmp/sockets
+    # - mv config/environments/production.heroku.rb config/environments/production.rb
+    # - mv config/database.heroku.yml config/database.yml
+    # - mv config/puma.heroku.rb config/puma.rb
+    # # - bundle exec rails db:create RAILS_ENV=production
+    # - bundle exec rails db:migrate RAILS_ENV=production
+    # - bundle exec rails db:seed_fu RAILS_ENV=production
+    # - bundle exec rails db:migrate RAILS_ENV=production
+    # - bundle exec rails webpacker:compile RAILS_ENV=production
+    # # https://qiita.com/daiki421/items/8d3149e075435e213bfa
+    # # - bundle exec pumactl restart
 run:
   # https://blog.jnito.com/entry/2019/08/19/090308
-  web: mkdir -p tmp/pids && bundle exec puma -C config/puma.rb
-  # web: mkdir -p tmp/pids && mkdir -p tmp/sockets && bundle exec puma -C config/puma.rb
+  # web: mkdir -p tmp/pids && bundle exec puma -C config/puma.rb
+  web: mkdir -p tmp/pids && mkdir -p tmp/sockets && bundle exec puma -C config/puma.rb
