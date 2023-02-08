@@ -32,7 +32,7 @@ RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 COPY . $APP_DIR
 COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin//entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
 EXPOSE 3000
 
