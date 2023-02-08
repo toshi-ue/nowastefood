@@ -61,6 +61,11 @@ rails/db-reset:
 		docker compose run --rm web rails db:migrate:reset
 		@make rails/db-setup-development
 
+rails/erb-lint:
+		docker compose run --no-deps --rm web erblint --lint-all
+rails/erb-lint-force:
+		docker compose run --no-deps --rm web erblint --lint-all -a
+
 rails/webpacker-tmp-clear:
 		docker compose run --rm web bundle exec rails tmp:clear
 
