@@ -59,15 +59,12 @@ Metrics/CyclomaticComplexity:
   Exclude:
     - "app/helpers/keywords_helper.rb"
 
-# 削除しない
 Metrics/MethodLength:
   Enabled: false
 
-# 削除しない
 Rails/FilePath:
   Enabled: false
 
-# 削除しない
 Rails/I18nLocaleTexts:
   Enabled: false
 
@@ -75,11 +72,9 @@ Rails/I18nLocaleTexts:
 RSpec/Capybara:
   Enabled: false
 
-# 削除しない
 RSpec/ContextWording:
   Enabled: false
 
-# 削除しない
 # TODO: あとでDefault valueを決める
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexamplelength
 RSpec/ExampleLength:
@@ -140,12 +135,3 @@ Style/PercentLiteralDelimiters:
 
 Style/RedundantSelf:
   Enabled: false
-
-# TODO: 最後にコメントアウト - Enableにする（好みはsingle_quotes）
-Style/StringLiterals:
-  # EnforcedStyle: double_quotes
-  Enabled: false
-
-# TODO: あとで削除する
-Style/SymbolArray:
-  EnforcedStyle: brackets
