@@ -83,6 +83,10 @@ bundle_exec() {
   run_app bundle exec $*
 }
 
+bundle_exec_no_deps() {
+  invoke_run_no_deps $app bundle exec $*
+}
+
 compose_build() {
   echoing "Build containers $*"
   $dc build $*
@@ -179,6 +183,24 @@ invoke_run() {
   $dc run $rm ${renv}${dbenv}$*
 }
 
+invoke_run_no_deps() {
+  renv=""
+  if [ -n "$RAILS_ENV" ]; then
+    renv="-e RAILS_ENV=$RAILS_ENV "
+  fi
+
+  if [ -n "$TRUNCATE_LOGS" ]; then
+    renv="$renv -e TRUNCATE_LOGS=$TRUNCATE_LOGS "
+  fi
+
+  dbenv=""
+  if [ -n "$DISABLE_DATABASE_ENVIRONMENT_CHECK" ]; then
+    dbenv="-e DISABLE_DATABASE_ENVIRONMENT_CHECK=$DISABLE_DATABASE_ENVIRONMENT_CHECK "
+  fi
+
+  $dc run --no-deps $rm ${renv}${dbenv}$*
+}
+
 rails_cmd() {
   bundle_exec rails $*
 }
@@ -246,9 +268,11 @@ rspec_cmd() {
 rubocop_cmd() {
   # https://blog.solunita.net/posts/relean-rubocop-options/
   if [[ "$1" == *-a* ]] || [[ "$1" == *-A* ]]; then
-    bundle_exec rubocop -DES $* --force-exclusion
+    echo "rubocop single mode"
+    bundle_exec_no_deps rubocop -DES $* --force-exclusion
   else
-    bundle_exec rubocop -DESP $* --force-exclusion
+    echo "rubocop parallel mode"
+    bundle_exec_no_deps rubocop -DESP $* --force-exclusion
   fi
 }
 
