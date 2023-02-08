@@ -1,0 +1,14 @@
+# https://karlley.hatenablog.jp/entry/2022/09/08/192419
+# https://zenn.dev/junara/articles/efa04ce1ab02c9
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+glob: "**/*.{html,text,js}{+*,}.erb"
+linters:
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
+      Style/FrozenStringLiteralComment:
+        Enabled: false

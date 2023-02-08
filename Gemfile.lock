@@ -76,6 +76,13 @@ GEM
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
+    better_html (2.0.1)
+      actionview (>= 6.0)
+      activesupport (>= 6.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
@@ -142,6 +149,13 @@ GEM
     e2mmap (0.1.0)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
+    erb_lint (0.3.1)
+      activesupport
+      better_html (>= 2.0.1)
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.12.0)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
@@ -414,6 +428,7 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     slack-notifier (2.4.0)
+    smart_properties (1.17.0)
     solargraph (0.48.0)
       backport (~> 1.2)
       benchmark
@@ -506,6 +521,7 @@ DEPENDENCIES
   discard
   dotenv-rails
   enum_help
+  erb_lint
   exception_notification
   factory_bot_rails
   faker
@@ -534,6 +550,7 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   rubocop
+  rubocop-ast
   rubocop-performance
   rubocop-rails
   rubocop-rspec

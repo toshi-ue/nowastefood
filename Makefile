@@ -45,7 +45,7 @@ heroku/puma-restart:
 		heroku run bundle exec pumactl restart
 
 rails/bundle:
-		docker compose run --rm web bundle install -j`getconf _NPROCESSORS_ONLN`
+		docker compose run --no-deps --rm web bundle install -j`getconf _NPROCESSORS_ONLN`
 
 rails/db-drop:
 		docker compose run --rm web rails db:environment:set RAILS_ENV=development
