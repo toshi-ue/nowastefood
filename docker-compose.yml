@@ -10,17 +10,6 @@ services:
       - "4306:3306"
     volumes:
       - db-data:/var/lib/mysql
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: ./containers/nginx/Dockerfile
-  #   volumes:
-  #     - public-data:/webapp/public
-  #     - tmp-data:/webapp/tmp
-  #   ports:
-  #     - 80:80
-  #   depends_on:
-  #     - web
   web:
     init: true
     tty: true
@@ -34,12 +23,30 @@ services:
       - yarn-cache:/usr/local/share/.cache/yarn/v6:cached
     ports:
       - "3000:3000"
-      # - "3035:3035"
     depends_on:
       - db
     environment:
       RAILS_ENV: development
       MYSQL_HOST: db
+  # https://qiita.com/undrthemt/items/52a557cb937d133b7140
+  # https://blog.furu07yu.com/entry/build-docker-rails-webpacker#:~:text=8%20--locale%3DC%22-,webpacker,-%3A%0A%20%20%20%20%23%20Dockerfile%E3%82%92%E4%BD%BF
+  # https://qiita.com/wancoro/items/9175a6fdcbab17840d2a#webpacker%E3%81%AE%E8%B5%B7%E5%8B%95
+  webpacker:
+    build: .
+    # command: bash -c 'rm -rf public/packs/* || true && bin/webpack-dev-server'
+    command: 'bin/webpack-dev-server'
+    environment:
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - "3035:3035"
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/webapp
+      - bundle:/usr/local/bundle:cached
+    depends_on:
+      - web
 
 volumes:
   bundle:
