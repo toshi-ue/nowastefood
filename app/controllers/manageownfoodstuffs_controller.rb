@@ -2,8 +2,8 @@
 
 class ManageownfoodstuffsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_foodstuff, only: [:edit, :update, :destroy]
-  before_action :set_and_check_cuisine, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_foodstuff, only: %i[edit update destroy]
+  before_action :set_and_check_cuisine, only: %i[new create edit update destroy]
 
   def new
     extract_instances(@cuisine)
@@ -28,7 +28,7 @@ class ManageownfoodstuffsController < ApplicationController
 
   def update
     if @foodstuff.update(foodstuff_params)
-      redirect_to new_manageownfoodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: "変更されました" }
+      redirect_to new_manageownfoodstuff_path(cuisine_id: @foodstuff.cuisine_id), flash: { notice: '変更されました' }
     else
       @cuisine = Cuisine.find(@foodstuff.cuisine_id)
       extract_instances(@cuisine)

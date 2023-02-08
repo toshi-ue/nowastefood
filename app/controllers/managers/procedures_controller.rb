@@ -2,7 +2,7 @@
 
 class Managers::ProceduresController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_procedure, only: [:edit, :update, :destroy]
+  before_action :set_procedure, only: %i[edit update destroy]
   layout 'manager'
 
   def new
@@ -17,17 +17,17 @@ class Managers::ProceduresController < ApplicationController
   def create
     @procedure = Procedure.new(procedure_params)
     if @procedure.save
-      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "手順が追加されました" }
+      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: '手順が追加されました' }
     else
       params[:cuisine_id] = @procedure.cuisine_id
       set_cuisine_and_registerd_pds
-      render "new"
+      render 'new'
     end
   end
 
   def update
     if @procedure.update(procedure_params)
-      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "更新されました" }
+      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: '更新されました' }
     else
       set_cuisine_and_registerd_pds
       render 'edit'
@@ -37,10 +37,10 @@ class Managers::ProceduresController < ApplicationController
   def destroy
     @procedure.destroy
     case params[:action_name]
-    when "new", "edit"
-      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "削除しました" }
-    when "show"
-      redirect_to managers_cuisine_path(@procedure.cuisine_id), flash: { notice: "手順を削除しました" }
+    when 'new', 'edit'
+      redirect_to new_managers_procedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: '削除しました' }
+    when 'show'
+      redirect_to managers_cuisine_path(@procedure.cuisine_id), flash: { notice: '手順を削除しました' }
     end
   end
 

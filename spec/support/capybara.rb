@@ -5,15 +5,15 @@ require 'selenium-webdriver'
 require 'vcr'
 
 Capybara.register_driver :remote_chrome do |app|
-  url = "http://chrome:4444/wd/hub"
+  url = 'http://chrome:4444/wd/hub'
   caps = Selenium::WebDriver::Remote::Capabilities.chrome(
-    "chromeOptions" => {
+    'chromeOptions' => {
       args: [
-        "no-sandbox",
+        'no-sandbox',
         # ブラウザで動作確認したい場合は"headless"をコメントアウト
-        "headless",
-        "disable-gpu",
-        "window-size=1680,1050"
+        'headless',
+        'disable-gpu',
+        'window-size=1680,1050'
       ]
     }
   )

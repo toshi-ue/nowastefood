@@ -7,7 +7,7 @@ class StocksController < ApplicationController
     @stocks = current_user.stocks.includes(:rawmaterial, { rawmaterial: :unit }).not_consumed.order(rotted_at: 'ASC')
     @todaysmenus = current_user.todaysmenus.includes(:cuisine, cuisine: :foodstuffs).not_cooked
     @rawmaterials_and_quantity_will_be_consumed = @todaysmenus.get_quantities_grouped_by_rawmaterial(todaysmenus: @todaysmenus)
-    @css_name = ""
+    @css_name = ''
   end
 
   def new
@@ -46,7 +46,7 @@ class StocksController < ApplicationController
     if @todaysmenu.save
       redirect_to todaysmenus_path, flash: { notice: "エコ機能で#{@todaysmenu.cuisine.name}が追加されました" }
     else
-      redirect_to stocks_path, flash: { notice: "エコ機能を利用できるレシピがありませんでした" }
+      redirect_to stocks_path, flash: { notice: 'エコ機能を利用できるレシピがありませんでした' }
     end
   end
 

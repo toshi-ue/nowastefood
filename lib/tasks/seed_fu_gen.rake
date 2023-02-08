@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'active_record'
-require "fileutils"
+require 'fileutils'
 require 'date'
 
 t = Time.current
-t_folder_name = t.strftime("%y%m%d")
+t_folder_name = t.strftime('%y%m%d')
 seed_gen_folder = "#{Rails.root}/db/afixtures"
 
 model_names_image_exists = %w[cuisine user]
@@ -34,47 +34,47 @@ namespace :seed_fu_gen do
     managers = Manager.all
     SeedFu::Writer.write("db/afixtures/#{t_folder_name}/01_manager.rb", class_name: 'Manager', seed_type: :seed_once) do |writer|
       managers.find_each do |mg|
-        writer << mg.attributes.except("current_sign_in_at", "last_sign_in_at", "created_at", "updated_at")
+        writer << mg.attributes.except('current_sign_in_at', 'last_sign_in_at', 'created_at', 'updated_at')
       end
     end
 
     # 02_user.rb
     users = User.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/02_user.rb", class_name: "User", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/02_user.rb", class_name: 'User', seed_type: :seed_once) do |writer|
       users.each do |user|
         FileUtils.cp("#{Rails.root}/public#{user.profile_image}", "#{Rails.root}/db/afixtures/#{t_folder_name}#{user.profile_image}")
         user.profile_image = File.new("#{Rails.root}/public#{user.profile_image}")
-        writer << user.attributes.except("current_sign_in_at", "last_sign_in_at", "created_at", "updated_at")
+        writer << user.attributes.except('current_sign_in_at', 'last_sign_in_at', 'created_at', 'updated_at')
       end
     end
 
     # 03_foodcategory.rb
     foodcategories = Foodcategory.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/03_foodcategory.rb", class_name: "Foodcategory", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/03_foodcategory.rb", class_name: 'Foodcategory', seed_type: :seed_once) do |writer|
       foodcategories.each do |fc|
-        writer << fc.attributes.except("created_at", "updated_at")
+        writer << fc.attributes.except('created_at', 'updated_at')
       end
     end
 
     # 04_unit.rb
     units = Unit.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/04_unit.rb", class_name: "Unit", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/04_unit.rb", class_name: 'Unit', seed_type: :seed_once) do |writer|
       units.each do |ut|
-        writer << ut.attributes.except("created_at", "updated_at")
+        writer << ut.attributes.except('created_at', 'updated_at')
       end
     end
 
     # 06_rawmaterial.rb
     rawmaterials = Rawmaterial.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/06_rawmaterial.rb", class_name: "Rawmaterial", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/06_rawmaterial.rb", class_name: 'Rawmaterial', seed_type: :seed_once) do |writer|
       rawmaterials.each do |rm|
-        writer << rm.attributes.except("created_at", "updated_at")
+        writer << rm.attributes.except('created_at', 'updated_at')
       end
     end
 
     # 21_cuisine.rb
     cuisines = Cuisine.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/21_cuisine.rb", class_name: "Cuisine", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/21_cuisine.rb", class_name: 'Cuisine', seed_type: :seed_once) do |writer|
       cuisines.each do |cn|
         FileUtils.cp("#{Rails.root}/public#{cn.main_image}", "#{Rails.root}/db/afixtures/#{t_folder_name}#{cn.main_image}")
         cn.main_image = File.new("#{Rails.root}/public#{cn.main_image}")
@@ -82,23 +82,23 @@ namespace :seed_fu_gen do
         # cn.cooking_time = Cuisine.cooking_times[cn.cooking_time]
         # cn.genre = Cuisine.genres[cn.genre]
         # cn.status = Cuisine.statuses[cn.status]
-        writer << cn.attributes.except("created_at", "updated_at")
+        writer << cn.attributes.except('created_at', 'updated_at')
       end
     end
 
     # 22_foodstuff.rb
     foodstuffs = Foodstuff.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/22_foodstuff.rb", class_name: "Foodstuff", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/22_foodstuff.rb", class_name: 'Foodstuff', seed_type: :seed_once) do |writer|
       foodstuffs.each do |fs|
-        writer << fs.attributes.except("created_at", "updated_at")
+        writer << fs.attributes.except('created_at', 'updated_at')
       end
     end
 
     # 23_procedure.rb
     procedures = Procedure.all
-    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/23_procedure.rb", class_name: "Procedure", seed_type: :seed_once) do |writer|
+    SeedFu::Writer.write("db/afixtures/#{t_folder_name}/23_procedure.rb", class_name: 'Procedure', seed_type: :seed_once) do |writer|
       procedures.each do |pd|
-        writer << pd.attributes.except("created_at", "updated_at")
+        writer << pd.attributes.except('created_at', 'updated_at')
       end
     end
   end
@@ -146,19 +146,19 @@ namespace :change_properties_to_adapt_seed_data do
   desc 'change properties of profile_image and main_image'
   task all: :environment do |_t|
     # usersテーブル用
-    target_file = Rails.root.join("db/fixtures/02_user.rb")
+    target_file = Rails.root.join('db/fixtures/02_user.rb')
     buffer = File.read(target_file)
 
-    buffer.gsub!(/"profile_image"=>"/, "\"profile_image\"=>Rails.root.join(\"db/fixtures/uploads/user/")
-    buffer.gsub!(/\.jpg"/, ".jpg\").open")
+    buffer.gsub!(/"profile_image"=>"/, '"profile_image"=>Rails.root.join("db/fixtures/uploads/user/')
+    buffer.gsub!(/\.jpg"/, '.jpg").open')
     File.write(target_file, buffer)
 
     # cuisinesテーブル用
-    target_file = Rails.root.join("db/fixtures/21_cuisine.rb")
+    target_file = Rails.root.join('db/fixtures/21_cuisine.rb')
     buffer = File.read(target_file)
 
-    buffer.gsub!(/"main_image"=>"/, "\"main_image\"=>Rails.root.join(\"db/fixtures/uploads/cuisine/")
-    buffer.gsub!(/\.jpg"/, ".jpg\").open")
+    buffer.gsub!(/"main_image"=>"/, '"main_image"=>Rails.root.join("db/fixtures/uploads/cuisine/')
+    buffer.gsub!(/\.jpg"/, '.jpg").open')
 
     # FIXME: 特定の文字列を数値に変換できない
     # enum(cooking_time)

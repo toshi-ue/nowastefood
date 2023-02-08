@@ -26,7 +26,7 @@ gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2'
-gem "net-http"
+gem 'net-http'
 gem 'puma'
 gem 'puma_worker_killer'
 gem 'rails', '~> 6.1.7'
@@ -34,14 +34,14 @@ gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
 gem 'seed-fu'
-gem "slack-notifier"
+gem 'slack-notifier'
 # https://qiita.com/sasakura_870/items/106484f88c857bd9563e#sprockets%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92372%E3%81%AB%E4%B8%8B%E3%81%92%E3%82%8B
 gem 'sprockets', '~> 3.7.2'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -85,7 +85,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem "rspec_junit_formatter"
+  gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'

@@ -7,7 +7,7 @@ class Cuisine < ApplicationRecord
 
   validates :description, presence: true
   validates :genre, inclusion: { in: Cuisine.genres.keys }
-  validates :main_image, presence: { message: "を追加してください" }
+  validates :main_image, presence: { message: 'を追加してください' }
   validates :name, presence: true, uniqueness: true
   validates :status, inclusion: { in: Cuisine.statuses.keys }
 
