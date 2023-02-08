@@ -12,8 +12,8 @@
 
 # [意外なところで使えるMakefile - 無気力生活 (ノ ´ω｀)ノ ~゜](https://gdgd-shinoyu.hatenablog.com/entry/2019/10/22/163601)
 init:
-		docker/build-no-cache
-		@make rails/webpacker
+		@make docker/build-no-cache
+		@make rails/webpacker-compile
 		@make rails/db-setup-development
 
 # https://www.tom08.net/2019-01-17-233258/#:~:text=Pocket-,makefile,-%E3%82%92%E6%9B%B8%E3%81%84
@@ -27,8 +27,22 @@ docker/build-no-cache:
 docker/remove-all:
 		docker compose down --rmi all --volumes --remove-orphans
 
+heroku/deploy:
+		git push heroku `git rev-parse --abbrev-ref HEAD`:main
+
+# https://qiita.com/RyochanUedasan/items/d447cbf2733e389994bb
+heroku/app-restart:
+		heroku restart
+
+# https://teratail.com/questions/111988
+heroku/app-in:
+		heroku run bash
+
+heroku/puma-restart:
+		heroku run bundle exec pumactl restart
+
 rails/bundle:
-		docker compose run --rm web bundle install
+		docker compose run --rm web bundle install -j`getconf _NPROCESSORS_ONLN`
 
 rails/db-drop:
 		docker compose run --rm web rails db:environment:set RAILS_ENV=development
@@ -44,13 +58,18 @@ rails/db-reset:
 		docker compose run --rm web rails db:migrate:reset
 		@make rails/db-setup-development
 
-rails/webpacker:
+rails/webpacker-tmp-clear:
 		docker compose run --rm web bundle exec rails tmp:clear
+
+rails/webpacker-compile:
 		docker compose run --rm web bundle exec rails webpacker:compile
 
 rspec:
 		docker compose run --rm web rspec
 
+test/rspec_local_circle_ci:
+		circleci config process .circleci/config.yml > process.yml
+		circleci local execute -c process.yml rspec
 
 yarn/install:
 		docker compose run --rm web yarn install
