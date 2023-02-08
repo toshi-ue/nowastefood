@@ -38,6 +38,9 @@ heroku/app-restart:
 heroku/app-in:
 		heroku run bash
 
+heroku/logs--tail:
+		heroku logs --tail
+
 heroku/puma-restart:
 		heroku run bundle exec pumactl restart
 

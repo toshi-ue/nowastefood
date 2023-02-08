@@ -22,7 +22,6 @@ AllCops:
   StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
   TargetRubyVersion: 2.7.7
 
-
 Layout/EmptyLines:
   Exclude:
     - "Gemfile"
@@ -39,8 +38,9 @@ Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
     - "config/environments/production.rb"
 
-Lint/UnusedMethodArgument:
-  Enabled: false
+# TODO: 動作確認後に削除する
+# Lint/UnusedMethodArgument:
+#   Enabled: false
 
 # 開発者が感じていたプログラムの 匂い を定量的に判断する
 # Offense count: 2
@@ -49,7 +49,8 @@ Metrics/AbcSize:
   Max: 29
 
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - "lib/tasks/seed_fu_gen.rake"
 
 Metrics/BlockNesting:
   Max: 5
@@ -58,40 +59,32 @@ Metrics/CyclomaticComplexity:
   Exclude:
     - "app/helpers/keywords_helper.rb"
 
+# 削除しない
 Metrics/MethodLength:
   Enabled: false
 
-Metrics/ParameterLists:
-  Max: 12
-
-# 引数の文字数が少ない
-Naming/MethodParameterName:
-  Enabled: false
-
+# 削除しない
 Rails/FilePath:
   Enabled: false
 
+# 削除しない
 Rails/I18nLocaleTexts:
-  Enabled: false
-
-RSpec/ContextWording:
-  Enabled: false
-
-RSpec/ExampleLength:
   Enabled: false
 
 #  capybara固有のメソッドを有効にする
 RSpec/Capybara:
   Enabled: false
 
-RSpec/EmptyLineAfterExample:
+# 削除しない
+RSpec/ContextWording:
   Enabled: false
 
-RSpec/EmptyLineAfterSubject:
+# 削除しない
+# TODO: あとでDefault valueを決める
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexamplelength
+RSpec/ExampleLength:
   Enabled: false
-
-RSpec/FilePath:
-  Enabled: false
+  # Max: 5 (default)
 
 RSpec/InstanceVariable:
   Enabled: false
@@ -126,12 +119,11 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 # クラスにコメントを残さない
+# TODO: 削除しない
 Style/Documentation:
   Enabled: false
 
 # 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
-Style/FrozenStringLiteralComment:
-  Enabled: true
 
 Style/HashLikeCase:
   Exclude:
@@ -154,5 +146,6 @@ Style/StringLiterals:
   # EnforcedStyle: double_quotes
   Enabled: false
 
-# Style/SymbolArray:
-#   EnforcedStyle: brackets
+# TODO: あとで削除する
+Style/SymbolArray:
+  EnforcedStyle: brackets
