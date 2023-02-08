@@ -7,10 +7,10 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
-            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+            <%= link_to 'Home', managers_dashboard_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to '料理レシピ一覧', managers_cuisines_path, {class: "text-muted"} %>
+            <%= link_to '料理レシピ一覧', managers_cuisines_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item active">料理レシピ追加</li>
         </ol>
@@ -24,7 +24,7 @@
       <div class="col-md-6 offset-md-3">
         <div class="card">
           <%= form_with(model: @cuisine, url: managers_cuisines_path, local: true) do |form| %>
-            <%= render 'form', {form: form , cuisine: @cuisine} %>
+            <%= render 'form', { form: form, cuisine: @cuisine } %>
           <% end %>
         </div>
       </div>

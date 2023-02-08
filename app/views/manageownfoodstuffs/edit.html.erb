@@ -15,13 +15,13 @@
       <div class="col-md-6 offset-md-3">
         <%= form_with(model: @foodstuff, url: manageownfoodstuff_path, method: :patch, local: true) do |form| %>
             <%= render 'layouts/flash_message' %>
-            <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
-            <%= render 'form', {form: form , cuisine: @cuisine} %>
+            <%= render 'shared/error_messages', { resource: @foodstuff } if @foodstuff.errors.any? %>
+            <%= render 'form', { form: form, cuisine: @cuisine } %>
             <div class="col-10 offset-1">
-            <%= form.submit "更新する", class: 'btn btn-success btn-block' %>
+            <%= form.submit '更新する', class: 'btn btn-success btn-block' %>
             </div>
             <div class="col-10 offset-1 mt-2">
-              <%= link_to "手順登録へ", new_manageownprocedure_path(cuisine_id: @cuisine.id),  class: "btn btn-outline-secondary btn-block" %>
+              <%= link_to '手順登録へ', new_manageownprocedure_path(cuisine_id: @cuisine.id), class: 'btn btn-outline-secondary btn-block' %>
             </div>
         <% end %>
         <!-- foodstuffs and procedure list -->
@@ -39,7 +39,7 @@
             <% if @foodstuffs.present? %>
               <table id="table-sortable-procedure" class="table table-bordered table-hover mt-3">
                 <tbody>
-                  <%= render partial: "foodstuff", collection: @foodstuffs, as: "foodstuff" %>
+                  <%= render partial: 'foodstuff', collection: @foodstuffs, as: 'foodstuff' %>
                 </tbody>
               </table>
             <% else %>

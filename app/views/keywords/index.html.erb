@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <%= render "shared/flash_messages" %>
+    <%= render 'shared/flash_messages' %>
   </div>
   <div class="col-12 mt-3">
       <span class="h4"><%= title_name(@enum_key) %>のレシピ</span>&nbsp;(<small><%= page_entries_info @cuisines %></small>)
@@ -8,9 +8,9 @@
 </div>
 <div class="row">
   <% if @cuisines.present? %>
-    <%= render partial: "cuisine", collection: @cuisines %>
+    <%= render partial: 'cuisine', collection: @cuisines %>
     <div class="col-sm-12 mt-3 d-flex justify-content-center">
-      <%= paginate @cuisines, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm", nav_class: "d-inline-b" %>
+      <%= paginate @cuisines, theme: 'twitter-bootstrap-4', pagination_class: 'pagination-sm', nav_class: 'd-inline-b' %>
     </div>
   <% else %>
     <div class="col-12">

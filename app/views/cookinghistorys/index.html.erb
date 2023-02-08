@@ -1,7 +1,7 @@
 <div class="content_wrapper">
   <div class="row">
     <div class="col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3 mt-2">
-      <%= render "shared/flash_messages" %>
+      <%= render 'shared/flash_messages' %>
     </div>
   </div>
   <div class="row">
@@ -20,15 +20,14 @@
             </tr>
           </thead>
           <tbody id="favorites-list">
-            <%= render partial: "cooking_history", collection: @cookinghistorys, as: "cooking_history" %>
+            <%= render partial: 'cooking_history', collection: @cookinghistorys, as: 'cooking_history' %>
           </tbody>
         </table>
       </div>
       <div class="col-sm-12 col-md-7 d-flex justify-content-center">
         <%= paginate @cookinghistorys, theme: 'twitter-bootstrap-4',
-                              pagination_class: "pagination-sm",
-                              nav_class: "d-inline-b"
-        %>
+                                       pagination_class: 'pagination-sm',
+                                       nav_class: 'd-inline-b' %>
     </div>
     <% else %>
     <div class="col-12">

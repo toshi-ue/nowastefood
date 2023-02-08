@@ -10,13 +10,13 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
-            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+            <%= link_to 'Home', managers_dashboard_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to '料理レシピ(データ一覧)', managers_cuisines_path, {class: "text-muted"} %>
+            <%= link_to '料理レシピ(データ一覧)', managers_cuisines_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to "#{@foodstuff.cuisine.name}", managers_cuisine_path(@foodstuff.cuisine.id), {class: "text-muted"} %>
+            <%= link_to @foodstuff.cuisine.name.to_s, managers_cuisine_path(@foodstuff.cuisine.id), { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item active">食材の変更</li>
         </ol>
@@ -33,14 +33,14 @@
           <%= form_with(model: @foodstuff, url: managers_foodstuff_path, method: :patch, local: true) do |form| %>
             <div class="card-body">
               <%= render 'layouts/flash_message' %>
-              <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
+              <%= render 'shared/error_messages', { resource: @foodstuff } if @foodstuff.errors.any? %>
               <%# HACK: 書き方を確認(怪しい、foodstuffが必要な気がする) %>
-              <%= render 'form', {form: form , cuisine: @cuisine} %>
+              <%= render 'form', { form: form, cuisine: @cuisine } %>
             </div>
             <div class="card-footer">
-              <%= form.submit "変更する", class: 'btn btn-secondary' %>
+              <%= form.submit '変更する', class: 'btn btn-secondary' %>
               <div class="float-right">
-                <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @foodstuff.cuisine_id),  class: "btn btn-secondary" %>
+                <%= link_to '手順登録へ', new_managers_procedure_path(cuisine_id: @foodstuff.cuisine_id), class: 'btn btn-secondary' %>
               </div>
             </div>
           <% end %>
@@ -59,7 +59,7 @@
                   <% if @registered_foodstuffs.present? %>
                     <table class="table table-bordered table-hover">
                       <tbody>
-                        <%= render partial: "foodstuff", collection: @registered_foodstuffs, as: "foodstuff" %>
+                        <%= render partial: 'foodstuff', collection: @registered_foodstuffs, as: 'foodstuff' %>
                       </tbody>
                     </table>
                   <% else %>

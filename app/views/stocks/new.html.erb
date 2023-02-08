@@ -3,15 +3,15 @@
     <div class="page-title text-center">(購入)食材を追加</div>
   </div>
   <div class="col-10 offset-1 col-md-6 offset-md-3">
-    <%= render "shared/flash_messages" %>
-    <%= render 'shared/error_messages', {resource: @stock} if @stock.errors.any? %>
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', { resource: @stock } if @stock.errors.any? %>
   </div>
   <div class="col-10 offset-1 col-md-6 offset-md-3">
   <%= form_with(model: @stock, url: stocks_path, local: true) do |form| %>
     <div class="form-group row">
       <label for="keyword" id="label_keyword" class="col-12 text-center">食材名</label>
       <div class="col-12 col-md-6 offset-md-3">
-        <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, {include_blank: ''}, {class: "form-control stock-rawmaterial-search"} %>
+        <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, { include_blank: '' }, { class: 'form-control stock-rawmaterial-search' } %>
       </div>
     </div>
     <div class="form-group row">
@@ -33,6 +33,6 @@
   <% end %>
   </div>
   <div class="my-2 text-center">
-    <p><%= link_to "戻る", 'javascript:history.back()', class: 'text-black-50' %></p>
+    <p><%= link_to '戻る', 'javascript:history.back()', class: 'text-black-50' %></p>
   </div>
 </div>

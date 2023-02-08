@@ -5,11 +5,11 @@
 </div>
 <div class="form-group">
   <small>※</small>&nbsp;<%= form.label :genre %>
-  <%= form.select(:genre, Cuisine.genres.map{|k, _v| [t("activerecord.attributes.cuisine.genres.#{k}"), k]}, {required: true}, { class: 'form-control'}) %>
+  <%= form.select(:genre, Cuisine.genres.map { |k, _v| [t("activerecord.attributes.cuisine.genres.#{k}"), k] }, { required: true }, { class: 'form-control' }) %>
 </div>
 <div class="form-group">
   <small>※</small>&nbsp;<%= form.label :cooking_time %>
-  <%= form.select :cooking_time, options_for_select(Cuisine.cooking_times.map { |k, _v| [t("activerecord.attributes.cuisine.cooking_times.#{k}"), k]}),{required: true}, { class: 'form-control' } %>
+  <%= form.select :cooking_time, options_for_select(Cuisine.cooking_times.map { |k, _v| [t("activerecord.attributes.cuisine.cooking_times.#{k}"), k] }), { required: true }, { class: 'form-control' } %>
 </div>
 <div class="form-group">
   <small>※</small>&nbsp;<%= form.label :description %>
@@ -20,14 +20,14 @@
   <% if cuisine.main_image.blank? %>
     <div class="cuisine-main-image">
       <div>
-        <%= image_pack_tag 'no_image_100x100.jpg', id: 'no_cuisine_image', class: "d-block mx-auto my-2 img-fluid" %>
+        <%= image_pack_tag 'no_image_100x100.jpg', id: 'no_cuisine_image', class: 'd-block mx-auto my-2 img-fluid' %>
       </div>
       <div class="input-group">
-        <input type="text" id="image_name" class="form-control" readonly="">
+        <input type="text" id="image_name" class="form-control" autocomplete="off" readonly="">
         <label class="input-group-btn">
           <span class="btn btn-default">
             ファイルを選択
-            <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display: none;" %>
+            <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: 'img-file', style: 'display: none;' %>
           </span>
         </label>
       </div>
@@ -35,16 +35,16 @@
   <% else %>
     <div class="cuisine-main-image text-center">
       <div>
-        <%= image_tag cuisine.main_image.url, class: "img-fluid" %>
+        <%= image_tag cuisine.main_image.url, class: 'img-fluid' %>
       </div>
     </div>
     <%= form.hidden_field :main_image_cache %>
     <div class="input-group mt-3">
-      <input type="text" id="image_name" class="form-control" readonly="">
+      <input type="text" id="image_name" class="form-control" autocomplete="off" readonly="">
       <label class="input-group-btn">
         <span class="btn btn-default">
           ファイルを選択
-          <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: "img-file", style: "display:none;" %>
+          <%= form.file_field :main_image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: 'img-file', style: 'display:none;' %>
         </span>
       </label>
     </div>

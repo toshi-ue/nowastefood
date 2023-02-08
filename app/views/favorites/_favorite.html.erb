@@ -1,7 +1,7 @@
-<tr class=<%= 'table-success' if @cuisines.present? && (@cuisines.ids).include?(favorite.cuisine.id) %>>
+<tr class="<%= 'table-success' if @cuisines.present? && @cuisines.ids.include?(favorite.cuisine.id) %>">
   <td class="text-center align-middle">
     <%= link_to cuisine_path(favorite.cuisine) do %>
-      <%= image_tag favorite.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{favorite.cuisine.name}" %>
+      <%= image_tag favorite.cuisine.main_image.url, id: 'cuisine_img', class: 'img-fluid', width: '100', alt: favorite.cuisine.name.to_s %>
     <% end %>
   </td>
   <td class="text-break align-middle">
@@ -10,13 +10,13 @@
   <td class="text-center align-middle">
     <div>
       <% if (@cuisines.ids).include?(favorite.cuisine.id) %>
-        <%= link_to remove_todaysmenu_from_favorite_path(favorite.cuisine), class: 'remove-todaysmenus-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '今日の献立から削除する', method: :delete, local: true do %>
+        <%= link_to remove_todaysmenu_from_favorite_path(favorite.cuisine), class: 'remove-todaysmenus-tooltip', data: { toggle: 'tooltip', placement: 'top' }, title: '今日の献立から削除する', method: :delete, local: true do %>
           <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
             <i class="fas fa-eraser"></i>
           </button>
         <% end %>
       <% else %>
-        <%= link_to add_todaysmenu_from_favorite_path(favorite.cuisine), class: 'add-todaysmenu-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '今日の献立に追加する', method: :post, local: true do %>
+        <%= link_to add_todaysmenu_from_favorite_path(favorite.cuisine), class: 'add-todaysmenu-tooltip', data: { toggle: 'tooltip', placement: 'top' }, title: '今日の献立に追加する', method: :post, local: true do %>
           <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
             <i class="fas fa-concierge-bell"></i>
           </button>
@@ -27,7 +27,7 @@
   </td>
   <td class="text-center align-middle">
     <div class="text-center">
-      <%= link_to favorite_path(favorite.id), class: 'delete-favorite-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: 'お気に入りから削除する', method: :delete, local: true do %>
+      <%= link_to favorite_path(favorite.id), class: 'delete-favorite-tooltip', data: { toggle: 'tooltip', placement: 'top' }, title: 'お気に入りから削除する', method: :delete, local: true do %>
       <button class="btn btn-outline-secondary btn-delete-from-today" type="button">
         <i class="far fa-trash-alt"></i>
       </button>

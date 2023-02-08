@@ -12,13 +12,13 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
-            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+            <%= link_to 'Home', managers_dashboard_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to '料理レシピ', managers_cuisines_path, {class: "text-muted"} %>
+            <%= link_to '料理レシピ', managers_cuisines_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to "#{@cuisine.name}(データ一覧)", managers_cuisine_path(@cuisine.id), {class: "text-muted"} %>
+            <%= link_to "#{@cuisine.name}(データ一覧)", managers_cuisine_path(@cuisine.id), { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item active">食材の追加</li>
         </ol>
@@ -35,13 +35,13 @@
           <%= form_with(model: @foodstuff, url: managers_foodstuffs_path, method: :post, local: true) do |form| %>
             <div class="card-body">
               <%= render 'layouts/flash_message' %>
-              <%= render 'shared/error_messages', {resource: @foodstuff} if @foodstuff.errors.any? %>
-              <%= render 'form', {form: form , cuisine: @cuisine} %>
+              <%= render 'shared/error_messages', { resource: @foodstuff } if @foodstuff.errors.any? %>
+              <%= render 'form', { form: form, cuisine: @cuisine } %>
             </div>
             <div class="card-footer">
-              <%= form.submit "追加する", class: 'btn btn-secondary' %>
+              <%= form.submit '追加する', class: 'btn btn-secondary' %>
               <div class="float-right">
-                <%= link_to "手順登録へ", new_managers_procedure_path(cuisine_id: @cuisine.id),  class: "btn btn-secondary" %>
+                <%= link_to '手順登録へ', new_managers_procedure_path(cuisine_id: @cuisine.id), class: 'btn btn-secondary' %>
               </div>
             </div>
           <% end %>
@@ -60,7 +60,7 @@
                   <% if @registered_foodstuffs.present? %>
                     <table id="table-sortable-procedure" class="table table-bordered table-hover">
                       <tbody>
-                        <%= render partial: "foodstuff", collection: @registered_foodstuffs, as: "foodstuff" %>
+                        <%= render partial: 'foodstuff', collection: @registered_foodstuffs, as: 'foodstuff' %>
                       </tbody>
                     </table>
                   <% else %>

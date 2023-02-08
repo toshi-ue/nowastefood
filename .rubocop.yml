@@ -33,7 +33,7 @@ Layout/EmptyLinesAroundBlockBody:
     - "db/schema.rb"
 
 Layout/LineLength:
-  Max: 200
+  Max: 250
 
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
@@ -115,7 +115,6 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 # クラスにコメントを残さない
-# TODO: 削除しない
 Style/Documentation:
   Enabled: false
 

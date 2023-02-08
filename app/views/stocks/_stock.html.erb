@@ -1,6 +1,6 @@
 <tr class='<%= change_back_color(stock, @rawmaterials_and_quantity_will_be_consumed, left_days(stock.rotted_at)) %>'>
   <td class='align-middle text-center'>
-    <%= stock.rawmaterial.name %><br/>
+    <%= stock.rawmaterial.name %><br />
     (<%= stock.quantity %><%= stock.rawmaterial.unit.name %>)
   </td>
 
@@ -11,13 +11,13 @@
   <td class='align-middle text-center'>
     <% if @css_name != 'will-consume' %>
     <div>
-      <%= link_to auto_today_create_stocks_path(rawmaterial_id: stock.rawmaterial_id, quantity: stock.quantity) , class: 'page-link text-dark stocks-tooltip', data: {toggle: 'tooltip', placement: 'top'}, title: '食材から消費するレシピを追加する', role: 'button' do %>
+      <%= link_to auto_today_create_stocks_path(rawmaterial_id: stock.rawmaterial_id, quantity: stock.quantity), class: 'page-link text-dark stocks-tooltip', data: { toggle: 'tooltip', placement: 'top' }, title: '食材から消費するレシピを追加する', role: 'button' do %>
         <%= image_pack_tag 'leaf_16_png.png' %>
       <% end %>
     </div>
     <% end %>
     <div class='mt-2'>
-      <%= link_to stock_path(stock.id),  class: 'page-link text-dark', role: 'button', method: :delete do %>
+      <%= link_to stock_path(stock.id), class: 'page-link text-dark', role: 'button', method: :delete do %>
       <i class='far fa-trash-alt'></i>
       <% end %>
     </div>

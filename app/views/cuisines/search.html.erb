@@ -7,9 +7,9 @@
     </div>
   <% end %>
   <% if @cuisines.present? %>
-    <%= render partial: "cuisine", collection: @cuisines %>
+    <%= render partial: 'cuisine', collection: @cuisines %>
     <div class="col-12 px-2 mt-2 d-flex justify-content-center">
-      <%= paginate @cuisines, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm", nav_class: "d-inline-b" %>
+      <%= paginate @cuisines, theme: 'twitter-bootstrap-4', pagination_class: 'pagination-sm', nav_class: 'd-inline-b' %>
     </div>
     <div class="col-8 offset-2 text-center mt-2">
       <%= link_to 'もどる', 'javascript:history.back()', class: 'text-black-50' %>
@@ -31,5 +31,5 @@
         </div>
       </div>
     </div>
-  <% end%>
+  <% end %>
 </div>

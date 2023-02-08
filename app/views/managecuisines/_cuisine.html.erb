@@ -1,7 +1,7 @@
 <tr>
   <td class="img-cuisine text-center align-middle">
     <%= link_to managecuisine_path(cuisine.id) do %>
-    <%= image_tag cuisine.main_image.url, class: 'cuisine-img',alt: "#{cuisine.name}" %>
+    <%= image_tag cuisine.main_image.url, class: 'cuisine-img', alt: cuisine.name.to_s %>
     <% end %>
   </td>
   <td class="detail-cuisine">

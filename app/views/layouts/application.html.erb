@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= favicon_pack_tag('favicon.ico') %>
-    <title><%= content_for?(:html_title) ? yield(:html_title) + '  |  ' + @app_name : @app_name %></title>
+    <title><%= content_for?(:html_title) ? "#{yield(:html_title)}  |  #{@app_name}" : @app_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag    'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+  <body id="<%= action_name %>-<%= controller_path.tr('/', '-') %>" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
   <%= render 'shared/user_navbar' %>
       <div class="container-lg">
         <main>
@@ -18,7 +18,7 @@
         </main>
         <footer class="page-footer font-small">
           <div class="footer-copyright text-center py-2">
-            <%= link_to("© 2021 #{@app_name}", root_path, { class: "text-secondary"}) %>
+            <%= link_to("© 2021 #{@app_name}", root_path, { class: 'text-secondary' }) %>
           </div>
         </footer>
       </div>
