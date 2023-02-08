@@ -20,6 +20,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
   libpq-dev \
   vim \
   nodejs\
+  npm \
   yarn
 
 COPY Gemfile Gemfile.lock /webapp/
