@@ -6,7 +6,6 @@ require:
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.7.7
   Exclude:
     - "config.ru"
     - "bin/**"
@@ -20,16 +19,26 @@ AllCops:
     - "vendor/**/*"
     - "Gemfile.lock"
   NewCops: enable
+  StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  TargetRubyVersion: 2.7.7
+
+
+Layout/EmptyLines:
+  Exclude:
+    - "Gemfile"
+    - "bin/setup"
 
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - "db/schema.rb"
 
-# 1行が長すぎる
 Layout/LineLength:
   Max: 200
 
-# 未使用の引数チェック
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - "config/environments/production.rb"
+
 Lint/UnusedMethodArgument:
   Enabled: false
 
@@ -39,19 +48,19 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 29
 
-# Metrics/BlockLength: Block has too many lines.　を無視
 Metrics/BlockLength:
   Enabled: false
 
-# ネストを許可する深さ
 Metrics/BlockNesting:
   Max: 5
 
-# メソッドの行数が長すぎる
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "app/helpers/keywords_helper.rb"
+
 Metrics/MethodLength:
   Enabled: false
 
-# 引数の数が多すぎる
 Metrics/ParameterLists:
   Max: 12
 
@@ -59,16 +68,11 @@ Metrics/ParameterLists:
 Naming/MethodParameterName:
   Enabled: false
 
-# migration高速化のための設定
-# テーブル作成、テーブルカラム編集
-Rails/BulkChangeTable:
-  Enabled: false
-
 Rails/FilePath:
   Enabled: false
 
-RSpec/AlignLeftLetBrace:
-  Enabled: true
+Rails/I18nLocaleTexts:
+  Enabled: false
 
 RSpec/ContextWording:
   Enabled: false
@@ -129,11 +133,26 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: true
 
+Style/HashLikeCase:
+  Exclude:
+    - "app/helpers/keywords_helper.rb"
+
+Style/MixinUsage:
+  Exclude:
+    - "bin/setup"
+    - "bin/update"
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - "config/spring.rb"
+
 Style/RedundantSelf:
   Enabled: false
 
+# TODO: 最後にコメントアウト - Enableにする（好みはsingle_quotes）
 Style/StringLiterals:
+  # EnforcedStyle: double_quotes
   Enabled: false
 
-Style/SymbolArray:
-  EnforcedStyle: brackets
+# Style/SymbolArray:
+#   EnforcedStyle: brackets
