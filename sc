@@ -244,7 +244,12 @@ rspec_cmd() {
 }
 
 rubocop_cmd() {
-  bundle_exec rubocop $*
+  # https://blog.solunita.net/posts/relean-rubocop-options/
+  if [[ "$1" == *-a* ]] || [[ "$1" == *-A* ]]; then
+    bundle_exec rubocop -DES $* --force-exclusion
+  else
+    bundle_exec rubocop -DESP $* --force-exclusion
+  fi
 }
 
 run_app() {
