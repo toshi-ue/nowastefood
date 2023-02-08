@@ -14,17 +14,17 @@ release:
   # https://stackoverflow.com/questions/57719701/is-this-the-right-way-to-run-a-release-command-for-a-heroku-review-app
   image: web
   command:
-    - ./deployment-heroku-task.sh
-    # - mkdir -p tmp/pids
-    # - mkdir -p tmp/sockets
-    # - mv config/environments/production.heroku.rb config/environments/production.rb
-    # - mv config/database.heroku.yml config/database.yml
-    # - mv config/puma.heroku.rb config/puma.rb
-    # # - bundle exec rails db:create RAILS_ENV=production
-    # - bundle exec rails db:migrate RAILS_ENV=production
-    # - bundle exec rails db:seed_fu RAILS_ENV=production
-    # - bundle exec rails db:migrate RAILS_ENV=production
-    # - bundle exec rails webpacker:compile RAILS_ENV=production
+    # - ./deployment-heroku-task.sh
+    - mkdir -p tmp/pids
+    - mkdir -p tmp/sockets
+    - mv config/environments/production.heroku.rb config/environments/production.rb
+    - mv config/database.heroku.yml config/database.yml
+    - mv config/puma.heroku.rb config/puma.rb
+    # - bundle exec rails db:create RAILS_ENV=production
+    - bundle exec rails db:migrate RAILS_ENV=production
+    - bundle exec rails db:seed_fu RAILS_ENV=production
+    - bundle exec rails db:migrate RAILS_ENV=production
+    - bundle exec rails webpacker:compile RAILS_ENV=production
     # # https://qiita.com/daiki421/items/8d3149e075435e213bfa
     # # - bundle exec pumactl restart
 run:
