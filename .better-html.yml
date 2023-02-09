@@ -1,5 +1,5 @@
 ---
 allow_single_quoted_attributes: false
 allow_unquoted_attributes: false
-partial_attribute_name_pattern: -> {/\A[a-zA-Z0-9\-\:\_]+\z/}
-partial_tag_name_pattern: -> {/\A[a-zA-Z0-9\-\:\_]+\z/}
+partial_attribute_name_pattern: -> { /\A[a-zA-Z0-9\-\:\_]+\z/ }
+partial_tag_name_pattern: -> { /\A[a-zA-Z0-9\-\:\_]+\z/ }
