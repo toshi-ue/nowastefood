@@ -5,7 +5,7 @@
       <p class="text-muted text-center mt-2">
         <%= link_to 'ゲストユーザーでログイン', login_as_guest_user_path, method: :post, class: 'btn btn-warning btn-block text-white' %>
       </p>
-      <hr>
+      <hr />
       <%= render 'shared/flash_messages' %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">

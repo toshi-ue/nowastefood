@@ -12,7 +12,7 @@
           <%= render 'shared/flash_messages' %>
           <%= render 'shared/error_messages', { resource: @user } if @user.errors.any? %>
           <h4 class="text-center">ユーザー情報</h4>
-          <hr>
+          <hr />
           <%= form_with(model: @user, url: update_profile_path, local: true, method: :put) do |f| %>
             <div class="form-group">
               <% unless @user.profile_image.blank? %>

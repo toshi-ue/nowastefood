@@ -12,7 +12,7 @@
           <%= render 'shared/flash_messages' %>
           <%= render 'shared/error_messages', { resource: @user } if @user.errors.any? %>
           <h4 class="text-center">パスワードの変更</h4>
-          <hr>
+          <hr />
           <div id="something">
             <%= form_with(model: @user, url: password_path, method: :put, local: true) do |f| %>
               <div class="form-group">
