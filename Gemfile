@@ -7,7 +7,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.7'
 
 gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
-gem 'better_html'
+# TODO: あとで有効にする
+# gem 'better_html'
 gem 'bootsnap', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
@@ -44,6 +45,7 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'erb_lint', require: false
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -56,7 +58,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'erb_lint', require: false
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'

@@ -90,9 +90,9 @@ jobs:
       - run:
           name: Database seed data by seed_fu
           command: 'bundle exec rails db:seed_fu RAILS_ENV=test'
-      - run:
-          name: Change erb-lint setting
-          command: 'mv .erb-lint-rspec.yml .erb-lint.yml'
+      # - run:
+      #     name: Change erb-lint setting
+      #     command: 'mv .erb-lint-rspec.yml .erb-lint.yml'
       - ruby/rspec-test:
           include: spec/**/*_spec.rb
 workflows:
