@@ -44,6 +44,7 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'erb_lint', require: false
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -56,7 +57,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'erb_lint', require: false
   gem 'foreman'
   gem 'letter_opener_web'
   gem 'listen'
