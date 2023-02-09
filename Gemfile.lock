@@ -195,6 +195,7 @@ GEM
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
+    htmlbeautifier (1.4.2)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -529,6 +530,7 @@ DEPENDENCIES
   flog
   fog-aws
   foreman
+  htmlbeautifier
   jbuilder
   kaminari
   launchy
