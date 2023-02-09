@@ -507,7 +507,6 @@ DEPENDENCIES
   acts-as-taggable-on (~> 8.0)
   awesome_print
   better_errors
-  better_html
   binding_of_caller
   bootsnap
   bootstrap4-kaminari-views
