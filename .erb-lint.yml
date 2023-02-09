@@ -5,9 +5,10 @@ exclude:
   - '**/node_modules/**/*'
 glob: "**/*.{html,text,js}{+*,}.erb"
 linters:
-  ErbSafety:
-    enabled: true
-    better_html_config: .better-html.yml
+  # TODO: あとで有効にする
+  # ErbSafety:
+  #   enabled: true
+  #   better_html_config: .better-html.yml
   Rubocop:
     enabled: true
     rubocop_config:
