@@ -10,11 +10,11 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy, inverse_of: :user
   has_many :rawmaterials, dependent: :nullify
-  has_many :owner_cuisines, class_name: "Cuisine", dependent: :nullify
+  has_many :owner_cuisines, class_name: 'Cuisine', dependent: :nullify
   has_many :todaysmenus, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :cuisines, dependent: :nullify
-  has_many :todaysmenu_cuisines, through: :todaysmenus, class_name: "Cuisine"
+  has_many :todaysmenu_cuisines, through: :todaysmenus, class_name: 'Cuisine'
 
   mount_uploader :profile_image, ProfileImageUploader
 
@@ -27,12 +27,12 @@ class User < ApplicationRecord
   end
 
   def self.create_account_as_guest
-    require "open-uri"
+    require 'open-uri'
     user_name = EnFaker::Name.unique.first_name
     # FIXME: openを使用するとセキュリティリスクがある？
     #   rubocopで The use of `Kernel#open` is a serious security risk. と表示される(Security/Open)
     # rubocop:disable Security/Open
-    avatar = open(Faker::Avatar.image(slug: user_name, size: "150x150", format: "jpg"))
+    avatar = open(Faker::Avatar.image(slug: user_name, size: '150x150', format: 'jpg'))
     avatar.close
     # rubocop:enable Security/Open
 

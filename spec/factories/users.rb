@@ -15,7 +15,7 @@ FactoryBot.define do
     confirmed_at { Time.zone.today - 1.day }
     # image_file.close
     trait :with_avatar do
-      profile_image { Rack::Test::UploadedFile.new("#{Rails.root}/app/javascript/images/test.jpg", "image/jpeg") }
+      profile_image { Rack::Test::UploadedFile.new("#{Rails.root}/app/javascript/images/test.jpg", 'image/jpeg') }
     end
   end
 end

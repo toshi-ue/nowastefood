@@ -1,11 +1,11 @@
 <div class="form-group col-10 offset-1">
   <label for="rawmaterial_id" class="col-12">食材</label>
-  <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, {include_blank: '選択して下さい'}, {autofocus: true, class: "col-12 offset-0 select_foodstuff form-control"} %>
+  <%= form.collection_select :rawmaterial_id, @rawmaterials, :id, :name, { include_blank: '選択して下さい' }, { autofocus: true, class: 'col-12 offset-0 select_foodstuff form-control' } %>
 </div>
 <div class="form-group col-10 offset-1">
-  <%= form.label :quantity, class: "col-12" %>
+  <%= form.label :quantity, class: 'col-12' %>
   <div class="input-group">
-    <%= form.text_field :quantity, id: "foodstuff_quantity", class: "form-control" %>
+    <%= form.text_field :quantity, id: 'foodstuff_quantity', class: 'form-control' %>
     <div class="input-group-prepend">
       <div class="input-group-text" id="rawmaterial_measure_unit">
         <% if @rawmaterial.present? %>
@@ -16,13 +16,13 @@
   </div>
   <div class="ambiguous-value d-flex justify-content-around mt-2 mb-4">
     <div>
-      <input type="radio" name="rough_quantity" id="proper" value="適量">適量
+      <input type="radio" name="rough_quantity" id="proper" value="適量" />適量
     </div>
     <div>
-      <input type="radio" name="rough_quantity" id="little" value="少々">少々
+      <input type="radio" name="rough_quantity" id="little" value="少々" />少々
     </div>
     <div>
-      <input type="radio" name="rough_quantity" id="asyoulike" value="お好みで">お好みで
+      <input type="radio" name="rough_quantity" id="asyoulike" value="お好みで" />お好みで
     </div>
   </div>
   <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, value: @cuisine.id %>

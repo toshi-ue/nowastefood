@@ -2,8 +2,8 @@
 
 class ManageownproceduresController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_procedure, only: [:edit, :update, :destroy]
-  before_action :set_and_check_cuisine, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_procedure, only: %i[edit update destroy]
+  before_action :set_and_check_cuisine, only: %i[new create edit update destroy]
 
   def new
     extract_instances(@cuisine)
@@ -17,7 +17,7 @@ class ManageownproceduresController < ApplicationController
   def create
     @procedure = Procedure.new(procedure_params)
     if @procedure.save
-      redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "手順が追加されました" }
+      redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: '手順が追加されました' }
     else
       @cuisine = Cuisine.find(@procedure.cuisine_id)
       extract_instances(@cuisine)
@@ -27,7 +27,7 @@ class ManageownproceduresController < ApplicationController
 
   def update
     if @procedure.update(procedure_params)
-      redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "変更されました" }
+      redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: '変更されました' }
     else
       @cuisine = Cuisine.find(@procedure.cuisine_id)
       extract_instances(@cuisine)
@@ -38,7 +38,7 @@ class ManageownproceduresController < ApplicationController
 
   def destroy
     @procedure.destroy
-    redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: "手順が1つ削除されました" }
+    redirect_to new_manageownprocedure_path(cuisine_id: @procedure.cuisine_id), flash: { notice: '手順が1つ削除されました' }
   end
 
   private

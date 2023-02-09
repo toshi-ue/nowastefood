@@ -1,15 +1,15 @@
 <div class="col-10 offset-1  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
   <h3 class="text-center">ログイン</h3>
-  <%= render "layouts/flash_message" %>
+  <%= render 'layouts/flash_message' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+      <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
     </div>
 
     <% if devise_mapping.rememberable? %>
@@ -20,15 +20,15 @@
     <% end %>
 
     <div class='actions text-center my-2'>
-      <%= f.submit "ログイン", class: 'btn btn-outline-secondary btn-block'%>
+      <%= f.submit 'ログイン', class: 'btn btn-outline-secondary btn-block' %>
     </div>
   <% end %>
-  <hr>
+  <hr />
   <p class="text-muted text-center">
-    <%= link_to 'ゲスト管理者でログイン', login_as_guest_manager_path, method: :post, class: "btn btn-secondary btn-block text-white" %>
+    <%= link_to 'ゲスト管理者でログイン', login_as_guest_manager_path, method: :post, class: 'btn btn-secondary btn-block text-white' %>
   </p>
-  <hr>
+  <hr />
   <p class="text-muted text-center">
-    <%= link_to 'トップページへ移動', root_path, class: "btn btn-info btn-block" %>
+    <%= link_to 'トップページへ移動', root_path, class: 'btn btn-info btn-block' %>
   </p>
 </div>

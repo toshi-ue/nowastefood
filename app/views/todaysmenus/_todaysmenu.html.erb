@@ -1,7 +1,7 @@
 <tr>
   <td class="text-center align-middle" style='width: 30%;'>
     <%= link_to cuisine_path(todaysmenu.cuisine) do %>
-      <%= image_tag todaysmenu.cuisine.main_image.url, id: "cuisine_img", class: 'img-fluid', width: "100",alt: "#{todaysmenu.cuisine.name}" %>
+      <%= image_tag todaysmenu.cuisine.main_image.url, id: 'cuisine_img', class: 'img-fluid', width: '100', alt: todaysmenu.cuisine.name.to_s %>
     <% end %>
   </td>
   <td class="align-middle">
@@ -9,10 +9,9 @@
     <div class="d-flex float-right">
       <%= form_with model: todaysmenu, url: todaysmenu_path(todaysmenu.id), method: :put do |f| %>
         <%= f.select :serving_count,
-              serving_count_num(todaysmenu),
-              {selected: todaysmenu.serving_count},
-              { class: "form-control", "data-id": todaysmenu.id, "data-cuisine-id": todaysmenu.cuisine_id, "data-user-id": current_user.id}
-        %>
+                     serving_count_num(todaysmenu),
+                     { selected: todaysmenu.serving_count },
+                     { class: 'form-control', 'data-id': todaysmenu.id, 'data-cuisine-id': todaysmenu.cuisine_id, 'data-user-id': current_user.id } %>
       <% end %>
       <%= link_to todaysmenu_path(todaysmenu.id), method: :delete do %>
         <button class='ml-3 btn btn-outline-secondary' type="button">

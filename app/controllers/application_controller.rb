@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   before_action :set_app_name
+  before_action :set_current_page
   before_action :set_search_query
   before_action :store_user_location!, if: :storable_location?
 
@@ -14,10 +15,10 @@ class ApplicationController < ActionController::Base
       render file: Rails.public_path.join('404.html'), status: :not_found, layout: false, content_type: 'text/html'
     end
 
-    def render500(e)
-      ExceptionNotifier.notify_exception(e, env: request.env, data: { message: 'error' })
-      logger.error(e.message)
-      logger.error(e.backtrace.join("\n"))
+    def render500(error)
+      ExceptionNotifier.notify_exception(error, env: request.env, data: { message: 'error' })
+      logger.error(error.message)
+      logger.error(error.backtrace.join("\n"))
       render file: Rails.public_path.join('500.html'), status: :internal_server_error, layout: false, content_type: 'text/html'
     end
   end
@@ -25,20 +26,26 @@ class ApplicationController < ActionController::Base
   def check_owner(owner, login_user)
     return unless owner.id != login_user.id
 
-    flash[:alert] = "該当するレシピはオーナーのみ変更できます"
+    flash[:alert] = '該当するレシピはオーナーのみ変更できます'
     redirect_back(fallback_location: root_path)
   end
 
   def set_app_name
-    @app_name = "NoWasteFood"
+    @app_name = 'NoWasteFood'
+  end
+
+  def set_current_page
+    # binding.pry
+    # @current_page = "#{controller.controller_path}##{controller.action_name}"
+    @current_page = "#{controller_path}##{action_name}"
   end
 
   def set_search_query
     search_params = params[:q]
     if search_params.present?
-      if search_params["name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont"].present?
+      if search_params['name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont'].present?
         @search = Cuisine.ransack(search_params)
-        @search_word = search_params["name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont"]
+        @search_word = search_params['name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont']
       else
         @search = Cuisine.none.ransack(search_params)
         @search_word = nil

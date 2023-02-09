@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col">
-    <%= render "shared/flash_messages" %>
+    <%= render 'shared/flash_messages' %>
   </div>
 </div>
 <div class="keyword row mt-2">
   <div class="col-12">
-    <%= render "keywords" %>
+    <%= render 'keywords' %>
   </div>
 </div>
 <div class="row mt-3">
@@ -18,7 +18,7 @@
 </div>
 <div class="swiper-container js-swiper">
   <div class="no-gutters swiper-wrapper">
-    <%= render partial: "cuisine", collection: @japanese_style_cuisines, as: "cuisine" %>
+    <%= render partial: 'cuisine', collection: @japanese_style_cuisines, as: 'cuisine' %>
   </div>
   <div class="swiper-button-prev js-swiper-button-prev"></div>
   <div class="swiper-button-next js-swiper-button-next"></div>
@@ -34,7 +34,7 @@
 </div>
 <div class="swiper-container js-swiper">
   <div class="no-gutters swiper-wrapper">
-    <%= render partial: "cuisine", collection: @western_style_cuisines, as: "cuisine" %>
+    <%= render partial: 'cuisine', collection: @western_style_cuisines, as: 'cuisine' %>
   </div>
   <div class="swiper-button-prev js-swiper-button-prev"></div>
   <div class="swiper-button-next js-swiper-button-next"></div>
@@ -50,7 +50,7 @@
 </div>
 <div class="swiper-container js-swiper">
   <div class="no-gutters swiper-wrapper">
-    <%= render partial: "cuisine", collection: @chinese_style_cuisines, as: "cuisine" %>
+    <%= render partial: 'cuisine', collection: @chinese_style_cuisines, as: 'cuisine' %>
   </div>
   <div class="swiper-button-prev js-swiper-button-prev"></div>
   <div class="swiper-button-next js-swiper-button-next"></div>
@@ -66,7 +66,7 @@
   </div>
   <div class="swiper-container js-swiper">
   <div class="no-gutters swiper-wrapper">
-    <%= render partial: "cuisine", collection: @favorite_cuisines, as: "cuisine" %>
+    <%= render partial: 'cuisine', collection: @favorite_cuisines, as: 'cuisine' %>
   </div>
   <div class="swiper-button-prev js-swiper-button-prev"></div>
   <div class="swiper-button-next js-swiper-button-next"></div>

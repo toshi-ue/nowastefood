@@ -5,7 +5,7 @@ class CookinghistorysController < ApplicationController
 
   def index
     @cuisine_ids_already_in_todaysmenus = current_user.todaysmenus.not_cooked.search_in_today.pluck(:cuisine_id)
-    @cookinghistorys = current_user.todaysmenus.includes(:cuisine).cooked.order(created_at: "DESC")
+    @cookinghistorys = current_user.todaysmenus.includes(:cuisine).cooked.order(created_at: 'DESC')
     @cookinghistorys = @cookinghistorys.page(params[:page]).per(20)
   end
 

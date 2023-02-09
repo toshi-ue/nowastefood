@@ -12,20 +12,20 @@
   </style>
 </head>
 <body>
-  <p><%= @contact.user_name %> 様<br/></p>
+  <p><%= @contact.user_name %> 様<br /></p>
   <p>以下のお問い合わせ内容を管理者へ送信しました。</p>
   <p>管理者から回答があるまでしばらくお待ちください</p>
   <p>
-    【種別】<br/>
-    <%= @contact.category_i18n %><br/>
+    【種別】<br />
+    <%= @contact.category_i18n %><br />
   </p>
   <p>
-    【用件】<br/>
-    <%= @contact.subject %><br/>
+    【用件】<br />
+    <%= @contact.subject %><br />
   </p>
   <hr />
   <p>
-    【お問い合わせ内容】<br/>
+    【お問い合わせ内容】<br />
     <%= @contact.message %>
   </p>
   <hr />

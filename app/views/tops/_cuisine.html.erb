@@ -2,7 +2,7 @@
   <%= link_to cuisine_path(cuisine) do %>
   <div class="card">
     <div class="img-filter">
-      <%= image_tag cuisine.main_image.url, class: "img-fluid card-img-top w-100 d-block" %>
+      <%= image_tag cuisine.main_image.url, class: 'img-fluid card-img-top w-100 d-block' %>
     </div>
     <div class="card-body">
       <span class="card-title text-black-50 d-flex align-items-center"><%= cuisine.name.truncate(14) %></span>

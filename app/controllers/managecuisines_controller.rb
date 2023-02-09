@@ -2,8 +2,8 @@
 
 class ManagecuisinesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cuisine, only: [:show, :edit, :update, :destroy]
-  before_action :check_cuisine_owner, only: [:show, :edit, :update, :destroy]
+  before_action :set_cuisine, only: %i[show edit update destroy]
+  before_action :check_cuisine_owner, only: %i[show edit update destroy]
 
   def index
     @cuisines = current_user.owner_cuisines
@@ -31,7 +31,7 @@ class ManagecuisinesController < ApplicationController
 
   def update
     if @cuisine.update(cuisine_params)
-      redirect_to managecuisine_path(@cuisine), flash: { notice: "更新されました" }
+      redirect_to managecuisine_path(@cuisine), flash: { notice: '更新されました' }
     else
       render 'edit'
     end

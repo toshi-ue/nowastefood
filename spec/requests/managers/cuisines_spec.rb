@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Managers::Cuisines" do
+RSpec.describe 'Managers::Cuisines' do
   before do
     @manager = create(:manager)
     sign_in @manager
@@ -30,16 +30,16 @@ RSpec.describe "Managers::Cuisines" do
   #   end
   # end
 
-  describe "GET /new" do
-    it "newページが表示されること" do
+  describe 'GET /new' do
+    it 'newページが表示されること' do
       get new_managers_cuisine_path
       expect(response).to have_http_status :ok
-      expect(response.body).to include "レシピ登録"
+      expect(response.body).to include 'レシピ登録'
     end
   end
 
-  describe "GET /edit" do
-    it "editページが表示されること" do
+  describe 'GET /edit' do
+    it 'editページが表示されること' do
       cuisine = create(:cuisine)
       get edit_managers_cuisine_path cuisine.id
       expect(response).to have_http_status :ok

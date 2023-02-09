@@ -2,14 +2,14 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: %i[show update]
 
   def show; end
 
   def update
     @user.assign_attributes(user_params)
     if @user.save(context: :update_profile)
-      redirect_to user_profile_path, flash: { notice: "プロフィールを更新しました" }
+      redirect_to user_profile_path, flash: { notice: 'プロフィールを更新しました' }
     else
       render 'show'
     end

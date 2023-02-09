@@ -3,7 +3,7 @@
     <div class="form-group row">
       <label for="keyword" id="label_keyword" class="col-sm-2 offset-sm-3 col-form-label text-sm-right">食材名</label>
       <div class="col-sm-5">
-        <%= f.text_field :keyword, id: :search_rawmaterial, class: 'form-control', placeholder:'追加したい食材を入力してください' %>
+        <%= f.text_field :keyword, id: :search_rawmaterial, class: 'form-control', placeholder: '追加したい食材を入力してください' %>
       </div>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
 <%# 選択された原材料を表示する %>
 <div id="choiced_rawmaterial" class="col-10 offset-1 col-sm-6 offset-sm-3 my-2 border border-dark rounded alert-dismissible fade show">
   <p id="rawmaterial_name" class="text-break">
-    <% if controller.action_name == 'edit'%>
+    <% if controller.action_name == 'edit' %>
       <%= @foodstuff.rawmaterial.name %>
     <% end %>
   </p>

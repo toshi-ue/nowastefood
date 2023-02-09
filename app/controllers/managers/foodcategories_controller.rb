@@ -2,7 +2,7 @@
 
 class Managers::FoodcategoriesController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_foodcategory, only: [:update, :edit, :destroy]
+  before_action :set_foodcategory, only: %i[update edit destroy]
   layout 'manager'
   KAMINARI_PAGINATION_COUNT = 13
 
@@ -28,7 +28,7 @@ class Managers::FoodcategoriesController < ApplicationController
 
   def update
     if @foodcategory.update(foodcategory_params)
-      redirect_to managers_foodcategories_path, flash: { notice: "変更されました" }
+      redirect_to managers_foodcategories_path, flash: { notice: '変更されました' }
     else
       render 'edit'
     end

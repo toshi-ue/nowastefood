@@ -8,7 +8,7 @@
       <div class="col-sm-6">
         <h1 class="m-0 d-inline">食材区分(データ一覧)</h1>
           <% if current_manager.editable? %>
-            <%= link_to new_managers_foodcategory_path, class: "btn btn-info ml-2", role: "button" do %>
+            <%= link_to new_managers_foodcategory_path, class: 'btn btn-info ml-2', role: 'button' do %>
               <i class="fas fa-plus"></i> 追加する
             <% end %>
           <% end %>
@@ -16,7 +16,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
-            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+            <%= link_to 'Home', managers_dashboard_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item active">食料区分一覧</li>
         </ol>
@@ -45,13 +45,13 @@
                       <thead>
                         <tr>
                           <%# TODO: 動作確認 %>
-                          <th><%= sort_link(@q, :id, "ID", default_order: :desc) %></th>
-                          <th><%= sort_link(@q, :name, "食材区分名", default_order: :desc) %></th>
-                          <th><%= sort_link(@q, :foodstuffs_count, "使用中のレシピ数") %></th>
+                          <th><%= sort_link(@q, :id, 'ID', default_order: :desc) %></th>
+                          <th><%= sort_link(@q, :name, '食材区分名', default_order: :desc) %></th>
+                          <th><%= sort_link(@q, :foodstuffs_count, '使用中のレシピ数') %></th>
                           <th></th>
                         </tr>
                       </thead>
-                      <%= render partial: "foodcategory", collection: @foodcategories, as: "foodcategory" %>
+                      <%= render partial: 'foodcategory', collection: @foodcategories, as: 'foodcategory' %>
                     </table>
                   <% else %>
                     <div class="text-center">
@@ -67,9 +67,8 @@
                 </div>
                 <div class="col-sm-12 col-md-7 d-flex justify-content-center">
                   <%= paginate @foodcategories, theme: 'twitter-bootstrap-4',
-                                        pagination_class: "pagination-sm",
-                                        nav_class: "d-inline-b"
-                  %>
+                                                pagination_class: 'pagination-sm',
+                                                nav_class: 'd-inline-b' %>
                 </div>
               </div>
             </div>
