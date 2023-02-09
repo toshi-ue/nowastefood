@@ -1,4 +1,3 @@
-<% current_page = "#{controller.controller_path}##{controller.action_name}" %>
 <div class="col-12 col-sm-4 col-md-3 offset-md-1 offset-lg-2 d-xl-flex align-items-xl-center px-2 mt-2">
   <div id="items">
     <div class="text-center">
@@ -15,7 +14,7 @@
       <ul class="list-group mt-2">
         <li class="list-group-item">
           <span>
-            <%= link_to 'ユーザー情報', user_profile_path, class: add_class_to_text(current_page, 'users#show').to_s %>
+            <%= link_to 'ユーザー情報', user_profile_path, class: add_class_to_text(@current_page, 'users#show').to_s %>
           </span>
         </li>
         <li class="list-group-item">

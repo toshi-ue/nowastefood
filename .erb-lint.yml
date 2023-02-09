@@ -5,6 +5,9 @@ exclude:
   - '**/node_modules/**/*'
 glob: "**/*.{html,text,js}{+*,}.erb"
 linters:
+  ErbSafety:
+    enabled: true
+    better_html_config: .better-html.yml
   Rubocop:
     enabled: true
     rubocop_config:
@@ -17,4 +20,6 @@ linters:
       Style/FrozenStringLiteralComment:
         Enabled: false
   SelfClosingTag:
-    enabled: false
+    # enabled: false
+    enabled: true
+    enforced_style: 'always'

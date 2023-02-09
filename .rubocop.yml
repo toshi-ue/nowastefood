@@ -39,10 +39,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
     - "config/environments/production.rb"
 
-# TODO: 動作確認後に削除する
-# Lint/UnusedMethodArgument:
-#   Enabled: false
-
 # 開発者が感じていたプログラムの 匂い を定量的に判断する
 # Offense count: 2
 # default 15
@@ -106,19 +102,14 @@ RSpec/NestedGroups:
 RSpec/ReturnFromStub:
   EnforcedStyle: block
 
-# 日本語でのコメントを許可
 Style/AsciiComments:
   Enabled: false
 
-# モジュール名::クラス名の定義を許可
 Style/ClassAndModuleChildren:
   Enabled: false
 
-# クラスにコメントを残さない
 Style/Documentation:
   Enabled: false
-
-# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
 
 Style/HashLikeCase:
   Exclude:

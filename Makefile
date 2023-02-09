@@ -67,10 +67,10 @@ rails/erb-lint-force:
 		docker compose run --no-deps --rm web erblint --lint-all -a
 
 rails/webpacker-tmp-clear:
-		docker compose run --rm web bundle exec rails tmp:clear
+		docker compose run --no-deps --rm web bundle exec rails tmp:clear
 
 rails/webpacker-compile:
-		docker compose run --rm web bundle exec rails webpacker:compile
+		docker compose run --no-deps --rm web bundle exec rails webpacker:compile
 
 rspec:
 		docker compose run --rm web rspec
@@ -80,7 +80,7 @@ test/rspec_local_circle_ci:
 		circleci local execute -c process.yml rspec
 
 yarn/install:
-		docker compose run --rm web yarn install
+		docker compose run --no-deps --rm web yarn install
 
 
 ec:

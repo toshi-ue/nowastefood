@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   before_action :set_app_name
+  before_action :set_current_page
   before_action :set_search_query
   before_action :store_user_location!, if: :storable_location?
 
@@ -31,6 +32,12 @@ class ApplicationController < ActionController::Base
 
   def set_app_name
     @app_name = 'NoWasteFood'
+  end
+
+  def set_current_page
+    # binding.pry
+    # @current_page = "#{controller.controller_path}##{controller.action_name}"
+    @current_page = "#{controller_path}##{action_name}"
   end
 
   def set_search_query

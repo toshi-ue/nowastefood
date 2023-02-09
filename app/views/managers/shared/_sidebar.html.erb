@@ -1,88 +1,87 @@
-<% current_page = "#{controller.controller_path}##{controller.action_name}" %>
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <%= link_to managers_dashboard_path, class: 'brand-link text-center' do %>
-      <span class="brand-text font-weight-light"><%= @app_name %> 管理者画面</span>
-    <% end %>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <%= link_to managers_dashboard_path, class: 'brand-link text-center' do %>
+    <span class="brand-text font-weight-light"><%= @app_name %> 管理者画面</span>
+  <% end %>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-        </div>
-        <div class="info">
-          <%# <a href="#" class="d-block">ユーザー名を入れる</a> %>
-          <div class="text-white">
-          <%= current_manager.name %>
-          </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+      </div>
+      <div class="info">
+        <%# <a href="#" class="d-block">ユーザー名を入れる</a> %>
+        <div class="text-white">
+        <%= current_manager.name %>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" autocomplete="off" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <%= link_to managers_dashboard_path, class: add_class_nav_link(current_page, 'managers/tops#dashboard') do %>
-            <p>Home</p>
-            <% end %>
-          </li>
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
-              <p>
-                データ一覧
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <%= link_to managers_cuisines_path, class: add_class_nav_link(current_page, 'foodcategories#index').to_s do %>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>料理レシピ(Done!!)</p>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to managers_foodcategories_path, class: add_class_nav_link(current_page, 'foodcategories#index').to_s do %>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>食材区分(Done!!)</p>
-                  <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to managers_rawmaterials_path, class: add_class_nav_link(current_page, 'managers/rawmaterials#index').to_s do %>
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>原材料(Done!!)</p>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>ユーザー(User)</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <p>
-              <%= link_to 'ログアウト', destroy_manager_session_path, method: :delete, class: 'nav-link' %>
-            </p>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-  </aside>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" autocomplete="off" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <%= link_to managers_dashboard_path, class: add_class_nav_link(@current_page, 'managers/tops#dashboard') do %>
+          <p>Home</p>
+          <% end %>
+        </li>
+        <!-- Add icons to the links using the .nav-icon class
+              with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>
+              データ一覧
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <%= link_to managers_cuisines_path, class: add_class_nav_link(@current_page, 'foodcategories#index').to_s do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>料理レシピ(Done!!)</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to managers_foodcategories_path, class: add_class_nav_link(@current_page, 'foodcategories#index').to_s do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>食材区分(Done!!)</p>
+                <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to managers_rawmaterials_path, class: add_class_nav_link(@current_page, 'managers/rawmaterials#index').to_s do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>原材料(Done!!)</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>ユーザー(User)</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <p>
+            <%= link_to 'ログアウト', destroy_manager_session_path, method: :delete, class: 'nav-link' %>
+          </p>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
