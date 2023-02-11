@@ -1,15 +1,17 @@
 <% if user_signed_in? %>
   <% if current_user.already_favorite?(cuisine) %>
     <%= link_to cuisine_remove_favorite_path(cuisine.id), class: 'btn btn-warning btn-block', method: :delete, remote: true do %>
-      <i class="far fa-bookmark"></i>&nbsp;お気に入り&nbsp;&nbsp;<span><%= cuisine.favorites_count %></span>
+      <i class='far fa-bookmark'></i>&nbsp;お気に入り&nbsp;&nbsp;<span class='favorite-count'
+><%= cuisine.favorites_count %></span>
     <% end %>
   <% else %>
+    <%= "cusine_id: #{cuisine.id}, 2 passed, favorite_count: #{cuisine.favorites_count}" %>
     <%= link_to cuisine_add_favorite_path(cuisine.id), class: 'btn btn-outline-secondary btn-block', method: :post, remote: true do %>
-      <i class="far fa-bookmark"></i>&nbsp;お気に入り&nbsp;&nbsp;<span><%= cuisine.favorites_count %></span>
+      <i class='far fa-bookmark'></i>&nbsp;お気に入り&nbsp;&nbsp;<span class='favorite-count'><%= cuisine.favorites.size %></span>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_user_session_path, class: 'btn btn-outline-secondary  btn-block', local: true do %>
-    <i class="far fa-bookmark"></i>&nbsp;お気に入り&nbsp;&nbsp;<span><%= cuisine.favorites_count %></span>
+    <i class='far fa-bookmark'></i>&nbsp;お気に入り&nbsp;&nbsp;<span class='favorite-count'><%= cuisine.favorites.size %></span>
   <% end %>
 <% end %>
