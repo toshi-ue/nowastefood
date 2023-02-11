@@ -22,9 +22,9 @@ class CuisinesController < ApplicationController
   end
 
   def remove_favorite
-    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
     @favorite = current_user.favorites.find_by(cuisine_id: params[:cuisine_id])
     @favorite.destroy
+    @cuisine = Cuisine.find_by(id: params[:cuisine_id])
   end
 
   # TODO: create_atを削除する
