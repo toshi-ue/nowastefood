@@ -44,6 +44,7 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'awesome_print'
+  # gem "better_html"
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
