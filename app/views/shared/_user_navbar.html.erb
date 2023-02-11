@@ -5,9 +5,9 @@
       <span class='navbar-toggler-icon'></span>
     </button>
     <div class='collapse navbar-collapse' id='navbarsExample02'>
-      <%= search_form_for @search, url: search_cuisines_path, html: {class: 'form-inline ml-auto my-2 my-md-0 d-none d-md-block'} do |f| %>
+      <%= search_form_for @search, url: search_cuisines_path, html: { class: 'form-inline ml-auto my-2 my-md-0 d-none d-md-block' } do |f| %>
         <div class='input-group'>
-          <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
+          <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など' %>
           <span class='input-group-append'>
             <%= f.button type: 'submit', style: 'border-style: none;' do %>
               <i class='fa fa-search'></i>
@@ -16,22 +16,22 @@
       <% end %>
       <ul class='navbar-nav ml-auto'>
         <li class='nav-item'>
-          <%= link_to stocks_path, class: 'nav-link text-center stocks-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: '家にある食材' do %>
+          <%= link_to stocks_path, class: 'nav-link text-center stocks-tooltip', data: { toggle: 'tooltip', placement: 'bottom' }, title: '家にある食材' do %>
             <i class='fas fa-box'></i><span class='d-none d-lg-inline'>&nbsp;家の食材</span>
           <% end %>
         </li>
         <li class='nav-item'>
-          <%= link_to cookinghistorys_path, class: 'nav-link text-center histories-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: '料理履歴' do %>
+          <%= link_to cookinghistorys_path, class: 'nav-link text-center histories-tooltip', data: { toggle: 'tooltip', placement: 'bottom' }, title: '料理履歴' do %>
             <i class='fas fa-history'></i><span class='d-none d-lg-inline'>&nbsp;料理履歴</span>
           <% end %>
         </li>
         <li class='nav-item d-xl-flex align-items-xl-center'>
-          <%= link_to todaysmenus_path, class: 'nav-link text-center todaysmenus-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: '今日の献立' do %>
+          <%= link_to todaysmenus_path, class: 'nav-link text-center todaysmenus-tooltip', data: { toggle: 'tooltip', placement: 'bottom' }, title: '今日の献立' do %>
             <i class='fas fa-concierge-bell'></i><span class='d-none d-lg-inline'>&nbsp;今日の献立</span>
           <% end %>
         </li>
         <li class='nav-item align-items-xl-center'>
-          <%= link_to favorites_path, class: 'nav-link text-center favorites-tooltip', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'お気に入り' do %>
+          <%= link_to favorites_path, class: 'nav-link text-center favorites-tooltip', data: { toggle: 'tooltip', placement: 'bottom' }, title: 'お気に入り' do %>
           <i class='far fa-bookmark'></i><span class='d-none d-lg-inline'>&nbsp;お気に入り</span>
           <% end %>
         </li>
@@ -46,8 +46,8 @@
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item text-center' %>
             <% else %>
               <%= link_to 'このサイトについて', about_path, class: 'dropdown-item text-center' %>
-              <%= link_to 'ログイン',new_user_session_path, class: 'dropdown-item text-center' %>
-              <%= link_to '新規登録',new_user_registration_path, class: 'dropdown-item text-center' %>
+              <%= link_to 'ログイン', new_user_session_path, class: 'dropdown-item text-center' %>
+              <%= link_to '新規登録', new_user_registration_path, class: 'dropdown-item text-center' %>
             <% end %>
           </div>
         </li>
@@ -59,7 +59,7 @@
 <nav class='navbar navbar-expand-lg navbar-light d-md-none'>
   <%= search_form_for @search, url: search_cuisines_path do |f| %>
     <div class='input-group'>
-      <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など'%>
+      <%= f.search_field :name_or_description_or_rawmaterials_name_or_rawmaterials_hiragana_cont, class: 'form-control', type: 'search', placeholder: '食材、料理名など' %>
       <span class='input-group-append'>
         <%= f.button type: 'submit', style: 'border-style: none;' do %>
           <i class='fa fa-search'></i>

@@ -3,8 +3,8 @@
     <div class="page-title text-center">レシピ登録</div>
   </div>
   <div class="col-10 offset-1 col-md-6 offset-md-3">
-    <%= render "shared/flash_messages" %>
-    <%= render 'shared/error_messages', {resource: @cuisine} if @cuisine.errors.any? %>
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', { resource: @cuisine } if @cuisine.errors.any? %>
   </div>
   <div class="col-10 offset-1 col-md-6 offset-md-3">
     <%= form_with(model: @cuisine, url: managecuisines_path, local: true, method: :post) do |form| %>

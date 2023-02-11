@@ -1,0 +1,7 @@
+---
+allow_single_quoted_attributes: true
+allow_unquoted_attributes: false
+# FIXME: パターンを変更できない
+# https://github.com/Shopify/better-html/blob/main/lib/better_html/config.rb
+partial_attribute_name_pattern: /\A[a-zA-Z0-9\-\:\_]+\z/
+# partial_tag_name_pattern: /\A[a-z0-9\-\:\_]+\z/

@@ -17,7 +17,7 @@ RSpec.describe Foodcategory do
   it '料理区分名がなければ無効' do
     foodcategory = build(:foodcategory, name: '')
     foodcategory.valid?
-    expect(foodcategory.errors[:name]).to include("を入力してください")
+    expect(foodcategory.errors[:name]).to include('を入力してください')
   end
 
   it '料理区分名がuniqueでなければ無効' do

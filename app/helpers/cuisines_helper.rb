@@ -5,7 +5,7 @@ module CuisinesHelper
     if cuisine.user.present?
       "by #{cuisine.user.nickname}さん"
     else
-      "退会user"
+      '退会user'
     end
   end
 

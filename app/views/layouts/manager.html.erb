@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Webapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <body id="<%= action_name %>-<%= controller_path.gsub('/', '-') %>"  class="sidebar-mini" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
+  <body id="<%= action_name %>-<%= controller_path.tr('/', '-') %>" class="sidebar-mini" data-controller="<%= controller_path %>" data-action="<%= action_name %>">
     <div class="wrapper">
       <%= render 'managers/shared/navbar' %>
       <%= render 'managers/shared/sidebar' unless controller_path == 'managers/registrations' %>

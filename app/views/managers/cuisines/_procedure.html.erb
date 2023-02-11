@@ -1,15 +1,15 @@
-<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>" , data-update_url="<%= sort_managers_procedure_path(procedure) %>">
+<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>" <%= sort_managers_procedure_path(procedure) %> ">
   <td><%= procedure.cooking_detail %></td>
   <td>
     <% if current_manager.editable? %>
-      <%= link_to edit_managers_procedure_path(procedure.id, cuisine_id: @cuisine.id),  class: "page-link text-dark d-inline-block", role: "button", local: true do %>
-      <i class="fas fa-pen"></i>
+      <%= link_to edit_managers_procedure_path(procedure.id, cuisine_id: @cuisine.id), class: 'page-link text-dark d-inline-block', role: 'button', local: true do %>
+      <i class=" fas fa-pen "></i>
       <% end %>
-      <%= link_to managers_procedure_path(procedure.id, action_name: "show", current_procedure_id: procedure.id),  class: "page-link text-dark d-inline-block", role: "button", method: :delete do %>
-      <i class="far fa-trash-alt"></i>
+      <%= link_to managers_procedure_path(procedure.id, action_name: 'show', current_procedure_id: procedure.id), class: 'page-link text-dark d-inline-block', role: 'button', method: :delete do %>
+      <i class=" far fa-trash-alt "></i>
       <% end %>
     <% else %>
-      <button type='button' class='btn btn-default manager-cuisine-tooltip' data-toggle='tooltip' data-placement='top' title='サイト運営者以外は変更できません' disabled><i class="fas fa-pen"></i></button>
+      <button type='button' class='btn btn-default manager-cuisine-tooltip' data-toggle='tooltip' data-placement='top' title='サイト運営者以外は変更できません' disabled><i class=" fas fa-pen "></i></button>
       <button type='button' class='btn btn-default manager-cuisine-tooltip' data-toggle='tooltip' data-placement='top' title='サイト運営者以外は削除できません' disabled><i class='far fa-trash-alt'></i></button>
     <% end %>
   </td>

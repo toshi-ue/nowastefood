@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3 mt-2">
-    <%= render "shared/flash_messages" %>
+    <%= render 'shared/flash_messages' %>
     <div class="page-title text-center mt-2">今日の献立</div>
     <div>
       <% if @todaysmenus.present? %>
         <table class="table table-hover">
           <tbody>
-            <%= render partial: "todaysmenu", collection: @todaysmenus, as: "todaysmenu" %>
+            <%= render partial: 'todaysmenu', collection: @todaysmenus, as: 'todaysmenu' %>
           </tbody>
         </table>
         <!-- TODO: 料理が完了するformを作成する-->
@@ -15,7 +15,7 @@
         <div class="form-group row">
           <div class="col-sm-12 btn-group" data-toggle="buttons">
             <label class="btn btn-outline-warning active">
-              <%= f.radio_button :cooked_when, 1, {checked: true} %>朝
+              <%= f.radio_button :cooked_when, 1, { checked: true } %>朝
             </label>
             <label class="btn btn-outline-warning">
               <%= f.radio_button :cooked_when, 2, {} %>昼
@@ -24,13 +24,13 @@
               <%= f.radio_button :cooked_when, 3, {} %>夜
             </label>
           </div>
-            <%= f.submit "Done!!",class: "btn btn-warning btn-block" %>
+            <%= f.submit 'Done!!', class: 'btn btn-warning btn-block' %>
         </div>
         <% end %>
         </div>
       <% else %>
           <div class="text-center search-btn">
-            <p class="text-muted no-todaysmenus-description">今日の献立はまだありません<br>追加しましょう!!</p>
+            <p class="text-muted no-todaysmenus-description">今日の献立はまだありません<br />追加しましょう!!</p>
           </div>
       <% end %>
     </div>

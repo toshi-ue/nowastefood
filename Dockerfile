@@ -5,6 +5,7 @@ FROM ruby:$RUBY_VERSION
 ENV APP_DIR /webapp
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE yes
 ENV DEBCONF_NOWARNINGS yes
+ENV JOBS_NUMBER 4
 ENV LANG C.UTF-8
 ENV MY_BUNDLER_VERSION 2.4.6
 
@@ -26,12 +27,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
 COPY Gemfile Gemfile.lock /webapp/
 COPY package.json yarn.lock /webapp/
 RUN gem install bundler --no-document -v $MY_BUNDLER_VERSION && \
-  bundle install -j`getconf _NPROCESSORS_ONLN`
+  bundle install -j${JOBS_NUMBER}
 RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 COPY . $APP_DIR
 COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin//entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT [ "entrypoint.sh" ]
 EXPOSE 3000
 

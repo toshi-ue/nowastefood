@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Cookinghistorys" do
+RSpec.describe 'Cookinghistorys' do
   before do
     @user = create(:user)
     sign_in @user
@@ -11,22 +11,22 @@ RSpec.describe "Cookinghistorys" do
     @todaysmenu_yesterday = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id, created_at: Time.zone.now.yesterday.to_date)
   end
 
-  describe "GET /index" do
+  describe 'GET /index' do
     before do
       @user.save!
       cuisine = create(:cuisine)
       @todaysmenu = create(:todaysmenu, cuisine_id: cuisine.id, cooked_when: 1, user_id: @user.id, created_at: Time.zone.now)
     end
 
-    it "indexページが表示されること" do
+    it 'indexページが表示されること' do
       get cookinghistorys_path
       expect(response).to have_http_status :ok
       expect(response.body).to include @todaysmenu.cuisine.name.to_s
     end
   end
 
-  describe "post add_to_todays_menu" do
-    it "登録できること" do
+  describe 'post add_to_todays_menu' do
+    it '登録できること' do
       cuisine = create(:cuisine)
 
       expect do
@@ -36,8 +36,8 @@ RSpec.describe "Cookinghistorys" do
     end
   end
 
-  describe "delete remove_from_todays_menus" do
-    it "削除できること" do
+  describe 'delete remove_from_todays_menus' do
+    it '削除できること' do
       cuisine = create(:cuisine)
       todaysmenu = create(:todaysmenu, cuisine_id: cuisine.id, user_id: @user.id) # rubocop:disable Lint/UselessAssignment
       expect do

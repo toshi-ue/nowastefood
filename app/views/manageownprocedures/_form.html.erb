@@ -2,7 +2,7 @@
 <div class="form-group col-10 offset-1">
   <div class="form-group">
     <small>※</small>&nbsp;<%= form.label :cooking_detail %>
-    <%= form.text_area :cooking_detail, id: :cooking_detail, class: 'form-control', rows: "3", autofocus: true %>
+    <%= form.text_area :cooking_detail, id: :cooking_detail, class: 'form-control', rows: '3', autofocus: true %>
   </div>
   <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, value: @cuisine.id %>
 </div>

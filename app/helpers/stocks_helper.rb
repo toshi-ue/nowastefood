@@ -26,7 +26,7 @@ module StocksHelper
     if days > 1
       "あと#{days}日"
     elsif days == 1
-      "今日まで"
+      '今日まで'
     elsif days < 1
       "#{days - 1}日"
     end

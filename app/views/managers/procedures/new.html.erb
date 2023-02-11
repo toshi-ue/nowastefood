@@ -7,13 +7,13 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
-            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+            <%= link_to 'Home', managers_dashboard_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to '料理レシピ(データ一覧)', managers_cuisines_path, {class: "text-muted"} %>
+            <%= link_to '料理レシピ(データ一覧)', managers_cuisines_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to "#{@cuisine.name}", managers_cuisine_path(@cuisine.id), {class: "text-muted"} %>
+            <%= link_to @cuisine.name.to_s, managers_cuisine_path(@cuisine.id), { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item active">手順の追加</li>
         </ol>
@@ -30,13 +30,13 @@
           <%= form_with(model: @procedure, url: managers_procedures_path, method: :post, local: true) do |form| %>
             <div class="card-body">
               <%# HACK: 書き方を確認(怪しい) %>
-              <%= render 'form', {form: form , procedure: @procedure} %>
+              <%= render 'form', { form: form, procedure: @procedure } %>
             </div>
             <div class="card-footer">
-              <%= form.submit "追加する", class: 'btn btn-secondary' %>
+              <%= form.submit '追加する', class: 'btn btn-secondary' %>
               <%# TODO: プレビュー画面を作成する? %>
               <div class="float-right">
-                <%= link_to "確認する", managers_cuisine_path(params[:cuisine_id]),  class: "btn btn-secondary" %>
+                <%= link_to '確認する', managers_cuisine_path(params[:cuisine_id]), class: 'btn btn-secondary' %>
               </div>
             </div>
           <% end %>
@@ -55,7 +55,7 @@
                   <% if @registered_procedures.present? %>
                     <table id="table-sortable-procedure" class="table table-striped">
                       <tbody>
-                        <%= render partial: "procedure", collection: @registered_procedures, as: "procedure" %>
+                        <%= render partial: 'procedure', collection: @registered_procedures, as: 'procedure' %>
                       </tbody>
                     </table>
                   <% else %>

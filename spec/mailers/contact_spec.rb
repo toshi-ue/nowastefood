@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 
 # 現在使用しないためコメントアウト
 # RSpec.describe ContactMailer, type: :mailer do

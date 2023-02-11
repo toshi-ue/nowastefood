@@ -13,7 +13,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
       to: user.email,
-      subject: "自動送信(お問い合わせ内容の確認)"
+      subject: '自動送信(お問い合わせ内容の確認)'
     )
   end
 end

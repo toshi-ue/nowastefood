@@ -1,12 +1,12 @@
 inherit_from: .rubocop_todo.yml
 
 require:
+  - rubocop-ast
   - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.7.7
   Exclude:
     - "config.ru"
     - "bin/**"
@@ -20,18 +20,24 @@ AllCops:
     - "vendor/**/*"
     - "Gemfile.lock"
   NewCops: enable
+  StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  TargetRubyVersion: 2.7.7
+
+Layout/EmptyLines:
+  Exclude:
+    - "Gemfile"
+    - "bin/setup"
 
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - "db/schema.rb"
 
-# 1行が長すぎる
 Layout/LineLength:
-  Max: 200
+  Max: 250
 
-# 未使用の引数チェック
-Lint/UnusedMethodArgument:
-  Enabled: false
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - "config/environments/production.rb"
 
 # 開発者が感じていたプログラムの 匂い を定量的に判断する
 # Offense count: 2
@@ -39,55 +45,38 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 29
 
-# Metrics/BlockLength: Block has too many lines.　を無視
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - "lib/tasks/seed_fu_gen.rake"
 
-# ネストを許可する深さ
 Metrics/BlockNesting:
   Max: 5
 
-# メソッドの行数が長すぎる
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "app/helpers/keywords_helper.rb"
+
 Metrics/MethodLength:
-  Enabled: false
-
-# 引数の数が多すぎる
-Metrics/ParameterLists:
-  Max: 12
-
-# 引数の文字数が少ない
-Naming/MethodParameterName:
-  Enabled: false
-
-# migration高速化のための設定
-# テーブル作成、テーブルカラム編集
-Rails/BulkChangeTable:
   Enabled: false
 
 Rails/FilePath:
   Enabled: false
 
-RSpec/AlignLeftLetBrace:
-  Enabled: true
-
-RSpec/ContextWording:
-  Enabled: false
-
-RSpec/ExampleLength:
+Rails/I18nLocaleTexts:
   Enabled: false
 
 #  capybara固有のメソッドを有効にする
 RSpec/Capybara:
   Enabled: false
 
-RSpec/EmptyLineAfterExample:
+RSpec/ContextWording:
   Enabled: false
 
-RSpec/EmptyLineAfterSubject:
+# TODO: あとでDefault valueを決める
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexamplelength
+RSpec/ExampleLength:
   Enabled: false
-
-RSpec/FilePath:
-  Enabled: false
+  # Max: 5 (default)
 
 RSpec/InstanceVariable:
   Enabled: false
@@ -113,27 +102,27 @@ RSpec/NestedGroups:
 RSpec/ReturnFromStub:
   EnforcedStyle: block
 
-# 日本語でのコメントを許可
 Style/AsciiComments:
   Enabled: false
 
-# モジュール名::クラス名の定義を許可
 Style/ClassAndModuleChildren:
   Enabled: false
 
-# クラスにコメントを残さない
 Style/Documentation:
   Enabled: false
 
-# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
-Style/FrozenStringLiteralComment:
-  Enabled: true
+Style/HashLikeCase:
+  Exclude:
+    - "app/helpers/keywords_helper.rb"
+
+Style/MixinUsage:
+  Exclude:
+    - "bin/setup"
+    - "bin/update"
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - "config/spring.rb"
 
 Style/RedundantSelf:
   Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/SymbolArray:
-  EnforcedStyle: brackets

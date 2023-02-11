@@ -7,6 +7,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.7'
 
 gem 'acts-as-taggable-on', '~> 8.0' # for not failing migration
+# TODO: あとで有効にする
+# gem 'better_html'
 gem 'bootsnap', require: false
 gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
@@ -22,25 +24,29 @@ gem 'exception_notification'
 gem 'faker'
 gem 'flog'
 gem 'fog-aws'
+gem 'htmlbeautifier'
 gem 'jbuilder'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'mysql2'
-gem "net-http"
+gem 'net-http'
 gem 'puma'
+gem 'puma_worker_killer'
 gem 'rails', '~> 6.1.7'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'ransack'
 gem 'seed-fu'
-gem "slack-notifier"
+gem 'slack-notifier'
 # https://qiita.com/sasakura_870/items/106484f88c857bd9563e#sprockets%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92372%E3%81%AB%E4%B8%8B%E3%81%92%E3%82%8B
 gem 'sprockets', '~> 3.7.2'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem "better_html"
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'erb_lint', require: false
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -59,10 +65,11 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'rails-erd'
   gem 'rubocop', require: false
+  gem 'rubocop-ast'
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'solargraph'
+  gem 'solargraph', require: false
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'web-console'
@@ -71,7 +78,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem "rspec_junit_formatter"
+  gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'

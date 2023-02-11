@@ -1,16 +1,16 @@
 <tr id="foodstuff_<%= foodstuff.id %>">
   <td class="align-middle" style="width: 40%"><%= foodstuff.rawmaterial.name %></td>
-  <td class="align-middle" style="width: 30%"><%= foodstuff.quantity %><%= foodstuff.rawmaterial.unit.name unless foodstuff.quantity.start_with?("適量", "少々", "お好みで") %></td>
+  <td class="align-middle" style="width: 30%"><%= foodstuff.quantity %><%= foodstuff.rawmaterial.unit.name unless foodstuff.quantity.start_with?('適量', '少々', 'お好みで') %></td>
 
   <td class="align-middle" style="width: 30%">
     <%= link_to edit_managers_foodstuff_path(foodstuff.id),
-          class: "btn btn-default",
-          local: true do %>
+                class: 'btn btn-default',
+                local: true do %>
       <i class="fas fa-pen"></i>
     <% end %>
     <%= link_to managers_foodstuff_path(foodstuff.id),
-      class: "btn btn-default",
-      method: :delete do %>
+                class: 'btn btn-default',
+                method: :delete do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
   </td>

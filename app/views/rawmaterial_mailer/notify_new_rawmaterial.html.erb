@@ -14,31 +14,31 @@
 <body>
   <p><%= @rawmaterial.name %> が追加されました。</p>
   <p>
-    【データの詳細】<br/>
+    【データの詳細】<br />
   </p>
   <p>
-    【ユーザー(user_id)】<br/>
-    <%= @rawmaterial.user.nickname %>(<%= @rawmaterial.user.id %>)<br/>
+    【ユーザー(user_id)】<br />
+    <%= @rawmaterial.user.nickname %>(<%= @rawmaterial.user.id %>)<br />
   </p>
   <hr />
   <p>
-    【原材料名】<br/>
+    【原材料名】<br />
     <%= @rawmaterial.name %>
   </p>
   <p>
-    【原材料名(ひらがな)】<br/>
+    【原材料名(ひらがな)】<br />
     <%= @rawmaterial.hiragana %>
   </p>
   <p>
-    【食材分類】<br/>
+    【食材分類】<br />
     <%= @rawmaterial.foodcategory.name %>
   </p>
   <p>
-    【単位】<br/>
+    【単位】<br />
     <%= @rawmaterial.unit.name %>
   </p>
   <p>
-    【消費期限】<br/>
+    【消費期限】<br />
     <%= @rawmaterial.expiry_period %>日
   </p>
   <hr />

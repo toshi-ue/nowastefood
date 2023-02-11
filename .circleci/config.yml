@@ -1,5 +1,6 @@
 # https://circleci.com/ja/features/ruby/
 # https://circleci.com/developer/ja/orbs/orb/circleci/ruby?version=2.0.0
+# https://qiita.com/dodonki1223/items/98dbdac6f31f9b486ecf
 # https://blog.vtryo.me/entry/circleci-debug-method
 version: 2.1
 
@@ -90,13 +91,35 @@ jobs:
       - run:
           name: Database seed data by seed_fu
           command: 'bundle exec rails db:seed_fu RAILS_ENV=test'
+      # - run:
+      #     name: Change erb-lint setting
+      #     command: 'mv .erb-lint-rspec.yml .erb-lint.yml'
       - ruby/rspec-test:
           include: spec/**/*_spec.rb
+  # https://circleci.com/docs/ja/deploy-to-heroku/#2-0-%E8%A8%AD%E5%AE%9A%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F-heroku-%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+  # https://qiita.com/rexid/items/0265e16f11cba57a07cc#1-%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92github%E3%81%AB%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
+  # https://qiita.com/daichi41/items/972483e963b6a08933d8
+  # https://qiita.com/dodonki1223/items/98dbdac6f31f9b486ecf
+  deploy:
+    docker:
+      - image: cimg/ruby:2.7.7-browsers
+    steps:
+      - checkout
+      - run:
+          name: Deploy heroku-main to Heroku
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+
 workflows:
-  build_and_test:
+  build_deploy:
     jobs:
       - build
       - rubocop
       - rspec:
           requires:
             - build
+      - deploy:
+          filters:
+            branches:
+              only: heroku-main
+          requires:
+            - rspec

@@ -38,8 +38,8 @@ tmp/
 !/public/assets/.keep
 !/storage/.keep
 !/tmp/.keep
-!/tmp/pids
-!/tmp/sockets
+!/tmp/pids/.keep
+!/tmp/sockets/.keep
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml

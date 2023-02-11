@@ -2,7 +2,7 @@
 
 class Managers::RawmaterialsController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_rawmaterial, only: [:edit, :update, :destroy]
+  before_action :set_rawmaterial, only: %i[edit update destroy]
   layout 'manager'
   KAMINARI_PAGINATION_COUNT = 13
 
@@ -28,7 +28,7 @@ class Managers::RawmaterialsController < ApplicationController
 
   def update
     if @rawmaterial.update(rawmaterial_params)
-      redirect_to managers_rawmaterials_path, flash: { notice: "変更されました" }
+      redirect_to managers_rawmaterials_path, flash: { notice: '変更されました' }
     else
       render 'edit'
     end

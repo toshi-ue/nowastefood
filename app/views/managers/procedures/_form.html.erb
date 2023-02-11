@@ -1,10 +1,10 @@
 <div class="card-body">
   <%= render 'layouts/flash_message' %>
-  <%= render 'shared/error_messages', {resource: @procedure} if @procedure.errors.any? %>
+  <%= render 'shared/error_messages', { resource: @procedure } if @procedure.errors.any? %>
 
   <div class="form-group">
     <span class="text-danger">※</span><%= form.label :cooking_detail %>
-    <%= form.text_area :cooking_detail, id: :cooking_detail, class: 'form-control', rows: "3", autofocus: true %>
+    <%= form.text_area :cooking_detail, id: :cooking_detail, class: 'form-control', rows: '3', autofocus: true %>
   </div>
   <%= form.hidden_field :cuisine_id, id: :foodstuff_cuisine_id, class: 'form-control', value: params[:cuisine_id] %>
 </div>

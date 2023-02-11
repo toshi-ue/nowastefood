@@ -1,17 +1,17 @@
 
-<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>" , data-update_url="<%= sort_managers_procedure_path(procedure) %>">
-  <td class="align-middle">
+<tr class="procedure" data-model_name="<%= procedure.class.name.underscore %>" <%= sort_managers_procedure_path(procedure) %> ">
+  <td class=" align-middle ">
     <%= procedure.cooking_detail %>
-    <div class="float-right">
+    <div class=" float-right ">
       <%= link_to edit_managers_procedure_path(id: procedure.id, cuisine_id: params[:cuisine_id]),
-            class: "btn btn-default",
-            local: true do %>
-        <i class="fas fa-pen"></i>
+                  class: 'btn btn-default',
+                  local: true do %>
+        <i class=" fas fa-pen "></i>
       <% end %>
       <%= link_to managers_procedure_path(procedure.id),
-        class: "btn btn-default",
-        method: :delete do %>
-        <i class="far fa-trash-alt"></i>
+                  class: 'btn btn-default',
+                  method: :delete do %>
+        <i class=" far fa-trash-alt "></i>
       <% end %>
     </div>
   </td>

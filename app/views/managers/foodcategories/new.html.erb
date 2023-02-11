@@ -7,10 +7,10 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item">
-            <%= link_to 'Home', managers_dashboard_path, {class: "text-muted"} %>
+            <%= link_to 'Home', managers_dashboard_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item">
-            <%= link_to '食材区分(データ一覧)', managers_foodcategories_path, {class: "text-muted"} %>
+            <%= link_to '食材区分(データ一覧)', managers_foodcategories_path, { class: 'text-muted' } %>
           </li>
           <li class="breadcrumb-item active">食材区分の追加</li>
         </ol>
@@ -27,10 +27,10 @@
           <%= form_with(model: @foodcategory, url: managers_foodcategories_path, method: :post, local: true) do |form| %>
             <div class="card-body">
               <%# HACK: 書き方を確認(怪しい) %>
-              <%= render 'form', {form: form , foodcategory: @foodcategory} %>
+              <%= render 'form', { form: form, foodcategory: @foodcategory } %>
             </div>
             <div class="card-footer">
-              <%= form.submit "追加する", class: 'btn btn-secondary' %>
+              <%= form.submit '追加する', class: 'btn btn-secondary' %>
             </div>
           <% end %>
         </div>

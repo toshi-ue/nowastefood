@@ -6,12 +6,12 @@ RSpec.describe User do
   describe 'nickname' do
     context '更新するとき' do
       it '10文字以内のとき更新できること' do
-        user = build(:user, nickname: "a" * 10)
+        user = build(:user, nickname: 'a' * 10)
         expect(user.save(context: :update_profile)).to be_truthy
       end
 
       it '31文字のとき更新できないこと' do
-        user = build(:user, nickname: "a" * 31)
+        user = build(:user, nickname: 'a' * 31)
         expect(user.save(context: :update_profile)).to be_falsy
       end
 

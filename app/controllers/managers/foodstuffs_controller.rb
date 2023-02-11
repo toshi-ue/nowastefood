@@ -2,7 +2,7 @@
 
 class Managers::FoodstuffsController < ApplicationController
   before_action :authenticate_manager!
-  before_action :set_foodstuff, only: [:update, :edit, :destroy, :restore]
+  before_action :set_foodstuff, only: %i[update edit destroy restore]
   layout 'manager'
 
   def index
@@ -34,7 +34,7 @@ class Managers::FoodstuffsController < ApplicationController
 
   def update
     if @foodstuff.update(foodstuff_params)
-      redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: "変更されました" }
+      redirect_to managers_cuisine_path(@foodstuff.cuisine_id), flash: { notice: '変更されました' }
     else
       # HACK: もうちょっと上手い書き方がありそう
       params[:cuisine_id] = @foodstuff.cuisine_id
