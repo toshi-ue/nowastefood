@@ -101,7 +101,6 @@ Things you may want to cover:
 
 機能を画面共有しながら紹介する
 
-
 苦労した点
 技術的な側面
 
@@ -110,17 +109,20 @@ Things you may want to cover:
 現在の問題点
 -->
 
+# サービス概要
 
-## サービス概要
+食材のフードロスを減らすことを目的としたレシピサイトサービスです。
+家の食材を登録して料理したレシピを追加していくことで家に残っている材料が把握でき、食品廃棄を削減することを目的としたサービスです。
 
-食材のフードロスを減らすことを目的としたレシピサイトサービス
 
-## サイトURL
-[サービス名未定？](https://nowastefood.tk/about)
+## サイトリンク
+
+[NoWasteFood](https://nowastefood.herokuapp.com/)
 
 ## ターゲット層
 
 料理をする方
+
 - 主婦
 - 一人暮らし、単身赴任中
 
@@ -129,17 +131,33 @@ Things you may want to cover:
 昨今のコロナの影響により、外食を控えて自宅で食べることが多くなりました。<br>
 <!-- 料理をする際にはまず自宅にある食材を消費することを前提に考えますが、 -->
 自炊・料理をされている方には問題があります。
+
 - 自宅の食材の消費期限はいつなのかを把握しておかなければいけない
 - 消費期限間近の食材からメニューを探すのに時間がかかる
 
 ## 解決方法
+
 考えられる解決方法は以下になります
 
 - 食材を登録すれば消費期限が確認できるようにする
 - 登録されている食材をもとにレシピを自動抽出してくれるようにすること
 
+## 使用技術
+
+- Ruby(2.7.7)
+- Ruby on Rails(6.1.7)
+- JavaScript(jQuery)
+- BootStrap4
+- MySQL(5.7)
+- RSpec
+- Docker/Docker-compose
+- CircleCI CI/CD
+- Heroku
+
 ## 機能
+
 ユーザー側
+
 - ゲストユーザーログイン機能
 - ユーザー情報の修正機能
     - ニックネーム
@@ -155,43 +173,31 @@ Things you may want to cover:
     - 人数を指定できるようにしてあります
 - 食材の消費期限による色表示の切り替え
 
+## テスト
 
-管理者側(更新・削除機能は後々自分のみ使えるように修正する予定)
+- RSpec
+  - 単体テスト(model)
+  - 機能テスト(request)
+<!-- 管理者側(更新・削除機能は後々自分のみ使えるように修正する予定)
 - ゲスト管理者ログイン機能
 - 各モデルのCRUD
-- 各モデルの一覧画面での各項目によるソート機能
+- 各モデルの一覧画面での各項目によるソート機能 -->
 
-
-## 反省点
+<!-- ## 反省点
 - Foodcategoryモデルは必要なかった
 ## 現状の問題点
 
 ### 技術的側面
 - お問い合わせ機能の実装ができていない
     - userとの紐付けができていない
-    - 本番環境では動作しない
+    - 本番環境では動作しない -->
 
-- 404, 500エラーが発生した時にNginxの404、500ページが表示される(Railsの`public`配下の404,500ページが参照されない)
-- associationがうまくいっていない(うまく関連づけできない)
-    <!-- - Favoriteもでるに対する -->
-    - gem `rails-erd` を導入して pdf を発行する際に以下のログが表示される
-        - (`Warning: Ignoring invalid association :todaysmenu_cuisines on User (Could not find the source association(s) "todaysmenu_cuisine" or :todaysmenu_cuisines in model Todaysmenu. Try 'has_many :todaysmenu_cuisines, :through => :todaysmenus, :source => <name>'. Is it one of cuisine or user?)`)
-        - (`Warning: Ignoring invalid association :cuisines on Rawmaterial (Cannot have a has_many :through association 'Rawmaterial#cuisines' which goes through 'Rawmaterial#foodstuffs' before the through association is defined.)`)
-
-## 使用技術
-### バックエンド
-- Ruby(2.7.3), Ruby on Rails(6.0.4.1)
-- RSpec(5.0.2)
-
-### フロントエンド
-
-- HTML
-- SCSS
-- JavaScript(jQuery)
-- BootStrap4
+<!-- - 404, 500エラーが発生した時にNginxの404、500ページが表示される(Railsの`public`配下の404,500ページが参照されない)
+- associationがうまくいっていない(うまく関連づけできない) -->
 
 
-### インフラストラクチャー
+
+<!-- ### インフラストラクチャー
 
 - AWS
     - ACM
@@ -203,12 +209,13 @@ Things you may want to cover:
     - Route53
     - S3
 - Nginx
-- Docker, docker-compose
+- Docker, docker-compose -->
 ## ER図
+
 ![10_46_25](https://user-images.githubusercontent.com/46378023/138380342-abc2fb89-fd3c-4068-b4de-3dcdf42dad0b.jpg)
 
-## インフラ図
-![infra](https://user-images.githubusercontent.com/46378023/138411974-f3179342-f183-4e47-90b4-47c2f92fe892.png)
+<!-- ## インフラ図
+![infra](https://user-images.githubusercontent.com/46378023/138411974-f3179342-f183-4e47-90b4-47c2f92fe892.png) -->
 <!--
 参考URL
 
@@ -223,9 +230,14 @@ Things you may want to cover:
 [kazu-2020/arrangy](https://github.com/kazu-2020/arrangy)
 -->
 
-## 今後やっていきたいこと
+<!-- ## 今後やっていきたいこと
 
 - webpackerを使用してvueを導入する
 - エラーの撲滅
 - メール送受信をSendGridを使用して動作させる
-- contactにuserを紐づける
+- contactにuserを紐づける -->
+<!-- 
+[未経験者が自社開発企業に就職するためのREADME書き方 - Qiita](https://qiita.com/teruis/items/64fcf585f02162fa2f3b)
+[【エンジニア転職】面接官の目にとまるGithubのREADMEの書き方とは？実際のREADMEも公開！ | WEBエンジニアスキルアップブログ](https://notosan.com/jobchange-readme/)
+[READMEはこう書く！僕のポートフォリオ記録 | Kazuyuki blog](https://kazusfhino.com/2021/01/11/howtoreadme/)
+ -->
